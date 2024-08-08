@@ -1,0 +1,1 @@
+yarn && npm start
