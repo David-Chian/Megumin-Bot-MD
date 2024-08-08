@@ -1,0 +1,18 @@
+{
+"name": "Megumin - Bot - MD",
+"website": "https://github.com/David-Chian",
+"description": "El Bot Mas Explosivo De WhatsApp",
+"repository": "https://github.com/David-Chian/Megumin-Bot-MD",
+"logo": "https://telegra.ph/file/f487af86f3bce98aef2f0.jpg",
+"success_url": "https://github.com/David-Chian/Megumin-Bot-MD",
+"keywords": [
+"nodejs", "heroku", "bot", "spanish", "english", "indonesian", "arab", "portuguese", "italian", "french", "whatsapp",
+"termux", "superbot", "multi-device", "md", "official", "javascript", "megumin-bot", "bot-megumin", "ai"],
+"image": "heroku/nodejs",
+"buildpacks": [
+{ "url": "heroku/nodejs" },
+{ "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest" },
+{ "url": "https://github.com/clhuang/heroku-buildpack-webp-binaries.git" },
+{ "url": "https://github.com/bogini/heroku-buildpack-graphicsmagick" }    
+]
+}
