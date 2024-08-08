@@ -135,7 +135,7 @@ Para que no pierda su progreso en Megumin, estos comandos realizarán un respald
 
 ### `🔥 DESARROLLADORES`
 <a href="https://github.com/David-Chian/Megumin-Bot-MD/graphs/contributors">
-<img src="https://contrib.rocks/image?repo=OfcDiego/YaemoriBot-MD" /> 
+<img src="https://contrib.rocks/image?repo=David-Chian/Megumin-Bot-MD" /> 
 </a>
 
 ### `✨️ AGRADECIMIENTOS`
