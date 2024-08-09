@@ -4,29 +4,31 @@
 "description": "El Bot Más Explosivo De WhatsApp",
 "main": "index.js",
 "type": "module",
-
 "directories": {
 "lib": "lib",
 "src": "src",
-"plugins": "plugins" },
-
+"plugins": "plugins"
+},
 "scripts": {
 "start": "node index.js",
 "qr": "node index.js qr",
 "code": "node index.js code",
 "test": "node test.js",
-"test2": "nodemon index.js" },
-
+"test2": "nodemon index.js"
+"eslint": "eslint .",
+"eslintfix": "eslint --fix ."
+},
 "homepage": "https://github.com/David-Chian/Megumin-Bot-MD",
 "author": {
-"name": "David-Chian" },
-
+"name": "David-Chian"
+},
 "repository": {
 "type": "git",
-"url": "git+https://github.com/David-Chian/Megumin-Bot-MD.git" },
-
+"url": "git+https://github.com/David-Chian/Megumin-Bot-MD.git"
+},
 "bugs": {
-"url": "https://github.com/David-Chian/Megumin-Bot-MD/issues" },
+"url": "https://github.com/David-Chian/Megumin-Bot-MD/issues"
+},
 "license": "GPL-3.0-or-later",
 "dependencies": {
 "@adiwajshing/keyed-db": "^0.2.4",
