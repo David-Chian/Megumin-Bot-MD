@@ -8,17 +8,17 @@ let uniqid = `${who.split`@`[0]}`
 let userS = `${conn.getName(who)}`
 
 try {
-await fs.rmdir("./LuffyJadiBot/" + uniqid, { recursive: true, force: true })
+await fs.rmdir("./MeguminJadiBot/" + uniqid, { recursive: true, force: true })
 await parentw.sendMessage(m.chat, { text: '🚩 Sub-Bot eliminado.' }, { quoted: fkontak })
 } catch(err) {
-if (err.code === 'ENOENT' && err.path === `./LuffyJadiBot/${uniqid}`) {
+if (err.code === 'ENOENT' && err.path === `./MeguminJadiBot/${uniqid}`) {
 await parentw.sendMessage(m.chat, { text: "🍟 No cuentas con ninguna sesión de Sub-Bot." }, { quoted: fkontak })
 } else {
 await m.react(error)
 }}}
 handler.tags = ['jadibot']
 handler.help = ['delsession']
-handler.command = /^(deletesess?ion|eliminarsesion|borrarsesion|delsess?ion|cerrarsesion|delserbot|logout)$/i
+handler.command = ['deletesession','eliminarsesion','borrarsesion','delsession','cerrarsesion','delserbot','logout']
 //handler.private = true
 handler.fail = null
 
