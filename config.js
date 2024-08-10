@@ -45,7 +45,6 @@ global.vs = '3.0.1'
 
 
 //• ↳ ◜𝑰𝑴𝑨́𝑮𝑬𝑵𝑬𝑺◞ • 🌇
-global.aud = fs.readFileSync('./media/welc.mp3')
 global.imagen1 = fs.readFileSync('./Menu2.jpg');
 global.imagen2 = fs.readFileSync('./src/anime.jpg');
 global.imagen3 = fs.readFileSync('./Menu3.jpg');
