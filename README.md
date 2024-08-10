@@ -91,7 +91,7 @@ Para que no pierda su progreso en Megumin, estos comandos realizarán un respald
 - **Canal de WhatsApp:** [`Aquí`](https://whatsapp.com/channel/0029ValCkNT2ER6gHWFRQ71J)
 - **Correo:** [`Aquí`](olympussupport@gmail.com.com)
 
-- [x] **Configuración** <details><summary>**Ajustes del Servidor - Ai-Yaemori**</summary><img src="https://telegra.ph/file/530fc69bd5c105e96642e.jpg"></details>
+- [x] **Configuración** <details><summary>**Ajustes del Servidor - Megumin-Bot**</summary><img src="https://telegra.ph/file/93fe3689cc3aafc4e2f95.jpg"></details>
 
 #### 🟢 ACTIVAR EN CODES SPACES 
 [`CREAR SERVIDOR`](https://github.com/codespaces/new?skip_quickstart=true&machine=basicLinux32gb&repo=David-Chian/Megumin-Bot-MD&ref=main&geo=UsEast)
