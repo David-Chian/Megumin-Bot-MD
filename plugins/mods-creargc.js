@@ -12,6 +12,6 @@ m.reply(`🚩 Ocurrió un error.`)
 handler.help = ['grupocrear <nombre>']
 handler.tags = ['mods']
 handler.command = ['creargc', 'newgc', 'creargrupo', 'grupocrear']
-handler.mods = true
+handler.rowner = true
 handler.register = true
 export default handler
