@@ -41,7 +41,7 @@ await m.reply(`✘ *Ocurrío un error*`)
 }}}
 handler.help = ['Audio']
 handler.tags = ['descargas']
-handler.customPrefix = /^(2|audio|Audio)/
+handler.customPrefix = ['audio','Audio']
 handler.command = new RegExp
 handler.group = true;
 handler.register = true
