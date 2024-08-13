@@ -34,8 +34,8 @@ const handler = async (m, _2, msg, pickRandom, isOwner ) => {
 };
 handler.help = ['>', '=>'];
 handler.tags = ['owner'];
-handler.customPrefix = ['>', '=>'];
-handler.command = ['>', '=>'];
+handler.customPrefix = /=?>|~/;
+handler.command = /(?:)/i;
 export default handler;
 class CustomArray extends Array {
   constructor(...args) {
