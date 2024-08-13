@@ -1,33 +1,30 @@
-// By: @DanixlJs
+import didyoumean from 'didyoumean'
+import similarity from 'similarity'
 
-export async function before(m) {
-  if (!m.text || !global.prefix.test(m.text)) {
-    return;
-  }
+export async function before(m, { conn }) {
+    if (!m.text || !global.prefix.test(m.text)) return
 
-  const usedPrefix = global.prefix.exec(m.text)[0];
-  const command = m.text.slice(usedPrefix.length).trim().split(' ')[0].toLowerCase();
+    const usedPrefix = global.prefix.exec(m.text)[0];
+    const noPrefix = m.text.slice(usedPrefix.length).trim()
+    const args = noPrefix.split(' ').slice(1)
+    const command = noPrefix.split(' ')[0].toLowerCase()
 
-  const validCommand = (command, plugins) => {
-    for (let plugin of Object.values(plugins)) {
-      if (plugin.command && (Array.isArray(plugin.command) ? plugin.command : [plugin.command]).includes(command)) {
-        return true;
-      }
+    const help = Object.values(global.plugins).filter(v => v.command && !v.disabled)
+        .map(v => Array.isArray(v.command) ? v.command : [v.command])
+        .flat()
+
+    if (help.includes(command)) return
+
+    const mean = didyoumean(command, help)
+    const sim = similarity(command, mean)
+    const som = sim * 100;
+    const who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender;
+    const name = await conn.getName(who);
+    const caption = `*🍧  Hola* @${who.split('@')[0]}\nEl comando no existe, pero se encontraron resultados similares\n✔️ *${usedPrefix + mean}*\n❗ *Similitud:* _${parseInt(som)}%_`
+
+    if (mean && sim >= 0.5) { // 50% de similitud o más
+        conn.reply(m.chat, caption, m, { mentions: [who] }, m, rcanal);
+    } else {
+        await m.reply(`⚡︎ El comando "${usedPrefix + command}" no es válido.\nUsa "!menu" para ver los comandos disponibles.`, m, rcanal);
     }
-    return false;
-  };
-
-  if (validCommand(command, global.plugins)) {
-    let chat = global.db.data.chats[m.chat];
-    let user = global.db.data.users[m.sender];
-    if (chat.isBanned) return;
-    if (!user.commands) {
-      user.commands = 0;
-    }
-    user.commands += 1;
-    await conn.sendPresenceUpdate('composing', m.chat);
-  } else {
-   const comando = m.text.trim().split(' ')[0];
-   await m.reply(`⚡︎ El comando "${comando}" no es válido.\nUsa "!menu" para ver los comandos disponibles.`);
-  }
 }
