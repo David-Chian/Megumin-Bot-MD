@@ -18,7 +18,7 @@ const handler = async (m, {conn, isOwner, command, text, usedPrefix, args, isROw
 };
 handler.help = ['$']
 handler.tags = ['owner']
-handler.customPrefix = ['$']
+handler.customPrefix = /^[$] /
 handler.command = new RegExp
 
 handler.rowner = true
