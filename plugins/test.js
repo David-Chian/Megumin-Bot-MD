@@ -39,7 +39,7 @@ const handler = async (m, { conn, command, args, text, usedPrefix }) => {
       { title: 'Opción 3: Video DOC', id: `${usedPrefix}ytmp4doc ${yt_play[0].url}` }
     ];
 }
-    await conn.sendMessage(m.chat, formattedData.title, wm, yt_play[0].thumbnail, [
+    await conn.buttonMessage(m.chat, formattedData.title, wm, yt_play[0].thumbnail, [
       ['𝐌 𝐄 𝐍 𝐔 💥', `${usedPrefix}menu`],
       ['💥 𝐀 𝐔 𝐃 𝐈 𝐎 (Opción 1)', `${usedPrefix}play5 ${yt_play[0].url}`],
       ['💥 𝐕 𝐈 𝐃 𝐄 𝐎 (Opción 1)', null,`${usedPrefix}play6 ${yt_play[0].url}`]],null,[['⏤͟͞ू⃪ ፝͜⁞M͢ᴇɢ፝֟ᴜᴍ⃨ɪɴ⃜✰⃔࿐', cn]],
@@ -56,7 +56,6 @@ const handler = async (m, { conn, command, args, text, usedPrefix }) => {
 
 handler.command = ['test'];
 handler.register = true;
-handler.group = true;
 export default handler;
 
 async function search(query, options = {}) {
