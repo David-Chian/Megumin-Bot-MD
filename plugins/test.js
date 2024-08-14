@@ -48,7 +48,7 @@ const handler = async (m, { conn, command, args, text, usedPrefix }) => {
     ], fgif2);
 
   } catch (e) {
-    await conn.reply(m.chat, `*[ ! ] ʜᴜʙᴏ ᴜɴ ᴇʀʀᴏʀ ᴇɴ ᴇʟ ᴄᴏᴍᴀɴᴅᴏ ᴘᴏʀ ғᴀᴠᴏʀ ɪɴᴛᴇɴᴛᴀ ᴍᴀs ᴛᴀʀᴅᴇ..*`, fkontak, m, rcanal);
+    await conn.reply(m.chat, `*[ ! ] ʜᴜʙᴏ ᴜɴ ᴇʀʀᴏʀ ᴇɴ ᴇʟ ᴄᴏᴍᴀɴᴅᴏ ᴘᴏʀ ғᴀᴠᴏʀ ɪɴᴛᴇɴᴛᴀ ᴍᴀs ᴛᴀʀᴅᴇ..* ${e}`, fkontak, m, rcanal);
     console.log(`❗❗ᴇʀʀᴏʀ ${usedPrefix + command} ❗❗`);
     console.log(e);
     handler.limit = 0;
