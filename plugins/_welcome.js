@@ -36,7 +36,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
 
   if (chat.welcome && (m.messageStubType === 28 || m.messageStubType === 32)) {
     const mentionedJid = m.messageStubParameters[0];
-    const userTag = `@${mentionedJid.replace(/@s.whatsapp.net$/, '')}`;
+    const userTag = '@' + m.sender.split('@s.whatsapp.net')[0];
 
     const text = `Se fue ${userTag} nadie lo va a extrañar 😹`;
 
