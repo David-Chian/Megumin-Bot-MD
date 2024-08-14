@@ -1,10 +1,4 @@
-import fetch from 'node-fetch';
-import fs from 'fs/promises';
-import path from 'path';
-const {
-  generateWAMessageFromContent,
-  prepareWAMessageMedia,
-} = (await import("@whiskeysockets/baileys")).default;
+import { default as makeWASocket } from '@whiskeysockets/baileys';
 
 const handler = async (m, { conn }) => {
   try {
@@ -31,37 +25,26 @@ const handler = async (m, { conn }) => {
       }
     ];
 
+    // Enviamos cada documento uno por uno
     for (const doc of documents) {
       const buttonMessage = {
         document: {
-          url: doc.url
+          url: doc.url,
         },
         mimetype: 'application/pdf',
         fileName: doc.fileName,
-        fileLength: '99999999999999',
-        pageCount: 1,
         caption: `📄 ${doc.title} - Únete al grupo`,
-        contextInfo: {
-          externalAdReply: {
-            showAdAttribution: true,
-            mediaType: 1,
-            title: doc.title,
-            body: 'Haz clic para unirte al grupo o canal',
-            previewType: 'PHOTO',
-            thumbnail: global.photoSity.getRandom(),
-            sourceUrl: doc.url
-          }
-        },
         buttons: [
           { buttonId: `link_${doc.url}`, buttonText: { displayText: `Unirme a ${doc.title}` }, type: 1 }
         ],
         headerType: 1
       };
 
+      // Enviamos el mensaje
       await conn.sendMessage(m.chat, buttonMessage, { quoted: m });
     }
   } catch (error) {
-    console.error(error);
+    console.error("Error enviando el mensaje:", error);
     conn.reply(m.chat, `❌️ *OCURRIÓ UN ERROR:* ${error.message}`, m);
   }
 };
