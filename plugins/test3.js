@@ -63,7 +63,7 @@ await conn.sendButtonMessages(m.chat, [
 
 } catch (error) {
 console.error(error)
-conn.reply(m.chat, `Ocurrió un error.`, m)
+conn.reply(m.chat, `Ocurrió un error.${error}`, m)
 }
 }
 
