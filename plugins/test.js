@@ -16,9 +16,9 @@ const handler = async (m, { conn, command, args, text, usedPrefix }) => {
       { title: 'Opción 3: Audio DOC', id: `${usedPrefix}ytmp3doc ${yt_play[0].url}` },
       { title: 'Opción 2: Video', id: `${usedPrefix}play.2 ${yt_play[0].url}` },
       { title: 'Opción 3: Video DOC', id: `${usedPrefix}ytmp4doc ${yt_play[0].url}` }
-    ];
+    ]
 }
-    await conn.buttonMessage(m.chat, [[formattedData.title, wm, yt_play[0].thumbnail, [
+    await conn.sendButton(m.chat, [[formattedData.title, wm, yt_play[0].thumbnail, [
       ['𝐌 𝐄 𝐍 𝐔 💥', `${usedPrefix}menu`],
       ['💥 𝐀 𝐔 𝐃 𝐈 𝐎 (Opción 1)', `${usedPrefix}play5 ${yt_play[0].url}`],
       ['💥 𝐕 𝐈 𝐃 𝐄 𝐎 (Opción 1)', null,`${usedPrefix}play6 ${yt_play[0].url}`]],null,[['⏤͟͞ू⃪ ፝͜⁞M͢ᴇɢ፝֟ᴜᴍ⃨ɪɴ⃜✰⃔࿐', cn]],
