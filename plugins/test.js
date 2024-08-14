@@ -10,8 +10,8 @@ const handler = async (m, { conn, command, args, text, usedPrefix }) => {
   try {
     const yt_play = await search(args.join(' '));
     const formattedData  = { 
-    title: `╭ׅׄ̇─͓̗̗─ׅ̻ׄ╮۪̇߭⊹߭̇︹ׅ̟ׄ̇︹ׅ۪ׄ̇߭︹ׅ̟ׄ̇⊹۪̇߭︹ׅ̟ׄ̇︹ׅ۪ׄ̇߭︹ׅ̟ׄ̇⊹۪̇߭︹ׅ̟ׄ̇︹ׅ۪ׄ̇߭︹ׅ̟ׄ̇߭︹ׅ۪ׄ̇߭̇⊹\n┟─⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪🅳🄴🅂🄲🄰🅁🄶🄰🅂໑⃪࣭۪ٜ݊݊݊݊𑁍ꥈ࣪⬪╮\n╭┄─🍂⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪🅼🄴🄶🅄🄼🄸🄽໑⃪࣭۪ٜ݊݊݊݊𑁍ꥈ࣪⬪╯\n│\n├ ⚘݄𖠵⃕⁖𖥔. _*🅃𝕚𝕥𝕦𝕝𝕠*_\n├» ${yt_play[0].title}\n├╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┄\n├ ⚘݄𖠵⃕⁖𖥔. _*🄿𝕦𝕓𝕝𝕚𝕔𝕒𝕕𝕠*_\n├» ${yt_play[0].ago}\n├╌╌╌╌╌╌╌╌╌╌╌╌╌╌┈\n├ ⚘݄𖠵⃕⁖𖥔. _*🄳𝕦𝕣𝕒𝕔𝕚𝕠𝕟*_\n├» ${secondString(yt_play[0].duration.seconds)}\n├╌╌╌╌╌╌╌╌╌╌╌╌┄\n├ ⚘݄𖠵⃕⁖𖥔. _*🅅𝕚𝕤𝕥𝕒𝕤*_\n├» ${MilesNumber(yt_play[0].views)}\n├╌╌╌╌╌╌╌╌╌╌┄\n├ ⚘݄𖠵⃕⁖𖥔. _*🄰𝕦𝕥𝕠𝕣(𝕒)*_\n├» ${yt_play[0].author.name}\n├╌╌╌╌╌╌╌╌┈\n├ ⚘݄𖠵⃕⁖𖥔. _*🄴𝕟𝕝𝕒𝕔𝕖*_\n├» ${yt_play[0].url}\n╰ׁ̻۫─۪۬─۟─۪─۫─۪۬─۟─۪─۟─۪۬─۟─۪─۟─۪۬─۟─۪─۟┄۪۬┄۟┄۪┈۟┈۪`},{
-     rows = [
+    title: `╭ׅׄ̇─͓̗̗─ׅ̻ׄ╮۪̇߭⊹߭̇︹ׅ̟ׄ̇︹ׅ۪ׄ̇߭︹ׅ̟ׄ̇⊹۪̇߭︹ׅ̟ׄ̇︹ׅ۪ׄ̇߭︹ׅ̟ׄ̇⊹۪̇߭︹ׅ̟ׄ̇︹ׅ۪ׄ̇߭︹ׅ̟ׄ̇߭︹ׅ۪ׄ̇߭̇⊹\n┟─⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪🅳🄴🅂🄲🄰🅁🄶🄰🅂໑⃪࣭۪ٜ݊݊݊݊𑁍ꥈ࣪⬪╮\n╭┄─🍂⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪🅼🄴🄶🅄🄼🄸🄽໑⃪࣭۪ٜ݊݊݊݊𑁍ꥈ࣪⬪╯\n│\n├ ⚘݄𖠵⃕⁖𖥔. _*🅃𝕚𝕥𝕦𝕝𝕠*_\n├» ${yt_play[0].title}\n├╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┄\n├ ⚘݄𖠵⃕⁖𖥔. _*🄿𝕦𝕓𝕝𝕚𝕔𝕒𝕕𝕠*_\n├» ${yt_play[0].ago}\n├╌╌╌╌╌╌╌╌╌╌╌╌╌╌┈\n├ ⚘݄𖠵⃕⁖𖥔. _*🄳𝕦𝕣𝕒𝕔𝕚𝕠𝕟*_\n├» ${secondString(yt_play[0].duration.seconds)}\n├╌╌╌╌╌╌╌╌╌╌╌╌┄\n├ ⚘݄𖠵⃕⁖𖥔. _*🅅𝕚𝕤𝕥𝕒𝕤*_\n├» ${MilesNumber(yt_play[0].views)}\n├╌╌╌╌╌╌╌╌╌╌┄\n├ ⚘݄𖠵⃕⁖𖥔. _*🄰𝕦𝕥𝕠𝕣(𝕒)*_\n├» ${yt_play[0].author.name}\n├╌╌╌╌╌╌╌╌┈\n├ ⚘݄𖠵⃕⁖𖥔. _*🄴𝕟𝕝𝕒𝕔𝕖*_\n├» ${yt_play[0].url}\n╰ׁ̻۫─۪۬─۟─۪─۫─۪۬─۟─۪─۟─۪۬─۟─۪─۟─۪۬─۟─۪─۟┄۪۬┄۟┄۪┈۟┈۪`,
+     rows : [
       { title: 'Opción 2: Audio', id: `${usedPrefix}play.1 ${yt_play[0].url}` },
       { title: 'Opción 3: Audio DOC', id: `${usedPrefix}ytmp3doc ${yt_play[0].url}` },
       { title: 'Opción 2: Video', id: `${usedPrefix}play.2 ${yt_play[0].url}` },
