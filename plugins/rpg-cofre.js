@@ -22,7 +22,7 @@ const handler = async (m, {isPrems, conn}) => {
 ╭━〔 ${global.botname} 〕⬣
 ┃ *${dia} Estrellas* 🌟
 ┃ *${tok} Tokens* 💰
-┃ *${ai} MiniCoins* 💸
+┃ *${ai} MeguCoins* ❤️‍🔥
 ┃ *${expp} Exp* ⚡
 ╰━━━━━━━━━━━━⬣`;
 
