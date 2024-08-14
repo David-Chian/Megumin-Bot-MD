@@ -1,30 +1,23 @@
 import didyoumean from 'didyoumean'
 import similarity from 'similarity'
 
-export async function before(m, { conn }) {
-    if (!m.text || !global.prefix.test(m.text)) return
-
-    const usedPrefix = global.prefix.exec(m.text)[0];
-    const noPrefix = m.text.slice(usedPrefix.length).trim()
-    const args = noPrefix.split(' ').slice(1)
-    const command = noPrefix.split(' ')[0].toLowerCase()
-
-    const help = Object.values(global.plugins).filter(v => v.command && !v.disabled)
-        .map(v => Array.isArray(v.command) ? v.command : [v.command])
-        .flat()
-
-    if (help.includes(command)) return
-
-    const mean = didyoumean(command, help)
-    const sim = similarity(command, mean)
-    const som = sim * 100;
-    const who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender;
-    const name = await conn.getName(who);
-    const caption = `*🍧  Hola* @${who.split('@')[0]}\nEl comando no existe, pero se encontraron resultados similares\n✔️ *${usedPrefix + mean}*\n❗ *Similitud:* _${parseInt(som)}%_`
-
-    if (mean && sim >= 0.5) {
-        conn.reply(m.chat, caption, m, { mentions: [who] }, m, rcanal);
-    } else {
-        await m.reply(`⚡︎ El comando "${usedPrefix + command}" no es válido.\nUsa "!menu" para ver los comandos disponibles.`, m, rcanal);
-    }
+export async function before(m, { conn, match, usedPrefix, command }) {
+	
+if ((usedPrefix = (match[0] || '')[0])) {
+let noPrefix = m.text.replace(usedPrefix, '')
+let args = noPrefix.trim().split` `.slice(1)
+let text = args.join` `
+let help = Object.values(plugins).filter(v => v.help && !v.disabled).map(v => v.help).flat(1)
+if (help.includes(noPrefix)) return
+let mean = didyoumean(noPrefix, help)
+let sim = similarity(noPrefix, mean)
+let som = sim * 100
+let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let name = await conn.getName(who)
+let caption = `*🍧  Hola* @${who.split('@')[0]}
+El comando no existe, pero se encontraron resultados similares 
+✔️ *${usedPrefix + mean}*
+ ❗ *Similitud:* _${parseInt(som)}%_`
+if (mean) conn.reply(m.chat, caption, m, { mentions: [who]})
+}
 }
