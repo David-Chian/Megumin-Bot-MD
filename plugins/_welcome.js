@@ -35,14 +35,15 @@ export async function before(m, { conn, participants, groupMetadata }) {
   }
 
   if (chat.welcome && (m.messageStubType === 28 || m.messageStubType === 32)) {
-    const mentionedJid = m.messageStubParameters[0]; // JID del usuario
-    const userName = conn.getName(mentionedJid) || `@${mentionedJid.replace(/@s.whatsapp.net$/, '')}`; // Obtiene el nombre o el número si no está disponible
-    const text = `Se fue ${userName} nadie lo va a extrañar 😹`;
+    const mentionedJid = m.messageStubParameters[0];
+    const userTag = `@${mentionedJid.replace(/@s.whatsapp.net$/, '')}`;
+
+    const text = `Se fue ${userTag} nadie lo va a extrañar 😹`;
 
     this.sendMessage(m.chat, {
         text: text,
         contextInfo: {
-            mentionedJid: [mentionedJid], // Asegúrate de que sea un array con los JIDs mencionados
+            mentionedJid: [mentionedJid],
             forwardedNewsletterMessageInfo: {
                 newsletterJid: '120363307382381547@newsletter',
                 serverMessageId: '',
