@@ -4,8 +4,12 @@ const handler = async (m, {conn}) => {
   const datas = global
   const idioma = datas.db.data.users[m.sender].language
 
-  if (!m.quoted) conn.reply(m.chat, '_*🔥 ᏒᎬᏕᏢᎾᏁᎠᎬ Ꭿ ᏬᏁ ᎷᎬᏁᏕᎯᏠᎬ ᏅᏬᎬ ᎻᎯᎽᎯ ᏕᎨᎠᎾ ᎬᏁᏉᎨᎯᎠᎾ ᎬᏁ ᏉᎨᎬᏯᎾᏁᏨᎬ (ᏉᎬᏒ ᏕᎾᏝᎾ ᏬᏁᎯ ᏉᎬᏃ)*_', m, rcanal);
-  if (m.quoted.mtype !== 'viewOnceMessageV2') conn.reply(m.chat, '_*❤‍🔥 ᎬᏝ ᎷᎬᏁᏕᎯᏠᎬ ᏕᎬᏝᎬᏨᏨᎨᎾᏁᎯᎠᎾ ᏁᎾ ᎬᏕ ᏉᎨᎬᏯᎾᏁᏨᎬ (ᏉᎬᏒ ᏕᎾᏝᎾ ᏬᏁᎯ ᏉᎬᏃ)*_', m, rcanal)
+  if (!m.quoted) { conn.reply(m.chat, '_*🔥 ᏒᎬᏕᏢᎾᏁᎠᎬ Ꭿ ᏬᏁ ᎷᎬᏁᏕᎯᏠᎬ ᏅᏬᎬ ᎻᎯᎽᎯ ᏕᎨᎠᎾ ᎬᏁᏉᎨᎯᎠᎾ ᎬᏁ ᏉᎨᎬᏯᎾᏁᏨᎬ (ᏉᎬᏒ ᏕᎾᏝᎾ ᏬᏁᎯ ᏉᎬᏃ)*_', m, rcanal);
+return;
+}
+  if (m.quoted.mtype !== 'viewOnceMessageV2') { conn.reply(m.chat, '_*❤‍🔥 ᎬᏝ ᎷᎬᏁᏕᎯᏠᎬ ᏕᎬᏝᎬᏨᏨᎨᎾᏁᎯᎠᎾ ᏁᎾ ᎬᏕ ᏉᎨᎬᏯᎾᏁᏨᎬ (ᏉᎬᏒ ᏕᎾᏝᎾ ᏬᏁᎯ ᏉᎬᏃ)*_', m, rcanal)
+return;
+}
   const msg = m.quoted.message;
   const type = Object.keys(msg)[0];
   const media = await downloadContentFromMessage(msg[type], type == 'imageMessage' ? 'image' : 'video');
