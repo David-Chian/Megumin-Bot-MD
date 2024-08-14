@@ -35,31 +35,31 @@ export async function before(m, { conn, participants, groupMetadata }) {
   }
 
   if (chat.welcome && (m.messageStubType === 28 || m.messageStubType === 32)) {
-    const mentionedJid = getMentionedJid();
-    const text = `Se fue @${m.messageStubParameters[0].replace(/@s.whatsapp.net$/, '')} nadie lo va a extrañar 😹`
+    const mentionedJid = m.messageStubParameters[0]; // JID del usuario
+    const userName = conn.getName(mentionedJid) || `@${mentionedJid.replace(/@s.whatsapp.net$/, '')}`; // Obtiene el nombre o el número si no está disponible
+    const text = `Se fue ${userName} nadie lo va a extrañar 😹`;
 
     this.sendMessage(m.chat, {
-      text: text,
-      contextInfo: {
-        mentionedJid: mentionedJid,
-        forwardedNewsletterMessageInfo: {
-          newsletterJid: '120363307382381547@newsletter',
-          serverMessageId: '',
-          newsletterName: '⏤͟͞ू⃪ ፝͜⁞M͢ᴇɢ፝֟ᴜᴍ⃨ɪɴ⃜✰⃔࿐/♡ ͟͞ 𓆩ꪶꪾ𝘿᪶𝙞ᷨ𝙖ᷞ𝙢ͣ𝙤᪶ͨ𝙣ᷜ𝙙ꫂৎ୭࠱࠭ ͟͞'
-        },
-        forwardingScore: 9999999,
-        isForwarded: true,
-        "externalAdReply": {
-          "showAdAttribution": true,
-          "containsAutoReply": true,
-          "title": '  ͟͞ Ａ Ｄ Ｉ Ｏ́ Ｓ ͟͞  ',
-          body: 'Esperemos que no vuelva -_-',
-          "previewType": "PHOTO",
-          "thumbnailUrl": '',
-          "thumbnail": adi,
-          "sourceUrl": redes
+        text: text,
+        contextInfo: {
+            mentionedJid: [mentionedJid], // Asegúrate de que sea un array con los JIDs mencionados
+            forwardedNewsletterMessageInfo: {
+                newsletterJid: '120363307382381547@newsletter',
+                serverMessageId: '',
+                newsletterName: '⏤͟͞ू⃪ ፝͜⁞M͢ᴇɢ፝֟ᴜᴍ⃨ɪɴ⃜✰⃔࿐/♡ ͟͞ 𓆩ꪶꪾ𝘿᪶𝙞ᷨ𝙢ᷞ𝙤᪶ͨ𝙣ᷜ𝙙ꫂৎ୭࠱࠭ ͟͞'
+            },
+            forwardingScore: 9999999,
+            isForwarded: true,
+            "externalAdReply": {
+                "showAdAttribution": true,
+                "containsAutoReply": true,
+                "title": '  ͟͞ Ａ Ｄ Ｉ Ｏ́ Ｓ ͟͞  ',
+                body: 'Esperemos que no vuelva -_-',
+                "previewType": "PHOTO",
+                "thumbnailUrl": '',
+                "thumbnail": adi,
+                "sourceUrl": redes
+            }
         }
-      }
     }, { quoted: null, ephemeralExpiration: 24 * 60 * 100, disappearingMessagesInChat: 24 * 60 * 100 });
-  }
 }
