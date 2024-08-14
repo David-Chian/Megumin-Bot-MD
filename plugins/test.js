@@ -57,7 +57,6 @@ const handler = async (m, { conn, command, args, text, usedPrefix }) => {
 
 handler.command = ['test'];
 handler.register = true;
-handler.group = true;
 export default handler;
 
 async function search(query, options = {}) {
