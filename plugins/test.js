@@ -40,7 +40,7 @@ const handler = async (m, { conn, command, args, text, usedPrefix }) => {
       { title: 'Opción 3: Video DOC', rowId: `${usedPrefix}ytmp4doc ${yt_play[0].url}` }
     ];
 
-    await conn.sendMessage(m.chat,texto1, yt_play[0].thumbnail, [
+    await conn.relayMessage(m.chat,texto1, yt_play[0].thumbnail, [
       ['𝐌 𝐄 𝐍 𝐔 💥', `${usedPrefix}menu`],
       ['💥 𝐀 𝐔 𝐃 𝐈 𝐎 (Opción 1)', `${usedPrefix}play.1 ${yt_play[0].url}`],
       ['💥 𝐕 𝐈 𝐃 𝐄 𝐎 (Opción 1)', null,`${usedPrefix}play.2 ${yt_play[0].url}`]],
