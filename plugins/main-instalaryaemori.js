@@ -1,6 +1,6 @@
 var handler  = async (m, { conn }) => {
 
-let texto = `🚩 *Instalación de Ai Yaemori*
+let texto = `🚩 *Instalación de Megumin-Bot-MD*
 
 ⬡ Dudas: ${creador}
 ⬡ Tutoríal: *¡Pronto!*
@@ -13,7 +13,7 @@ apt-get update -y && apt-get upgrade -y
 
 pkg install -y git nodejs ffmpeg imagemagick && pkg install yarn
 
-git clone https://github.com/OfcDiego/YaemoriBot-MD && cd YaemoriBot-MD && yarn install && npm install 
+git clone https://github.com/David-Chian/Megumin-Bot-MD && cd MeguminBot-MD && yarn install && npm install 
 
 ls
 
@@ -51,9 +51,9 @@ conn.sendMessage(m.chat, {image: {url: 'https://telegra.ph/file/c24470edcbe5e250
 }
 
 }
-handler.help = ['instalaryaemori']
+handler.help = ['instalarmegumin']
 handler.tags = ['main']
-handler.command = ['instalarai','instalarbot','instalaryaemori']
+handler.command = ['instalarmegu','instalarbot','instalarmegumin']
 
 export default handler
 
