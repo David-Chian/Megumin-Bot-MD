@@ -9,8 +9,8 @@ const handler = async (m, { conn, command, args, text, usedPrefix }) => {
 
   try {
     const yt_play = await search(args.join(' '));
-    const texto1 = `
-╭ׅׄ̇─͓̗̗─ׅ̻ׄ╮۪̇߭⊹߭̇︹ׅ̟ׄ̇︹ׅ۪ׄ̇߭︹ׅ̟ׄ̇⊹۪̇߭︹ׅ̟ׄ̇︹ׅ۪ׄ̇߭︹ׅ̟ׄ̇⊹۪̇߭︹ׅ̟ׄ̇︹ׅ۪ׄ̇߭︹ׅ̟ׄ̇߭︹ׅ۪ׄ̇߭̇⊹
+    const formattedData  = { 
+    title: `╭ׅׄ̇─͓̗̗─ׅ̻ׄ╮۪̇߭⊹߭̇︹ׅ̟ׄ̇︹ׅ۪ׄ̇߭︹ׅ̟ׄ̇⊹۪̇߭︹ׅ̟ׄ̇︹ׅ۪ׄ̇߭︹ׅ̟ׄ̇⊹۪̇߭︹ׅ̟ׄ̇︹ׅ۪ׄ̇߭︹ׅ̟ׄ̇߭︹ׅ۪ׄ̇߭̇⊹
 ┟─⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪🅳🄴🅂🄲🄰🅁🄶🄰🅂໑⃪࣭۪ٜ݊݊݊݊𑁍ꥈ࣪⬪╮
 ╭┄─🍂⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪🅼🄴🄶🅄🄼🄸🄽໑⃪࣭۪ٜ݊݊݊݊𑁍ꥈ࣪⬪╯
 │
@@ -31,20 +31,19 @@ const handler = async (m, { conn, command, args, text, usedPrefix }) => {
 ├╌╌╌╌╌╌╌╌┈
 ├ ⚘݄𖠵⃕⁖𖥔. _*🄴𝕟𝕝𝕒𝕔𝕖*_
 ├» ${yt_play[0].url}
-╰ׁ̻۫─۪۬─۟─۪─۫─۪۬─۟─۪─۟─۪۬─۟─۪─۟─۪۬─۟─۪─۟┄۪۬┄۟┄۪┈۟┈۪`.trim();
-
-    const otherOptions = [
-      { title: 'Opción 2: Audio', rowId: `${usedPrefix}play5 ${yt_play[0].url}` },
+╰ׁ̻۫─۪۬─۟─۪─۫─۪۬─۟─۪─۟─۪۬─۟─۪─۟─۪۬─۟─۪─۟┄۪۬┄۟┄۪┈۟┈۪`,
+     rows = [
+      { title: 'Opción 2: Audio', id: `${usedPrefix}play.1 ${yt_play[0].url}` },
       { title: 'Opción 3: Audio DOC', rowId: `${usedPrefix}ytmp3doc ${yt_play[0].url}` },
-      { title: 'Opción 2: Video', rowId: `${usedPrefix}play6 ${yt_play[0].url}` },
-      { title: 'Opción 3: Video DOC', rowId: `${usedPrefix}ytmp4doc ${yt_play[0].url}` }
+      { title: 'Opción 2: Video', id: `${usedPrefix}play.2 ${yt_play[0].url}` },
+      { title: 'Opción 3: Video DOC', id: `${usedPrefix}ytmp4doc ${yt_play[0].url}` }
     ];
-
-    await conn.buttonMessage(m.chat,texto1, yt_play[0].thumbnail, [
+}
+    await conn.sendMessage(m.chat, formattedData.title, wm, yt_play[0].thumbnail, [
       ['𝐌 𝐄 𝐍 𝐔 💥', `${usedPrefix}menu`],
-      ['💥 𝐀 𝐔 𝐃 𝐈 𝐎 (Opción 1)', `${usedPrefix}play.1 ${yt_play[0].url}`],
-      ['💥 𝐕 𝐈 𝐃 𝐄 𝐎 (Opción 1)', null,`${usedPrefix}play.2 ${yt_play[0].url}`]],
-      [['Ver más opciones', { title: 'Otras opciones', rows: otherOptions }]
+      ['💥 𝐀 𝐔 𝐃 𝐈 𝐎 (Opción 1)', `${usedPrefix}play5 ${yt_play[0].url}`],
+      ['💥 𝐕 𝐈 𝐃 𝐄 𝐎 (Opción 1)', null,`${usedPrefix}play6 ${yt_play[0].url}`]],null,[['⏤͟͞ू⃪ ፝͜⁞M͢ᴇɢ፝֟ᴜᴍ⃨ɪɴ⃜✰⃔࿐', cn]],
+      [['Ver más opciones', formattedData.rows }]
     ], fgif2);
 
   } catch (e) {
@@ -57,6 +56,7 @@ const handler = async (m, { conn, command, args, text, usedPrefix }) => {
 
 handler.command = ['test'];
 handler.register = true;
+handler.group = true;
 export default handler;
 
 async function search(query, options = {}) {
