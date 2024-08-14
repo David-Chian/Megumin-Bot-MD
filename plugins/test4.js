@@ -2,10 +2,8 @@ import fetch from 'node-fetch';
 import fs from 'fs/promises';
 import path from 'path';
 const {
-  proto,
   generateWAMessageFromContent,
   prepareWAMessageMedia,
-  generateWAMessageContent
 } = (await import("@whiskeysockets/baileys")).default;
 
 const handler = async (m, { conn }) => {
@@ -33,16 +31,15 @@ const handler = async (m, { conn }) => {
       }
     ];
 
-    const carouselContent = documents.map((doc, index) => ({
-      documentMessage: {
-        title: doc.title,
+    for (const doc of documents) {
+      const buttonMessage = {
         document: {
-          url: doc.url,
-          mimetype: 'application/pdf',
-          fileName: doc.fileName,
-          fileLength: 99999999999,
-          pageCount: 1
+          url: doc.url
         },
+        mimetype: 'application/pdf',
+        fileName: doc.fileName,
+        fileLength: '99999999999999',
+        pageCount: 1,
         caption: `📄 ${doc.title} - Únete al grupo`,
         contextInfo: {
           externalAdReply: {
@@ -54,38 +51,15 @@ const handler = async (m, { conn }) => {
             thumbnail: global.photoSity.getRandom(),
             sourceUrl: doc.url
           }
-        }
-      }
-    }));
+        },
+        buttons: [
+          { buttonId: `link_${doc.url}`, buttonText: { displayText: `Unirme a ${doc.title}` }, type: 1 }
+        ],
+        headerType: 1
+      };
 
-    const messageContent = generateWAMessageFromContent(m.chat, {
-      viewOnceMessage: {
-        message: {
-          messageContextInfo: {
-            deviceListMetadata: {},
-            deviceListMetadataVersion: 2
-          },
-          interactiveMessage: proto.Message.InteractiveMessage.fromObject({
-            body: proto.Message.InteractiveMessage.Body.create({
-              text: "🗂️ Grupos y Canales Oficiales"
-            }),
-            footer: proto.Message.InteractiveMessage.Footer.create({
-              text: "Selecciona un grupo para unirte"
-            }),
-            carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({
-              cards: carouselContent
-            })
-          })
-        }
-      }
-    }, {
-      quoted: m
-    });
-
-    await conn.relayMessage(m.chat, messageContent.message, {
-      messageId: messageContent.key.id
-    });
-
+      await conn.sendMessage(m.chat, buttonMessage, { quoted: m });
+    }
   } catch (error) {
     console.error(error);
     conn.reply(m.chat, `❌️ *OCURRIÓ UN ERROR:* ${error.message}`, m);
