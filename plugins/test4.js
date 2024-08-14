@@ -51,7 +51,7 @@ const handler = async (m, { conn }) => {
             title: doc.title,
             body: 'Haz clic para unirte al grupo o canal',
             previewType: 'PHOTO',
-            thumbnail: global.photoSity.getRandom(), // Si tienes una imagen miniatura
+            thumbnail: global.photoSity.getRandom(),
             sourceUrl: doc.url
           }
         }
