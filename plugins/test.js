@@ -21,7 +21,7 @@ const handler = async (m, { conn, command, args, text, usedPrefix }) => {
     await conn.sendButton(m.chat, [[formattedData.title, wm, yt_play[0].thumbnail, [
       ['𝐌 𝐄 𝐍 𝐔 💥', `${usedPrefix}menu`],
       ['💥 𝐀 𝐔 𝐃 𝐈 𝐎 (Opción 1)', `${usedPrefix}play5 ${yt_play[0].url}`],
-      ['💥 𝐕 𝐈 𝐃 𝐄 𝐎 (Opción 1)', null,`${usedPrefix}play6 ${yt_play[0].url}`]],null,[['⏤͟͞ू⃪ ፝͜⁞M͢ᴇɢ፝֟ᴜᴍ⃨ɪɴ⃜✰⃔࿐', cn]],
+      ['💥 𝐕 𝐈 𝐃 𝐄 𝐎 (Opción 1)', `${usedPrefix}play6 ${yt_play[0].url}`]],null,[['⏤͟͞ू⃪ ፝͜⁞M͢ᴇɢ፝֟ᴜᴍ⃨ɪɴ⃜✰⃔࿐', cn]],
       [['Ver más opciones', formattedData.rows ]]]], m);
 
   } catch (e) {
