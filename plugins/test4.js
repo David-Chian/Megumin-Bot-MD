@@ -25,7 +25,6 @@ const handler = async (m, { conn }) => {
       }
     ];
 
-    // Enviamos cada documento uno por uno
     for (const doc of documents) {
       const buttonMessage = {
         document: {
@@ -40,7 +39,6 @@ const handler = async (m, { conn }) => {
         headerType: 1
       };
 
-      // Enviamos el mensaje
       await conn.sendMessage(m.chat, buttonMessage, { quoted: m });
     }
   } catch (error) {
