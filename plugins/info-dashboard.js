@@ -20,7 +20,7 @@ let handler = async (m, { conn, command }) => {
         let totalreg = Object.keys(global.db.data.users).length
         let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
 
-        conn.reply(m.chat, `${saludo} 
+        conn.reply(m.chat, `
 
 🗂️ *Tengo ${rtotalreg} Usuarios Registrados*
 
