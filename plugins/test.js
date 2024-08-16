@@ -7,6 +7,8 @@ import { youtubedl, youtubedlv2 } from '@bochilteam/scraper';
 const handler = async (m, { conn, command, args, text, usedPrefix }) => {
   if (!text) throw `_𝐄𝐬𝐜𝐫𝐢𝐛𝐞 𝐮𝐧𝐚 𝐩𝐞𝐭𝐢𝐜𝐢𝐨́𝐧 𝐥𝐮𝐞𝐠𝐨 𝐝𝐞𝐥 𝐜𝐨𝐦𝐚𝐧𝐝𝐨 𝐞𝐣𝐞𝐦𝐩𝐥𝐨:_ \n*${usedPrefix + command} Billie Eilish - Bellyache*`;
   
+  const { all: [bestItem, ...moreItems] } = await ytSearch(text)
+  const videoItems = moreItems.filter(item => item.type === 'video')
   const yt_play = await search(args.join(' '));
 
   if (!yt_play || yt_play.length === 0) {
@@ -23,6 +25,25 @@ const handler = async (m, { conn, command, args, text, usedPrefix }) => {
         { title: 'Opción 3: Video DOC', id: `${usedPrefix}ytmp4doc ${yt_play[0].url}` }
       ]
     };
+const emojiMap = {
+type: "🎥",
+videoId: "🆔",
+url: "🔗",
+title: "📺",
+description: "📝",
+image: "🖼️",
+thumbnail: "🖼️",
+seconds: "⏱️",
+timestamp: "⏰",
+ago: "⌚",
+views: "👀",
+author: "👤"
+}
+    
+const caption = Object.entries(bestItem).map(([key, value]) => {
+const formattedKey = key.charAt(0).toUpperCase() + key.slice(1)
+const valueToDisplay = key === 'views' ? new Intl.NumberFormat('en', { notation: 'compact' }).format(value) : key === 'author' ? `Nombre: ${value.name || 'Desconocido'}\nURL: ${value.url || 'Desconocido'}` : value || 'Desconocido';
+return ` ${emojiMap[key] || '🔹'} *${formattedKey}:* ${valueToDisplay}`}).join('\n')
 
     await conn.sendButton(m.chat, [[formattedData.title, wm, yt_play[0].thumbnail, [
       ['𝐌 𝐄 𝐍 𝐔 💥', `${usedPrefix}menu`],
