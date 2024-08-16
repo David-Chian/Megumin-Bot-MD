@@ -45,10 +45,10 @@ const formattedKey = key.charAt(0).toUpperCase() + key.slice(1)
 const valueToDisplay = key === 'views' ? new Intl.NumberFormat('en', { notation: 'compact' }).format(value) : key === 'author' ? `Nombre: ${value.name || 'Desconocido'}\nURL: ${value.url || 'Desconocido'}` : value || 'Desconocido';
 return ` ${emojiMap[key] || '🔹'} *${formattedKey}:* ${valueToDisplay}`}).join('\n')
 
-    await conn.sendButton(m.chat, [[formattedData.title, wm, yt_play[0].thumbnail, [
+    await conn.sendButton(m.chat, [[formattedData.title, wm, bestItem.image || logo, [
       ['𝐌 𝐄 𝐍 𝐔 💥', `${usedPrefix}menu`],
-      ['💥 𝐀 𝐔 𝐃 𝐈 𝐎 (Opción 1)', `${usedPrefix}play5 ${yt_play[0].url}`],
-      ['💥 𝐕 𝐈 𝐃 𝐄 𝐎 (Opción 1)', `${usedPrefix}play6 ${yt_play[0].url}`]
+      ['💥 𝐀 𝐔 𝐃 𝐈 𝐎 (Opción 1)', `${usedPrefix}play5 ${bestItem.url}`],
+      ['💥 𝐕 𝐈 𝐃 𝐄 𝐎 (Opción 1)', `${usedPrefix}play6 ${bestItem.url}`]
     ], null,
     [['⏤͟͞ू⃪ ፝͜⁞M͢ᴇɢ፝֟ᴜᴍ⃨ɪɴ⃜✰⃔࿐', cn]],
     [['Ver más opciones', formattedData.rows]]]], m);
