@@ -31,7 +31,7 @@ const texto1 = `
 ├» ${yt_play[0].url}
 ╰ׁ̻۫─۪۬─۟─۪─۫─۪۬─۟─۪─۟─۪۬─۟─۪─۟─۪۬─۟─۪─۟┄۪۬┄۟┄۪┈۟┈۪`.trim()
 
-await conn.sendButton(m.chat, wm, texto1, yt_play[0].thumbnail, [['𝐌 𝐄 𝐍 𝐔 💥', `${usedPrefix}menu`],['💥 𝐀 𝐔 𝐃 𝐈 𝐎 (Opcion 1)',`${usedPrefix}play.1 ${yt_play[0].url}`],['🔥 𝗔 𝗨 𝗗 𝗜 𝗢 (Opcion 2)',`${usedPrefix}play5 ${yt_play[0].url}`],['💥 𝐀 𝐔 𝐃 𝐈 𝐎   𝐃 𝐎 𝐂',`${usedPrefix}ytmp3doc ${yt_play[0].url}`],['💥 𝐕 𝐈 𝐃 𝐄 𝐎 (Opcion 1)',`${usedPrefix}play.2 ${yt_play[0].url}`],['🔥 𝗩 𝗜 𝗗 𝗘 𝗢 (Opcion 2)',`${usedPrefix}play6 ${yt_play[0].url}`],['💥 𝐕 𝐈 𝐃 𝐄 𝐎  𝐃 𝐎 𝐂',`${usedPrefix}ytmp4doc ${yt_play[0].url}`]], null, null, fgif2)
+await conn.sendButton(m.chat, wm, texto1, yt_play[0].thumbnail, [['𝐌 𝐄 𝐍 𝐔 💥', `${usedPrefix}menu`],['🔥 𝗔 𝗨 𝗗 𝗜 𝗢',`${usedPrefix}play5 ${yt_play[0].url}`],['🔥 𝗩 𝗜 𝗗 𝗘 𝗢',`${usedPrefix}play6 ${yt_play[0].url}`]], null, null, fgif2)
 } catch (e) {
 await conn.reply(m.chat, `*[ ! ] ʜᴜʙᴏ ᴜɴ ᴇʀʀᴏʀ ᴇɴ ᴇʟ ᴄᴏᴍᴀɴᴅᴏ ᴘᴏʀ ғᴀᴠᴏʀ ɪɴᴛᴇɴᴛᴀ ᴍᴀs ᴛᴀʀᴅᴇ..*`, fkontak, m, rcanal)
 console.log(`❗❗ᴇʀʀᴏʀ ${usedPrefix + command} ❗❗`)
