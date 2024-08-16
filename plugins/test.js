@@ -7,7 +7,7 @@ import { youtubedl, youtubedlv2 } from '@bochilteam/scraper';
 const handler = async (m, { conn, command, args, text, usedPrefix }) => {
   if (!text) throw `_𝐄𝐬𝐜𝐫𝐢𝐛𝐞 𝐮𝐧𝐚 𝐩𝐞𝐭𝐢𝐜𝐢𝐨́𝐧 𝐥𝐮𝐞𝐠𝐨 𝐝𝐞𝐥 𝐜𝐨𝐦𝐚𝐧𝐝𝐨 𝐞𝐣𝐞𝐦𝐩𝐥𝐨:_ \n*${usedPrefix + command} Billie Eilish - Bellyache*`;
   
-  const { all: [bestItem, ...moreItems] } = await ytSearch(text)
+  const { all: [bestItem, ...moreItems] } = await yts(text)
   const videoItems = moreItems.filter(item => item.type === 'video')
   const yt_play = await search(args.join(' '));
 
