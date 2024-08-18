@@ -25,7 +25,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
           "previewType": "PHOTO",
           "thumbnailUrl": null,
           "showAdAttribution": true,
-          sourceUrl: [tiktok, yt, md, channel].sort(() => 0.5 - Math.random())[0]
+          sourceUrl: [yt, md, channel].sort(() => 0.5 - Math.random())[0]
         }
       },
       ptt: true,
