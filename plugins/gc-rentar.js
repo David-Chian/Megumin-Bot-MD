@@ -25,20 +25,20 @@ const handler = async (m, { conn, command, args, text, isOwner, usedPrefix }) =>
       global.db.data.users[m.sender].premium += count;
       global.db.data.users[m.sender].tokens = (global.db.data.users[m.sender].tokens || 0) + Math.floor(count / minutesPerToken);
 
-      conn.reply(m.chat, `
+      conn.reply(m.chat, 
 *┌─『 𝑅𝑒𝑛𝑡𝑎𝑟 𝑎 𝑀𝑒𝑔𝑢𝑚𝑖𝑛 』*
 *├Compra nominal* : + ${Math.floor(count / minutesPerToken)} Token(s)
 *├Gastado* : -${finalCost} ⭐ Estrellas (con descuento: ${discount * 100}%)
 *├Utiliza* : .rentar2 + el link
-*└──────────────*`, m);
+*└──────────────*, m);
     } else {
-      conn.reply(m.chat, `❎ Lo siento, no tienes suficientes *⭐ Estrellas* para comprar *${Math.floor(count / minutesPerToken)}* Token(s)`, m);
+      conn.reply(m.chat, ❎ Lo siento, no tienes suficientes *⭐ Estrellas* para comprar *${Math.floor(count / minutesPerToken)}* Token(s), m);
     }
 
   } else if (type === 'use') {
 
-    let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})( [0-9]{1,3})?/i;
-    if (!text) return m.reply(`> _📝 Ingresa el link del grupo para unirme durante el tiempo que has rentado._`);
+    let linkRegex = /chat.whatsapp.com/([0-9A-Za-z]{20,24})( [0-9]{1,3})?/i;
+    if (!text) return m.reply(> _📝 Ingresa el link del grupo para unirme durante el tiempo que has rentado._);
     
     let [_, code, expired] = text.match(linkRegex) || [];
     if (!code) return m.reply('🚩 Enlace inválido. Asegúrate de que sea un enlace de grupo de WhatsApp.');
@@ -59,7 +59,7 @@ const handler = async (m, { conn, command, args, text, isOwner, usedPrefix }) =>
 
     global.db.data.users[m.sender].tokens -= Math.ceil(expired / minutesPerToken);
 
-    m.reply(`> _📝 Me uní correctamente al grupo_ *${res}* durante *${expired}* minuto(s).`);
+    m.reply(> _📝 Me uní correctamente al grupo_ *${res}* durante *${expired}* minuto(s).);
     
     let chats = global.db.data.chats[res];
     if (!chats) chats = global.db.data.chats[res] = {};
