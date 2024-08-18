@@ -9,6 +9,10 @@ let handler = async (m, { conn, text, isOwner }) => {
 
   let groupId = await conn.groupAcceptInvite(code);
 
+  if (!groupId.endsWith('@g.us')) {
+    groupId += '@g.us';
+  }
+
   global.db.data.groupRents = global.db.data.groupRents || {};
 
   let userRents = global.db.data.userRents[m.sender];
@@ -24,7 +28,7 @@ let handler = async (m, { conn, text, isOwner }) => {
   };
 
   userRents.tokens = 0;
-
+  
   userRents.groups.push(groupId);
 
   conn.reply(m.chat, `> _📝 Me uní correctamente al grupo_ *${groupId}* por ${global.db.data.groupRents[groupId].tokenCount} día(s).`, m, rcanal);
@@ -37,7 +41,7 @@ let handler = async (m, { conn, text, isOwner }) => {
   await conn.sendMessage(groupId, { video: { url: pp }, gifPlayback: true, caption: '> ¡Ya llegué! El bot estará disponible por el tiempo acordado.', mentions: [m.sender] });
 };
 handler.tags = ['grupos']
-handler.help = ['rentar2 *<link>*'];
-handler.command = ['rentar2'];
+handler.help = ['rentar2 *<link>*']
+handler.command = ['rentar2']
 
-export default handler;
+export default handler
