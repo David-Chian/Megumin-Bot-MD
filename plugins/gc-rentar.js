@@ -8,7 +8,7 @@ const handler = async (m, { conn, command, args, text, isOwner, usedPrefix }) =>
     let count = command.replace(/^rentar/i, '');
     count = count 
       ? /all/i.test(count) 
-        ? Math.floor(global.db.data.users[m.sender].limit / xpperlimit) 
+        ? Math.floor(global.db.data.users[m.sender].limit / xpperestrellas) 
         : parseInt(count) 
       : args[0] 
         ? parseInt(args[0]) 
@@ -17,9 +17,9 @@ const handler = async (m, { conn, command, args, text, isOwner, usedPrefix }) =>
     const minutesPerToken = 5;
     count = Math.max(1, count)
 
-    if (global.db.data.users[m.sender].limit >= xpperlimit * count) {
+    if (global.db.data.users[m.sender].limit >= xpperestrellas * count) {
       let discount = count >= 12 ? 0.9 : 1
-      let finalCost = Math.floor(xpperlimit * count * discount);
+      let finalCost = Math.floor(xpperestrellas * count * discount);
 
       global.db.data.users[m.sender].limit -= finalCost;
       global.db.data.users[m.sender].premium += count;
