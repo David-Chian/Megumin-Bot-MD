@@ -3,39 +3,34 @@ let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})( [0-9]{1,3})?/i;
 
 let handler = async (m, { conn, text }) => {
   if (!text) {
-     m.reply('> _📝 Ingresa el link del grupo para rentar el bot._', m, rcanal);
-    return
+    return m.reply('> _📝 Ingresa el link del grupo para rentar el bot._');
   }
 
   let userRents = global.db.data.userRents[m.sender];
   if (!userRents || userRents.tokens <= 0) {
-     m.reply('❎ No tienes tokens disponibles para rentar el bot. Compra más tokens con /rentar.', m, rcanal);
-     return
+    return m.reply('❎ No tienes tokens disponibles para rentar el bot. Compra más tokens con /rentar.');
   }
 
   let [_, code] = text.match(linkRegex) || [];
   if (!code) {
-     m.reply('🚩 Enlace inválido.', m, rcanal);
-     return
+    return m.reply('🚩 Enlace inválido.', m, rcanal);
   }
-  
-try {
+
   let groupMetadata;
+  try {
     groupMetadata = await conn.groupAcceptInvite(code);
   } catch (e) {
-   m.reply('❌ No pude unirme al grupo. Verifica el enlace.', m, rcanal);
-   return
+    return m.reply('❌ No pude unirme al grupo. Verifica el enlace.');
   }
 
   let groupId = groupMetadata.id || groupMetadata;
 
   if (!groupId.endsWith('@g.us')) {
-     m.reply('❌ No se pudo identificar el grupo.', m, rcanal);
-     return
+    return m.reply('❌ No se pudo identificar el grupo.');
   }
 
   global.db.data.groupRents = global.db.data.groupRents || {};
-  
+
   global.db.data.groupRents[groupId] = {
     user: m.sender,
     tokenCount: userRents.tokens,
