@@ -30,7 +30,7 @@ const handler = async (m, {conn, command, args}) => {
 │╰──────────────┄
 └──────────────`, m);
   } else {
-    conn.reply(m.chat, `😔 Lo siento, no tienes suficiente *XP* para comprar *${count}* Estrellas 🌟`, m);
+    conn.reply(m.chat, `😔 Lo siento, no tienes suficiente *Estrellas 🌟* para comprar *${count}* Token*`, m);
   }
 };
 handler.help = ['rentar'];
