@@ -1,3 +1,4 @@
+
 import db from '../lib/database.js';
 let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})( [0-9]{1,3})?/i;
 
@@ -22,7 +23,7 @@ let handler = async (m, { conn, text, isOwner }) => {
   
   if (groupData.duration) chats.expired = groupData.startTime + groupData.duration;
   
-  let pp = 'https://telegra.ph/file/bdfed459dae8ec29d7e42.mp4';
+  let pp = 'https://telegra.ph/file/32e696946433c03588726.mp4';
   await conn.sendMessage(groupId, { video: { url: pp }, gifPlayback: true, caption: '> ¡Ya llegué! El bot estará disponible por el tiempo acordado.', mentions: [m.sender] });
 };
 
