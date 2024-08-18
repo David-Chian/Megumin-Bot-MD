@@ -1,9 +1,10 @@
-
 import db from '../lib/database.js';
 let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})( [0-9]{1,3})?/i;
 
-let handler = async (m, { conn, text, isOwner }) => {
-  if (!text) return m.reply(`> _📝 Ingresa el link del grupo para rentar el bot._`, m, rcanal);
+let handler = async (m, { conn, text }) => {
+  if (!text) {
+    return m.reply('> _📝 Ingresa el link del grupo para rentar el bot._', m, rcanal);
+  }
 
   let userRents = global.db.data.userRents[m.sender];
   if (!userRents || userRents.tokens <= 0) {
@@ -11,17 +12,25 @@ let handler = async (m, { conn, text, isOwner }) => {
   }
 
   let [_, code] = text.match(linkRegex) || [];
-  if (!code) return m.reply('🚩 Enlace inválido.', m, rcanal);
+  if (!code) {
+    return m.reply('🚩 Enlace inválido.', m, rcanal);
+  }
 
-  let groupMetadata = await conn.groupAcceptInvite(code);
+  let groupMetadata;
+  try {
+    groupMetadata = await conn.groupAcceptInvite(code);
+  } catch (e) {
+    return m.reply('❌ No pude unirme al grupo. Verifica el enlace.', m, rcanal);
+  }
+
   let groupId = groupMetadata.id || groupMetadata;
 
   if (!groupId.endsWith('@g.us')) {
-    groupId += '@g.us';
+    return m.reply('❌ No se pudo identificar el grupo.', m, rcanal);
   }
 
   global.db.data.groupRents = global.db.data.groupRents || {};
-
+  
   global.db.data.groupRents[groupId] = {
     user: m.sender,
     tokenCount: userRents.tokens,
@@ -30,10 +39,9 @@ let handler = async (m, { conn, text, isOwner }) => {
   };
 
   userRents.tokens = 0;
-
   userRents.groups.push(groupId);
 
-  conn.reply(m.chat, `> _📝 Me uní correctamente al grupo_ *${groupId}* por ${global.db.data.groupRents[groupId].tokenCount} día(s).`, m, rcanal);
+  conn.reply(m.chat, `> _📝 Me uní correctamente al grupo_ *${groupId}* por ${global.db.data.groupRents[groupId].tokenCount} día(s).`);
 
   let chats = global.db.data.chats[groupId] || {};
   chats.expired = global.db.data.groupRents[groupId].startTime + global.db.data.groupRents[groupId].duration;
@@ -47,4 +55,4 @@ handler.tags = ['grupos']
 handler.help = ['rentar2 *<link>*']
 handler.command = ['rentar2']
 
-export default handler;
+export default handler
