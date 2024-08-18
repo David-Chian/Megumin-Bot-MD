@@ -27,8 +27,8 @@ const handler = async (m, {conn, command, args}) => {
       conn.reply(m.chat, `
 ┌─『 𝑅𝑒𝑛𝑡𝑎𝑟 𝑎 𝑀𝑒𝑔𝑢𝑚𝑖𝑛 』*
 │╭──────────────┄
-││ *Compra Nominal* : + ${count}🌟
-││ *Gastado* : -${xpperestrellas * count} XP
+││ *Compra Nominal* : + ${count} Token
+││ *Gastado* : -${xpperestrellas * count} Estrellas 🌟
 ││ *Utiliza* : .rentar2 + el link
 │╰──────────────┄
 └──────────────`, m);
