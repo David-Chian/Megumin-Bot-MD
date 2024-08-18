@@ -6,7 +6,7 @@ const handler = async (m, {conn, command, args}) => {
 
   if (global.db.data.users[m.sender].estrellas >= xpperestrellas * count) {
     global.db.data.users[m.sender].estrellas -= xpperestrellas * count;
-    global.db.data.users[m.sender].estrellas += count;
+    global.db.data.users[m.sender].tokens += count;;
 
     let userRents = global.db.data.userRents || {};
     
@@ -28,9 +28,9 @@ const handler = async (m, {conn, command, args}) => {
 ││ *Gastado* : -${xpperestrellas * count} Estrellas 🌟
 ││ *Tokens Disponibles* : ${userRents[m.sender].tokens}
 │╰──────────────┄
-└──────────────`, m);
+└──────────────`, m, rcanal);
   } else {
-    conn.reply(m.chat, `😔 Lo siento, no tienes suficiente *Estrellas 🌟* para comprar *${count}* Token*`, m);
+    conn.reply(m.chat, `😔 Lo siento, no tienes suficiente *Estrellas 🌟* para comprar *${count}* Token`, m, rcanal);
   }
 };
 handler.help = ['rentar'];
