@@ -7,7 +7,8 @@ let handler = async (m, { conn, text, isOwner }) => {
   let [_, code] = text.match(linkRegex) || [];
   if (!code) return m.reply('🚩 Enlace inválido.', m, rcanal);
 
-  let groupId = await conn.groupAcceptInvite(code);
+  let groupMetadata = await conn.groupAcceptInvite(code);
+  let groupId = groupMetadata.id || groupMetadata;
 
   if (!groupId.endsWith('@g.us')) {
     groupId += '@g.us';
@@ -28,7 +29,7 @@ let handler = async (m, { conn, text, isOwner }) => {
   };
 
   userRents.tokens = 0;
-  
+
   userRents.groups.push(groupId);
 
   conn.reply(m.chat, `> _📝 Me uní correctamente al grupo_ *${groupId}* por ${global.db.data.groupRents[groupId].tokenCount} día(s).`, m, rcanal);
@@ -40,6 +41,7 @@ let handler = async (m, { conn, text, isOwner }) => {
   let pp = 'https://telegra.ph/file/32e696946433c03588726.mp4';
   await conn.sendMessage(groupId, { video: { url: pp }, gifPlayback: true, caption: '> ¡Ya llegué! El bot estará disponible por el tiempo acordado.', mentions: [m.sender] });
 };
+
 handler.tags = ['grupos']
 handler.help = ['rentar2 *<link>*']
 handler.command = ['rentar2']
