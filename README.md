@@ -82,20 +82,6 @@ Para que no pierda su progreso en Megumin, estos comandos realizarán un respald
 | **FFMPEG** |[click](https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest) |
 | **IMAGEMAGICK** | [click](https://github.com/DuckyTeam/heroku-buildpack-imagemagick) |
 
-### 🔵 OLYMPUS-HOST 
-<a href="https://dash.olympus-host.xyz"><img src="https://qu.ax/waCu.jpg" height="125px"></a>
-### Información del Host
-
-• Dashboard: [`Aquí`](https://dash.olympus-host.xyz)
-
-• Panel: [`Aquí`](https://panel.olympus-host.xyz)
-
-• Canal de WhatsApp: [`Aquí`](https://whatsapp.com/channel/0029ValCkNT2ER6gHWFRQ71J)
-
-• Correo: [`Aquí`](olympushost2@gmail.com.com)
-
-- [x] **Configuración** <details><summary>**Ajustes del Servidor - Megumin-Bot**</summary><img src="https://telegra.ph/file/93fe3689cc3aafc4e2f95.jpg"></details>
-
 #### 🟢 ACTIVAR EN CODES SPACES 
 [`CREAR SERVIDOR`](https://github.com/codespaces/new?skip_quickstart=true&machine=basicLinux32gb&repo=David-Chian/Megumin-Bot-MD&ref=main&geo=UsEast)
 
