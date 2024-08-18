@@ -1,5 +1,5 @@
 import db from '../lib/database.js';
-const xpperlimit = 150;
+const xpperestrellas = 150;
 
 const handler = async (m, { conn, command, args, text, isOwner, usedPrefix }) => {
   let type = command.startsWith('rentar') ? 'buy' : 'use';
