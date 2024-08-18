@@ -13,8 +13,12 @@ export async function before(m, { conn, participants, groupMetadata }) {
     return m.messageStubParameters.map(param => `${param}@s.whatsapp.net`);
   };
 
+  let who = m.messageStubParameters[0] + '@s.whatsapp.net';
+  let user = global.db.data.users[who];
+
+  let userName = user ? user.name : await conn.getName(who);
+
   if (chat.welcome && m.messageStubType === 27) {
-    let userName = await conn.getName(m.messageStubParameters[0]);
     this.sendMessage(m.chat, {
       audio: { url: vn },
       contextInfo: {
@@ -36,13 +40,10 @@ export async function before(m, { conn, participants, groupMetadata }) {
   }
 
   if (chat.welcome && (m.messageStubType === 28 || m.messageStubType === 32)) {
-    let userName = await conn.getName(m.messageStubParameters[0]);
-    const mentionedJid = getMentionedJid();
-
     this.sendMessage(m.chat, {
       audio: { url: vn2 },
       contextInfo: {
-        mentionedJid: mentionedJid,
+        mentionedJid: getMentionedJid(),
         "externalAdReply": {
           "showAdAttribution": true,
           "containsAutoReply": true,
