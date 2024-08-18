@@ -1,8 +1,14 @@
+
 import db from '../lib/database.js';
 let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})( [0-9]{1,3})?/i;
 
 let handler = async (m, { conn, text, isOwner }) => {
   if (!text) return m.reply(`> _📝 Ingresa el link del grupo para rentar el bot._`, m, rcanal);
+
+  let userRents = global.db.data.userRents[m.sender];
+  if (!userRents || userRents.tokens <= 0) {
+    return m.reply('❎ No tienes tokens disponibles para rentar el bot. Compra más tokens con /rentar.', m, rcanal);
+  }
 
   let [_, code] = text.match(linkRegex) || [];
   if (!code) return m.reply('🚩 Enlace inválido.', m, rcanal);
@@ -15,11 +21,6 @@ let handler = async (m, { conn, text, isOwner }) => {
   }
 
   global.db.data.groupRents = global.db.data.groupRents || {};
-
-  let userRents = global.db.data.userRents[m.sender];
-  if (!userRents || userRents.tokens <= 0) {
-    return m.reply('❎ No tienes tokens disponibles para rentar el bot. Compra más tokens con /rentar.', m, rcanal);
-  }
 
   global.db.data.groupRents[groupId] = {
     user: m.sender,
@@ -46,4 +47,4 @@ handler.tags = ['grupos']
 handler.help = ['rentar2 *<link>*']
 handler.command = ['rentar2']
 
-export default handler
+export default handler;
