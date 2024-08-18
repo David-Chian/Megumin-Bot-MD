@@ -8,34 +8,35 @@ const handler = async (m, { conn, command, args, text, isOwner, usedPrefix }) =>
     let count = command.replace(/^rentar/i, '');
     count = count 
       ? /all/i.test(count) 
-        ? Math.floor(global.db.data.users[m.sender].limit / xpperestrellas) 
+        ? Math.floor(global.db.data.users[m.sender].estrellas / xpperestrellas)
         : parseInt(count) 
       : args[0] 
         ? parseInt(args[0]) 
         : 1;
         
     const minutesPerToken = 5;
-    count = Math.max(1, count)
+    count = Math.max(1, count);
 
-    if (global.db.data.users[m.sender].limit >= xpperestrellas * count) {
-      let discount = count >= 12 ? 0.9 : 1
+    if (global.db.data.users[m.sender].estrellas >= xpperestrellas * count) {
+      let discount = count >= 12 ? 0.9 : 1;
       let finalCost = Math.floor(xpperestrellas * count * discount);
 
-      global.db.data.users[m.sender].limit -= finalCost;
+      global.db.data.users[m.sender].estrellas -= finalCost;
       global.db.data.users[m.sender].premium += count;
       global.db.data.users[m.sender].tokens = (global.db.data.users[m.sender].tokens || 0) + Math.floor(count / minutesPerToken);
 
       conn.reply(m.chat, `
 *┌─『 𝑅𝑒𝑛𝑡𝑎𝑟 𝑎 𝑀𝑒𝑔𝑢𝑚𝑖𝑛 』*
 *├Compra nominal* : + ${Math.floor(count / minutesPerToken)} Token(s)
-*├Gastado* : -${finalCost} 💎 (con descuento: ${discount * 100}%)
+*├Gastado* : -${finalCost} ⭐ Estrellas (con descuento: ${discount * 100}%)
 *├Utiliza* : .rentar2 + el link
 *└──────────────*`, m);
     } else {
-      conn.reply(m.chat, `❎ Lo siento, no tienes suficientes *diamantes💎* para comprar *${Math.floor(count / minutesPerToken)}* Token(s)`, m);
+      conn.reply(m.chat, `❎ Lo siento, no tienes suficientes *⭐ Estrellas* para comprar *${Math.floor(count / minutesPerToken)}* Token(s)`, m);
     }
 
   } else if (type === 'use') {
+
     let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})( [0-9]{1,3})?/i;
     if (!text) return m.reply(`> _📝 Ingresa el link del grupo para unirme durante el tiempo que has rentado._`);
     
@@ -66,7 +67,7 @@ const handler = async (m, { conn, command, args, text, isOwner, usedPrefix }) =>
 
     setTimeout(() => {
       conn.sendMessage(res, { text: '⏳ Mi tiempo en el grupo está por expirar, compra más tokens si quieres que me quede más tiempo.' });
-    }, (expired - 1) * 60 * 1000)
+    }, (expired - 1) * 60 * 1000);
 
     let pp = 'https://telegra.ph/file/32e696946433c03588726.mp4';
     await conn.sendMessage(res, { video: { url: pp }, gifPlayback: true, caption: '> ¡Ya llegué perras! :D', mentions: [m.sender] }, { quoted: m });
