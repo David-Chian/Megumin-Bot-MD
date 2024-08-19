@@ -93,7 +93,7 @@ global.conns.push(conn);
 await parent.reply(m.chat, args[0] ? '🐢 Conectado con éxito al WhatsApp.' : '🚩 Vinculaste un Sub-Bot con éxito.', m, rcanal);
 await sleep(5000);
 if (args[0]) return;
-await parentw.reply(conn.user.jid, `🚩 *Para volver a vincular un sub Bot use su token`, m, rcanal)
+await parent.reply(conn.user.jid, `🚩 *Para volver a vincular un sub Bot use su token`, m, rcanal)
 }}
 setInterval(async () => {
 if (!conn.user) {
