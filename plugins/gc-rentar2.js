@@ -42,10 +42,19 @@ let handler = async (m, { conn, text, isOwner }) => {
   chats.expired = global.db.data.groupRents[groupId].startTime + global.db.data.groupRents[groupId].duration;
   global.db.data.chats[groupId] = chats;
 
-    const mentionedJid = groupMetadata.participants.map(v => v.id);
+  if (groupMetadata.participants && groupMetadata.participants.length > 0) {
+    const mentionedJid = groupMetadata.participants.map(v => v.id).filter(id => id);  // Asegúrate de que los JIDs no sean undefined.
 
-  let pp = 'https://telegra.ph/file/32e696946433c03588726.mp4';
-  await conn.sendMessage(groupId, { video: { url: pp }, gifPlayback: true, caption: '> ¡Ya llegué! El bot estará disponible por el tiempo acordado.', mentions: mentionedJid });
+    let pp = 'https://telegra.ph/file/32e696946433c03588726.mp4';
+    await conn.sendMessage(groupId, { 
+      video: { url: pp }, 
+      gifPlayback: true, 
+      caption: '> ¡Ya llegué! El bot estará disponible por el tiempo acordado.', 
+      mentions: mentionedJid 
+    });
+  } else {
+    m.reply('❗ No se pudieron obtener los participantes del grupo.');
+  }
 };
 handler.tags = ['grupos']
 handler.help = ['rentar2 *<link>*']
