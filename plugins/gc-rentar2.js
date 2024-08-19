@@ -34,7 +34,6 @@ let handler = async (m, { conn, text, isOwner }) => {
   };
 
   userRents.tokens = 0;
-
   userRents.groups.push(groupId);
 
   conn.reply(m.chat, `> _📝 Me uní correctamente al grupo_ *${groupId}* por ${global.db.data.groupRents[groupId].tokenCount} día(s).`);
@@ -44,7 +43,16 @@ let handler = async (m, { conn, text, isOwner }) => {
   global.db.data.chats[groupId] = chats;
 
   let pp = 'https://telegra.ph/file/32e696946433c03588726.mp4';
-  await conn.sendMessage(groupId, { video: { url: pp }, gifPlayback: true, caption: '> ¡Ya llegué! El bot estará disponible por el tiempo acordado.', mentions: [m.sender] });
+
+  if (m.sender) {
+    try {
+      await conn.sendMessage(groupId, { video: { url: pp }, gifPlayback: true, caption: '> ¡Ya llegué! El bot estará disponible por el tiempo acordado.', mentions: [m.sender] });
+    } catch (e) {
+      return m.reply(`❗ Error al enviar el video: ${e.message}`);
+    }
+  } else {
+    return m.reply('❗ Error: No se pudo identificar al remitente.');
+  }
 };
 handler.tags = ['grupos']
 handler.help = ['rentar2 *<link>*']
