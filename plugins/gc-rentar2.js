@@ -1,35 +1,20 @@
 import db from '../lib/database.js';
 let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})( [0-9]{1,3})?/i;
 
-let handler = async (m, { conn, text }) => {
-  if (!text) {
-    return m.reply('> _📝 Ingresa el link del grupo para rentar el bot._');
-  }
+let handler = async (m, { conn, text, isOwner }) => {
+  if (!text) return m.reply(`> _📝 Ingresa el link del grupo para rentar el bot._`);
+  
+  let [_, code] = text.match(linkRegex) || [];
+  if (!code) return m.reply('🚩 Enlace inválido.');
+
+  let groupId = await conn.groupAcceptInvite(code);
+
+  global.db.data.groupRents = global.db.data.groupRents || {};
 
   let userRents = global.db.data.userRents[m.sender];
   if (!userRents || userRents.tokens <= 0) {
     return m.reply('❎ No tienes tokens disponibles para rentar el bot. Compra más tokens con /rentar.');
   }
-
-  let [_, code] = text.match(linkRegex) || [];
-  if (!code) {
-    return m.reply('🚩 Enlace inválido.', m, rcanal);
-  }
-
-  let groupMetadata;
-  try {
-    groupMetadata = await conn.groupAcceptInvite(code);
-  } catch (e) {
-    return m.reply('❌ No pude unirme al grupo. Verifica el enlace.');
-  }
-
-  let groupId = groupMetadata.id || groupMetadata;
-
-  if (!groupId.endsWith('@g.us')) {
-    return m.reply('❌ No se pudo identificar el grupo.');
-  }
-
-  global.db.data.groupRents = global.db.data.groupRents || {};
 
   global.db.data.groupRents[groupId] = {
     user: m.sender,
@@ -39,6 +24,7 @@ let handler = async (m, { conn, text }) => {
   };
 
   userRents.tokens = 0;
+
   userRents.groups.push(groupId);
 
   conn.reply(m.chat, `> _📝 Me uní correctamente al grupo_ *${groupId}* por ${global.db.data.groupRents[groupId].tokenCount} día(s).`);
@@ -50,7 +36,6 @@ let handler = async (m, { conn, text }) => {
   let pp = 'https://telegra.ph/file/32e696946433c03588726.mp4';
   await conn.sendMessage(groupId, { video: { url: pp }, gifPlayback: true, caption: '> ¡Ya llegué! El bot estará disponible por el tiempo acordado.', mentions: [m.sender] });
 };
-
 handler.tags = ['grupos']
 handler.help = ['rentar2 *<link>*']
 handler.command = ['rentar2']
