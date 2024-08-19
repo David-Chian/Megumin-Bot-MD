@@ -3,11 +3,21 @@ let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})( [0-9]{1,3})?/i;
 
 let handler = async (m, { conn, text, isOwner }) => {
   if (!text) return m.reply(`> _📝 Ingresa el link del grupo para rentar el bot._`);
-  
+
   let [_, code] = text.match(linkRegex) || [];
   if (!code) return m.reply('🚩 Enlace inválido.');
 
-  let groupId = await conn.groupAcceptInvite(code);
+  let groupMetadata;
+  try {
+    groupMetadata = await conn.groupAcceptInvite(code);
+  } catch (e) {
+    if (e.message === 'already-exists') {
+      return m.reply('❗ El bot ya está en este grupo.');
+    }
+    return m.reply(`❗ Error al unirse al grupo: ${e.message}`);
+  }
+
+  let groupId = groupMetadata.id;
 
   global.db.data.groupRents = global.db.data.groupRents || {};
 
