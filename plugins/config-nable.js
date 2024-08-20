@@ -29,8 +29,7 @@ ${usedPrefix + command} antillamar
 ${usedPrefix + command} antispam
 ${usedPrefix + command} pconly
 ${usedPrefix + command} gconly
-${usedPrefix + command} antiprivado
-${usedPrefix + command} antibot`
+${usedPrefix + command} antiprivado`
 
 const isEnable = /true|enable|(turn)?on|1/i.test(command);
 const chat = global.db.data.chats[m.chat];
@@ -50,16 +49,7 @@ global.dfail('admin', m, conn)
 throw false
 }
 chat.welcome = isEnable
-break
-
-case 'antibot':
-if (m.isGroup) {
-if (!(isAdmin || isOwner)) {
-global.dfail('admin', m, conn)
-throw false
-}}
-chat.antiBot = isEnable
-break                
+break          
 
 case 'detect': case 'avisos':
 if (!m.isGroup) {
