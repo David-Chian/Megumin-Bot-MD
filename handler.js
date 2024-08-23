@@ -170,7 +170,7 @@ if (!('autosticker' in chat)) chat.autosticker = false
 if (!('audios' in chat)) chat.audios = false               
 if (!('antiver' in chat)) chat.antiver = false 
 if (!('antiPorn' in chat)) chat.antiPorn = false     
-if (!('antiLink' in chat)) chat.antiLink = true     
+if (!('antiLink' in chat)) chat.antiLink = false     
 if (!('antiLink2' in chat)) chat.antiLink2 = false
 if (!('antiTiktok' in chat)) chat.antiTiktok = false
 if (!('antiYoutube' in chat)) chat.antiYoutube = false
@@ -206,7 +206,7 @@ autosticker: false,
 audios: false,
 antiver: false,
 antiPorn: false,
-antiLink: true,
+antiLink: false,
 antiLink2: false,
 antiTiktok: false,
 antiYoutube: false,
@@ -583,7 +583,8 @@ console.log(m, m.quoted, e)}
 let settingsREAD = global.db.data.settings[this.user.jid] || {}  
 if (opts['autoread']) await this.readMessages([m.key])
 if (settingsREAD.autoread2) await this.readMessages([m.key])  
-this.sendPresenceUpdate('recording', m.chat);
+await conn.sendPresenceUpdate('composing', m.chat);
+//this.sendPresenceUpdate('recording', m.chat);
 
 if (db.data.chats[m.chat].reaction && m.text.match(/(ción|dad|aje|oso|izar|mente|pero|tion|age|ous|ate|and|but|ify|ai|megumin|megu|a|s)/gi)) {
 let emot = pickRandom(["🚩", "🍟", "🔥","✨️", "🌸", "💥", "⭐️", "🌟", "🍂", "🫂", "🍁", "💖", "💞", "💕", "💋"])
