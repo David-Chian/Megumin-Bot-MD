@@ -1,7 +1,7 @@
 import { WAMessageStubType } from '@whiskeysockets/baileys';
 import fetch from 'node-fetch';
 
-let fkontak3 = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
+/*let fkontak3 = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }*/
 
 export async function before(m, { conn, participants, groupMetadata }) {
   if (!m.messageStubType || !m.isGroup) return true;
@@ -38,7 +38,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
       ptt: true,
       mimetype: 'audio/mpeg',
       fileName: 'welcome.mp3'
-    }, { quoted: fkontak3 });
+    }, { quoted: fkontak });
   }
 
   if (chat.welcome && (m.messageStubType === 28 || m.messageStubType === 32)) {
@@ -57,6 +57,6 @@ export async function before(m, { conn, participants, groupMetadata }) {
           "sourceUrl": redes
         }
       }
-    }, { quoted: fkontak3 });
+    }, { quoted: fkontak });
   }
 }
