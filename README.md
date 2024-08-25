@@ -1,4 +1,4 @@
-> 🚩 Versión Actual: 3.0.1
+> 🚩 Versión Actual: 3.0.2
 
 ## 💥 **`Megumin - Bot - MD`**
 #### 💥 **`El bot explosivo de WhatsApp!`**
