@@ -14,7 +14,7 @@
 "qr": "node index.js qr",
 "code": "node index.js code",
 "eslint": "eslint .",
-'eslintfix": "eslint --fix .",
+"eslintfix": "eslint --fix ."
 },
 "homepage": "https://github.com/David-Chian/Megumin-Bot-MD",
 "author": {
