@@ -21,7 +21,7 @@
 </details>
 
 <details>
- <summary><b> 🌹 Info V 2.0.6</b></summary>
+ <summary><b> 🌹 Info V 3.0.2</b></summary>
 
 * 📢 USER DE TERMUX
 💥 Para los usuarios que intentan instalar el bot vía la aplicación **`termux`**, tenemos esta noticia.
