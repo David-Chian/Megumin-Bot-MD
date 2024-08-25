@@ -1,8 +1,10 @@
 {
-"name":"Megumin-Bot-MD",
-"version":"3.0.2",
-"description":"El Bot Más Explosivo De WhatsApp",
-"main":"index.js","type":"module","directories": {
+"name": "Megumin-Bot-MD",
+"version": "3.0.2",
+"description": "El Bot Más Explosivo De WhatsApp",
+"main": "index.js",
+"type": "module",
+"directories": {
 "lib": "lib",
 "src": "src",
 "plugins": "plugins"
