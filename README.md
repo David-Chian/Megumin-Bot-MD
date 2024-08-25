@@ -1,89 +1,125 @@
-> 🚩 Versión Actual: 3.0.2
-
-## 💥 **`Megumin - Bot - MD`**
-#### 💥 **`El bot explosivo de WhatsApp!`**
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=FF0000&lines=Bienvenido+al+Repositorio;Megumin+-+Bot+-+MD;Gracias+por+preferirnos;Creado+por+David+Chian;💥+BOOM!!!;🔥)](https://git.io/typing-svg)
-![Megumin](https://telegra.ph/file/b8170842d84523340c674.jpg)
+<h1 align="center">Megumin Bot - MD 💥</h1>
+ <p align="center">💣 WhatsApp Bot Node-Js.</p>
+</p>
 
 ---
 
-### <img src="https://i.pinimg.com/originals/19/80/6e/19806e91932e6054965fc83b85241270.gif" alt="Prueba La Bot Aqui" width="42" height="42"> Prueba La Bot Aqui
+### **`❕️ Información importante`**
 
-> Si Deseas Probar El Bot Antes De Instalarlo, Click Abajo. 🍟
+<details>
+ <summary><b> 🌹 Info Aquí</b></summary>
 
-[![Click Aquí](https://img.shields.io/badge/Grupo-Megumin-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/H5bw4MJucS1BBHnZ9wv3vI)
+* **Este proyecto no ofrece soporte oficial para su uso en Termux.** Termux es una aplicación de terminal para Android y, aunque puede ser utilizada para ejecutar diversos programas, **este proyecto no está diseñado ni probado específicamente para funcionar en Termux**. Por lo tanto, **no garantizamos compatibilidad ni soporte técnico en este entorno**.
 
-💥 **`ACTUALIZAR Megumin`**
-> Note Comandos para actualizar Megumin-Bot de forma automática
+</details>
+
+<details>
+ <summary><b> 🌹 Info Bot</b></summary>
+
+* Este proyecto **no está afiliado de ninguna manera** con `WhatsApp`, `Inc. WhatsApp` es una marca registrada de `WhatsApp LLC`, y este bot es un **desarrollo independiente** que **no tiene ninguna relación oficial con la compañía**.
+
+</details>
+
+<details>
+ <summary><b> 🌹 Info V 2.0.6</b></summary>
+
+* 📢 USER DE TERMUX
+💥 Para los usuarios que intentan instalar el bot vía la aplicación **`termux`**, tenemos esta noticia.
+
+* 💥 El staff de **`MeguminBot`** da aviso a los usuarios de **`Termux`** que ya no es posible instalar el Bot debido a las actualizaciones y los últimos commits realizados por el equipo del bot
+
+* 💥 como tal más, esto se ah removido del repositorio oficial como tal, aquel usuario que intente instalar, deberá tener en cuenta que ya no se brindará soporte ni ya es instalable.
+
+> 💥 **`Gracias por visitar el repositorio MeguminBot`**
+
+</details>
+
+---
+
+### **`💭 Contáctanos`**
+
+<details>
+<summary><b> 💣 Contáctos</b></summary>
+
+* themeguminbot@gmail.com
+* https://wa.me/573218138672
+* https://wa.me/5351524614
+
+</details>
+
+---
+
+#### **`🌌 ACTIVAR EN CODESPACE`**
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?skip_quickstart=true&machine=basicLinux32gb&repo=David-Chian/Megumin-Bot-MD&ref=main&geo=UsEast)
+
+----- 
+#### **`⏏️ ACTIVAR EN KOYEB`**
+[![Deploy to Koyeb](https://binbashbanana.github.io/deploy-buttons/buttons/remade/koyeb.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/David-Chian/Megumin-Bot-MD&branch=master&name=meguminbot-md)
+
+------------------
+#### **`☁️ ACTIVAR EN RENDER`**
+[![Deploy to Render](https://binbashbanana.github.io/deploy-buttons/buttons/remade/render.svg)](https://dashboard.render.com/blueprint/new?repo=https%3A%2F%2Fgithub.com%2FDavid-Chian%2FMegumin-Bot-MD)
+
+------------------
+##### **`💻 PARA USUARIOS DE WINDOWS/VPS/RDP`**
+
+<details>
+ <summary><b> ⚡️ Comandos</b></summary>
+
+* Descargar e instala Git [`Aquí`](https://git-scm.com/downloads)
+* Descargar e instala NodeJS [`Aquí`](https://nodejs.org/en/download)
+* Descargar e instala FFmpeg [`Aquí`](https://ffmpeg.org/download.html) (**No olvide agregar FFmpeg a la variable de entorno PATH**)
+* Descargar e instala ImageMagick [`Aquí`](https://imagemagick.org/script/download.php)
+* Descargar e instala Yarn [`Aquí`](https://classic.yarnpkg.com/en/docs/install#windows-stable)
 ```bash
-grep -q 'bash\|wget' <(dpkg -l) || apt install -y bash wget && wget -O - https://raw.githubusercontent.com/David-Chian/Megumin-Bot-MD/master/update.sh | bash
+git clone https://github.com/David-Chian/Megumin-Bot-MD && cd Megumin-Bot-MD && npm install && npm update && node .
 ```
-Para que no pierda su progreso en Megumin, estos comandos realizarán un respaldo de su `database.json` y se agregará a la versión más reciente.
 
-> Warning Estos comandos solo funcionan para REPLIT, LINUX
+</details>
 
----
+##### **`💻 Instalación de FFmpeg para Windows`**
 
-#### ☂️ ACTIVA EN HEROKU ☂️
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/David-Chian/Megumin-Bot-MD)
+<details>
+ <summary><b> ⚡️ Comandos2</b></summary>
 
-#### Heroku Buildpack
-| BuildPack | LINK |
-|--------|--------|
-| **FFMPEG** |[click](https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest) |
-| **IMAGEMAGICK** | [click](https://github.com/DuckyTeam/heroku-buildpack-imagemagick) |
+* Descarga cualquiera de las versiones de FFmpeg disponibles haciendo clic en [FFmpeg](https://www.gyan.dev/ffmpeg/builds/).
+* Extraer archivos a `C:\` path.
+* Cambie el nombre de la carpeta extraída a `ffmpeg`.
+* Ejecute el símbolo del sistema como administrador.
+* Ejecute el siguiente comando:
+```cmd
+> setx /m PATH "C:\ffmpeg\bin;%PATH%"
+```
+Si tiene éxito, le dará un mensaje como: `SUCCESS: specified value was saved`.
+* Ahora que tiene FFmpeg instalado, verifique que funcionó ejecutando este comando para ver la versión:
+```cmd
+> ffmpeg -version
+```
 
-#### 🟢 ACTIVAR EN CODES SPACES 
-[`CREAR SERVIDOR`](https://github.com/codespaces/new?skip_quickstart=true&machine=basicLinux32gb&repo=David-Chian/Megumin-Bot-MD&ref=main&geo=UsEast)
-
-#### ⚡ ACRIVAR EN REPLIT
-[![`CREAR SERVIDOR REPLIT`](https://repl.it/badge/github/David-Chian/Megumin-Bot-MD)](https://repl.it/github/David-Chian/Megumin-Bot-MD)
-
-#### 🤍 ACTIVAR EN RENDER
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://dashboard.render.com/blueprint/new?repo=https%3A%2F%2Fgithub.com%David-Chian%Megumin-Bot-MD) 
-
-## <img src="https://static.wikia.nocookie.net/nyancat/images/d/d3/Nyan-cat.gif/revision/latest/scale-to-width-down/400?cb=20131231222500&path-prefix=es" alt="Grupo" width="45" height="43"> Bot Oficial ☄️
-
-<a href="https://wa.me/573138954963?text=!menu"><img alt="Bot Oficial ☄️" src="https://img.shields.io/badge/Bot - Oficial-00FFFF?style=for-the-badge&logo=whatsapp&logoColor=white"/></a>
-
-> No Spam A La Bot! (solo esta disponible para grupos)
+</details>
 
 ---
 
-## <img src="https://i.pinimg.com/originals/73/69/6e/73696e022df7cd5cb3d999c6875361dd.gif" alt="Características" width="42" height="42"> Características
+## **`🔗 Enlaces útiles`**
 
-> Bot en creación pronto se agregaran más cosas 
+| APP | TIPO | ENLACE |
+|------|-------------|-------|
+| WhatsApp | Canal | [¡Click aquí!](https://whatsapp.com/channel/0029VacDy0R6hENqnTKnG820) |
+| WhatsApp | Canal Sunlight | [¡Click aquí!](https://whatsapp.com/channel/0029Vam7yUg77qVaz3sIAp0z) |
+| WhatsApp | Gc Sunlight | [¡Click aquí!](https://chat.whatsapp.com/Fy74b6fgE9SJJpHVi6CKJY) |
 
-- [x] Interacción con voz y texto
-- [x] Configuración de grupo
-- [x] antidelete, antilink, antispam, etc
-- [x] Bienvenida personalizada
-- [x] Juegos, tictactoe, mate, etc
-- [x] Chatbot (simsimi)
-- [ ] Chatbot (modoia)
-- [x] Crear sticker de image/video/gif/url
-- [x] SubBot (Jadibot)
-- [ ] Buscador Google
-- [x] Juego RPG
-- [ ] Personalizar imagen del menú
-- [x] Descarga de música y video De YT
-- [ ] Otros
+---
 
---- 
-
-### `🔥 DESARROLLADORES`
+#### **`🌴 Colaboradores de la bot`**
 <a href="https://github.com/David-Chian/Megumin-Bot-MD/graphs/contributors">
 <img src="https://contrib.rocks/image?repo=David-Chian/Megumin-Bot-MD" /> 
 </a>
 
-### `✨️ AGRADECIMIENTOS`
-<a
-href="https://github.com/BrunoSobrino"><img src="https://github.com/BrunoSobrino.png" width="120" height="120" alt="Agradecimientos"/></a>
-
-### `🍟 CREADOR`
+### **`👑 Creador de la bot`**
 <a
 href="https://github.com/David-Chian"><img src="https://github.com/David-Chian.png" width="130" height="130" alt="David"/></a>
 
-> Copyright (c) 2024 **[David-Chian](https://whatsapp.com/channel/0029VacDy0R6hENqnTKnG820)**.
-
-**`¡GRACIAS POR PREFERIRNOS!` 🍟**
+### **`🌹 Creditos de la base`**
+<a
+href="https://github.com/GataNina-Li"><img src="https://github.com/GataNina-Li.png" width="130" height="130" alt="GataDios"/></a>
