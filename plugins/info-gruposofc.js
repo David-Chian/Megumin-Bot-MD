@@ -13,8 +13,14 @@ let str = `*📍 GRUPO OFICIAL*
    *_Grupo de antojar 3.0_*
 ┃🧸❏ https://chat.whatsapp.com/LJKcR8QBJgu37bVFWuhRVn
 
+   *_Grupo Sunlight - Team _*
+┃❤️‍🔥❏ https://chat.whatsapp.com/Fy74b6fgE9SJJpHVi6CKJY
+
    *_Canal Oficial_*
 ┃❤️‍🔥❏ https://whatsapp.com/channel/0029VacDy0R6hENqnTKnG820
+
+   *_Canal Sunlight - Team_*
+┃❤️‍🔥❏ https://whatsapp.com/channel/0029Vam7yUg77qVaz3sIAp0z
 *_╰━━━━━━━━━━━━━━━━⊜_*
 `
 await conn.sendButton(m.chat, str, `͟͞ 𓆩ꪶꪾ𝘿᪶𝙞ᷨ𝙖ᷞ𝙢ͣ𝙤᪶ͨ𝙣ᷜ𝙙ꫂৎ୭࠱࠭ ͟͞\n` + wm, media, [
