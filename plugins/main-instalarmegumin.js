@@ -1,3 +1,4 @@
+/*
 var handler  = async (m, { conn }) => {
 
 let texto = `🚩 *Instalación de Megumin-Bot-MD*
@@ -58,3 +59,4 @@ handler.command = ['instalarmegu','instalarbot','instalarmegumin']
 export default handler
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+*/
