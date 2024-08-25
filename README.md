@@ -13,49 +13,6 @@
 
 [![Click Aquí](https://img.shields.io/badge/Grupo-Megumin-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/H5bw4MJucS1BBHnZ9wv3vI)
 
-🍟 **`INSTALACION MANUAL POR TERMUX`**
-
-[`🚩 Instalar Termux Clic Aqui`](https://www.mediafire.com/file/3hsvi3xkpq3a64o/termux_118.apk/file)
-
-> ESCRIBE LOS SIGUIENTES COMANDOS UNO POR UNO:
-
-```bash
-termux-setup-storage
-```
-```bash
-apt update && apt upgrade && pkg install -y git nodejs ffmpeg imagemagick yarn
-```
-```bash
-git clone https://github.com/David-Chian/Megumin-Bot-MD && cd Megumin-MD
-```
-```bash
-yarn install && npm install
-```
-```bash
-npm start
-```
-
-🍟 **`ACTIVAR EN TERMUX EN CASO DE DETENERSE`**
-```bash
-ESCRIBE LOS SIGUIENTES COMANDOS UNO POR UNO:
-> cd 
-> cd Megumin-MD
-> npm start
-```
-
-🔥 **`OBTENER OTRO CODIGO QR`**
-```bash
-> ESCRIBE LOS SIGUIENTES COMANDOS UNO POR UNO:
-> cd Megumin-MD
-> rm -rf MiniSession
-> npm start
-```
-
-🍟 **`Megumin 24/7 (TERMUX)`**
-```bash
-> termux-wake-lock && npm i -g pm2 && pm2 start index.js && pm2 save && pm2 logs 
-```
-
 💥 **`ACTUALIZAR Megumin`**
 > Note Comandos para actualizar Megumin-Bot de forma automática
 ```bash
@@ -63,7 +20,7 @@ grep -q 'bash\|wget' <(dpkg -l) || apt install -y bash wget && wget -O - https:/
 ```
 Para que no pierda su progreso en Megumin, estos comandos realizarán un respaldo de su `database.json` y se agregará a la versión más reciente.
 
-> Warning Estos comandos solo funcionan para TERMUX, REPLIT, LINUX
+> Warning Estos comandos solo funcionan para REPLIT, LINUX
 
 ---
 
