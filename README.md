@@ -7,12 +7,6 @@
 
 ---
 
-> **`AVISO`**: Megumin-Bot no funciona en la terminal (termux).
-> Estaremos arreglando el error de la bot para que se pueda instalar en la terminal (termux).
-
-> **`Megumin - Bot - MD`** es un super bot de WhatsApp con multi funciones.
----
-
 ### <img src="https://i.pinimg.com/originals/19/80/6e/19806e91932e6054965fc83b85241270.gif" alt="Prueba La Bot Aqui" width="42" height="42"> Prueba La Bot Aqui
 
 > Si Deseas Probar El Bot Antes De Instalarlo, Click Abajo. 🍟
