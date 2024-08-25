@@ -111,15 +111,15 @@ Si tiene éxito, le dará un mensaje como: `SUCCESS: specified value was saved`.
 
 ---
 
-#### **`🌴 Colaboradores de la bot`**
+### **`🌴 COLABORADORES`**
 <a href="https://github.com/David-Chian/Megumin-Bot-MD/graphs/contributors">
 <img src="https://contrib.rocks/image?repo=David-Chian/Megumin-Bot-MD" /> 
 </a>
 
-### **`👑 Creador de la bot`**
+### **`👑 PROPIETARIO`**
 <a
 href="https://github.com/David-Chian"><img src="https://github.com/David-Chian.png" width="130" height="130" alt="David"/></a>
 
-### **`🌹 Creditos de la base`**
+### **`🌹 CREDITOS`**
 <a
 href="https://github.com/GataNina-Li"><img src="https://github.com/GataNina-Li.png" width="130" height="130" alt="GataDios"/></a>
