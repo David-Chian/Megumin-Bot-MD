@@ -49,6 +49,36 @@
 
 ---
 
+#### **`💣 Instalación por cloudshell`**
+
+<details>
+ <summary><b> 💥 Comandos</b></summary>
+
+[![blog](https://img.shields.io/badge/Video-Tutorial-FF0000?style=for-the-badge&logo=youtube&logoColor=white)
+](https://youtu.be/175OipZkeLQ?si=8fbNFwaXqMG6XXt)
+
+[`💥 Instalar Cloud Shell Clic Aqui`](https://www.mediafire.com/file/bp2l6cci2p30hjv/Cloud+Shell_1.apk/file)
+
+```bash
+> git clone https://github.com/David-Chian/Megumin-Bot-MD
+```
+
+```bash
+> cd Megumin-Bot-MD && yarn install
+```
+
+```bash
+> npm install
+```
+
+```bash
+> npm start
+```
+
+</details>
+
+---
+
 #### **`🌌 ACTIVAR EN CODESPACE`**
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?skip_quickstart=true&machine=basicLinux32gb&repo=David-Chian/Megumin-Bot-MD&ref=main&geo=UsEast)
