@@ -22,12 +22,12 @@ if (!chat.isBanned && m.text.match(/(te amo|teamo|te amo bot|te amo megumin)/gi)
 }, { quoted: fakegif2});
 }
 
-if (/^bug$/i.test(m.text)) {
+/*if (/^bug$/i.test(m.text)) {
 conn.reply(m.chat, `*tu mamá we* 😹`, m, rcanal, )
 }
 if (/^pene$/i.test(m.text)) {
 conn.reply(m.chat, `*comes* 😹`, m, rcanal, )
-}
+}*/
 return !0;
 };
 export default handler;
