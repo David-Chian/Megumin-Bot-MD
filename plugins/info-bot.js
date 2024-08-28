@@ -1,4 +1,5 @@
 import fs from 'fs';
+import {sticker} from '../lib/sticker.js';
 const handler = (m) => m;
 handler.all = async function(m) {
 
