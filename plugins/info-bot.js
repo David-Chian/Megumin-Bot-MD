@@ -17,11 +17,12 @@ conn.reply(m.chat, `*pervertido* 🫣`, m, rcanal, )
 /*if (/^a$/i.test(m.text)) {
 conn.reply(m.chat, `*rroz y pollo* 😄👌`, m, rcanal, )
 }*/
-if (!chat.isBanned && /(te amo|teamo|te amo bot|te amo megumin)/i.test(m.text)) {
-    conn.sendMessage(m.chat, {
-        sticker: { url: global.stickeramor }
-    }, { quoted: fakegif2 });
+if (!chat.isBanned && m.text.match(/(te amo|teamo|te amo bot|te amo megumin)/gi)) {
+  conn.sendMessage(m.chat, {
+ stiker:{ url: global.stickeramor}
+}, { quoted: fakegif2});
 }
+
 /*if (/^bug$/i.test(m.text)) {
 conn.reply(m.chat, `*tu mamá we* 😹`, m, rcanal, )
 }
