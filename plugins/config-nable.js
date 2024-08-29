@@ -17,6 +17,7 @@ ${usedPrefix + command} antitoxic
 ${usedPrefix + command} audios
 ${usedPrefix + command} modoadmin
 ${usedPrefix + command} antifake
+${usedPrefix + command} antibot
 
 🍟 *OPCIONES PARA MI PROPIETARIO*
 
