@@ -10,7 +10,7 @@ export async function before(m, { conn, isAdmin, isBotAdmin }) {
         let chat = global.db.data.chats[m.chat];
 
         if (chat.antiBot) {
-            await conn.reply(m.chat, "Otros robots detectados\n\nLo siento hermana, tengo que eliminarlo porque el administrador ha activado Anti-Bot :)", null);
+            await conn.reply(m.chat, "     ͞ ͟͞ ͟𝝣𝞆𝝦𝝞𝞂𝘀𝗶𝝾𝝶!!💥͟ ͟͞ ͞   \n╚▭࣪▬ִ▭࣪▬ִ▭࣪▬ִ▭࣪▬ִ▭࣪▬ִ▭࣪▬▭╝\n\n𝑆𝑜𝑦 𝑀𝑒𝑔𝑢𝑚𝑖𝑛-𝐵𝑜𝑡-𝑀𝐷 𝑙𝑎 𝑚𝑒𝑗𝑜𝑟 𝑏𝑜𝑡 𝑑𝑒 𝑊𝒽𝑎𝑡𝑠𝑎𝑝𝑝!!\n𝐸𝑠𝑡𝑒 𝑔𝑟𝑢𝑝𝑜 𝑛𝑜 𝑡𝑒 𝑛𝑒𝑐𝑒𝑠𝑖𝑡𝑎, 𝑎𝑑𝑖𝑜𝑠𝑖𝑡𝑜 𝑏𝑜𝑡 𝑑𝑒 𝑠𝑒𝑔𝑢𝑛𝑑𝑎.", null, rcanal);
         //    await conn.delay(1000);
 
             if (isBotAdmin) {
