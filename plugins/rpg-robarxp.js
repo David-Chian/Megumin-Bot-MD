@@ -18,10 +18,10 @@ return;
   }
   const users = global.db.data.users[who];
   const rob = Math.floor(Math.random() * ro);
-  if (users.exp < rob) return conn.reply(m.chat, `😔 @${who.split`@`[0]} 𝒕𝒊𝒆𝒏𝒆 𝒎𝒆𝒏𝒐𝒔 𝒅𝒆 *${ro} xp*\n𝑵𝒐 𝒓𝒐𝒃𝒆𝒔 𝒂 𝒖𝒏 𝒑𝒐𝒃𝒓𝒆 v":`, m, rcanal, {mentions: [who]});
+  if (users.exp < rob) return conn.reply(m.chat, `😔 @${who.split`@`[0]} 𝒕𝒊𝒆𝒏𝒆 𝒎𝒆𝒏𝒐𝒔 𝒅𝒆 *${ro} xp*\n𝑵𝒐 𝒓𝒐𝒃𝒆𝒔 𝒂 𝒖𝒏 𝒑𝒐𝒃𝒓𝒆 v":`, m, {mentions: [who]});
   global.db.data.users[m.sender].exp += rob;
   global.db.data.users[who].exp -= rob;
-  m.reply(`*🔥 𝑹𝒐𝒃𝒂𝒔𝒕𝒆 ${rob} XP 𝒂 @${who.split`@`[0]}*`, m, rcanal, {mentions: [who]});
+  conn.reply(m.chat, `*🔥 𝑹𝒐𝒃𝒂𝒔𝒕𝒆 ${rob} XP 𝒂 @${who.split`@`[0]}*`, m, {mentions: [who]});
   global.db.data.users[m.sender].lastrob = new Date * 1;
 };
 handler.help = ['rob'];
