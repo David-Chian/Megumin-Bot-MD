@@ -1,5 +1,5 @@
 
-handler.command = /^(test)$/i;
+handler.command = /^(test7)$/i;
 
 handler = async (m, { conn }) => {
     const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
