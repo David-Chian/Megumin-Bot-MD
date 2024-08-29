@@ -25,7 +25,7 @@ return;
   global.db.data.users[m.sender].lastrob = new Date * 1;
 };
 handler.help = ['rob'];
-handler.tags = ['econ'];
+handler.tags = ['rpg'];
 handler.command = ['robar', 'rob'];
 export default handler;
 function msToTime(duration) {
