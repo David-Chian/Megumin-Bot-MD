@@ -64,6 +64,15 @@ throw false
 chat.detect = isEnable
 break
 
+case 'antibot':
+      if (m.isGroup) {
+        if (!(isAdmin || isOwner)) {
+          global.dfail('admin', m, conn)
+          throw false
+        }
+      }
+      chat.antiBot = isEnable
+
 case 'antidelete': case 'antieliminar': case 'delete':
 if (m.isGroup) {
 if (!(isAdmin || isOwner)) {
