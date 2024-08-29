@@ -167,7 +167,8 @@ if (!('sCondition' in chat)) chat.sCondition = JSON.stringify([{ grupo: { usuari
 if (!('delete' in chat)) chat.delete = false                   
 if (!('modohorny' in chat)) chat.modohorny = false                   
 if (!('autosticker' in chat)) chat.autosticker = false      
-if (!('audios' in chat)) chat.audios = false               
+if (!('audios' in chat)) chat.audios = false
+if (!('antiBot' in chat)) chat.antiBot = false               
 if (!('antiver' in chat)) chat.antiver = false 
 if (!('antiPorn' in chat)) chat.antiPorn = false     
 if (!('antiLink' in chat)) chat.antiLink = false     
@@ -204,6 +205,7 @@ delete: false,
 modohorny: false,
 autosticker: false,
 audios: false,
+antiBot: false,
 antiver: false,
 antiPorn: false,
 antiLink: false,
