@@ -24,8 +24,8 @@ return;
   conn.reply(m.chat, `*🔥 𝑹𝒐𝒃𝒂𝒔𝒕𝒆 ${rob} Estrellas ⭐️ 𝒂 @${who.split`@`[0]}*`, m, {mentions: [who]});
   global.db.data.users[m.sender].lastrob2 = new Date * 1;
 };
-handler.help = ['rob'];
-handler.tags = ['econ'];
+handler.help = ['rob2'];
+handler.tags = ['rpg'];
 handler.command = ['robar2', 'rob2'];
 export default handler;
 function msToTime(duration) {
