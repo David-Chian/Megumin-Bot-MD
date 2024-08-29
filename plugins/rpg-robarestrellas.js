@@ -1,8 +1,8 @@
 const ro = 30;
 const handler = async (m, {conn, usedPrefix, command}) => {
-  const time2 = global.db.data.users[m.sender].lastrob + 7200000;
-  if (new Date2 - global.db.data.users[m.sender].lastrob < 7200000) {
-  conn.reply(m.chat, `*💥 𝑯𝒆𝒚! 𝑬𝒔𝒑𝒆𝒓𝒂 ${msToTime(time2 - new Date2())} 𝒑𝒂𝒓𝒂 𝒗𝒐𝒍𝒗𝒆𝒓 𝒂 𝒓𝒐𝒃𝒂𝒓*`, m, rcanal);
+  const time = global.db.data.users[m.sender].lastrob2 + 7200000;
+  if (new Date - global.db.data.users[m.sender].lastrob2 < 7200000) {
+  conn.reply(m.chat, `*💥 𝑯𝒆𝒚! 𝑬𝒔𝒑𝒆𝒓𝒂 ${msToTime(time - new Date())} 𝒑𝒂𝒓𝒂 𝒗𝒐𝒍𝒗𝒆𝒓 𝒂 𝒓𝒐𝒃𝒂𝒓*`, m, rcanal);
   return;
   }
   let who;
@@ -22,7 +22,7 @@ return;
   global.db.data.users[m.sender].estrellas += rob;
   global.db.data.users[who].estrellas -= rob;
   conn.reply(m.chat, `*🔥 𝑹𝒐𝒃𝒂𝒔𝒕𝒆 ${rob} Estrellas ⭐️ 𝒂 @${who.split`@`[0]}*`, m, {mentions: [who]});
-  global.db.data.users[m.sender].lastrob = new Date2 * 1;
+  global.db.data.users[m.sender].lastrob2 = new Date * 1;
 };
 handler.help = ['rob'];
 handler.tags = ['econ'];
