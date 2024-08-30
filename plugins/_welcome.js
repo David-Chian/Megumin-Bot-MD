@@ -55,7 +55,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
           "showAdAttribution": true,
           "sourceUrl": redes
         }
-      }
+      },
       ptt: true,
       mimetype: 'audio/mpeg',
       fileName: 'bye.mp3'
