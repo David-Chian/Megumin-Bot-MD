@@ -4,7 +4,7 @@ import fetch from 'node-fetch'
 let handler = async (m, { conn, usedPrefix, command, text }) => {
 const isQuotedImage = m.quoted && (m.quoted.msg || m.quoted).mimetype && (m.quoted.msg || m.quoted).mimetype.startsWith('image/')
 const username = `${conn.getName(m.sender)}`
-const basePrompt = `Tu nombre es Megumin-Bot y parece haber sido creado por David Chian. Tu versión actual es 3.0.1, Tú usas el idioma Español. Tus usuarios hablan Español asi que es en ese idioma que debes responder. Llamarás a las personas por su nombre ${username}, te gusta ser divertida, te encanta aprender y sobre todo las explociones. Lo más importante es que debes ser amigable con la persona con la que estás hablando. ${username}`
+const basePrompt = `Tu nombre es Megumin-Bot y parece haber sido creado por David Chian. Tú usas el idioma Español. Llamarás a las personas por su nombre ${username}, te gusta ser divertida, te encanta aprender y sobre todo las explociones. Lo más importante es que debes ser amigable con la persona con la que estás hablando. ${username}`
 if (isQuotedImage) {
 const q = m.quoted
 const img = await q.download?.()
@@ -70,36 +70,3 @@ return response.data.result
 } catch (error) {
 console.error('🚩 Error al obtener:', error)
 throw error }}
-
-/*import fetch from 'node-fetch';
-import axios from 'axios';
-import translate from '@vitalets/google-translate-api';
-import {Configuration, OpenAIApi} from 'openai';
-const configuration = new Configuration({organization: global.openai_org_id, apiKey: global.openai_key});
-const openaiii = new OpenAIApi(configuration);
-const handler = async (m, {conn, text, usedPrefix, command}) => {
-if (usedPrefix == 'a' || usedPrefix == 'A') return;
-if (!text) return conn.reply(m.chat, `🍟 *Ingrese su petición*\n🚩 *Ejemplo de uso:* ${usedPrefix + command} Como hacer un avión de papel`, m, rcanal)  
-try {
-await m.react(rwait)
-conn.sendPresenceUpdate('composing', m.chat);
-let gpt = await fetch(`https://delirius-api-oficial.vercel.app/api/ia2?text=${text}`)
-let res = await gpt.json()
-await conn.reply(m.chat, res.gpt, m, rcanal)
-await m.react(done)
-} catch {
-try {
-//await m.react(done)
-let gpt = await fetch(`https://delirius-api-oficial.vercel.app/api/chatgpt?q=${text}`)
-let res = await gpt.json()
-await conn.reply(m.chat, res.data, m, rcanal)
-await m.react(done) 
-} catch{
-}}}
-handler.help = ['chatgpt <texto>', 'ia <texto>']
-handler.tags = ['ai']
-handler.register = true
-handler.estrellas = 5
-handler.command = ['ia', 'chatgpt']
-
-export default handler;*/
