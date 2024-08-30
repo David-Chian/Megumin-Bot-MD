@@ -1,4 +1,4 @@
-
+/*
 handler.command = /^(test7)$/i;
 
 handler = async (m, { conn }) => {
@@ -20,3 +20,4 @@ handler = async (m, { conn }) => {
 };
 
 export default handler;
+*/
