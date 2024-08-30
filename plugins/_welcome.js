@@ -1,8 +1,6 @@
 import { WAMessageStubType } from '@whiskeysockets/baileys';
 import fetch from 'node-fetch';
 
-/*let fkontak3 = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }*/
-
 export async function before(m, { conn, participants, groupMetadata }) {
   if (!m.messageStubType || !m.isGroup) return true;
 
@@ -47,16 +45,20 @@ export async function before(m, { conn, participants, groupMetadata }) {
       contextInfo: {
         mentionedJid: getMentionedJid(),
         "externalAdReply": {
+        "thumbnail": adi,
+        "title": '  ͟͞ Ａ Ｄ Ｉ Ｏ Ｓ ͟͞  ',
+        "body": `${userName}, se despide.`,
+        "previewType": "PHOTO",
           "showAdAttribution": true,
           "containsAutoReply": true,
-          "title": '  ͟͞ Ａ Ｄ Ｉ Ｏ́ Ｓ ͟͞  ',
-          body: `${userName}, se despide.`,
-          "previewType": "PHOTO",
-          "thumbnailUrl": '',
-          "thumbnail": adi,
+         "thumbnailUrl": null,
+          "showAdAttribution": true,
           "sourceUrl": redes
         }
       }
+      ptt: true,
+      mimetype: 'audio/mpeg',
+      fileName: 'bye.mp3'
     }, { quoted: fkontak });
   }
 }
