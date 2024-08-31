@@ -35,7 +35,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
     }
     await conn.sendMessage(m.chat, { document: { url: apkData.dllink }, mimetype: 'application/vnd.android.package-archive', fileName: apkData.name + '.apk', caption: null }, { quoted: m });
   } catch (e) {
-    await conn.reply(m.chat, `𝙊𝙘𝙪𝙧𝙧𝙞𝙤 𝙪𝙣 𝙚𝙧𝙧𝙤𝙧\n\n${wm}`, m);
+    await conn.reply(m.chat, `𝙊𝙘𝙪𝙧𝙧𝙞𝙤 𝙪𝙣 𝙚𝙧𝙧𝙤𝙧\n\n${e}`, m);
     console.log(`❗❗𝙀𝙧𝙧𝙤𝙧 ${usedPrefix + command} ❗❗`);
     console.log(e);
     handler.limit = false;
