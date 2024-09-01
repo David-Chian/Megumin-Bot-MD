@@ -11,7 +11,7 @@ return conn.reply(m.chat, '🚩 *Utiliza este comando directamente en el número
 await conn.reply(m.chat, '🚩 *Iniciando proceso de eliminación de todos los archivos de sesión, excepto el archivo creds.json...*', m, rcanal, )
 m.react(rwait)
 
-let sessionPath = './MiniSession/'
+let sessionPath = './MeguminSession/'
 
 try {
 
