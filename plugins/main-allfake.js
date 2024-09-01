@@ -65,7 +65,6 @@ global.waitttt = '🕒 *𝗘𝘀𝗽𝗲𝗿𝗮 𝗨𝗻 𝗠𝗼𝗺𝗲𝗻�
 //Enlaces
 var grupo = 'https://chat.whatsapp.com/H5bw4MJucS1BBHnZ9wv3vI'
 var canal = 'https://whatsapp.com/channel/0029VacDy0R6hENqnTKnG820'  
-var canal2 = 'https://whatsapp.com/channel/0029Vam7yUg77qVaz3sIAp0z'
 var git = 'https://github.com/David-Chian' 
 var youtube = 'https://youtube.com/@davidchian4957' 
 var github = 'https://github.com/David-Chian/Megumin-Bot-MD' 
