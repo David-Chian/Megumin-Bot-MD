@@ -70,7 +70,7 @@ var youtube = 'https://youtube.com/@davidchian4957'
 var github = 'https://github.com/David-Chian/Megumin-Bot-MD' 
 let correo = 'noisebot40@gmail.com'
 
-global.redes = [canal, canal2, grupo, git, youtube, github, correo].getRandom()
+global.redes = [canal, grupo, git, youtube, github, correo].getRandom()
 
 //Imagen
 let category = "imagen"
