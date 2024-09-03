@@ -11,7 +11,7 @@ conn.reply(m.chat, wait, m, {
 contextInfo: { externalAdReply :{ mediaUrl: null, mediaType: 1, showAdAttribution: true,
 title: packname,
 body: wm,
-previewType: 0, thumbnail: icons,
+previewType: 0, thumbnail: icono,
 sourceUrl: channel }}})
 let media = await q.download()
 let out = await webp2png(media).catch(_ => null) || Buffer.alloc(0)
