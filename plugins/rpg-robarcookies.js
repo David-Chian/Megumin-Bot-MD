@@ -18,10 +18,10 @@ return;
   }
   const users = global.db.data.users[who];
   const rob = Math.floor(Math.random() * ro);
-  if (users.estrellas < rob) return conn.reply(m.chat, `😔 @${who.split`@`[0]} 𝒕𝒊𝒆𝒏𝒆 𝒎𝒆𝒏𝒐𝒔 𝒅𝒆 *${ro} Estrellas ⭐*\n𝑵𝒐 𝒓𝒐𝒃𝒆𝒔 𝒂 𝒖𝒏 𝒑𝒐𝒃𝒓𝒆 🥺`, m, {mentions: [who]});
-  global.db.data.users[m.sender].estrellas += rob;
-  global.db.data.users[who].estrellas -= rob;
-  conn.reply(m.chat, `*🔥 𝑹𝒐𝒃𝒂𝒔𝒕𝒆 ${rob} Estrellas ⭐️ 𝒂 @${who.split`@`[0]}*`, m, {mentions: [who]});
+  if (users.cookies < rob) return conn.reply(m.chat, `😔 @${who.split`@`[0]} 𝒕𝒊𝒆𝒏𝒆 𝒎𝒆𝒏𝒐𝒔 𝒅𝒆 *${ro} Cookies 🍪*\n𝑵𝒐 𝒓𝒐𝒃𝒆𝒔 𝒂 𝒖𝒏 𝒑𝒐𝒃𝒓𝒆 🥺`, m, {mentions: [who]});
+  global.db.data.users[m.sender].cookies += rob;
+  global.db.data.users[who].cookies -= rob;
+  conn.reply(m.chat, `*🔥 𝑹𝒐𝒃𝒂𝒔𝒕𝒆 ${rob} Cookies 🍪 𝒂 @${who.split`@`[0]}*`, m, {mentions: [who]});
   global.db.data.users[m.sender].lastrob2 = new Date * 1;
 };
 handler.help = ['rob2'];
@@ -37,4 +37,4 @@ function msToTime(duration) {
   minutes = (minutes < 10) ? '0' + minutes : minutes;
   seconds = (seconds < 10) ? '0' + seconds : seconds;
   return hours + ' Hora(s) ' + minutes + ' Minuto(s)';
-}
+    }
