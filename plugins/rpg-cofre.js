@@ -8,7 +8,7 @@ const handler = async (m, {isPrems, conn}) => {
   const ai = Math.floor(Math.random() * 4000);
   const expp = Math.floor(Math.random() * 5000);
 
-  global.db.data.users[m.sender].estrellas += dia;
+  global.db.data.users[m.sender].cookies += dia;
   global.db.data.users[m.sender].money += ai;
   global.db.data.users[m.sender].joincount += tok;
   global.db.data.users[m.sender].exp += expp;
@@ -20,7 +20,7 @@ const handler = async (m, {isPrems, conn}) => {
 ╰━━━━━━━━━━━━⬣
 
 ╭━〔 ${global.botname} 〕⬣
-┃ *${dia} Estrellas* 🌟
+┃ *${dia} Cookies* 🍪
 ┃ *${tok} Tokens* 💰
 ┃ *${ai} MeguCoins* ❤️‍🔥
 ┃ *${expp} Exp* ⚡
