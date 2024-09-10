@@ -20,9 +20,9 @@ sourceUrl: channel }}})
 
 const yt_play = await search(args.join(' '))
 let additionalText = ''
-if (command === 'play3' || command == 'playdoc') {
+if (command === 'ytmp3doc' || command == 'playdoc') {
 additionalText = 'audio'
-} else if (command === 'play4' || command == 'playdoc2') {
+} else if (command === 'ytmp4doc' || command == 'playdoc2') {
 additionalText = 'video'}
 
 let texto1 = `・₊✧★。..・✫・🎸🎧°⋆♡₊˚ 🔮
@@ -48,7 +48,7 @@ let texto1 = `・₊✧★。..・✫・🎸🎧°⋆♡₊˚ 🔮
 > _*🍬 εɳѵเαɳ∂σ รµ ${additionalText}, αɠµαɾ∂ε µɳ ɱσɱεɳƭσ 🍓...*_`.trim()
 await conn.sendMessage(m.chat, { text: texto1, contextInfo: { externalAdReply: { title: yt_play[0].title, body: dev, thumbnailUrl: yt_play[0].thumbnail, mediaType: 1, showAdAttribution: true, renderLargerThumbnail: true }}} , { quoted: fkontak })
 
-if (command == 'play3' || command == 'playdoc') {
+if (command == 'ytmp3doc' || command == 'playdoc') {
 
 try {
 
@@ -80,7 +80,7 @@ conn.sendMessage(m.chat, {audio: {url: ress.url}, fileName: __res[0].title + '.m
 await conn.reply(m.chat, '🌟 *Ocurrió un fallo*', m, rcanal, )
 }}}}
 
-if (command == 'play4' || command == 'playdoc2') {
+if (command == 'ytmp4doc' || command == 'playdoc2') {
 
 try {
 const qu = '360'
@@ -117,9 +117,9 @@ await conn.reply(m.chat, '🌟 *Ocurrió un fallo*', m, rcanal, )
 return conn.reply(m.chat, '🌟 *Inténtelo de nuevo*', m, rcanal, )}
 
 }
-handler.help = ['play3', 'play4']
+handler.help = ['ytmp3doc', 'ytmp4doc']
 handler.tags = ['descargas']
-handler.command = ['playdoc','playdoc2','play3','play4']
+handler.command = ['playdoc','playdoc2','ytmp3doc','ytmp4doc']
 
 //handler.estrellas = 1
 handler.group = true;
