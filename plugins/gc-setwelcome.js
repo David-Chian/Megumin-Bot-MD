@@ -1,5 +1,4 @@
 const handler = async (m, {conn, text, isROwner, isOwner}) => {
-  const datas = global
   if (text) {
     global.db.data.chats[m.chat].sWelcome = text;
     m.reply('[❗] MENSAJE DE BIENVENIDA CONFIGURADO CORRECTAMENTE PARA ESTE GRUPO*');
