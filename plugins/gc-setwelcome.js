@@ -26,5 +26,6 @@ return conn.sendMessage(m.chat, { text: txt.trim(), mentions: conn.parseMention(
 handler.help = ['setwelcome <text>']
 handler.tags = ['group']
 handler.command = ['setwelcome'] 
-handler.group = handler.admin = true
+handler.group = true
+handler.admin = true
 export default handler
