@@ -1,31 +1,12 @@
-let handler = async (m, { conn, text, isROwner, isOwner }) => {
-let resp
-const bot = global.db.data.bot[conn.user.jid] || {}
-const chats = bot.chats || {}
-const groups = chats.groups || {}
-const chat = groups[m.chat] || {}
-
-if (text) {
-chat.sWelcome = text
-resp = '*[❗] MENSAJE DE BIENVENIDA CONFIGURADO CORRECTAMENTE PARA ESTE GRUPO*'
-} else {
-resp = `*[❗] INGRESE EL MENSAJE DE BIENVENIDA QUE DESEE AGREGAR, USE:*\n*- @user (mención)*\n*- @group (nombre de grupo)*\n*- @desc (description de grupo)*`
-}
-let txt = '';
-let count = 0;
-for (const c of resp) {
-await new Promise(resolve => setTimeout(resolve, 1));
-txt += c;
-count++;
-if (count % 10 === 0) {
-await conn.sendPresenceUpdate('composing' , m.chat);
-}
-}
-return conn.sendMessage(m.chat, { text: txt.trim(), mentions: conn.parseMention(txt) }, {quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
-}
-handler.help = ['setwelcome <text>']
-handler.tags = ['group']
-handler.command = ['setwelcome'] 
-handler.group = true
-handler.admin = true
-export default handler
+const handler = async (m, {conn, text, isROwner, isOwner}) => {
+  const datas = global
+  if (text) {
+    global.db.data.chats[m.chat].sWelcome = text;
+    m.reply('[❗] MENSAJE DE BIENVENIDA CONFIGURADO CORRECTAMENTE PARA ESTE GRUPO*');
+  } else throw `[❗] INGRESE EL MENSAJE DE BIENVENIDA QUE DESEE AGREGAR, USE:*\n*- @user (mención)*\n*- @group (nombre de grupo)*\n*- @desc (description de grupo)*`;
+};
+handler.help = ['setwelcome <text>'];
+handler.tags = ['group'];
+handler.command = ['setwelcome'];
+handler.admin = true;
+export default handler;
