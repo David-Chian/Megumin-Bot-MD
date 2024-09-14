@@ -46,7 +46,7 @@ export default handler
 // Función para enviar una imagen y obtener el análisis
 async function fetchImageBuffer(content, imageBuffer) {
 try {
-const response = await axios.post('https://lumin-ai.xyz/', {
+const response = await axios.post('https://Luminai.my.id', {
 content: content,
 imageBuffer: imageBuffer 
 }, {
@@ -60,7 +60,7 @@ throw error }}
 // Función para interactuar con la IA usando prompts
 async function luminsesi(q, username, logic) {
 try {
-const response = await axios.post("https://lumin-ai.xyz/", {
+const response = await axios.post("https://Luminai.my.id", {
 content: q,
 user: username,
 prompt: logic,
