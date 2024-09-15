@@ -24,9 +24,11 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     if (!json.url) return;
 
     await conn.sendFile(m.chat, json.url, 'waifu.jpg', '🍧 *W A I F U* 🍧', m, {
+      caption: '🍧 *W A I F U* 🍧',
       buttons: [
         { buttonId: '/waifu', buttonText: { displayText: 'Siguiente 💖' }, type: 1 }
       ],
+      footer: 'Disfruta de tu waifu 😊',
       headerType: 4,
     });
 
