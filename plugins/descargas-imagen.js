@@ -10,10 +10,7 @@ sourceUrl: channel }}})
 const res = await googleImage(text);
 const image = await res.getRandom();
 const link = image;
-const messages = [[ // CARRUSEL 1
-'Imagen 1', 
-dev,
-await res.getRandom(),
+const messages = [[ 'Imagen 1', dev, await res.getRandom(),
 [[]], [[]], [[]], [[]]], [ 'Imagen 2', dev, await res.getRandom(), [[]], [[]], [[]], [[]]], [ 'Imagen 2', dev, await res.getRandom(), [[]], [[]], [[]], [[]]], [ 'Imagen 4', dev, await res.getRandom(), [[]], [[]], [[]], [[]]]]
 await conn.sendCarousel(m.chat, '🚩 Buscador - Imagenes', `🔍 Resultado de: ${text}`, text, messages, m)     
 };
