@@ -21,7 +21,7 @@ let json = await res.json()
 if (!json.url) return
 const messages = [['Imagen 1', dev, await res.json(),
 [[]], [[]], [[]], [[]]], ['Imagen 2', dev, await res.json(), [[]], [[]], [[]], [[]]], ['Imagen 2', dev, await res.json(), [[]], [[]], [[]], [[]]], ['Imagen 4', dev, await res.json(), [[]], [[]], [[]], [[]]]]
-await conn.sendCarousel(m.chat, `🚩 Resultado de ${text}`, '🔎 Imagen - Descargas', null, messages, m);
+await conn.sendCarousel(m.chat, wm, '🌸 Anime - Megumin', null, messages, m);
 await m.react('✅')
 } catch {
 await m.react('✖️')
