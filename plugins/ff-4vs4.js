@@ -8,7 +8,7 @@ const handler = async (m, { conn, usedPrefix, args }) => {
     // Validar el formato de la hora
     const horaRegex = /^([01]\d|2[0-3]):?([0-5]\d)$/;
     if (!horaRegex.test(args[0])) {
-      await  conn.reply(m.chat, `🚩 Uso del comando icorrecto.\nEjemplo:\n» ${usedPrefix}4vs4 10:10 CO`, m, rcanal);
+         await  conn.reply(m.chat, `🚩 Debes proporcionar la hora (HH:MM) y el pais (CO "Colombia", CL "Chile", AG "Argentina", MX "Mexixo")\n\nEjemplo:\n» ${usedPrefix}4vs4 10:10 CO`, m, rcanal);
         return;
     }
 
