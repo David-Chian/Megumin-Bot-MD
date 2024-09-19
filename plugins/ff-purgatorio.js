@@ -3,7 +3,7 @@ let time = global.db.data.users[m.sender].lastcofre + 0 // 36000000 10 Horas //8
 if (new Date - global.db.data.users[m.sender].lastcofre < 0) throw `[❗𝐈𝐍𝐅𝐎❗] 𝚈𝙰 𝚁𝙴𝙲𝙻𝙰𝙼𝙰𝚂𝚃𝙴 𝚃𝚄 𝙲𝙾𝙵𝚁𝙴\𝚗𝚅𝚄𝙴𝙻𝚅𝙴 𝙴𝙽 *${msToTime(time - new Date())}* 𝙿𝙰𝚁𝙰 𝚅𝙾𝙻𝚅𝙴𝚁 𝙰 𝚁𝙴𝙲𝙻𝙰𝙼𝙰𝚁`
 
 let img = 'https://qu.ax/NgYg.jpeg' 
-let texto = `» 𝙈𝘼𝙋𝘼 𝘿𝙀 𝙋𝙐𝙍𝙂𝘼𝙏𝙊𝙍𝙄𝙊 𝙁𝙍𝙀𝙀 𝙁𝙄𝙍𝙀 ✅`
+let texto = `◇ *Purgatorio*\n» Mapa de Free Fire`
 
 const fkontak = {
 	"key": {
@@ -25,5 +25,7 @@ global.db.data.users[m.sender].lastcofre = new Date * 1
 handler.help = ['purgatorio']
 handler.tags = ['ff']
 handler.command = ['purga', 'purgatorio', 'purg'] 
+handler.register = true
+export default handler'purgatorio', 'purg'] 
 handler.register = true
 export default handler

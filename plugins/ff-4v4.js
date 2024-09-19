@@ -20,11 +20,11 @@ const handler = async (m, { conn, args }) => {
         MX: 0, // México tiene la misma hora
         CO: 1, // Colombia tiene una hora más
         CL: 2, // Chile tiene dos horas más
-        AR: 3  // Argentina tiene tres horas más
+        AG: 3  // Argentina tiene tres horas más
     };
 
     if (!(pais in diferenciasHorarias)) {
-        conn.reply(m.chat, 'País no válido. Usa MX para México, CO para Colombia, CL para Chile o AR para Argentina.', m);
+        conn.reply(m.chat, '🚩 País no válido. Usa MX para México, CO para Colombia, CL para Chile o AG para Argentina.', m, rcanal);
         return;
     }
 
@@ -53,16 +53,14 @@ const handler = async (m, { conn, args }) => {
     const horaActual = formatTime(new Date()); // Obtener la hora actual sin modificación
 
     const message = `
-*4 𝐕𝐄𝐑𝐒𝐔𝐒 4*
+*4 Vs 4*  
 
-🇲🇽 𝐌𝐄𝐗𝐈𝐂𝐎 : ${formatTime(horasEnPais[0])}
-🇨🇴 𝐂𝐎𝐋𝐎𝐌𝐁𝐈𝐀 : ${formatTime(horasEnPais[1])}
-🇨🇱 𝐂𝐇𝐈𝐋𝐄 : ${formatTime(horasEnPais[2])}
-🇦🇷 𝐀𝐑𝐆𝐄𝐍𝐓𝐈𝐍𝐀 : ${formatTime(horasEnPais[3])}
+🇲🇽 Mx : ${formatTime(horasEnPais[0])}
+🇨🇴 Co : ${formatTime(horasEnPais[1])}
+🇨🇱 Cl : ${formatTime(horasEnPais[2])}
+🇦🇷 Ag : ${formatTime(horasEnPais[3])}
 
-𝐇𝐎𝐑𝐀 𝐀𝐂𝐓𝐔𝐀𝐋 𝐄𝐍 𝐌𝐄𝐗𝐈𝐂𝐎🇲🇽 : ${horaActual}
-
-𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔
+《✧》 *ESCUADRA*
 
 👑 ┇ 
 🥷🏻 ┇  
@@ -70,7 +68,18 @@ const handler = async (m, { conn, args }) => {
 🥷🏻 ┇ 
 
 
-ㅤʚ 𝐒𝐔𝐏𝐋𝐄𝐍𝐓𝐄:
+《✧》 *SUPLENTE*
+🥷🏻 ┇ 
+🥷🏻 ┇
+`.trim();
+    
+    conn.sendMessage(m.chat, { text: message }, { quoted: m });
+};
+handler.help = ['4vs4'];
+handler.tags = ['ff'];
+handler.command = ['4vs4', 'vs4'];
+handler.register = true;
+export default handler;�:
 🥷🏻 ┇ 
 🥷🏻 ┇
 `.trim();

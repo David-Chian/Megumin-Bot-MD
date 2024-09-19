@@ -26,38 +26,48 @@ const handler = async (m, { conn, args }) => {
     }
 
     const message = `
-    12 𝐕𝐄𝐑𝐒𝐔𝐒 12
+    12 Vs 12
     
-    𝐇𝐎𝐑𝐀𝐑𝐈𝐎
-    🇲🇽 𝐌𝐄𝐗 : ${horaUsuario}
-    🇨🇴 𝐂𝐎𝐋 : ${horaAdelantada}
-    𝐂𝐎𝐋𝐎𝐑 𝐃𝐄 𝐑𝐎𝐏𝐀: ${colorRopa}
+    *HORARIO*
+    🇲🇽 Mx : ${horaUsuario}
+    🇨🇴 Co : ${horaAdelantada}
+    Color de ropa: ${colorRopa}
 
-    ¬ 𝐉𝐔𝐆𝐀𝐃𝐎𝐑𝐄𝐒 𝐏𝐑𝐄𝐒𝐄𝐍𝐓𝐄𝐒
+    ¬ *JUGADORES PRESENTES*
     
-          𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔 1
+          *Escuadra 1*
     
     👑 ┇ 
     🥷🏻 ┇  
     🥷🏻 ┇ 
     🥷🏻 ┇ 
           
-         𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔 2
+         *Escuadra 2*
     
     👑 ┇ 
     🥷🏻 ┇ 
     🥷🏻 ┇ 
     🥷🏻 ┇ 
     
-         𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔 3
+         *Escuadra 3*
     
     👑 ┇ 
     🥷🏻 ┇ 
     🥷🏻 ┇ 
     🥷🏻 ┇ 
     
-    ㅤʚ 𝐒𝐔𝐏𝐋𝐄𝐍𝐓𝐄:
+    ㅤ *Suplente*
     🥷🏻 ┇ 
+    🥷🏻 ┇
+    `.trim();
+    
+    conn.sendMessage(m.chat, {text: message}, {quoted: m});
+};
+handler.help = ['12vs12'];
+handler.tags = ['ff'];
+handler.command = ['12vs12', 'vs12'];
+handler.register = true;
+export default handler; 
     🥷🏻 ┇
     `.trim();
     
