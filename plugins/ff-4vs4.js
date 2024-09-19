@@ -1,7 +1,7 @@
 const handler = async (m, { conn, usedPrefix, args }) => {
     // Verificar si se proporcionaron los argumentos necesarios
     if (args.length < 2) {
-         await  conn.reply(m.chat, `🚩 Debes proporcionar la hora (HH:MM) y el pais (CO "Colombia", CL "Chile", AG "Argentina", MX "Mexixo")\nEjemplo:\n\n» ${usedPrefix}4vs4 10:10 CO`, m, rcanal);
+         await  conn.reply(m.chat, `🚩 Debes proporcionar la hora (HH:MM) y el pais (CO "Colombia", CL "Chile", AG "Argentina", MX "Mexixo")\n\nEjemplo:\n» ${usedPrefix}4vs4 10:10 CO`, m, rcanal);
         return;
     }
 
