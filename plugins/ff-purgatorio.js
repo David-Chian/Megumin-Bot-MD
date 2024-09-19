@@ -6,18 +6,18 @@ let img = 'https://qu.ax/NgYg.jpeg'
 let texto = `◇ *Purgatorio*\n» Mapa de Free Fire`
 
 const fkontak = {
-	"key": {
+        "key": {
     "participants":"0@s.whatsapp.net",
-		"remoteJid": "status@broadcast",
-		"fromMe": false,
-		"id": "Halo"
-	},
-	"message": {
-		"contactMessage": {
-			"vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
-		}
-	},
-	"participant": "0@s.whatsapp.net"
+                "remoteJid": "status@broadcast",
+                "fromMe": false,
+                "id": "Halo"
+        },
+        "message": {
+                "contactMessage": {
+                        "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+                }
+        },
+        "participant": "0@s.whatsapp.net"
 }
 await conn.sendFile(m.chat, img, 'hades.jpg', texto, fkontak)
 global.db.data.users[m.sender].lastcofre = new Date * 1
@@ -26,4 +26,5 @@ handler.help = ['purgatorio']
 handler.tags = ['ff']
 handler.command = ['purga', 'purgatorio', 'purg'] 
 handler.register = true
+handler.group = true
 export default handler

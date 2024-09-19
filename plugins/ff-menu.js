@@ -35,7 +35,7 @@ const document = doc[Math.floor(Math.random() * doc.length)];
 
 Significados:
 » *HH:MM (Hora:Minutos)*
-» CP *(Codigo de pais)*
+» *CP (Codigo de pais)*
 » *PARA LA HORA (Mx, Co, Cl y Ag)* 
 » *CR (Color de ropa)*
 
@@ -61,6 +61,7 @@ handler.tags = ['ff', 'main']
 handler.help = ['menuff']
 handler.command = ['menuff', 'menufreefire'];
 handler.register = true
+handler.group = true
 handler.fail = null;
 export default handler;
 function clockString(ms) {
