@@ -61,14 +61,14 @@ const handler = async (m, { conn, args }) => {
     🥷🏻 ┇
     `.trim();
     
+    
     conn.sendMessage(m.chat, {text: message}, {quoted: m});
 };
 handler.help = ['12vs12'];
 handler.tags = ['ff'];
 handler.command = ['12vs12', 'vs12'];
 handler.register = true;
-export default handler; 
-    🥷🏻 ┇
+export default handler; 🥷🏻 ┇
     `.trim();
     
     conn.sendMessage(m.chat, {text: message}, {quoted: m});
