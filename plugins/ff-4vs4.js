@@ -1,4 +1,4 @@
-const handler = async (m, { conn, args }) => {
+const handler = async (m, { conn, usesPrefix, args }) => {
     // Verificar si se proporcionaron los argumentos necesarios
     if (args.length < 2) {
          await  conn.reply(m.chat, `🚩 Uso del comando icorrecto.\nEjemplo:\n» ${usedPrefix}4vs4 10:10 CO`, m, rcanal);
