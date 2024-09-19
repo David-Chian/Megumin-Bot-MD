@@ -79,15 +79,4 @@ handler.help = ['4vs4'];
 handler.tags = ['ff'];
 handler.command = ['4vs4', 'vs4'];
 handler.register = true;
-export default handler;�:
-🥷🏻 ┇ 
-🥷🏻 ┇
-`.trim();
-    
-    conn.sendMessage(m.chat, { text: message }, { quoted: m });
-};
-handler.help = ['4vs4'];
-handler.tags = ['ff'];
-handler.command = ['4vs4', 'vs4'];
-handler.register = true;
 export default handler;
