@@ -1,14 +1,14 @@
 const handler = async (m, { conn, args }) => {
     // Verificar si se proporcionaron los argumentos necesarios
     if (args.length < 2) {
-         await  conn.reply(m.chat, '🚩 Formato de hora incorrecto, debe ser *HH:MM* en formato de 24 horas.', m, rcanal);
+         await  conn.reply(m.chat, '🚩 Formato de hora incorrecto, debe ser *HH:MM* y el pais, CO (Colombias), AG (Argentina), CL (Chile), MX (Mexico)\nEjemplo:\n» ${usedPrefix}4vs4 10:10 CO', m, rcanal);
         return;
     }
 
     // Validar el formato de la hora
     const horaRegex = /^([01]\d|2[0-3]):?([0-5]\d)$/;
     if (!horaRegex.test(args[0])) {
-      await  conn.reply(m.chat, '🚩 Formato de hora incorrecto, debe ser *HH:MM* en formato de 24 horas.', m, rcanal);
+      await  conn.reply(m.chat, '🚩 Formato de hora incorrecto, debe ser *HH:MM* y el pais, CO (Colombias), AG (Argentina), CL (Chile), MX (Mexico)\nEjemplo:\n» ${usedPrefix}4vs4 10:10 CO', m, rcanal);
         return;
     }
 
