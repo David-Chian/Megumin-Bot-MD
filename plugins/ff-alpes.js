@@ -26,6 +26,4 @@ handler.help = ['alpes']
 handler.tags = ['ff']
 handler.command = ['alpes'] 
 handler.register = true
-export default handleralpes'] 
-handler.register = true
 export default handler
