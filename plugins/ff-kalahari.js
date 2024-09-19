@@ -26,6 +26,4 @@ handler.help = ['kalahari']
 handler.tags = ['ff']
 handler.command = ['kalahari'] 
 handler.register = true
-export default handlerd = ['kalahari'] 
-handler.register = true
 export default handler
