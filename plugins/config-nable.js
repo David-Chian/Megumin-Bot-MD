@@ -66,13 +66,27 @@ chat.detect = isEnable
 break
 
 case 'antibot':
-      if (m.isGroup) {
-        if (!(isAdmin || isOwner)) {
-          global.dfail('admin', m, conn)
-          throw false
-        }
-      }
-      chat.antiBot = isEnable
+if (m.isGroup) {
+if (!(isAdmin || isOwner)) {
+global.dfail('admin', m, conn)
+throw false
+}
+}
+chat.antiBot = isEnable
+break
+
+case 'antisubots':
+case 'antisub':
+case 'antisubot':
+case 'antibot2':
+if (m.isGroup) {
+if (!(isAdmin || isOwner)) {
+global.dfail('admin', m, conn)
+throw false
+}
+}
+chat.antiBot2 = isEnable
+break
 
 case 'antidelete': case 'antieliminar': case 'delete':
 if (m.isGroup) {
