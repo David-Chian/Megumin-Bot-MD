@@ -29,8 +29,16 @@ global.mods = ['5351524614', '5218711426787', '', '', '']
 
 global.suittag = ['5351524614']
 global.prems = []
-// Cambiar a false para usar el Bot desde el mismo numero del Bot.
+
+//cambiar a true si el bot detecta sus propios comandos.
 global.isBaileysFail = false
+global.libreria = 'Baileys'
+global.baileys = 'V 6.7.7'
+global.vs = '2.0.7'
+global.languaje = 'Español'
+global.nameqr = 'Megumin Bot - MD'
+global.sessions = 'MeguSession'
+global.jadi = 'MeguJadiBot'
 
 //• ↳ ◜𝑴𝑨𝑹𝑪𝑨𝑺 𝑫𝑬 𝑨𝑮𝑼𝑨◞ • 💌
 global.packsticker = `♾ ━━━━━━━━\n├ ɓσƭ:\n├ ρяοριєταяιο:\n├ ƒєϲнα ∂є ϲяєαϲιόи:\n├ нοяα:\n♾━━━━━━━━`
@@ -45,7 +53,6 @@ global.dev = '© ⍴᥆ᥕᥱrᥱძ ᑲᥡ sᥙᥒᥣіgһ𝗍 𝗍ᥱᥲm ❀'
 global.textbot = '⏤͟͞ू⃪ ፝͜⁞M͢ᴇɢ፝֟ᴜᴍ⃨ɪɴ⃜✰⃔࿐ : ᥫᩣᎠ꯭I𝚫⃥꯭M꯭Ꭷ꯭Ꮑ꯭Ꭰ࠭⋆̟(◣_◢)凸'
 global.gt = '͟͞ ৎ୭࠭͢💥͟𝑬̶𝒙͞𝒑͟𝒍𝒐̶𝒔̅𝒊͟𝒐́𝒏̶🔥̤𓆪 ͟͞';
 global.namechannel = '⏤͟͞ू⃪ ፝͜⁞M͢ᴇɢ፝֟ᴜᴍ⃨ɪɴ⃜✰⃔࿐/ᥫᩣᎠ꯭I𝚫⃥꯭M꯭Ꭷ꯭Ꮑ꯭Ꭰ࠭⋆̟(◣_◢)凸'
-global.vs = '3.0.3'
 
 
 //• ↳ ◜𝑰𝑴𝑨́𝑮𝑬𝑵𝑬𝑺◞ • 🌇
