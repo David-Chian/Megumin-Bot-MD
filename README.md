@@ -41,41 +41,41 @@
 > Copia los códigos uno por uno, no los pegues todos juntos a la vez.
 
 ```bash
-> termux-setup-storage
+termux-setup-storage
 ```
 
 ```bash
-> apt update -y && yes | apt upgrade && pkg install -y bash wget mpv && wget -O - https://raw.githubusercontent.com/David-Chian/Megumin-Bot-MD/master/megu.sh | bash
+apt update -y && yes | apt upgrade && pkg install -y bash wget mpv && wget -O - https://raw.githubusercontent.com/David-Chian/Megumin-Bot-MD/master/megu.sh | bash
 ```
 
 #### **🌺 Instalación manual por termux**
 
 ```bash
-> termux-setup-storage
+termux-setup-storage
 ```
 
 ```bash
-> apt-get update -y && apt-get upgrade -y
+apt-get update -y && apt-get upgrade -y
 ```
 
 ```bash
-> pkg install -y git nodejs ffmpeg imagemagick && pkg install yarn 
+pkg install -y git nodejs ffmpeg imagemagick && pkg install yarn 
 ```
 
 ```bash
-> git clone https://github.com/David-Chian/Megumin-Bot-MD && cd Megumin-Bot-MD 
+git clone https://github.com/David-Chian/Megumin-Bot-MD && cd Megumin-Bot-MD 
 ```
 
 ```bash
-> yarn install
+yarn install
 ```
 
 ```bash
-> npm install
+npm install
 ```
 
 ```bash
-> npm start
+npm start
 ```
 
 ---
@@ -107,7 +107,7 @@ Si después de instalar el bot en Termux y iniciar la session del bot (el numero
 
 2. Elimina la carpeta MiniSession:
     ```bash
-    rm -rf MeguSession
+    rm -rf MeguminSession
     ```
 
 3. Inicia el bot nuevamente:
