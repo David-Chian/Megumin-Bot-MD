@@ -37,8 +37,8 @@ global.baileys = 'V 6.7.7'
 global.vs = '3.0.3'
 global.languaje = 'Español'
 global.nameqr = 'Megumin Bot - MD'
-global.sessions = 'MeguSession'
-global.jadi = 'MeguJadiBot'
+global.sessions = 'MeguminSession'
+global.jadi = 'MeguminJadiBot'
 
 //• ↳ ◜𝑴𝑨𝑹𝑪𝑨𝑺 𝑫𝑬 𝑨𝑮𝑼𝑨◞ • 💌
 global.packsticker = `♾ ━━━━━━━━\n├ ɓσƭ:\n├ ρяοριєταяιο:\n├ ƒєϲнα ∂є ϲяєαϲιόи:\n├ нοяα:\n♾━━━━━━━━`
