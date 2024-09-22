@@ -10,30 +10,9 @@
 ### **`❕️ Información importante`**
 
 <details>
- <summary><b> 🌹 Info Aquí</b></summary>
-
-* **Este proyecto no ofrece soporte oficial para su uso en Termux.** Termux es una aplicación de terminal para Android y, aunque puede ser utilizada para ejecutar diversos programas, **este proyecto no está diseñado ni probado específicamente para funcionar en Termux**. Por lo tanto, **no garantizamos compatibilidad ni soporte técnico en este entorno**.
-
-</details>
-
-<details>
  <summary><b> 🌹 Info Bot</b></summary>
 
 * Este proyecto **no está afiliado de ninguna manera** con `WhatsApp`, `Inc. WhatsApp` es una marca registrada de `WhatsApp LLC`, y este bot es un **desarrollo independiente** que **no tiene ninguna relación oficial con la compañía**.
-
-</details>
-
-<details>
- <summary><b> 🌹 Info V 3.0.2</b></summary>
-
-* 📢 USER DE TERMUX
-💥 Para los usuarios que intentan instalar el bot vía la aplicación **`termux`**, tenemos esta noticia.
-
-* 💥 El staff de **`MeguminBot`** da aviso a los usuarios de **`Termux`** que ya no es posible instalar el Bot debido a las actualizaciones y los últimos commits realizados por el equipo del bot
-
-* 💥 como tal más, esto se ah removido del repositorio oficial como tal, aquel usuario que intente instalar, deberá tener en cuenta que ya no se brindará soporte ni ya es instalable.
-
-> 💥 **`Gracias por visitar el repositorio MeguminBot`**
 
 </details>
 
@@ -47,6 +26,104 @@
 * themeguminbot@gmail.com
 * https://wa.me/573218138672
 * https://wa.me/5351524614
+
+</details>
+
+---
+
+#### **`🚀 Instalación por termux`**
+
+<details>
+ <summary><b> 🌸 Comandos</b></summary>
+
+#### **✨️ Instalación automatica por termux**
+
+> Copia los códigos uno por uno, no los pegues todos juntos a la vez.
+
+```bash
+> termux-setup-storage
+```
+
+```bash
+> apt update -y && yes | apt upgrade && pkg install -y bash wget mpv && wget -O - https://raw.githubusercontent.com/David-Chian/Megumin-Bot-MD/master/megu.sh | bash
+```
+
+#### **🌺 Instalación manual por termux**
+
+```bash
+> termux-setup-storage
+```
+
+```bash
+> apt-get update -y && apt-get upgrade -y
+```
+
+```bash
+> pkg install -y git nodejs ffmpeg imagemagick && pkg install yarn 
+```
+
+```bash
+> git clone https://github.com/David-Chian/Megumin-Bot-MD && cd Megumin-Bot-MD 
+```
+
+```bash
+> yarn install
+```
+
+```bash
+> npm install
+```
+
+```bash
+> npm start
+```
+
+---
+
+#### **🟢 Activar en caso de detenerse en termux**
+
+Si después de instalar el bot en Termux se detiene (pantalla en blanco, pérdida de conexión a Internet, reinicio del dispositivo), sigue estos pasos:
+
+1. Abre Termux y navega al directorio del bot:
+    ```bash
+    cd Megumin-Bot-MD
+    ```
+
+2. Inicia el bot nuevamente:
+    ```bash
+    npm start
+    ```
+
+---
+
+#### **🍬 Obtener otro codigo qr en termux**
+
+Si después de instalar el bot en Termux y iniciar la session del bot (el numero se va a soporte, se cierra la conexión o demorastes al conectar), sigue estos pasos:
+
+1. Abre Termux y navega al directorio del bot:
+    ```bash
+    cd Megumin-Bot-MD
+    ```
+
+2. Elimina la carpeta MiniSession:
+    ```bash
+    rm -rf MeguSession
+    ```
+
+3. Inicia el bot nuevamente:
+    ```bash
+    npm start
+    ```
+
+---
+
+### **🤖 Para activar 24/7 (termux)**
+
+> comando para obtener la bot 24/7 en termux
+
+```bash
+npm i -g pm2 && pm2 start index.js && pm2 save && pm2 logs
+```
 
 </details>
 
