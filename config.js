@@ -41,11 +41,11 @@ global.titulowm = '͟͞ ৎ୭࠭͢💥͟𝑬̶𝒙͞𝒑͟𝒍𝒐̶𝒔̅�
 global.titulowm2 = `͟͞ ৎ୭࠭͢💥͟𝑬̶𝒙͞𝒑͟𝒍𝒐̶𝒔̅𝒊͟𝒐́𝒏̶🔥̤𓆪 ͟͞`
 global.igfg = 'ᥫᩣᎠ꯭I𝚫⃥꯭M꯭Ꭷ꯭Ꮑ꯭Ꭰ࠭⋆̟(◣_◢)凸'
 global.botname = '⏤͟͞ू⃪ ፝͜⁞M͢ᴇɢ፝֟ᴜᴍ⃨ɪɴ⃜✰⃔࿐'
-global.dev = '🔥 Powered By Sunlight Team ⚡︎'
+global.dev = '© ⍴᥆ᥕᥱrᥱძ ᑲᥡ sᥙᥒᥣіgһ𝗍 𝗍ᥱᥲm ❀'
 global.textbot = '⏤͟͞ू⃪ ፝͜⁞M͢ᴇɢ፝֟ᴜᴍ⃨ɪɴ⃜✰⃔࿐ : ᥫᩣᎠ꯭I𝚫⃥꯭M꯭Ꭷ꯭Ꮑ꯭Ꭰ࠭⋆̟(◣_◢)凸'
 global.gt = '͟͞ ৎ୭࠭͢💥͟𝑬̶𝒙͞𝒑͟𝒍𝒐̶𝒔̅𝒊͟𝒐́𝒏̶🔥̤𓆪 ͟͞';
 global.namechannel = '⏤͟͞ू⃪ ፝͜⁞M͢ᴇɢ፝֟ᴜᴍ⃨ɪɴ⃜✰⃔࿐/ᥫᩣᎠ꯭I𝚫⃥꯭M꯭Ꭷ꯭Ꮑ꯭Ꭰ࠭⋆̟(◣_◢)凸'
-global.vs = '3.0.2'
+global.vs = '3.0.3'
 
 
 //• ↳ ◜𝑰𝑴𝑨́𝑮𝑬𝑵𝑬𝑺◞ • 🌇
@@ -206,7 +206,7 @@ global.rpg = {
     string = string.toLowerCase();
     const emot = {
       level: '🧬 Nivel',
-      estrellas: '🌟 Estrella',
+      cookies: '🍪 Cookies',
       exp: '⚡ Experiencia',
       bank: '🏦 Banco',
       diamond: '💎 Diamante',
@@ -299,7 +299,7 @@ global.rpgg = { // Solo emojis
     string = string.toLowerCase();
     const emott = {
       level: '🧬',
-      estrellas: '🌟',
+      cookies: '🍪',
       exp: '⚡',
       bank: '🏦',
       diamond: '💎+',
@@ -392,7 +392,7 @@ global.rpgshop = { // Tienda
     string = string.toLowerCase();
     const emottt = {
       exp: '⚡ Experiencia',
-      estrellas: '🌟 Estrella',
+      cookies: '🍪 Cookies',
       diamond: '💎 Diamante',
       joincount: '💰 Token',
       emerald: '💚 Esmeralda',
@@ -400,7 +400,7 @@ global.rpgshop = { // Tienda
       kyubi: '🌀 Magia',
       gold: '👑 Oro',
       money: '❤️‍🔥 MeguCoins',
-      tiketcoin: '🎫 Mini Tickers',
+      tiketcoin: '🎫 Megu Tickers',
       stamina: '✨ Energía',
       potion: '🥤 Poción',
       aqua: '💧 Agua',
@@ -469,7 +469,7 @@ global.rpgshopp = { // Tienda
     string = string.toLowerCase();
     const emotttt = {
       exp: '⚡',
-      estrellas: '🌟',
+      cookies: '🍪',
       diamond: '💎+',
       joincount: '💰',
       emerald: '💚',
