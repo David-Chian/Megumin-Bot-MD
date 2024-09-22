@@ -21,7 +21,7 @@ return conn.reply(m.chat, `「💭」Solo puedes usar este comando en el bot pri
 }
 async function serbot() {
 let serbotFolder = crypto.randomBytes(10).toString('hex').slice(0, 8)
-let folderSub = `./MeguminJadiBot/${serbotFolder}`
+let folderSub = `./${jadi}/${serbotFolder}`
 if (!fs.existsSync(folderSub)) {
 fs.mkdirSync(folderSub, { recursive: true })
 }
@@ -34,7 +34,7 @@ const { version } = await fetchLatestBaileysVersion()
 const connectionOptions = {
 logger: pino({ level: 'silent' }),
 printQRInTerminal: true,
-browser: ['Megumin Sub-Bot', 'Edge', '2.0.0'],
+browser: [`${nameqr}`, 'Edge', '2.0.0'],
 auth: {
 creds: state.creds,
 keys: makeCacheableSignalKeyStore(state.keys, pino({ level: "fatal" }).child({ level: "fatal" })),
@@ -102,7 +102,7 @@ if (i >= 0) {
 delete global.conns[i]
 global.conns.splice(i, 1)
 }
-fs.rmdirSync(`./MeguminJadiBot/${serbotFolder}`, { recursive: true })
+fs.rmdirSync(`./${jadi}/${serbotFolder}`, { recursive: true })
 }
 }, 30000)
 let handler = await import("../handler.js")
