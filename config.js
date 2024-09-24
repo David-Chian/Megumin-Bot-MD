@@ -32,7 +32,7 @@ global.prems = []
 //cambiar a true si el bot detecta sus propios comandos.
 global.isBaileysFail = false
 global.libreria = 'Baileys'
-global.baileys = 'V 6.7.7'
+global.baileys = 'V 6.7.8'
 global.vs = '3.0.3'
 global.languaje = 'Español'
 global.nameqr = 'Megumin Bot - MD'
