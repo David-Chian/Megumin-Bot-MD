@@ -8,7 +8,7 @@ if (!code) return m.reply('🐢 Enlace invalido.')
 let res = await conn.groupAcceptInvite(code)
 m.reply(`🚩 Me uní correctamente al Grupo`)
 } catch {
-conn.reply(m.chat, '🧃 Ocurrió un error al unirme al grupo.', m, fake)}
+conn.reply(m.chat, '🧃 Ocurrió un error al unirme al grupo.', m, fake)}}
 
 handler.help = ['join <link>']
 handler.tags = ['mods']
