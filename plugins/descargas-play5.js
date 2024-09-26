@@ -15,7 +15,7 @@ let limit_a2 = 400;
 const handler = async (m, { conn, command, args, text, usedPrefix }) => {
   const datas = global;
 
-  if (!text) throw `_* DESCARGAS (￣へ ￣ )*_\n\n*[ ℹ️ ] Hace falta el título o enlace del video de YouTube.*\n\n*[ 💡 ] Ejemplo:* _${usedPrefix + command} Good Feeling - Flo Rida_`;
+  if (!text) throw `_* DESCARGAS (￣へ ￣ )*_\n\n*[ ⚠︎] 𝙴𝚜𝚌𝚛𝚒𝚋𝚎 𝚊𝚕𝚐𝚘 𝚘 𝚒𝚗𝚐𝚛𝚎𝚜𝚊 𝚞𝚗 𝚕𝚒𝚗𝚔 𝚍𝚎 𝚢𝚘𝚞𝚝𝚞𝚋𝚎.*\n\n*[ ⌨︎] 𝙴𝚓𝚎𝚖𝚙𝚕𝚘:* _${usedPrefix + command} mi nube city`;
 
   const yt_play = await search(args.join(' '));
   let additionalText = '';
@@ -49,7 +49,7 @@ const handler = async (m, { conn, command, args, text, usedPrefix }) => {
       const size = fileSizeInMB.toFixed(2);
 
       if (size >= limit_a2) {
-        await conn.sendMessage(m.chat, { text: `[ ℹ️ ] Descargue su audio en:* _${resultados.descargar}_` }, { quoted: m });
+        await conn.sendMessage(m.chat, { text: `[ ⚠︎ ] Descargue su audio en:* _${resultados.descargar}_` }, { quoted: m });
         return;
       }
       if (size >= limit_a1 && size <= limit_a2) {
@@ -71,7 +71,7 @@ const handler = async (m, { conn, command, args, text, usedPrefix }) => {
         const size = fileSizeInMB.toFixed(2);
 
         if (size >= limit_a2) {
-          await conn.sendMessage(m.chat, { text: `[ ℹ️ ] Descargue su audio en:* _${audio}_` }, { quoted: m });
+          await conn.sendMessage(m.chat, { text: `[ ⚠︎ ] Descargue su audio en:* _${audio}_` }, { quoted: m });
           return;
         }
         if (size >= limit_a1 && size <= limit_a2) {
@@ -82,7 +82,7 @@ const handler = async (m, { conn, command, args, text, usedPrefix }) => {
           return;
         }
       } catch {
-        throw '*[ ℹ️ ] O̶c̶u̶r̶r̶i̶ó ̶u̶n ̶e̶r̶r̶o̶r. 𝐏𝐨𝐫 𝐟𝐚𝐯𝐨𝐫, 𝐢𝐧𝐭𝐞́𝐧𝐭𝐚𝐥𝐨 𝐝𝐞 𝐧𝐮𝐞𝐯𝐨 𝐦𝐚́𝐬 𝐭𝐚𝐫𝐝𝐞.*';
+        throw '*[ ⚠︎ ] O̶c̶u̶r̶r̶i̶ó ̶u̶n ̶e̶r̶r̶o̶r. 𝐏𝐨𝐫 𝐟𝐚𝐯𝐨𝐫, 𝐢𝐧𝐭𝐞́𝐧𝐭𝐚𝐥𝐨 𝐝𝐞 𝐧𝐮𝐞𝐯𝐨 𝐦𝐚́𝐬 𝐭𝐚𝐫𝐝𝐞.*';
       }
     }
   }
@@ -100,7 +100,7 @@ const handler = async (m, { conn, command, args, text, usedPrefix }) => {
       const size2 = fileSizeInMB2.toFixed(2);
 
       if (size2 >= limit2) {
-        await conn.sendMessage(m.chat, { text: `*[ ℹ️ ] Descargue su vídeo en:* _${resultados.descargar}_` }, { quoted: m });
+        await conn.sendMessage(m.chat, { text: `*[ ⚠︎ ] Descargue su vídeo en:* _${resultados.descargar}_` }, { quoted: m });
         return;
       }
       if (size2 >= limit1 && size2 <= limit2) {
@@ -122,7 +122,7 @@ const handler = async (m, { conn, command, args, text, usedPrefix }) => {
         const size2 = fileSizeInMB2.toFixed(2);
 
         if (size2 >= limit2) {
-          await conn.sendMessage(m.chat, { text: `*[ ℹ️ ] Descargue su vídeo en:* _${video}_` }, { quoted: m });
+          await conn.sendMessage(m.chat, { text: `*[ ⚠︎ ] Descargue su vídeo en:* _${video}_` }, { quoted: m });
           return;
         }
         if (size2 >= limit1 && size2 <= limit2) {
@@ -133,7 +133,7 @@ const handler = async (m, { conn, command, args, text, usedPrefix }) => {
           return;
         }
       } catch {
-        throw '*[ ℹ️ ] ̶O̶̶c̶̶u̶̶r̶̶r̶̶i̶̶ó ̶̶u̶̶n ̶̶e̶̶r̶̶r̶̶o̶̶r. 𝐏𝐨𝐫 𝐟𝐚𝐯𝐨𝐫, 𝐢𝐧𝐭𝐞́𝐧𝐭𝐚𝐥𝐨 𝐝𝐞 𝐧𝐮𝐞𝐯𝐨 𝐦𝐚́𝐬 𝐭𝐚𝐫𝐝𝐞.*';
+        throw '*[ ⚠︎ ] ̶O̶̶c̶̶u̶̶r̶̶r̶̶i̶̶ó ̶̶u̶̶n ̶̶e̶̶r̶̶r̶̶o̶̶r. 𝐏𝐨𝐫 𝐟𝐚𝐯𝐨𝐫, 𝐢𝐧𝐭𝐞́𝐧𝐭𝐚𝐥𝐨 𝐝𝐞 𝐧𝐮𝐞𝐯𝐨 𝐦𝐚́𝐬 𝐭𝐚𝐫𝐝𝐞.*';
       }
     }
   }
