@@ -5,11 +5,10 @@ let handler = async (m, { conn, text, isOwner, usedPrefix, command }) => {
 if (!text) return m.reply(`💥 Ingresa el enlace del Grupo.`)
 let [_, code] = text.match(linkRegex) || []
 if (!code) return m.reply('🐢 Enlace invalido.')
+try {
 let res = await conn.groupAcceptInvite(code)
 m.reply(`💥 Me uní correctamente al Grupo`)
-await m.react(done)
-catch {
-await m.react(error)
+} catch {
 return m.reply('🧃 Ocurrió un error al unirme al grupo.')}
 
 handler.help = ['join <link>']
