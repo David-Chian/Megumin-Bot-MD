@@ -10,7 +10,7 @@ m.reply(`🚩 Me uní correctamente al Grupo`)
 await m.react(done)
 } catch {
 await m.react(error)
-conn.reply(m.chat, '🧃 Ocurrió un error al unirme al grupo.', m, fake, )}
+conn.reply(m.chat, '🧃 Ocurrió un error al unirme al grupo.', m, fake)}}
 
 handler.help = ['join <link>']
 handler.tags = ['mods']
