@@ -9,7 +9,7 @@ let res = await conn.groupAcceptInvite(code)
 m.reply(`💥 Me uní correctamente al Grupo`)
 try {
 } catch {
-return m.reply('🧃 Ocurrió un error al unirme al grupo.')}
+return m.reply('🧃 Ocurrió un error al unirme al grupo.')}}
 
 handler.help = ['join <link>']
 handler.tags = ['mods']
