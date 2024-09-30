@@ -4,6 +4,7 @@ import { sticker } from '../lib/sticker.js';
 let handler = m => m;
 
 handler.all = async function (m, {conn}) {
+try {
 let chat = global.db.data.chats[m.chat];
 let prefixRegex = new RegExp('^[' + (opts['prefix'] || '‎z/i!#$%+£¢€¥^°=¶∆×÷π√✓©®:;?&.,\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']');
 
@@ -32,6 +33,9 @@ let syms1 = `Tomarás el rol de un bot de WhatsApp creado por David-Chian. Tu no
 let result = await luminsesi(query, username, syms1)
 await this.reply(m.chat, result, m, fake)}
 return true
+} catch(error) {
+return conn.reply(m.chat, `💔 *Ocurrió un fallo*\n🍄 *Detalles:* ${error}`, m, rcanal)
+}
 }
 
 export default handler;
