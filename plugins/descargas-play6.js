@@ -28,7 +28,7 @@ participant: '0@s.whatsapp.net'
 let name = conn.getName(m.sender);
   let apislap = await fetch(`https://qu.ax/JrHBH.mp4`);
 let url = apislap.url;
-  let stiker = await sticker(null, url, `${name} está descargando...`, null);
+    let stiker = await sticker(null, url, `${name} está descargando...`, `Estoy haciendo lo mejor que puedo..!#€ Aahh!`);
   const stickerMessage = await conn.sendFile(m.chat, stiker, null, { asSticker: true }, m, true, { contextInfo: { forwardingScore: 200, isForwarded: true } }, { quoted: m });
 try {
 let quality = args[1] || '360';
