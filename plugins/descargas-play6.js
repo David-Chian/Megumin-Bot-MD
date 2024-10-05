@@ -1,2 +1,59 @@
-//creditos a: https://github.com/OFC-YOVANI/
-import{youtubedl,youtubedlv2}from'@bochilteam/scraper';import _0x5b03ba from'node-fetch';let handler=async(_0x2525aa,{conn:_0x48f5fb,args:_0x56cefd})=>{let _0x26335f={'key':{'participants':'0@s.whatsapp.net','remoteJid':'status@broadcast','fromMe':![],'id':'Halo'},'message':{'contactMessage':{'vcard':'BEGIN:VCARD\x0aVERSION:3.0\x0aN:Sy;Bot;;;\x0aFN:y\x0aitem1.TEL;waid='+_0x2525aa['sender']['split']('@')[0x0]+':'+_0x2525aa['sender']['split']('@')[0x0]+'\x0aitem1.X-ABLabel:Ponsel\x0aEND:VCARD'}},'participant':'0@s.whatsapp.net'};if(!_0x56cefd)return _0x48f5fb['reply'](_0x2525aa['chat'],'[❗]\x20𝙸𝙽𝚂𝙴𝚁𝚃𝙴\x20𝙴𝙻\x20𝙲𝙾𝙼𝙰𝙽𝙳𝙾\x20𝙼𝙰𝚂\x20𝙴𝙻\x20𝙴𝙽𝙻𝙰𝙲𝙴\x20/\x20𝙻𝙸𝙽𝙺\x20𝙳𝙴\x20𝚄𝙽\x20𝚅𝙸𝙳𝙴𝙾\x20𝙳𝙴\x20𝚈𝙾𝚄𝚃𝚄𝙱𝙴',_0x26335f,_0x2525aa);_0x48f5fb['reply'](_0x2525aa['chat'],'⏳ᴄᴀʀɢᴀɴᴅᴏ...\x0a▰▰▰▰▰▰▰▰▰▰▱',_0x26335f,_0x2525aa);try{let _0x201cf8=_0x56cefd[0x1]||'360',_0x18380f=_0x201cf8+'p',_0x1505a4=_0x56cefd[0x0];const _0x279ad4=await youtubedl(_0x1505a4)['catch'](async _0x66bfec=>await youtubedlv2(_0x1505a4))['catch'](async _0x3d69b3=>await youtubedlv3(_0x1505a4)),_0x396654=await _0x279ad4['video'][_0x18380f]['download'](),_0x378349=await _0x279ad4['title'],_0x4fa29e=await _0x279ad4['video'][_0x18380f]['fileSizeH'];await await _0x48f5fb['sendMessage'](_0x2525aa['chat'],{'video':{'url':_0x396654},'fileName':_0x378349+'.mp4','mimetype':'video/mp4','caption':'•\x20*𝚃𝙸𝚃𝚄𝙻𝙾:*\x20'+_0x378349+'\x0a\x0a•\x20*𝙿𝙴𝚂𝙾\x20𝙳𝙴𝙻\x20𝚅𝙸𝙳𝙴𝙾:*\x20'+_0x4fa29e,'thumbnail':await _0x5b03ba(_0x279ad4['thumbnail'])},{'quoted':_0x2525aa});}catch{try{let _0x400984=await _0x5b03ba('https://api.lolhuman.xyz/api/ytvideo2?apikey='+lolkeysapi+'&url='+_0x56cefd[0x0]),_0x7252ab=await _0x400984['json'](),_0x310e7b=_0x7252ab['result']['title']||'error',_0x43d1bc=_0x7252ab['result']['link'],_0x2ed250=_0x7252ab['result']['size'],_0x36ac60=_0x7252ab['result']['thumbnail'];await _0x48f5fb['sendMessage'](_0x2525aa['chat'],{'video':{'url':_0x43d1bc},'fileName':_0x310e7b+'.mp4','mimetype':'video/mp4','caption':'▢\x20𝚃𝙸𝚃𝚄𝙻𝙾:\x20'+_0x310e7b+'\x0a▢\x20𝙿𝙴𝚂𝙾\x20𝙳𝙴𝙻\x20𝚅𝙸𝙳𝙴𝙾:\x20'+_0x2ed250,'thumbnail':await _0x5b03ba(_0x36ac60)},{'quoted':_0x2525aa});}catch{await _0x48f5fb['reply'](_0x2525aa['chat'],'❌ʟᴏ\x20sᴇɴᴛɪᴍᴏs\x20sᴇ\x20ʜᴀ\x20ɢᴇɴᴇʀᴀᴅᴏ\x20ᴜɴ\x20ᴇʀʀᴏʀ\x20ᴠᴜᴇʟᴠᴇ\x20ɪɴᴛᴇɴᴛᴀʀ❌',_0x2525aa);}}};handler['command']=/^fgmp4|dlmp4|getvid|yt(v|mp4)?$/i,handler['group']=!![];export default handler;
+import { youtubedl, youtubedlv2 } from '@bochilteam/scraper';
+import fetch from 'node-fetch';
+import {sticker} from "../lib/sticker.js";
+let handler = async (m, { conn, args }) => {
+let vcard = {
+key: {
+participants: '0@s.whatsapp.net',
+remoteJid: 'status@broadcast',
+fromMe: false,
+id: 'Halo'
+},
+message: {
+contactMessage: {
+vcard: `BEGIN:VCARD
+VERSION:3.0
+N:Sy;Bot;;;
+FN:y
+item1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}
+item1.X-ABLabel:Ponsel
+END:VCARD`
+}
+},
+participant: '0@s.whatsapp.net'
+};
+    if (!args[0]) {
+        return conn.reply(m.chat, '[❗] Inserte el comando más el enlace/link de un video de YouTube', vcard, m, rcanal);
+    }
+let name = conn.getName(m.sender);
+  let apislap = await fetch(`https://qu.ax/JrHBH.mp4`);
+let url = apislap.url;
+  let stiker = await sticker(null, url, `${name} está descargando...`, null);
+  const stickerMessage = await conn.sendFile(m.chat, stiker, null, { asSticker: true }, m, true, { contextInfo: { forwardingScore: 200, isForwarded: true } }, { quoted: m });
+try {
+let quality = args[1] || '360';
+let url = args[0];
+const youtube = await youtubedl(url).catch(async () => await youtubedlv2(url)).catch(async () => await youtubedlv3(url));
+const video = await youtube.video[quality + 'p'].download();
+const title = await youtube.title;
+const fileSize = await youtube.video[quality + 'p'].fileSizeH;
+await conn.sendMessage(m.chat, { video: { url: video }, fileName: title + '.mp4', mimetype: 'video/mp4', caption: `• *TITLE:* ${title}\n• *FILE SIZE:* ${fileSize}`, thumbnail: await fetch(youtube.thumbnail) }, { quoted: m });
+await conn.sendMessage(m.chat, { delete: stickerMessage.key });
+} catch {
+try {
+let api = await fetch(`https://api.lolhuman.xyz/api/ytvideo2?apikey=kurumi&url=${args[0]}`);
+let json = await api.json();
+let title = json.result.title || 'error';
+let link = json.result.link;
+let size = json.result.size;
+let thumbnail = json.result.thumbnail;
+await conn.sendMessage(m.chat, { video: { url: link }, fileName: title + '.mp4', mimetype: 'video/mp4', caption: `▢ *TITLE:* ${title}\n▢ *FILE SIZE:* ${size}`, thumbnail: await fetch(thumbnail) }, { quoted: m });
+await conn.sendMessage(m.chat, { delete: stickerMessage.key });
+} catch(e) {
+await conn.reply(m.chat, `❌ Lo sentimos, se ha producido un error. ❌\n${e}`, m, rcanal);
+await conn.sendMessage(m.chat, { delete: stickerMessage.key });
+}
+}
+};
+handler.command = /^fgmp4|dlmp4|getvid|yt(v|mp4)?$/i;
+export default handler;
