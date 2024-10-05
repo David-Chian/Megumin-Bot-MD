@@ -25,7 +25,7 @@ let handler = async (m, { conn, args }) => {
   let name = conn.getName(m.sender);
   let apislap = await fetch(`https://qu.ax/EnLlx.mp4`);
 let url = apislap.url;
-  let stiker = await sticker(null, url, `${name} está descargando...`, Estoy haciendo lo mejor que puedo..!#€ Aahh!);
+  let stiker = await sticker(null, url, `${name} está descargando...`, `Estoy haciendo lo mejor que puedo..!#€ Aahh!`);
   const stickerMessage = await conn.sendFile(m.chat, stiker, null, { asSticker: true }, m, true, { contextInfo: { forwardingScore: 200, isForwarded: true } }, { quoted: m });
 
     try {
