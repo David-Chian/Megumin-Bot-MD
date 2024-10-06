@@ -56,14 +56,14 @@ global.namechannel = '⏤͟͞ू⃪ ፝͜⁞M͢ᴇɢ፝֟ᴜᴍ⃨ɪɴ⃜✰⃔�
 
 
 //• ↳ ◜𝑰𝑴𝑨́𝑮𝑬𝑵𝑬𝑺◞ • 🌇
-global.imagen1 = fs.readFileSync('./Menu2.jpg');
+global.imagen1 = fs.readFileSync('./src/menus/Menu2.jpg');
 global.imagen2 = fs.readFileSync('./src/anime.jpg');
-global.imagen3 = fs.readFileSync('./Menu3.jpg');
-global.imagen4 = fs.readFileSync('./Menu.jpg');
+global.imagen3 = fs.readFileSync('./src/menus/Menu3.jpg');
+global.imagen4 = fs.readFileSync('./src/menus/Menu.jpg');
 global.imagen5 = fs.readFileSync('./src/+18.jpg');
-global.imagen6 = fs.readFileSync('./Menu3.jpg');
-global.imagen7 = fs.readFileSync('./Menu5.jpg');
-global.imagen8 = fs.readFileSync('./Menu4.jpg')
+global.imagen6 = fs.readFileSync('./src/menus/Menu3.jpg');
+global.imagen7 = fs.readFileSync('./src/menus/Menu5.jpg');
+global.imagen8 = fs.readFileSync('./src/menus/Menu4.jpg')
 global.imagen9 = fs.readFileSync('./src/menu_en.png')
 global.imagen10 = fs.readFileSync('./src/nuevobot.jpg')
 global.que = fs.readFileSync('./src/ke/que1.jpg')
