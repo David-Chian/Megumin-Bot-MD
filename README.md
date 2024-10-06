@@ -40,7 +40,7 @@
 - **Pagina Principal:** [`Aquí`](https://vortexuscloud.com)
 - **Grupo - Soporte:** [`Aquí`](https://chat.whatsapp.com/DSs6k5EnzzE2FeFrTj3Fao)
 
-<details>
+
 
 #### **`🚀 Instalación por termux`**
 
