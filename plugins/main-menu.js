@@ -54,7 +54,7 @@ const defaultMenu = {
 ┃֪࣪  ╰─ׅ─ׅ┈ ─๋︩︪─☪︎︎︎̸⃘̸࣭ٜ࣪࣪࣪۬◌⃘۪֟፝֯۫۫︎⃪𐇽۫۬🍨⃘⃪۪֟፝֯۫۫۫۬◌⃘࣭ٜ࣪࣪࣪۬☪︎︎︎︎̸─ׅ─ׅ┈ ─๋︩︪─╯
 ├ׁ̟̇❍✎ *🄲ʟɪᴇɴᴛᴇ:* %name
 ├ׁ̟̇❍✎ *🄴xᴘ:* %exp
-├ׁ̟̇❍✎ *🄴sᴛʀᴇʟʟᴀs:* %estrellas
+├ׁ̟̇❍✎ *🄶ᴀʟʟᴇᴛᴀs:* %cookies
 ├ׁ̟̇❍✎ *🄽ɪᴠᴇʟ:* %level
 ├ׁ̟̇❍✎ *🅁ᴀɴɢᴏ:* %role
 ╚▭࣪▬ִ▭࣪▬ִ▭࣪▬ִ▭࣪▬ִ▭࣪▬ִ▭࣪▬▭╝
@@ -72,7 +72,7 @@ const defaultMenu = {
 let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
   try {
     let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => ({}))) || {}
-    let { exp, estrellas, level, role } = global.db.data.users[m.sender]
+    let { exp, cookies, level, role } = global.db.data.users[m.sender]
     let { min, xp, max } = xpRange(level, global.multiplier)
     let name = await conn.getName(m.sender)
     let d = new Date(new Date + 3600000)
@@ -159,7 +159,7 @@ botofc: (conn.user.jid == global.conn.user.jid ? '🚩 𝙴𝚂𝚃𝙴 𝙴𝚂
 totalexp: exp,
 xp4levelup: max - exp,
 github: _package.homepage ? _package.homepage.url || _package.homepage : '[unknown github url]',
-greeting, level, estrellas, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role,
+greeting, level, cookies, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role,
 readmore: readMore
 }
 text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
