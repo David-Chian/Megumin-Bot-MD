@@ -86,8 +86,8 @@ global.logo5 = fs.readFileSync('./src/logo5.jpg')
 global.logo7 = fs.readFileSync('./src/Logo7.png')
 global.logo8 = fs.readFileSync('./src/Logo8.jpg')
 global.rule = fs.readFileSync('./src/rule.jpg')
-global.welcome = fs.readFileSync('./media/Welcome.jpg')
-global.adios = fs.readFileSync('./media/Bye.jpg')
+global.welcome = fs.readFileSync('./src/Welcome.jpg')
+global.adios = fs.readFileSync('./src/Bye.jpg')
 
 global.stickeramor = [amor, amor2, amor3, amor4, amor5]
 global.sickerque = [que, que2, que3, que4, que5, que6]
