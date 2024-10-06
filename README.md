@@ -42,8 +42,6 @@
 
 <details>
 
----
-
 #### **`🚀 Instalación por termux`**
 
 <details>
