@@ -158,6 +158,8 @@ global.flaaa = [
 //* ************************
 
 //• ↳ ◜𝑨𝑷𝑰𝑺 𝑭𝑼𝑵𝑪𝑰𝑶𝑵◞ 👑
+global.MyApiRestBaseUrl = 'https://api.cafirexos.com';
+global.MyApiRestApikey = 'BrunoSobrino';
 global.openai_org_id = 'org-3';
 global.openai_key = 'sk-0';
 global.keysZens = ['LuOlangNgentot', 'c2459db922', '37CC845916', '6fb0eff124', 'hdiiofficial', 'fiktod', 'BF39D349845E', '675e34de8a', '0b917b905e6f'];
