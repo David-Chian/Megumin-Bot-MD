@@ -1,6 +1,6 @@
 import ws from 'ws';
 
-let handler = async (m, { conn, usedPrefix, text, args, command }) => {
+let handler = async (m, { conn, prefijo, text, args, command }) => {
     let uniqueUsers = new Map();
 
     let users = [...uniqueUsers.values()];
