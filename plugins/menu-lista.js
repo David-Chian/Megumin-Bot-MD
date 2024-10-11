@@ -58,6 +58,7 @@ let txt = `╭࣭࣭࣭࣭࣭࣭ٜ۫┄̸࣭࣭࣭࣭࣭ٜ۫☪︎︎︎̸⃘࣪
 let listSections = []
 listSections.push({
 title: `✎ SELECCIÓNA LO QUE NECESITES`, highlight_label: `Popular Megumin`,
+rows: [
 {
 title: "│🤴│ᴄʀᴇᴀᴅᴏʀ ᴅᴇʟ ʙᴏᴛ", 
 description: "ɴᴜᴍᴇʀᴏs ᴏғɪᴄɪᴀʟᴇs ᴅᴇ ᴅᴀᴠɪᴅ ᴄʜɪᴀɴ",
