@@ -441,7 +441,7 @@ id: `${prefijo}buy`
 title: "│💸│ʙᴜʏ ᴀʟʟ", 
 description: "ᴄᴏᴍᴘʀᴀ ᴅᴇ ғᴏʀɴᴀ ɪɴsᴛᴀɴᴛᴀ́ɴᴇᴀ ᴛᴏᴅᴏ ᴇʟ ᴇsᴛʀᴇʟʟᴀs ǫᴜᴇ ᴘᴜᴇᴅᴀs ᴜsᴀɴᴅᴏ ᴛᴏᴅᴏ ᴛᴜ xᴘ",
 id: `${prefijo}buyall`
-}
+},
 ],
 })   
 
