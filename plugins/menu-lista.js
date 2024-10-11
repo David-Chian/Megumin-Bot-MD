@@ -437,7 +437,7 @@ id: `${prefijo}buyall`,
 
 let vid = "https://qu.ax/Tdqmz.jpg"
 let img = "https://qu.ax/fcOAa.jpg"
-await conn.sendListB(m.chat, menu, txt, `TOCA AQUÍ.`, [vid, img].getRandom(), listSections, m)                             ;
+await conn.sendListB(m.chat, menu, txt, `TOCA AQUÍ.`, global.photoSity.getRandom(), listSections, m)                             ;
 };
 
 handler.tags = ['main'];
