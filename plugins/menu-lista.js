@@ -1,61 +1,45 @@
-//Codigo creado por David Chian wa.me/5351524614
-import fs from 'fs';
-import { xpRange } from '../lib/levelling.js';
-const { levelling } = '../lib/levelling.js';
-import moment from 'moment-timezone';
-import { prepareWAMessageMedia, generateWAMessageFromContent, getDevice } from '@whiskeysockets/baileys';
+import ws from 'ws';
 
-function pickRandom(array) {
-    return array[Math.floor(Math.random() * array.length)];
-}
-const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
+let handler = async (m, { conn, usedPrefix, text, args, command }) => {
+    let uniqueUsers = new Map();
+
+    let users = [...uniqueUsers.values()];
+    let totalUsers = users.length;
+    let name = await conn.getName(m.sender);
+    let totalusr = Object.keys(global.db.data.users).length;
+    let rtotal = Object.entries(global.db.data.users).length || '0'
+    let _uptime = process.uptime() * 1000;
+    let uptime = clockString(_uptime);
+    let username = conn.getName(m.sender);
+    //let name = conn.getName(m.sender)
     let locale = 'es';
-    let d = new Date(new Date() + 3600000);
+    let d = new Date(new Date + 3600000);
     let time = d.toLocaleTimeString(locale, {
         hour: 'numeric',
         minute: 'numeric',
         second: 'numeric'
     });
 
-    let _uptime = process.uptime() * 1000;
-    let uptime = clockString(_uptime); 
-    let wm = global.wm;
-    let vs = global.vs;
-    let { exp, limit, level, role } = global.db.data.users[m.sender];
-    let { min, xp, max } = xpRange(level, global.multiplier);
+    let totalreg = Object.keys(global.db.data.users).length;
     let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length;
-    const rtotal = Object.entries(global.db.data.users).length || '0'
-    let name = await conn.getName(m.sender);
-    let pp = await conn.profilePictureUrl(conn.user.jid).catch(_ => 'https://telegra.ph/file/24fa902ead26340f3df2c.png')
-    const ftrol = {
-    key : {
-    remoteJid: 'status@broadcast',
-    participant : '0@s.whatsapp.net'
-    },
-    message: {
-    orderMessage: {
-    itemCount : 2024,
-    status: 1,
-    surface : 1,
-    message: `Hola ${name}!`, 
-    orderTitle: `▮Menu ▸`,
-    thumbnail: await (await fetch(pp)).buffer(), //Gambarnye
-    sellerJid: '0@s.whatsapp.net' 
-    }
-    }
-    }
-    let d1 = 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
-let d2 = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-let d3  = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-let d4 = 'application/pdf'
-let d5 = 'application/vnd.android.package-archive'
-let d6 = 'application/zip'
-let td = `${pickRandom([d1,d2,d3,d4,d5,d6])}`
-let fkontak = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: `status@broadcast` } : {}) }, message: { 'contactMessage': { 'displayName': wm, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${wm},;;;\nFN:${wm},\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabell:Ponsel\nEND:VCARD`, 'jpegThumbnail': fs.readFileSync('./Menu.jpg'), thumbnail: fs.readFileSync('./Menu.jpg'),sendEphemeral: true}}}
-let menu = ''
-let txt = `╭࣭࣭࣭࣭࣭࣭ٜ۫┄̸࣭࣭࣭࣭࣭ٜ۫☪︎︎︎̸⃘̸࣭ٜ࣪࣪࣪۬◌⃘۪֟፝֯۫۫︎⃪𐇽۫۬🌻⃘⃪۪֟፝֯۫۫۫۬◌⃘࣭ٜ࣪࣪࣪۬☪︎︎︎︎̸┄̸࣭࣭࣭࣭࣭ٜ۫┄࣭࣭࣭۫┄̸࣭࣭࣭࣭࣭ٜ۫┄࣭࣭࣭۫┄̸࣭۫┄̸࣭࣭࣭࣭࣭ٜ۫┄̸࣭۫┄̸࣭࣭࣭࣭࣭ٜ۫┄࣭࣭࣭۫╮\n⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪⚘۪۬𝐇𝐨𝐥𝐚: ${name}💖 \n⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪⚘۪۬𝐓𝐢𝐞𝐦𝐩𝐨 𝐀𝐜𝐭𝐢𝐯𝐨\n⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪⚘۪۬${uptime}⏱️\n⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪⚘۪۬𝐔𝐬𝐮𝐚𝐫𝐢𝐨𝐬 𝐑𝐞𝐠𝐢𝐬𝐭𝐫𝐚𝐝𝐨𝐬\n⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪⚘۪۬${rtotalreg}🧩\n⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪⚘۪۬𝐓𝐨𝐭𝐚𝐥 𝐝𝐞 𝐔𝐬𝐮𝐚𝐫𝐢𝐨𝐬\n⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪⚘۪۬${rtotal}🌺\n⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪⚘۪۬𝐕𝐞𝐫𝐬𝐢𝐨́𝐧 𝐝𝐞𝐥 𝐛𝐨𝐭\n⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪⚘۪۬3.0.1❤‍🔥\n⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪⚘۪۬𝐒𝐞𝐥𝐞𝐜𝐜𝐢𝐨𝐧𝐚 𝐭𝐮 𝐥𝐨 𝐪𝐮𝐞 𝐪𝐮𝐢𝐞𝐫𝐚𝐬 𝐮𝐬𝐚𝐫\n⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪⚘۪۬𝐃𝐢𝐬𝐟𝐫𝐮𝐭𝐚 𝐝𝐞𝐥 𝐁𝐨𝐭 (๑˃̵　ᴗ　˂̵)و\n╰┄̸࣭࣭࣭࣭࣭ٜ۫┄࣭࣭࣭۫┄̸࣭۫┄̸࣭࣭࣭࣭࣭ٜ۫┄࣭࣭࣭۫┄̸࣭۫┄̸࣭࣭࣭࣭࣭ٜ۫┄̸࣭࣭࣭࣭࣭ٜ۫┄࣭࣭࣭۫☪︎︎︎̸⃘̸࣭ٜ࣪࣪࣪۬◌⃘۪֟፝֯۫۫︎⃪𐇽۫۬🍧⃘⃪۪֟፝֯۫۫۫۬◌⃘࣭ٜ࣪࣪࣪۬☪︎︎︎︎̸┄̸࣭࣭࣭࣭࣭ٜ۫╯ׂ`
 
-let listSections = []
+    m.react("🐢");
+    let menu = ``;
+
+    let txt = `╭࣭࣭࣭࣭࣭࣭ٜ۫┄̸࣭࣭࣭࣭࣭ٜ۫☪︎︎︎̸⃘̸࣭ٜ࣪࣪࣪۬◌⃘۪֟፝֯۫۫︎⃪𐇽۫۬🌻⃘⃪۪֟፝֯۫۫۫۬◌⃘࣭ٜ࣪࣪࣪۬☪︎︎︎︎̸┄̸࣭࣭࣭࣭࣭ٜ۫┄࣭࣭࣭۫┄̸࣭࣭࣭࣭࣭ٜ۫┄࣭࣭࣭۫┄̸࣭۫┄̸࣭࣭࣭࣭࣭ٜ۫┄̸࣭۫┄̸࣭࣭࣭࣭࣭ٜ۫┄࣭࣭࣭۫╮\n
+        txt += `⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪⚘۪۬𝐇𝐨𝐥𝐚: ${name}💖\n`  
+        txt += `⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪⚘۪۬𝐓𝐢𝐞𝐦𝐩𝐨 𝐀𝐜𝐭𝐢𝐯𝐨\n`
+        txt += `⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪⚘۪۬${uptime}⏱️\n`
+        txt += `⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪⚘۪۬𝐔𝐬𝐮𝐚𝐫𝐢𝐨𝐬 𝐑𝐞𝐠𝐢𝐬𝐭𝐫𝐚𝐝𝐨𝐬\n`
+        txt += `⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪⚘۪۬${rtotalreg}🧩\n`
+        txt += `⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪⚘۪۬𝐓𝐨𝐭𝐚𝐥 𝐝𝐞 𝐔𝐬𝐮𝐚𝐫𝐢𝐨𝐬\n`
+        txt += `⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪⚘۪۬${rtotal}🌺\n`
+        txt += `⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪⚘۪۬𝐕𝐞𝐫𝐬𝐢𝐨́𝐧 𝐝𝐞𝐥 𝐛𝐨𝐭\n⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪⚘۪۬3.0.1❤‍🔥\n`
+        txt += `⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪⚘۪۬𝐒𝐞𝐥𝐞𝐜𝐜𝐢𝐨𝐧𝐚 𝐭𝐮 𝐥𝐨 𝐪𝐮𝐞 𝐪𝐮𝐢𝐞𝐫𝐚𝐬 𝐮𝐬𝐚𝐫\n`
+        txt += `⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪⚘۪۬𝐃𝐢𝐬𝐟𝐫𝐮𝐭𝐚 𝐝𝐞𝐥 𝐁𝐨𝐭 (๑˃̵　ᴗ　˂̵)و\n`
+        txt += `╰┄̸࣭࣭࣭࣭࣭ٜ۫┄࣭࣭࣭۫┄̸࣭۫┄̸࣭࣭࣭࣭࣭ٜ۫┄࣭࣭࣭۫┄̸࣭۫┄̸࣭࣭࣭࣭࣭ٜ۫┄̸࣭࣭࣭࣭࣭ٜ۫┄࣭࣭࣭۫☪︎︎︎̸⃘̸࣭ٜ࣪࣪࣪۬◌⃘۪֟፝֯۫۫︎⃪𐇽۫۬🍧⃘⃪۪֟፝֯۫۫۫۬◌⃘࣭ٜ࣪࣪࣪۬☪︎︎︎︎̸┄̸࣭࣭࣭࣭࣭ٜ۫╯ׂ`
+
+    let listSections = []
 listSections.push({
 title: `✎ SELECCIÓNA LO QUE NECESITES`, highlight_label: `Popular Megumin`,
 rows: [
@@ -453,94 +437,52 @@ id: `${prefijo}buyall`,
 
 let vid = "https://qu.ax/Tdqmz.jpg"
 let img = "https://qu.ax/fcOAa.jpg"
-await conn.sendListB(m.chat, menu, txt, `TOCA AQUÍ.`, [vid, img].getRandom(), listSections, m)                             
-    _0x2daf = function() {
-        return _0x4c1076;
-    };
-    return _0x2daf();
-}
-const _0x110137 = _0x13bb;
-(function(_0x14d3d7, _0x67b65e) {
-    const _0x3a56bf = {
-            _0x2e964c: 0x1b0,
-            _0x4fc539: 0x1bd,
-            _0x2a1845: 0x1b1,
-            _0x2b6724: 0x1b3,
-            _0x4293cc: 0x1b8,
-            _0x59080a: 0x1b9
-        },
-        _0x30692c = _0x13bb,
-        _0x119b1c = _0x14d3d7();
-    while (!![]) {
-        try {
-            const _0x181128 = parseInt(_0x30692c(0x1bb)) / 0x1 * (parseInt(_0x30692c(_0x3a56bf._0x2e964c)) / 0x2) + parseInt(_0x30692c(_0x3a56bf._0x4fc539)) / 0x3 + parseInt(_0x30692c(_0x3a56bf._0x2a1845)) / 0x4 + parseInt(_0x30692c(_0x3a56bf._0x2b6724)) / 0x5 * (parseInt(_0x30692c(0x1bc)) / 0x6) + -parseInt(_0x30692c(0x1ad)) / 0x7 + -parseInt(_0x30692c(0x1be)) / 0x8 + parseInt(_0x30692c(_0x3a56bf._0x4293cc)) / 0x9 * (-parseInt(_0x30692c(_0x3a56bf._0x59080a)) / 0xa);
-            if (_0x181128 === _0x67b65e) break;
-            else _0x119b1c['push'](_0x119b1c['shift']());
-        } catch (_0x1caf7d) {
-            _0x119b1c['push'](_0x119b1c['shift']());
-        }
-    }
-}(_0x2daf, 0x235d2));
+await conn.sendListB(m.chat, menu, txt, `TOCA AQUÍ.`, [vid, img].getRandom(), listSections, m)                             ;
+};
 
-function _0x13bb(_0x16c7de, _0x1a27b8) {
-const _0x2dafbc = _0x2daf();
-return _0x13bb = function(_0x13bbaf, _0x156d41) {
-_0x13bbaf = _0x13bbaf - 0x1ad;
-let _0x1a2b8a = _0x2dafbc[_0x13bbaf];
-return _0x1a2b8a;
-}, _0x13bb(_0x16c7de, _0x1a27b8);
-}
-let ti1 = '𝐸𝑥𝑝𝑙𝑜𝑠𝑖𝑜𝑛!!'
-let ti2 = '𝐻𝑜𝑙𝑎!!'
-let ti3 = '⏤͟͞ू⃪ ፝͜⁞M͢ᴇɢ፝֟ᴜᴍ⃨ɪɴ⃜✰⃔࿐'
-let ti4 = '͟͞ 𓆩ꪶꪾ𝘿᪶𝙞ᷨ𝙖ᷞ𝙢ͣ𝙤᪶ͨ𝙣ᷜ𝙙ꫂৎ୭࠱࠭ ͟͞'
-let ti5 = '𝐵𝑂𝑂𝑀𝑀!!!!'
-let ti6 = '𝐸𝑙 𝐵𝑜𝑡 𝑀𝑎𝑠 𝐸𝑥𝑝𝑜𝑠𝑖𝑣𝑜!'
-let ti = `${pickRandom([ti1,ti2,ti3,ti4,ti5,ti6])}`
-let buttonMessage = {
-    'document': {
-        'url': md
-    },
-    'mimetype': td,
-    'fileName': 'E X P L O S I Ó N',
-    'fileLength': '99999999999999',
-    'pageCount': '999',
-    'contextInfo': {
-    'externalAdReply': {
-    'showAdAttribution': !![],
-            'mediaType': 0x1,
-            'previewType': "PHOTO",
-            'title':  ti,
-            'thumbnail': global.photoSity.getRandom(),
-            'renderLargerThumbnail': !![],
-            'sourceUrl': redes
-        }
-    },
-    'caption': txt.trim()
-}
-await conn[_0x110137(0x1ba)](m[_0x110137(0x1b5)], buttonMessage, { 'quoted': ftrol })
-
-    let msg = generateWAMessageFromContent(m.chat, {
-        viewOnceMessage: {
-            message: {
-                interactiveMessage,
-            },
-        },
-    }, { userJid: conn.user.jid, quoted: fkontak });
-      
-    conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
-}
-
-handler.help = ['en', 'dis'].map(v => v + 'able <option>');
-handler.tags = ['group', 'owner'];
+handler.tags = ['main'];
+handler.help = ['menulista'];
 handler.command = ['menulista','lista','listmenu','menulist'];
 handler.exp = 20;
 
 export default handler;
 
+
 function clockString(ms) {
-    let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000);
-    let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60;
-    let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60;
-    return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':');
+  const h = Math.floor(ms / 3600000);
+  const m = Math.floor(ms / 60000) % 60;
+  const s = Math.floor(ms / 1000) % 60;
+  console.log({ ms, h, m, s });
+  return [h, m, s].map((v) => v.toString().padStart(2, 0)).join(":");
 }
+
+
+  var ase = new Date();
+  var hour = ase.getHours();
+switch(hour){
+  case 0: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 🌙'; break;
+  case 1: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 💤'; break;
+  case 2: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 🦉'; break;
+  case 3: hour = 'Bᴜᴇɴᴏs Dɪᴀs ✨'; break;
+  case 4: hour = 'Bᴜᴇɴᴏs Dɪᴀs 💫'; break;
+  case 5: hour = 'Bᴜᴇɴᴏs Dɪᴀs 🌅'; break;
+  case 6: hour = 'Bᴜᴇɴᴏs Dɪᴀs 🌄'; break;
+  case 7: hour = 'Bᴜᴇɴᴏs Dɪᴀs 🌅'; break;
+  case 8: hour = 'Bᴜᴇɴᴏs Dɪᴀs 💫'; break;
+  case 9: hour = 'Bᴜᴇɴᴏs Dɪᴀs ✨'; break;
+  case 10: hour = 'Bᴜᴇɴᴏs Dɪᴀs 🌞'; break;
+  case 11: hour = 'Bᴜᴇɴᴏs Dɪᴀs 🌨'; break;
+  case 12: hour = 'Bᴜᴇɴᴏs Dɪᴀs ❄'; break;
+  case 13: hour = 'Bᴜᴇɴᴏs Dɪᴀs 🌤'; break;
+  case 14: hour = 'Bᴜᴇɴᴀs Tᴀʀᴅᴇs 🌇'; break;
+  case 15: hour = 'Bᴜᴇɴᴀs Tᴀʀᴅᴇs 🥀'; break;
+  case 16: hour = 'Bᴜᴇɴᴀs Tᴀʀᴅᴇs 🌹'; break;
+  case 17: hour = 'Bᴜᴇɴᴀs Tᴀʀᴅᴇs 🌆'; break;
+  case 18: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 🌙'; break;
+  case 19: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 🌃'; break;
+  case 20: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 🌌'; break;
+  case 21: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 🌃'; break;
+  case 22: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 🌙'; break;
+  case 23: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 🌃'; break;
+}
+  var greeting = hour;
