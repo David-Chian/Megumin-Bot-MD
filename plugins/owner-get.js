@@ -1,13 +1,7 @@
 import fetch from 'node-fetch';
 import {format} from 'util';
-
-
 const handler = async (m, {text}) => {
-  const datas = global
-  const _translate = JSON.parse(fs.readFileSync(`💫 Y el link de la web?`))
-  const tradutor = _translate.plugins.owner_fetch_get
-
-  if (!/^https?:\/\//.test(text)) throw tradutor.texto1;
+    if (!/^https?:\/\//.test(text)) return m.reply('🌵 Te faltó el *url* de la pagina.');
   const _url = new URL(text);
   const url = global.API(_url.origin, _url.pathname, Object.fromEntries(_url.searchParams.entries()), 'APIKEY');
   const res = await fetch(url);
@@ -25,8 +19,8 @@ const handler = async (m, {text}) => {
     m.reply(txt.slice(0, 65536) + '');
   }
 };
-handler.help = ['fetch', 'get']
-handler.tags = ['internet'];
+handler.help = ['fetch', 'get'];
+handler.tags = ['owner'];
 handler.command = ['fetch', 'get'];
 handler.rowner = true;
 export default handler;
