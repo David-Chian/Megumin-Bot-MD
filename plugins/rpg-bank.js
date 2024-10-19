@@ -1,4 +1,4 @@
-import db from '../lib/database.js'
+import db from './lib/database.js'
 let img 'https://qu.ax/EKcDO.jpg'
 let handler = async (m, {conn, usedPrefix}) => {
    let who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : m.sender
