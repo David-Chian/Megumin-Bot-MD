@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import axios from 'axios';
 const timeout = 30000;
 const poin = 200;
-let img = 'https://qu.ax/ZcOjD.jpg'
+let img = './Menu.jpg'
 const handler = async (m, {conn, usedPrefix}) => {
   conn.tebaklagu = conn.tebaklagu ? conn.tebaklagu : {};
   const id = m.chat;
@@ -19,7 +19,7 @@ Escribe *${usedPrefix}pista* Para obtener una pista
 Premio: ${poin} Cookies 
 RESPONDE A ESTE MENSAJE CON LAS RESPUESTAS!`.trim();
   conn.tebaklagu[id] = [
-    await conn.sendButton(m.chat, caption, wm, img, [['Pedir Pista', '/pista'] ], m, rcanal),
+    await conn.reply(caption),
     json, poin,
     setTimeout(() => {
       if (conn.tebaklagu[id]) conn.reply(m.chat, `Se acabó el tiempo!\nLa respuesta es ${json.jawaban}`, conn.tebaklagu[id][0]);
@@ -28,6 +28,8 @@ RESPONDE A ESTE MENSAJE CON LAS RESPUESTAS!`.trim();
   ];
   const aa = await conn.sendMessage(m.chat, {audio: {url: json.link_song}, fileName: `error.mp3`, mimetype: 'audio/mpeg'}, {quoted: m});
   if (!aa) return conn.sendFile(m.chat, json.link_song, 'coba-lagi.mp3', '', m);
+ await conn.sendButton(m.chat, '> Pedir Pista Al Bot', wm, img, [['Pedir Pista', '/pista'] ], m, rcanal);
+
 };
 handler.help = ['cancion'];
 handler.tags = ['fun'];
