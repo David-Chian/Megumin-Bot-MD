@@ -9,8 +9,7 @@ ${usedPrefix + command} detect
 ${usedPrefix + command} antidelete
 ${usedPrefix + command} antilink
 ${usedPrefix + command} antilink2
-${usedPrefix + command} modohorny
-${usedPrefix + command} nsfw 
+${usedPrefix + command} nsfw
 ${usedPrefix + command} autolevelup
 ${usedPrefix + command} autosticker
 ${usedPrefix + command} reaction
