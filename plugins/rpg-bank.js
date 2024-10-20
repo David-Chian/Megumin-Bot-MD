@@ -1,5 +1,4 @@
 import db from '../lib/database.js'
-let img = icons
 let handler = async (m, {conn, usedPrefix}) => {
    let who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : m.sender
    if (who == conn.user.jid) return m.react('✖️')
