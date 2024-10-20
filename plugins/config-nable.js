@@ -10,6 +10,7 @@ ${usedPrefix + command} antidelete
 ${usedPrefix + command} antilink
 ${usedPrefix + command} antilink2
 ${usedPrefix + command} modohorny
+${usedPrefix + command} nsfw 
 ${usedPrefix + command} autolevelup
 ${usedPrefix + command} autosticker
 ${usedPrefix + command} reaction
@@ -221,6 +222,15 @@ throw false
 chat.modohorny = isEnable          
 break
 
+case 'nsfwfoot': case 'nsfw': case 'nsfwhot':
+if (m.isGroup) {
+if (!(isAdmin || isOwner)) {
+global.dfail('admin', m, conn)
+throw false
+}}
+chat.nsfwhot = isEnable          
+break
+    
 case 'autolevelup': case 'autonivel': case 'nivelautomatico':
 if (m.isGroup) {
 if (!(isAdmin || isOwner)) {
