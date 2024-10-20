@@ -213,13 +213,13 @@ throw false
 chat.antiTwitch = isEnable 
 break
 
-case 'modohorny': case 'modocaliente': case 'modehorny':
+case 'nsfw': case 'nsfwhot': case 'nsfwhorny':
 if (m.isGroup) {
 if (!(isAdmin || isOwner)) {
 global.dfail('admin', m, conn)
 throw false
 }}
-chat.modohorny = isEnable          
+chat.nsfw = isEnable          
 break
     
 case 'autolevelup': case 'autonivel': case 'nivelautomatico':
