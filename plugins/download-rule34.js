@@ -46,6 +46,7 @@ const cleanDb = async () => {
 };
 
 const handler = async (m, { conn, text }) => {
+if (!db.data.chats[m.chat].modohorny && m.isGroup) return m.reply('🚩 *¡Estos comandos están desactivados!*');
   if (!text) {
     throw 'Por favor, proporciona un texto';
   }
