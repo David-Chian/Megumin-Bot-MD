@@ -1,5 +1,5 @@
-process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '1'  
-import './config.js'
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '1'
+import './config.js';
 import { createRequire } from 'module'
 import path, { join } from 'path'
 import {fileURLToPath, pathToFileURL} from 'url'
@@ -25,7 +25,6 @@ import { mongoDB, mongoDBV2 } from './lib/mongoDB.js'
 import store from './lib/store.js'
 import readline from 'readline'
 import NodeCache from 'node-cache'
-import boxen from 'boxen'
 const { DisconnectReason, useMultiFileAuthState, MessageRetryMap, fetchLatestBaileysVersion, makeCacheableSignalKeyStore, jidNormalizedUser, PHONENUMBER_MCC } = await import('@whiskeysockets/baileys')
 const { CONNECTING } = ws
 const { chain } = lodash
@@ -48,7 +47,7 @@ global.timestamp = { start: new Date }
 const __dirname = global.__dirname(import.meta.url);
 
 global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse());
-global.prefix = new RegExp('^[' + (opts['prefix'] || '*/i!#$%+£¢€¥^°=¶∆×÷π√✓©®&.\\-.@').replace(/[|\\{}()[\]^$+*.\-\^]/g, '\\$&') + ']');
+global.prefix = new RegExp('^[' + (opts['prefix'] || '/i!#$%+£¢€¥^°=¶∆×÷π√✓©®&.\\-.').replace(/[|\\{}()[\]^$+*.\-\^]/g, '\\$&') + ']');
 
 global.db = new Low(/https?:\/\//.test(opts['db'] || '') ? new cloudDBAdapter(opts['db']) : new JSONFile(`${opts._[0] ? opts._[0] + '_' : ''}database.json`));
 
@@ -78,6 +77,13 @@ global.db.chain = chain(global.db.data);
 };
 loadDatabase();
 
+// Inicialización de conexiones globales
+if (global.conns instanceof Array) {
+console.log('🚩 Conexiones ya inicializadas...');
+} else {
+global.conns = [];
+}
+
 /* ------------------------------------------------*/
 
 global.chatgpt = new Low(new JSONFile(path.join(__dirname, '/db/chatgpt.json')));
@@ -104,7 +110,7 @@ loadChatgptDB();
 
 /* ------------------------------------------------*/
 
-global.authFile = `MeguminBotSession`
+global.authFile = `MeguminSession`
 global.authFileJB = `MeguminJadiBot`
 
 const {state, saveState, saveCreds} = await useMultiFileAuthState(global.authFile)
@@ -131,9 +137,9 @@ resolver(respuesta.trim())
 })})
 }
 
-const colores = chalk.bold.green
-const opcionQR = chalk.bgBlue.white
-const opcionTexto = chalk.bgMagenta.white
+const colores = chalk.bgMagenta.white
+const opcionQR = chalk.bold.green
+const opcionTexto = chalk.bold.cyan
 let opcion
 if (methodCodeQR) {
 opcion = '1'
@@ -142,7 +148,7 @@ if (!methodCodeQR && !methodCode && !fs.existsSync(`./${authFile}/creds.json`)) 
 do {
 opcion = await question(colores('Seleccione una opción:\n') + opcionQR('1. Con código QR\n') + opcionTexto('2. Con código de texto de 8 dígitos\n--> '))
 if (!/^[1-2]$/.test(opcion)) {
-console.log(chalk.bold.redBright(`NO SE PERMITE NÚMEROS QUE NO SEAN ${chalk.bold.greenBright("1")} O ${chalk.bold.greenBright("2")}, TAMPOCO LETRAS O SÍMBOLOS ESPECIALES.\n${chalk.bold.yellowBright("CONSEJO: COPIE EL NÚMERO DE LA OPCIÓN Y PÉGUELO EN LA CONSOLA.")}`))
+console.log(chalk.bold.redBright(`🔴  NO SE PERMITE NÚMEROS QUE NO SEAN ${chalk.bold.greenBright("1")} O ${chalk.bold.greenBright("2")}, TAMPOCO LETRAS O SÍMBOLOS ESPECIALES.\n${chalk.bold.yellowBright("CONSEJO: COPIE EL NÚMERO DE LA OPCIÓN Y PÉGUELO EN LA CONSOLA.")}`))
 }} while (opcion !== '1' && opcion !== '2' || fs.existsSync(`./${authFile}/creds.json`))
 }
 
@@ -163,7 +169,7 @@ const connectionOptions = {
 logger: pino({ level: 'silent' }),
 printQRInTerminal: opcion == '1' ? true : methodCodeQR ? true : false,
 mobile: MethodMobile, 
-browser: opcion == '1' ? ['YartexBot-MD', 'Edge', '2.0.0'] : methodCodeQR ? ['YartexBot-MD', 'Edge', '2.0.0'] : ['Ubuntu', 'Edge', '110.0.1587.56'],
+browser: opcion == '1' ? ['Megumin-Bot', 'Edge', '2.0.0'] : methodCodeQR ? ['Megumin-Bot', 'Edge', '2.0.0'] : ['Ubuntu', 'Edge', '110.0.1587.56'],
 auth: {
 creds: state.creds,
 keys: makeCacheableSignalKeyStore(state.keys, Pino({ level: "fatal" }).child({ level: "fatal" })),
@@ -192,7 +198,7 @@ if (!!phoneNumber) {
 addNumber = phoneNumber.replace(/[^0-9]/g, '')
 } else {
 do {
-phoneNumber = await question(chalk.bgBlack(chalk.bold.greenBright(`Por favor, Ingrese el número de WhatsApp.\n${chalk.bold.yellowBright("CONSEJO: Copie el número de WhatsApp y péguelo en la consola.")}\n${chalk.bold.yellowBright("Ejemplo: +593090909090")}\n${chalk.bold.magentaBright('---> ')}`)))
+phoneNumber = await question(chalk.bgBlack(chalk.bold.greenBright(`🟣  Por favor, Ingrese el número de WhatsApp.\n${chalk.bold.yellowBright("CONSEJO: Copie el número de WhatsApp y péguelo en la consola.")}\n${chalk.bold.yellowBright("Ejemplo: +573138954963")}\n${chalk.bold.magentaBright('---> ')}`)))
 phoneNumber = phoneNumber.replace(/\D/g,'')
 } while (!Object.keys(PHONENUMBER_MCC).some(v => phoneNumber.startsWith(v)))
 rl.close()
@@ -201,7 +207,7 @@ addNumber = phoneNumber.replace(/\D/g, '')
 setTimeout(async () => {
 let codeBot = await conn.requestPairingCode(addNumber)
 codeBot = codeBot?.match(/.{1,4}/g)?.join("-") || codeBot
-console.log(chalk.bgBlueBright.bold.white('CÓDIGO DE VINCULACIÓN:'), chalk.bold.white(chalk.white(codeBot)))
+console.log(chalk.black(chalk.bgGreen(`👑 CÓDIGO DE VINCULACIÓN 👑`)), chalk.bold.white(chalk.white(codeBot)))
 }, 2000)
 }}}
 }
@@ -237,7 +243,8 @@ if (opcion == '1' || methodCodeQR) {
 console.log(chalk.bold.yellow(`\n✅ ESCANEA EL CÓDIGO QR EXPIRA EN 45 SEGUNDOS`))}
 }
 if (connection == 'open') {
-console.log(boxen(chalk.bold(' ¡CONECTADO CON WHATSAPP! '), { borderStyle: 'round', borderColor: 'green', title: chalk.green.bold('● CONEXIÓN ●'), titleAlignment: 'center', float: 'center' }))}
+//await conn.groupAcceptInvite('H5bw4MJucS1BBHnZ9wv3vI')  //Grupo
+console.log(chalk.bold.green('\n❒⸺⸺⸺⸺【• CONECTADO •】⸺⸺⸺⸺❒\n│\n│ 🟢  Se ha conectado con WhatsApp exitosamente.\n│\n❒⸺⸺⸺⸺【• CONECTADO •】⸺⸺⸺⸺❒'))}
 let reason = new Boom(lastDisconnect?.error)?.output?.statusCode
 if (connection === 'close') {
 if (reason === DisconnectReason.badSession) {
@@ -265,6 +272,50 @@ console.log(chalk.bold.redBright(`\n⚠️❗ RAZON DE DESCONEXIÓN DESCONOCIDA:
 }
 process.on('uncaughtException', console.error)
 
+/* ------------------------------------------------*/
+/* Código reconexión de sub-bots fases beta */
+/* Echo por: https://github.com/elrebelde21 */
+
+async function connectSubBots() {
+const subBotDirectory = './MeguminJadiBot';
+if (!existsSync(subBotDirectory)) {
+console.log('🚩 Megumin-Bot no tiene Sub-Bots vinculados.');
+return;
+}
+
+const subBotFolders = readdirSync(subBotDirectory).filter(file => 
+statSync(join(subBotDirectory, file)).isDirectory()
+);
+
+const botPromises = subBotFolders.map(async folder => {
+const authFile = join(subBotDirectory, folder);
+if (existsSync(join(authFile, 'creds.json'))) {
+return await connectionUpdate(authFile);
+}
+});
+
+const bots = await Promise.all(botPromises);
+global.conns = bots.filter(Boolean);
+console.log(chalk.bold.greenBright(`🍟 Todos los Sub-Bots se conectaron con éxito.`))
+}
+
+(async () => {
+global.conns = [];
+
+const mainBotAuthFile = 'MeguminSession';
+try {
+const mainBot = await connectionUpdate(mainBotAuthFile);
+global.conns.push(mainBot);
+console.log(chalk.bold.greenBright(`🚩 Ai Megumin conectado correctamente.`))
+
+await connectSubBots();
+} catch (error) {
+console.error(chalk.bold.cyanBright(`🍭 Error al iniciar Megumin-Bot: `, error))
+}
+})();
+
+/* ------------------------------------------------*/
+
 let isInit = true
 let handler = await import('./handler.js')
 global.reloadHandler = async function(restatConn) {
@@ -285,37 +336,22 @@ isInit = true
 }
 if (!isInit) {
 conn.ev.off('messages.upsert', conn.handler)
-conn.ev.off('group-participants.update', conn.participantsUpdate)
-conn.ev.off('groups.update', conn.groupsUpdate)
-conn.ev.off('message.delete', conn.onDelete)
-conn.ev.off('call', conn.onCall)
 conn.ev.off('connection.update', conn.connectionUpdate)
 conn.ev.off('creds.update', conn.credsUpdate)
 }
 
-//Información para Grupos
-conn.welcome = '*╭┈⊰* @subject *⊰┈ ✦*\n*┊✨ BIENVENIDO(A)!!*\n┊💖 @user\n┊📄 *LEA LA DESCRIPCIÓN DEL GRUPO*\n*╰┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈ ✦*\n@readMore\n@desc'
-conn.bye = '╭┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈⊰*\n┊ *@user*\n┊ *NO FUE DIGNO(A) DE ESTAR AQUÍ!!* 🌟\n*╰┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈⊰*'
-conn.spromote = '*@user* ¡Se suma al grupo de admins¡'
-conn.sdemote = '*@user* ¡Abandona el grupo!'
-conn.sDesc = '¡Se ha modificado la descripción!\n\n*Nueva descripción:* @desc'
-conn.sSubject = '¡Se ha modificado el título del grupo!'
-conn.sIcon = '¡Se ha cambiado la foto del grupo!'
-conn.sRevoke = '¡Se ha actualizado el enlace del grupo!*\n*Nuevo enlace:* @revoke' 
-
 conn.handler = handler.handler.bind(global.conn)
-conn.participantsUpdate = handler.participantsUpdate.bind(global.conn)
-conn.groupsUpdate = handler.groupsUpdate.bind(global.conn)
-conn.onDelete = handler.deleteUpdate.bind(global.conn)
-conn.onCall = handler.callUpdate.bind(global.conn)
 conn.connectionUpdate = connectionUpdate.bind(global.conn)
 conn.credsUpdate = saveCreds.bind(global.conn, true)
 
+const currentDateTime = new Date()
+const messageDateTime = new Date(conn.ev)
+if (currentDateTime >= messageDateTime) {
+const chats = Object.entries(conn.chats).filter(([jid, chat]) => !jid.endsWith('@g.us') && chat.isChats).map((v) => v[0])
+} else {
+const chats = Object.entries(conn.chats).filter(([jid, chat]) => !jid.endsWith('@g.us') && chat.isChats).map((v) => v[0])}
+
 conn.ev.on('messages.upsert', conn.handler)
-conn.ev.on('group-participants.update', conn.participantsUpdate)
-conn.ev.on('groups.update', conn.groupsUpdate)
-conn.ev.on('message.delete', conn.onDelete)
-conn.ev.on('call', conn.onCall)
 conn.ev.on('connection.update', conn.connectionUpdate)
 conn.ev.on('creds.update', conn.credsUpdate)
 isInit = false
@@ -425,11 +461,11 @@ unlinkSync(`./${authFileJB}/${directorio}/${fileInDir}`)
 }})
 }})
 if (SBprekey.length === 0) {
-console.log(chalk.bold.green(`\n╭» 🟡 YartexJadiBot 🟡\n│→ NADA POR ELIMINAR \n╰― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― 🗑️♻️`))
+console.log(chalk.bold.green(`\n╭» 🟡 MeguminJadiBot 🟡\n│→ NADA POR ELIMINAR \n╰― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― 🗑️♻️`))
 } else {
-console.log(chalk.bold.cyanBright(`\n╭» ⚪ YartexJadiBot ⚪\n│→ ARCHIVOS NO ESENCIALES ELIMINADOS\n╰― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― 🗑️♻️`))
+console.log(chalk.bold.cyanBright(`\n╭» ⚪ MeguminJadiBot ⚪\n│→ ARCHIVOS NO ESENCIALES ELIMINADOS\n╰― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― 🗑️♻️`))
 }} catch (err) {
-console.log(chalk.bold.red(`\n╭» 🔴 YartexJadiBot 🔴\n│→ OCURRIÓ UN ERROR\n╰― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― 🗑️♻️\n` + err))
+console.log(chalk.bold.red(`\n╭» 🔴 MeguminJadiBot 🔴\n│→ OCURRIÓ UN ERROR\n╰― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― 🗑️♻️\n` + err))
 }}
 
 function purgeOldFiles() {
@@ -477,7 +513,7 @@ if (stopped === 'close' || !conn || !conn.user) return
 await purgeOldFiles()
 console.log(chalk.bold.cyanBright(`\n╭» 🟠 ARCHIVOS 🟠\n│→ ARCHIVOS RESIDUALES ELIMINADAS\n╰― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― 🗑️♻️`))}, 1000 * 60 * 10)
 
-_quickTest().then(() => conn.logger.info(chalk.bold(`✨ CARGANDO...\n`.trim()))).catch(console.error)
+_quickTest().then(() => conn.logger.info(chalk.bold(`🚩  H E C H O\n`.trim()))).catch(console.error)
 
 let file = fileURLToPath(import.meta.url)
 watchFile(file, () => {
