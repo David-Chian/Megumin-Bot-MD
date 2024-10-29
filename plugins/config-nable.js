@@ -5,6 +5,7 @@ let fkontak = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status
 const miniopcion = `🚩 *OPCIONES PARA GRUPOS*
 
 ${usedPrefix + command} welcome
+${usedPrefix + command} autoaceptar
 ${usedPrefix + command} detect
 ${usedPrefix + command} antidelete
 ${usedPrefix + command} antilink
@@ -51,6 +52,19 @@ throw false
 }
 chat.welcome = isEnable
 break          
+
+case 'autoaceptar': case 'aceptarnuevos':
+if (!m.isGroup) {
+if (!isOwner) {
+global.dfail('group', m, conn)
+throw false
+}
+} else if (!isAdmin) {
+global.dfail('admin', m, conn)
+throw false
+}
+chat.autoAceptar = isEnable
+break
 
 case 'detect': case 'avisos':
 if (!m.isGroup) {
