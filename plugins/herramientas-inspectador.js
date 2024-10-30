@@ -33,7 +33,7 @@ let pp, ch, q, mime, buffer, media, inviteUrlch, imageBuffer
 switch (true) {     
 case isCommand1:
 let inviteCode
-if (!text) return await conn.reply(m.chat, `*Ingrese un enlace de un grupo/comunidad/canal de WhatsApp para obtener información.*`, m)
+if (!text) return await conn.reply(m.chat, `🚩 Ingrese el enlace de grupo/comunidad o canal.`, m, rcanal)
 const MetadataGroupInfo = async (res, isInviteInfo = false) => {
 let nameCommunity = "no pertenece a ninguna Comunidad"
 let groupPicture = "No se pudo obtener"
@@ -116,17 +116,17 @@ try {
 inviteInfo = await conn.groupGetInviteInfo(inviteUrl)
 info = await inviteGroupInfo(inviteInfo) // Para cualquier enlace de grupo/comunidad
 console.log(info)
-console.log('Método de enlace')    
+console.log('🌸 Método de enlace')    
 } catch (e) {
-m.reply('Grupo no encontrado')
+m.reply('🌵 Grupo no encontrado')
 return
 }}}
 if (info) {
 await conn.sendMessage(m.chat, { text: info, contextInfo: {
 mentionedJid: conn.parseMention(info),
 externalAdReply: {
-title: "🔰 Inspector de Grupos",
-body: packname,
+title: "🐢 Inspector de Grupos",
+body: "🍃 ¡Super Inspectador!",
 thumbnailUrl: pp ? pp : thumb,
 sourceUrl: args[0] ? args[0] : inviteCode ? `https://chat.whatsapp.com/${inviteCode}` : md,
 mediaType: 1,
@@ -136,11 +136,11 @@ renderLargerThumbnail: false
 } else {
 // Manejo de enlaces de canales
 let newsletterInfo
-if (!channelUrl) return await conn.reply(m.chat, "*Verifique que sea un enlace de canal de WhatsApp.*", m)
+if (!channelUrl) return await conn.reply(m.chat, "🚩 Verifique que sea un enlace de canal de WhatsApp.", m, rcanal)
 if (channelUrl) {
 try {
 newsletterInfo = await conn.newsletterMetadata("invite", channelUrl).catch(e => { return null })
-if (!newsletterInfo) return await conn.reply(m.chat, "*No se encontró información del canal.* Verifique que el enlace sea correcto.", m)       
+if (!newsletterInfo) return await conn.reply(m.chat, "🚩 No se encontró información del canal. Verifique que el enlace sea correcto.", m, rcanal)       
 let caption = "*Inspector de enlaces de Canales*\n\n" + processObject(newsletterInfo, "", newsletterInfo?.preview)
 if (newsletterInfo?.preview) {
 pp = getUrlFromDirectPath(newsletterInfo.preview)
@@ -151,8 +151,8 @@ if (channelUrl && newsletterInfo) {
 await conn.sendMessage(m.chat, { text: caption, contextInfo: {
 mentionedJid: conn.parseMention(caption),
 externalAdReply: {
-title: "📢 Inspector de Canales",
-body: packname,
+title: "🐢 Inspector de Canales",
+body: "🍃 ¡Super Inspectador!",
 thumbnailUrl: pp,
 sourceUrl: args[0],
 mediaType: 1,
@@ -167,9 +167,9 @@ break
 
 // Seguir un canal de WhatsApp 
 case isCommand2:
-if (!isOwner || !isROwner) return await conn.reply(m.chat, `*No tienes permiso para usar este comando.*`, m)
+if (!isOwner || !isROwner) return await conn.reply(m.chat, `🚩 No tienes permiso para usar este comando.`, m, fake)
 ch
-if (!text) return await conn.reply(m.chat, `*Ingrese el ID o enlace de un canal de WhatsApp que quiere que el bot siga.*\n\n*Puede obtener el ID usando el comando:*\n*${usedPrefix}superinspect* enlace${txtBotAdminCh}`, m)
+if (!text) return await conn.reply(m.chat, `🚩 Ingrese el ID o enlace de un canal de WhatsApp que quiere que el bot siga.\n\nPuede obtener el ID usando el comando:\n${usedPrefix}superinspect enlace${txtBotAdminCh}`, m, rcanal)
 if (text.includes("@newsletter")) {
 ch = text
 } else {
@@ -178,7 +178,7 @@ ch = await conn.newsletterMetadata("invite", channelUrl).then(data => data.id).c
 try {
 const chtitle = await conn.newsletterMetadata(text.includes("@newsletter") ? "jid" : "invite", text.includes("@newsletter") ? ch : channelUrl).then(data => data.name).catch(e => null)
 await conn.newsletterFollow(ch)
-await conn.reply(m.chat, `${packname} ha empezado a seguir el canal *${chtitle}* con éxito.`, m) 
+await conn.reply(m.chat, `🚩 El bot ya ha empezado a seguir el canal *${chtitle}*.`, m, rcanal) 
 } catch (e) {
 reportError(e)
 }
@@ -186,9 +186,9 @@ break
 
 // Dejar de seguir un canal de WhatsApp 
 case isCommand3:
-if (!isOwner || !isROwner) return await conn.reply(m.chat, `*No tienes permiso para usar este comando.*`, m)
+if (!isOwner || !isROwner) return await conn.reply(m.chat, `🚩 No tienes permiso para usar este comando.`, m, fake)
 ch
-if (!text) return await conn.reply(m.chat, `*Ingrese el ID o enlace de un canal de WhatsApp que quiere que el bot deje de seguir.*\n\n*Puede obtener el ID usando el comando:*\n*${usedPrefix}superinspect* enlace${txtBotAdminCh}`, m)
+if (!text) return await conn.reply(m.chat, `🚩 Ingrese el ID o enlace de un canal de WhatsApp que quiere que el bot deje de seguir.\n\nPuede obtener el ID usando el comando:\n${usedPrefix}superinspect enlace${txtBotAdminCh}`, m, rcanal)
 if (text.includes("@newsletter")) {
 ch = text
 } else {
@@ -197,7 +197,7 @@ ch = await conn.newsletterMetadata("invite", channelUrl).then(data => data.id).c
 try {
 const chtitle = await conn.newsletterMetadata(text.includes("@newsletter") ? "jid" : "invite", text.includes("@newsletter") ? ch : channelUrl).then(data => data.name).catch(e => null)
 await conn.newsletterUnfollow(ch)
-await conn.reply(m.chat, `${packname} ha dejado de seguir el canal *${chtitle}* con éxito.`, m) 
+await conn.reply(m.chat, `🚩 El bot ha dejado de seguir el canal *${chtitle}*.`, m, rcanal) 
 } catch (e) {
 reportError(e)
 }
@@ -205,9 +205,9 @@ break
 
 // Silenciar un canal de WhatsApp 
 case isCommand4:
-if (!isOwner || !isROwner) return await conn.reply(m.chat, `*No tienes permiso para usar este comando.*`, m)
+if (!isOwner || !isROwner) return await conn.reply(m.chat, `🚩 No tienes permiso para usar este comando.`, m, rcanal)
 ch
-if (!text) return await conn.reply(m.chat, `*Ingrese el ID o enlace de un canal de WhatsApp que quiere que el bot silencie las actualizaciones.*\n\nPuede obtener el ID usando el comando:*\n*${usedPrefix}superinspect* enlace${txtBotAdminCh}`, m)
+if (!text) return await conn.reply(m.chat, `🚩 Ingrese el ID o enlace de un canal de WhatsApp que quiere que el bot silencie las actualizaciones.\n\nPuede obtener el ID usando el comando:\n*${usedPrefix}superinspect enlace${txtBotAdminCh}`, m, rcanal)
 if (text.includes("@newsletter")) {
 ch = text
 } else {
@@ -216,7 +216,7 @@ ch = await conn.newsletterMetadata("invite", channelUrl).then(data => data.id).c
 try {
 const chtitle = await conn.newsletterMetadata(text.includes("@newsletter") ? "jid" : "invite", text.includes("@newsletter") ? ch : channelUrl).then(data => data.name).catch(e => null)
 await conn.newsletterMute(ch)
-await conn.reply(m.chat, `${packname} ha silenciado las notificaciones para el canal *${chtitle}* con éxito.`, m) 
+await conn.reply(m.chat, `${packname} ha silenciado las notificaciones para el canal *${chtitle}* con éxito.`, m, rcanal) 
 } catch (e) {
 reportError(e)
 }
@@ -224,9 +224,9 @@ break
 
 // Dejar de sileciar un canal de WhatsApp 
 case isCommand5:
-if (!isOwner || !isROwner) return await conn.reply(m.chat, `*No tienes permiso para usar este comando.*`, m)
+if (!isOwner || !isROwner) return await conn.reply(m.chat, `🚩 No tienes permiso para usar este comando.`, m, rcanal)
 ch
-if (!text) return await conn.reply(m.chat, `*Ingrese el ID o enlace de un canal de WhatsApp que quiere que el bot active las actualizaciones.*\n\n*Puede obtener el ID usando el comando:*\n*${usedPrefix}superinspect* enlace${txtBotAdminCh}`, m)
+if (!text) return await conn.reply(m.chat, `🚩 Ingrese el ID o enlace de un canal de WhatsApp que quiere que el bot active las actualizaciones.\n\nPuede obtener el ID usando el comando:\n*${usedPrefix}superinspect* enlace${txtBotAdminCh}`, m, rcanal)
 if (text.includes("@newsletter")) {
 ch = text
 } else {
@@ -235,7 +235,7 @@ ch = await conn.newsletterMetadata("invite", channelUrl).then(data => data.id).c
 try {
 const chtitle = await conn.newsletterMetadata(text.includes("@newsletter") ? "jid" : "invite", text.includes("@newsletter") ? ch : channelUrl).then(data => data.name).catch(e => null)
 await conn.newsletterUnmute(ch)
-await conn.reply(m.chat, `${packname} ha dejado de silenciar las notificaciones para el canal *${chtitle}* con éxito.`, m) 
+await conn.reply(m.chat, `${packname} ha dejado de silenciar las notificaciones para el canal *${chtitle}* con éxito.`, m, rcanal) 
 } catch (e) {
 reportError(e)
 }
@@ -243,13 +243,13 @@ break
 
 // Modificar la imagen del canal
 case isCommand6:
-if (!isOwner || !isROwner) return await conn.reply(m.chat, `*No tienes permiso para usar este comando.*`, m)
-if (!text) return await conn.reply(m.chat, `*Ingrese el ID o enlace de un canal de WhatsApp respondiendo a una imagen jpg/jpeg/png o agregue un enlace de imagen*\n
-*Respondiendo a una imagen*
+if (!isOwner || !isROwner) return await conn.reply(m.chat, `🚩 No tienes permiso para usar este comando.`, m, rcanal)
+if (!text) return await conn.reply(m.chat, `🚩 Ingrese el ID o enlace de un canal de WhatsApp respondiendo a una imagen jpg/jpeg/png o agregue un enlace de imagen\n
+Respondiendo a una imagen
 *${usedPrefix + command}* 12345@newsletter
 
 *Agregando url de imagen*
-*${usedPrefix + command}* 12345@newsletter https://example.com/image.jpg\n\n*Puede obtener el ID usando el comando:*\n*${usedPrefix}superinspect* enlace${txtBotAdminCh}`, m)
+*${usedPrefix + command}* 12345@newsletter https://example.com/image.jpg\n\nPuede obtener el ID usando el comando:\n*${usedPrefix}superinspect* enlace${txtBotAdminCh}`, m, rcanal)
 const regex = /(\b\w+@newsletter\b)(?:.*?(https?:\/\/[^\s]+?\.(?:jpe?g|png)))?/i
 const match = text.match(regex)
 let match1 = match ? match[1] ? match[1] : null : null
@@ -268,12 +268,12 @@ try {
 const response = await axios.get(match2 ? match2 : text.match(imageUrlRegex), { responseType: 'arraybuffer' })
 imageBuffer = Buffer.from(response.data, 'binary')
 } catch (error) {
-return await conn.reply(m.chat, `*Error al descargar la imagen de la URL proporcionada.*`, m)
+return await conn.reply(m.chat, `🐢 Error al descargar la imagen de la URL proporcionada.`, m, rcanal)
 }
 media = imageBuffer
 }
 if (text.includes("@newsletter")) {
-if(!match1) return await conn.reply(m.chat, `*No se encontró el ID del canal.*`, m)
+if(!match1) return await conn.reply(m.chat, `🚩 No se encontró el ID del canal.`, m, rcanal)
 ch = match1
 } else {
 ch = await conn.newsletterMetadata("invite", channelUrl).then(data => data.id).catch(e => null)
@@ -281,7 +281,7 @@ ch = await conn.newsletterMetadata("invite", channelUrl).then(data => data.id).c
 try {
 const chtitle = await conn.newsletterMetadata(text.includes("@newsletter") ? "jid" : "invite", text.includes("@newsletter") ? ch : channelUrl).then(data => data.name).catch(e => null)
 await conn.newsletterUpdatePicture(ch, media)
-await conn.reply(m.chat, `${packname} ha actualizado la imagen del canal *${chtitle}* con éxito.`, m) 
+await conn.reply(m.chat, `🚩 El bot ha cambiando la imagen del canal *${chtitle}* con éxito.`, m, rcanal) 
 } catch (e) {
 reportError(e)
 }
@@ -289,9 +289,9 @@ break
 
 // Eliminar la imagen del canal
 case isCommand7:
-if (!isOwner || !isROwner) return await conn.reply(m.chat, `*No tienes permiso para usar este comando.*`, m)
+if (!isOwner || !isROwner) return await conn.reply(m.chat, `🚩 No tienes permiso para usar este comando.`, m, rcanal)
 ch
-if (!text) return await conn.reply(m.chat, `*Ingrese el ID o enlace de un canal de WhatsApp que quiere que el bot elimine la imagen del canal.*\n\n*Puede obtener el ID usando el comando:*\n*${usedPrefix}superinspect* enlace${txtBotAdminCh}`, m)
+if (!text) return await conn.reply(m.chat, `🚩 Ingrese el ID o enlace de un canal de WhatsApp que quiere que el bot elimine la imagen del canal.\n\nPuede obtener el ID usando el comando:\n${usedPrefix}superinspect enlace${txtBotAdminCh}`, m, rcanal)
 if (text.includes("@newsletter")) {
 ch = text
 } else {
@@ -300,7 +300,7 @@ ch = await conn.newsletterMetadata("invite", channelUrl).then(data => data.id).c
 try {
 const chtitle = await conn.newsletterMetadata(text.includes("@newsletter") ? "jid" : "invite", text.includes("@newsletter") ? ch : channelUrl).then(data => data.name).catch(e => null)
 await conn.newsletterRemovePicture(ch)
-await conn.reply(m.chat, `${packname} ha eliminado la imagen del canal *${chtitle}* con éxito.`, m) 
+await conn.reply(m.chat, `🚩 El bot ha eliminado la imagen dek canal *${chtitle}* con éxito.`, m, rcanal) 
 } catch (e) {
 reportError(e)
 }
@@ -308,9 +308,9 @@ break
 
 // Recibir notificaciones de actualizaciones del canal en tiempo real
 case isCommand8:
-if (!isOwner || !isROwner) return await conn.reply(m.chat, `*No tienes permiso para usar este comando.*`, m)
+if (!isOwner || !isROwner) return await conn.reply(m.chat, `🚩 No tienes permiso para usar este comando.`, m, rcanal)
 ch
-if (!text) return await conn.reply(m.chat, `*Ingrese el ID o enlace de un canal de WhatsApp para que el bot reciba notificaciones en tiempo real.*\n\n*Puede obtener el ID usando el comando:*\n*${usedPrefix}superinspect* enlace${txtBotAdminCh}`, m)
+if (!text) return await conn.reply(m.chat, `🚩 Ingrese el ID o enlace de un canal de WhatsApp para que el bot reciba notificaciones en tiempo real.\n\nPuede obtener el ID usando el comando:\n*${usedPrefix}superinspect enlace${txtBotAdminCh}`, m, rcanal)
 if (text.includes("@newsletter")) {
 ch = text
 } else {
@@ -319,7 +319,7 @@ ch = await conn.newsletterMetadata("invite", channelUrl).then(data => data.id).c
 try {
 const chtitle = await conn.newsletterMetadata(text.includes("@newsletter") ? "jid" : "invite", text.includes("@newsletter") ? ch : channelUrl).then(data => data.name).catch(e => null)
 await conn.subscribeNewsletterUpdates(ch)
-await conn.reply(m.chat, `${packname} recibirá notificaciones del canal *${chtitle}*`, m) 
+await conn.reply(m.chat, `🚩 El bot recibirá notificaciones del canal *${chtitle}*`, m, rcanal) 
 } catch (e) {
 reportError(e)
 }
@@ -327,23 +327,23 @@ break
 
 // Establece el modo de reacciones en un canal de WhatsApp 
 case isCommand9:
-if (!isOwner || !isROwner) return await conn.reply(m.chat, `*No tienes permiso para usar este comando.*`, m)
+if (!isOwner || !isROwner) return await conn.reply(m.chat, `🚩 No tienes permiso para usar este comando.`, m, rcanal)
 ch
 if (!text) return await conn.reply(m.chat, `
-*Ingrese el ID o enlace de un canal de WhatsApp seguido de un espacio y la opción del modo de reacciones para el canal.*
+🚩 Ingrese el ID o enlace de un canal de WhatsApp seguido de un espacio y la opción del modo de reacciones para el canal.
 
 *Modo de reacciones:*
 > Use solo el número de la opción.
 
 *Opciones:*
-\`\`\`[1]\`\`\` _Reacción con cualquier emoji._
-\`\`\`[2]\`\`\` _Reacción con emojis predeterminados._
-\`\`\`[3]\`\`\` _Ninguna reacción._
+\`\`\`[1]\`\`\` Reacción con cualquier emoji.
+\`\`\`[2]\`\`\` Reacción con emojis predeterminados.
+\`\`\`[3]\`\`\` Ninguna reacción.
 
 *Ejemplo de uso:*
 *${usedPrefix + command}* 12345@newsletter 1
 
-*Puede obtener el ID usando el comando:*\n*${usedPrefix}superinspect* enlace${txtBotAdminCh}`.trim(), m)
+Puede obtener el ID usando el comando:\n*${usedPrefix}superinspect* enlace${txtBotAdminCh}`.trim(), m, rcanal)
 
 const parts = text.split(' ')
 const modeNumber = parseInt(parts.pop())
@@ -361,17 +361,17 @@ case 3:
 mode = 'NONE'
 break
 default:
-return await conn.reply(m.chat, `*Modo de reacción no válida.*\n
+return await conn.reply(m.chat, `🚩 Modo de reacción no válida.\n
 *Modo de reacciones:*
 > Use solo el número de la opción.
 
 *Opciones:*
-\`\`\`[1]\`\`\` _Reacción con cualquier emoji._
-\`\`\`[2]\`\`\` _Reacción con emojis predeterminados._
-\`\`\`[3]\`\`\` _Ninguna reacción._
+\`\`\`[1]\`\`\` Reacción con cualquier emoji.
+\`\`\`[2]\`\`\` Reacción con emojis predeterminados.
+\`\`\`[3]\`\`\` Ninguna reacción.
 
-*Ejemplo de uso:*
-*${usedPrefix + command}* 12345@newsletter 1`, m)
+Ejemplo de uso:
+*${usedPrefix + command}* 12345@newsletter 1`, m, rcanal)
 }
 
 if (ch.includes("@newsletter")) {
@@ -383,7 +383,7 @@ ch = await conn.newsletterMetadata("invite", ch).then(data => data.id).catch(e =
 try {
 const chtitle = await conn.newsletterMetadata(ch.includes("@newsletter") ? "jid" : "invite", ch.includes("@newsletter") ? ch : channelUrl).then(data => data.name).catch(e => null)
 await conn.newsletterReactionMode(ch, mode)
-await conn.reply(m.chat, `${packname} ha establecido el modo de reacciones como \`"${mode}"\` para el canal *${chtitle}*`, m)
+await conn.reply(m.chat, `🚩 El bot ha establecido el modo de reacciones como \`"${mode}"\` para el canal *${chtitle}*`, m,  rcanal)
 } catch (e) {
 reportError(e)
 }
@@ -391,16 +391,16 @@ break
 
 // Modificar nombre del canal
 case isCommand10:
-if (!isOwner || !isROwner) return await conn.reply(m.chat, `*No tienes permiso para usar este comando.*`, m)
-if (!text) return await conn.reply(m.chat, `*Ingrese el ID o enlace de un canal de WhatsApp para que el bot modifique el nombre del canal.*\n\n
-*Parámetros de uso:*
+if (!isOwner || !isROwner) return await conn.reply(m.chat, `🚩 No tienes permiso para usar este comando.`, m, rcanal)
+if (!text) return await conn.reply(m.chat, `🚩 Ingrese el ID o enlace de un canal de WhatsApp para que el bot modifique el nombre del canal.*\n\n
+*Parámetros de uso:
 *${usedPrefix + command}* \`id\` \`nombre\` 
 
-*Ejemplo de uso:*
-*${usedPrefix + command}* 12345@newsletter NombreDelcanal\n\n*Puede obtener el ID usando el comando:*\n*${usedPrefix}superinspect* enlace${txtBotAdminCh}`, m)
+Ejemplo de uso:
+*${usedPrefix + command}* 12345@newsletter NombreDelcanal\n\nPuede obtener el ID usando el comando:\n*${usedPrefix}superinspect* enlace${txtBotAdminCh}`, m, rcanal)
 const [id, ...nameParts] = text.split(' ')
 const name = nameParts.join(' ').trim()
-if (name.length > 99) return await conn.reply(m.chat, `*El nombre del canal no puede tener más de 99 caracteres.*`, m)
+if (name.length > 99) return await conn.reply(m.chat, `🚩 El nombre del canal no puede tener más de 99 caracteres.`, m, rcanal)
 if (text.includes("@newsletter")) {
 ch = id.trim()
 } else {
@@ -409,7 +409,7 @@ ch = await conn.newsletterMetadata("invite", channelUrl).then(data => data.id).c
 try {
 const chtitle = await conn.newsletterMetadata(text.includes("@newsletter") ? "jid" : "invite", text.includes("@newsletter") ? ch : channelUrl).then(data => data.name).catch(e => null)
 await conn.newsletterUpdateName(ch, name)
-await conn.reply(m.chat, `${packname} ha cambiado el nombre del canal *${name}*\n\n*Anterior nombre:* ${chtitle}\n*Nuevo nombre:* ${name}`, m) 
+await conn.reply(m.chat, `🚩 El bot ha cambiado el nombre del canal *${name}*\n\n*Anterior nombre:* ${chtitle}\n*Nuevo nombre:* ${name}`, m, rcanal) 
 } catch (e) {
 reportError(e)
 }
@@ -417,13 +417,13 @@ break
 
 // Modificar la descripción del canal
 case isCommand11:
-if (!isOwner || !isROwner) return await conn.reply(m.chat, `*No tienes permiso para usar este comando.*`, m)
-if (!text) return await conn.reply(m.chat, `*Ingrese el ID o enlace de un canal de WhatsApp para que el bot modifique la descripción del canal.*\n\n
-*Parámetros de uso:*
+if (!isOwner || !isROwner) return await conn.reply(m.chat, `🚩 No tienes permiso para usar este comando.`, m, rcanal)
+if (!text) return await conn.reply(m.chat, `🚩 Ingrese el ID o enlace de un canal de WhatsApp para que el bot modifique la descripción del canal.\n\n
+Parámetros de uso:
 *${usedPrefix + command}* \`id\` \`descripción\` 
 
-*Ejemplo de uso:*
-*${usedPrefix + command}* 12345@newsletter DescripciónDelcanal\n\n*Puede obtener el ID usando el comando:*\n*${usedPrefix}superinspect* enlace${txtBotAdminCh}`, m)
+Ejemplo de uso:
+*${usedPrefix + command}* 12345@newsletter DescripciónDelcanal\n\n*Puede obtener el ID usando el comando:*\n*${usedPrefix}superinspect* enlace${txtBotAdminCh}`, m, rcanal)
 const [idch, ...descriptionParts] = text.split(' ')
 const description = descriptionParts.join(' ').trim()
 if (text.includes("@newsletter")) {
@@ -434,7 +434,7 @@ ch = await conn.newsletterMetadata("invite", channelUrl).then(data => data.id).c
 try {
 const chtitle = await conn.newsletterMetadata(text.includes("@newsletter") ? "jid" : "invite", text.includes("@newsletter") ? ch : channelUrl).then(data => data.name).catch(e => null)
 await conn.newsletterUpdateDescription(ch, description)
-await conn.reply(m.chat, `${packname} ha modificado la descripción del canal *${chtitle}*`, m) 
+await conn.reply(m.chat, `🚩 El bot ha modificado la descripción del canal *${chtitle}*`, m, rcanal) 
 } catch (e) {
 reportError(e)
 }
