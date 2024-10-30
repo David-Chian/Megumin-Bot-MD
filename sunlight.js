@@ -156,7 +156,7 @@ if (MethodMobile) throw new Error('No se puede usar un código de emparejamiento
 
 let numeroTelefono
 if (!!phoneNumber) {
-numeroTelefono = phoneNumber.replace(/[^0-9]/g, '')
+numeroTelefono = phoneNumber.replace(/\D/g,'')
 if (!await isValidPhoneNumber(phoneNumber)) {
 console.log(chalk.bgBlack(chalk.bold.greenBright(`🟣  Por favor, Ingrese el número de WhatsApp.\n${chalk.bold.yellowBright("CONSEJO: Copie el número de WhatsApp y péguelo en la consola.")}\n${chalk.bold.yellowBright("Ejemplo: 57321××××××")}\n${chalk.bold.magentaBright('---> ')}`)))
 process.exit(0)
