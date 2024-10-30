@@ -277,6 +277,44 @@ console.log(chalk.bold.redBright(`\n⚠️❗ RAZON DE DESCONEXIÓN DESCONOCIDA:
 }
 process.on('uncaughtException', console.error);
 
+async function connectSubBots() {
+const subBotDirectory = './MeguminJadiBot';
+if (!existsSync(subBotDirectory)) {
+console.log('🚩 Megumin-Bot no tiene Sub-Bots vinculados.');
+return;
+}
+
+const subBotFolders = readdirSync(subBotDirectory).filter(file => 
+statSync(join(subBotDirectory, file)).isDirectory()
+);
+
+const botPromises = subBotFolders.map(async folder => {
+const authFile = join(subBotDirectory, folder);
+if (existsSync(join(authFile, 'creds.json'))) {
+return await connectionUpdate(authFile);
+}
+});
+
+const bots = await Promise.all(botPromises);
+global.conns = bots.filter(Boolean);
+console.log(chalk.bold.greenBright(`🍟 Todos los Sub-Bots se conectaron con éxito.`))
+}
+
+(async () => {
+global.conns = [];
+
+const mainBotAuthFile = 'MeguminSession';
+try {
+const mainBot = await connectionUpdate(mainBotAuthFile);
+global.conns.push(mainBot);
+console.log(chalk.bold.greenBright(`🚩 Ai Megumin conectado correctamente.`))
+
+await connectSubBots();
+} catch (error) {
+console.error(chalk.bold.cyanBright(`🍭 Error al iniciar Megumin-Bot: `, error))
+}
+})();
+
 let isInit = true;
 let handler = await import('./handler.js');
 global.reloadHandler = async function(restatConn) {
@@ -405,17 +443,17 @@ unlinkSync(`./MeguminSession/${files}`)
 } 
 function purgeSessionSB() {
 try {
-const listaDirectorios = readdirSync('./MeguminJadiBot/');
+const listaDirectorios = readdirSync(`./${authFileJB}/`);
 let SBprekey = [];
 listaDirectorios.forEach(directorio => {
-if (statSync(`./MeguminJadiBot/${directorio}`).isDirectory()) {
-const DSBPreKeys = readdirSync(`./MeguminJadiBot/${directorio}`).filter(fileInDir => {
+if (statSync(`./${authFileJB}/${directorio}`).isDirectory()) {
+const DSBPreKeys = readdirSync(`./${authFileJB}/${directorio}`).filter(fileInDir => {
 return fileInDir.startsWith('pre-key-')
 })
 SBprekey = [...SBprekey, ...DSBPreKeys];
 DSBPreKeys.forEach(fileInDir => {
 if (fileInDir !== 'creds.json') {
-unlinkSync(`./MeguminJadiBot/${directorio}/${fileInDir}`)
+unlinkSync(`./${authFileJB}/${directorio}/${fileInDir}`)
 }})
 }})
 if (SBprekey.length === 0) {
