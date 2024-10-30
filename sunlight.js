@@ -204,7 +204,6 @@ do {
 phoneNumber = await question(chalk.bgBlack(chalk.bold.greenBright(`🟣  Por favor, Ingrese el número de WhatsApp.\n${chalk.bold.yellowBright("CONSEJO: Copie el número de WhatsApp y péguelo en la consola.")}\n${chalk.bold.yellowBright("Ejemplo: +573138954963")}\n${chalk.bold.magentaBright('---> ')}`)))
 phoneNumber = phoneNumber.replace(/\D/g,'')
 }
-rl.close()
 addNumber = phoneNumber.replace(/\D/g, '')
 
 setTimeout(async () => {
