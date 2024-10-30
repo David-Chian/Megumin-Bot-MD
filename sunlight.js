@@ -295,33 +295,6 @@ conn.ev.removeAllListeners();
 global.conn = makeWASocket(connectionOptions, {chats: oldChats});
 isInit = true;
 }
-if (!isInit) {
-conn.ev.off('messages.upsert', conn.handler);
-conn.ev.off('group-participants.update', conn.participantsUpdate);
-conn.ev.off('groups.update', conn.groupsUpdate);
-conn.ev.off('message.delete', conn.onDelete);
-conn.ev.off('call', conn.onCall);
-conn.ev.off('connection.update', conn.connectionUpdate);
-conn.ev.off('creds.update', conn.credsUpdate);
-}
-
-conn.handler = handler.handler.bind(global.conn);
-conn.participantsUpdate = handler.participantsUpdate.bind(global.conn);
-conn.groupsUpdate = handler.groupsUpdate.bind(global.conn);
-conn.onDelete = handler.deleteUpdate.bind(global.conn);
-conn.onCall = handler.callUpdate.bind(global.conn);
-conn.connectionUpdate = connectionUpdate.bind(global.conn);
-conn.credsUpdate = saveCreds.bind(global.conn, true);
-conn.ev.on('messages.upsert', conn.handler);
-conn.ev.on('group-participants.update', conn.participantsUpdate);
-conn.ev.on('groups.update', conn.groupsUpdate);
-conn.ev.on('message.delete', conn.onDelete);
-conn.ev.on('call', conn.onCall);
-conn.ev.on('connection.update', conn.connectionUpdate);
-conn.ev.on('creds.update', conn.credsUpdate);
-isInit = false
-return true
-}
 
 const pluginFolder = global.__dirname(join(__dirname, './plugins/index'))
 const pluginFilter = (filename) => /\.js$/.test(filename)
