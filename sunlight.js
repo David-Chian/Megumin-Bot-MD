@@ -50,24 +50,25 @@ global.timestamp = {start: new Date}
 
 const __dirname = global.__dirname(import.meta.url)
 
-global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse());
-global.prefix = new RegExp('^[' + (opts['prefix'] || '/i!#$%+£¢€¥^°=¶∆×÷π√✓©®&.\\-.').replace(/[|\\{}()[\]^$+*.\-\^]/g, '\\$&') + ']');
+global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
+global.prefix = new RegExp('^[/.$#!]')
+// global.opts['db'] = process.env['db']
 
-global.db = new Low(/https?:\/\//.test(opts['db'] || '') ? new cloudDBAdapter(opts['db']) : new JSONFile(`${opts._[0] ? opts._[0] + '_' : ''}database.json`));
+global.db = new Low(/https?:\/\//.test(opts['db'] || '') ? new cloudDBAdapter(opts['db']) : new JSONFile(`src/database/database.json`));
 
-global.DATABASE = global.db; 
+global.DATABASE = global.db 
 global.loadDatabase = async function loadDatabase() {
 if (global.db.READ) {
 return new Promise((resolve) => setInterval(async function() {
 if (!global.db.READ) {
-clearInterval(this);
+clearInterval(this)
 resolve(global.db.data == null ? global.loadDatabase() : global.db.data);
-}}, 1 * 1000));
+}}, 1 * 1000))
 }
-if (global.db.data !== null) return;
-global.db.READ = true;
-await global.db.read().catch(console.error);
-global.db.READ = null;
+if (global.db.data !== null) return
+global.db.READ = true
+await global.db.read().catch(console.error)
+global.db.READ = null
 global.db.data = {
 users: {},
 chats: {},
@@ -76,10 +77,10 @@ msgs: {},
 sticker: {},
 settings: {},
 ...(global.db.data || {}),
-};
-global.db.chain = chain(global.db.data);
-};
-loadDatabase();
+}
+global.db.chain = chain(global.db.data)
+}
+loadDatabase()
 
 const {state, saveState, saveCreds} = await useMultiFileAuthState(global.sessions)
 const msgRetryCounterMap = (MessageRetryMap) => { };
