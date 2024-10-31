@@ -105,13 +105,13 @@ loadChatgptDB();
 global.creds = 'creds.json'
 global.authFile = 'MeguminSession'
 global.authFileJB  = 'MeguminJadiBot'
-global.rutaBot = join(__dirname, authFile)
+/*global.rutaBot = join(__dirname, authFile)
 global.rutaJadiBot = join(__dirname, authFileJB)
 
 if (!fs.existsSync(rutaJadiBot)) {
 fs.mkdirSync(rutaJadiBot)
 }
-
+*/
 const {state, saveState, saveCreds} = await useMultiFileAuthState(global.authFile)
 const msgRetryCounterMap = (MessageRetryMap) => { }
 const msgRetryCounterCache = new NodeCache()
