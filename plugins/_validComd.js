@@ -12,7 +12,6 @@ if (help.includes(noPrefix)) return
 let mean = didyoumean(noPrefix, help)
 let sim = similarity(noPrefix, mean)
 let som = sim * 100
-await conn.sendPresenceUpdate('composing', m.chat)
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 let name = await conn.getName(who)
 let caption = `*🍧  Hola* @${who.split('@')[0]}
