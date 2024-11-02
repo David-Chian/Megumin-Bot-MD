@@ -24,18 +24,16 @@ export async function before(m, { conn, participants, groupMetadata }) {
       contextInfo: {
         mentionedJid: getMentionedJid(),
         "externalAdReply": {
-          "thumbnail": welc,
-          "title": "  ͟͞ Ｗ Ｅ Ｌ Ｃ Ｏ Ｍ Ｅ ͟͞  ",
-          "body": `${userName}!`,
-          "previewType": "PHOTO",
-          "thumbnailUrl": null,
           "showAdAttribution": true,
-          sourceUrl: [yt, md, channel].sort(() => 0.5 - Math.random())[0]
+          "containsAutoReply": true,
+          "title": '  ͟͞ Ｗ Ｅ Ｌ Ｃ Ｏ Ｍ Ｅ ͟͞  ',
+          body: `${userName}`,
+          "previewType": "PHOTO",
+          "thumbnailUrl": '',
+          "thumbnail": icons,
+          "sourceUrl": redes
         }
-      },
-      ptt: true,
-      mimetype: 'audio/mpeg',
-      fileName: 'welcome.mp3'
+      }
     }, { quoted: fkontak });
   }
 
