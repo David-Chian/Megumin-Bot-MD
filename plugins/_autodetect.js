@@ -34,42 +34,9 @@ await conn.sendMessage(m.chat, { text: status, mentions: [m.sender] }, { quoted:
 } else if (chat.detect && m.messageStubType == 29) {
 await conn.sendMessage(m.chat, { text: admingp, mentions: [`${m.sender}`,`${m.messageStubParameters[0]}`] }, { quoted: fkontak })  
 
-} else if (chat.detect && m.messageStubType === 172 && m.messageStubParameters.length > 0) {
-const rawUser = m.messageStubParameters[0];
-const users = rawUser.split('@')[0]; 
-const prefijosProhibidos = ['91', '92', '222', '93', '265', '61', '62', '966', '229', '40', '49', '20', '963', '967', '234', '210', '212'];
-const usersConPrefijo = users.startsWith('+') ? users : `+${users}`;
-
-if (chat.antifake) {
-if (prefijosProhibidos.some(prefijo => usersConPrefijo.startsWith(prefijo))) {
-try {
-await conn.groupRequestParticipantsUpdate(m.chat, [rawUser], 'reject');
-m.reply(`😿 La solicitúd de ingreso de: @${users} fué rechazada automáticamente por tener un prefijo prohibido.`);
-} catch (error) {
-console.error(`❌️ Error al rechazar la solicitud de ${usersConPrefijo}:`, error);
-}} else {
-try {
-await conn.groupRequestParticipantsUpdate(m.chat, [rawUser], 'approve');
-m.reply(`🥳 La solicitud de ingreso de: @${users} fué aprobada automáticamente.`);
-} catch (error) {
-console.error(`❌️ Error al aprobar la solicitud de ${usersConPrefijo}:`, error);
-}}} else {
-try {
-await conn.groupRequestParticipantsUpdate(m.chat, [rawUser], 'approve');
-m.reply(`🥳 La solicitud de ingreso de: @${users} fué aprobada automáticamente ya que #antifake está desactivado.`);
-} catch (error) {
-console.error(`❌️ Error al aprobar la solicitud de ${usersConPrefijo}:`, error);
-}}
 return;
 } if (chat.detect && m.messageStubType == 30) {
 await conn.sendMessage(m.chat, { text: noadmingp, mentions: [`${m.sender}`,`${m.messageStubParameters[0]}`] }, { quoted: fkontak })  
 
-//} else if (chat.detect && m.messageStubType == 145) {
-//await conn.sendMessage(m.chat, { text: '😿 Se ha activado el modo de aprobación para unirse al grupo.', mentions: [m.sender] })
-
 } else {
-//console.log({ messageStubType: m.messageStubType,
-//messageStubParameters: m.messageStubParameters,
-//type: WAMessageStubType[m.messageStubType], 
-//})
 }}
