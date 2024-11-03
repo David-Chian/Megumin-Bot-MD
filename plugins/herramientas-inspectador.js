@@ -17,7 +17,7 @@ const isCommand7 = /^(eliminarfotochannel)\b$/i.test(command)
 const isCommand8 = /^(avisoschannel|resiviravisos)\b$/i.test(command)
 const isCommand9 = /^(reactioneschannel|reaccioneschannel)\b$/i.test(command)
 const isCommand10 = /^(nuevonombrecanal)\b$/i.test(command)
-const isCommand11 = /^(nuevadescchannel)\b$/i.test(command)
+const isCommand11 = /^(nuevadescchannel)\b$/i.test(command
 
 const channelUrl = text?.match(/(?:https:\/\/)?(?:www\.)?(?:chat\.|wa\.)?whatsapp\.com\/(?:channel\/|joinchat\/)?([0-9A-Za-z]{22,24})/i)?.[1]
 let txtBotAdminCh = '\n\n> *Verifique que el Bot sea admin en el canal, de lo contrario no funcionará el comando*'
@@ -282,6 +282,16 @@ try {
 const chtitle = await conn.newsletterMetadata(text.includes("@newsletter") ? "jid" : "invite", text.includes("@newsletter") ? ch : channelUrl).then(data => data.name).catch(e => null)
 await conn.newsletterUpdatePicture(ch, media)
 await conn.reply(m.chat, `🚩 El bot ha cambiando la imagen del canal *${chtitle}* con éxito.`, m, rcanal) 
+/*await conn.sendMessage(ch, { text: `🚩MeguminBot ha cambiando la imagen del canal *${chtitle}* con éxito.`, contextInfo: {
+externalAdReply: {
+title: "【 🔔 𝗡𝗢𝗧𝗜𝗙𝗜𝗖𝗔𝗖𝗜𝗢́𝗡 🔔 】",
+body: '✨️ Nueva imagen de perfil del canal.',
+thumbnailUrl: pp,
+sourceUrl: redes,
+mediaType: 1,
+showAdAttribution: false,
+renderLargerThumbnail: false
+}}}, { quoted: null })*/
 } catch (e) {
 reportError(e)
 }
@@ -300,7 +310,17 @@ ch = await conn.newsletterMetadata("invite", channelUrl).then(data => data.id).c
 try {
 const chtitle = await conn.newsletterMetadata(text.includes("@newsletter") ? "jid" : "invite", text.includes("@newsletter") ? ch : channelUrl).then(data => data.name).catch(e => null)
 await conn.newsletterRemovePicture(ch)
-await conn.reply(m.chat, `🚩 El bot ha eliminado la imagen dek canal *${chtitle}* con éxito.`, m, rcanal) 
+await conn.reply(m.chat, `🚩 El bot ha eliminado la imagen del canal *${chtitle}* con éxito.`, m, rcanal) 
+/*await conn.sendMessage(ch, { text: `🚩 MeguminBot ha eliminado la imagen del canal *${chtitle}* con éxito.`, contextInfo: {
+externalAdReply: {
+title: "【 🔔 𝗡𝗢𝗧𝗜𝗙𝗜𝗖𝗔𝗖𝗜𝗢́𝗡 🔔 】",
+body: '✨️ Imagen eliminada.',
+thumbnailUrl: pp,
+sourceUrl: redes,
+mediaType: 1,
+showAdAttribution: false,
+renderLargerThumbnail: false
+}}}, { quoted: null })*/
 } catch (e) {
 reportError(e)
 }
@@ -384,6 +404,16 @@ try {
 const chtitle = await conn.newsletterMetadata(ch.includes("@newsletter") ? "jid" : "invite", ch.includes("@newsletter") ? ch : channelUrl).then(data => data.name).catch(e => null)
 await conn.newsletterReactionMode(ch, mode)
 await conn.reply(m.chat, `🚩 El bot ha establecido el modo de reacciones como \`"${mode}"\` para el canal *${chtitle}*`, m,  rcanal)
+/*await conn.sendMessage(ch, { text: `🚩 MeguminBot ha establecido el modo de reacciones como \`"${mode}"\` para el canal *${chtitle}*`, contextInfo: {
+externalAdReply: {
+title: "【 🔔 𝗡𝗢𝗧𝗜𝗙𝗜𝗖𝗔𝗖𝗜𝗢́𝗡 🔔 】",
+body: '✨️ Ajustes en reacciones.',
+thumbnailUrl: pp,
+sourceUrl: redes,
+mediaType: 1,
+showAdAttribution: false,
+renderLargerThumbnail: false
+}}}, { quoted: null })*/
 } catch (e) {
 reportError(e)
 }
@@ -410,6 +440,16 @@ try {
 const chtitle = await conn.newsletterMetadata(text.includes("@newsletter") ? "jid" : "invite", text.includes("@newsletter") ? ch : channelUrl).then(data => data.name).catch(e => null)
 await conn.newsletterUpdateName(ch, name)
 await conn.reply(m.chat, `🚩 El bot ha cambiado el nombre del canal *${name}*\n\n*Anterior nombre:* ${chtitle}\n*Nuevo nombre:* ${name}`, m, rcanal) 
+/*await conn.sendMessage(ch, { text: `🚩 MeguminBot ha cambiado el nombre del canal *${name}*\n\n*Anterior nombre:* ${chtitle}\n*Nuevo nombre:* ${name}`, contextInfo: {
+externalAdReply: {
+title: "【 🔔 𝗡𝗢𝗧𝗜𝗙𝗜𝗖𝗔𝗖𝗜𝗢́𝗡 🔔 】",
+body: '✨️ Un nuevo nombre para el canal.',
+thumbnailUrl: pp,
+sourceUrl: redes,
+mediaType: 1,
+showAdAttribution: false,
+renderLargerThumbnail: false
+}}}, { quoted: null })*/
 } catch (e) {
 reportError(e)
 }
@@ -435,6 +475,16 @@ try {
 const chtitle = await conn.newsletterMetadata(text.includes("@newsletter") ? "jid" : "invite", text.includes("@newsletter") ? ch : channelUrl).then(data => data.name).catch(e => null)
 await conn.newsletterUpdateDescription(ch, description)
 await conn.reply(m.chat, `🚩 El bot ha modificado la descripción del canal *${chtitle}*`, m, rcanal) 
+/*await conn.sendMessage(ch, { text: `🚩 MeguminBot ha modificado la descripción del canal *${chtitle}*`, contextInfo: {
+externalAdReply: {
+title: "【 🔔 𝗡𝗢𝗧𝗜𝗙𝗜𝗖𝗔𝗖𝗜𝗢́𝗡 🔔 】",
+body: '✨️ Una nueva descripción al canal.',
+thumbnailUrl: pp,
+sourceUrl: redes,
+mediaType: 1,
+showAdAttribution: false,
+renderLargerThumbnail: false
+}}}, { quoted: null })*/
 } catch (e) {
 reportError(e)
 }
