@@ -204,7 +204,7 @@ await conn.sendMessage(
   { quoted: fkontak })
 
   } catch (e) {
-    conn.reply(m.chat, '🔵 Lo sentimos, el menú tiene un error', m, rcanal, )
+    conn.reply(m.chat, `🔵 Lo sentimos, el menú tiene un error ${e}`, m, rcanal, )
     throw e
   }
 }
