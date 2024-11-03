@@ -1,7 +1,8 @@
 let media = './src/Grupo.jpg'
 let handler = async (m, { conn, command }) => {
 let fkontak = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
-    await conn.sendMessage(m.chat, { react: { text: '⚡️', key: m.key } })
+   // await conn.sendMessage(m.chat, { react: { text: '⚡️', key: m.key } })
+ await m.react('⚡️')
 let str = `*📍 GRUPO OFICIAL*
 
    *_〾̷̸‣⃝⃨⃛⃰⁝̵̓ᝒ̷̸͙🌸̶̩ܻᝒ̷̸꯭͙𝝡꯭𝝣꯭𝗚꯭𝗨꯭𝗠꯭𝗜꯭𝗡᭄𓆩֟֯፝𓆪𝝣⃯ᵴͦ𝛒⃨ᷫ𝛆ͨ🄲⃪⃯𝛊ᷨ𝛂⃨ͦꝆ᷽ͭ🍁⃝⃙̻⃮̋⃛⃰⁌̷̸̊͟⿻᳔̶̷̸_*
@@ -13,15 +14,11 @@ let str = `*📍 GRUPO OFICIAL*
    *_Grupo de antojar 3.0_*
 ┃🧸❏ https://chat.whatsapp.com/LJKcR8QBJgu37bVFWuhRVn
 
-   *_Grupo Sunlight - Team _*
-┃❤️‍🔥❏ https://chat.whatsapp.com/Fy74b6fgE9SJJpHVi6CKJY
+   *_Grupo Colaboración Yaemori_*
+┃❤️‍🔥❏ https://chat.whatsapp.com/HjVwC835OWgERQYhspnMW8
 
    *_Canal Oficial_*
 ┃❤️‍🔥❏ https://whatsapp.com/channel/0029VacDy0R6hENqnTKnG820
-
-   *_Canal Sunlight - Team_*
-┃❤️‍🔥❏ https://whatsapp.com/channel/0029Vam7yUg77qVaz3sIAp0z
-*_╰━━━━━━━━━━━━━━━━⊜_*
 `
 await conn.sendButton(m.chat, str, `͟͞ 𓆩ꪶꪾ𝘿᪶𝙞ᷨ𝙖ᷞ𝙢ͣ𝙤᪶ͨ𝙣ᷜ𝙙ꫂৎ୭࠱࠭ ͟͞\n` + wm, media, [
 ['Menu Lista 💖', '/lista']], null, [
