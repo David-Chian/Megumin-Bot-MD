@@ -62,7 +62,7 @@ global.waittt = '🕒 *𝗘𝘀𝗽𝗲𝗿𝗮 𝗨𝗻 𝗠𝗼𝗺𝗲𝗻�
 global.waitttt = '🕒 *𝗘𝘀𝗽𝗲𝗿𝗮 𝗨𝗻 𝗠𝗼𝗺𝗲𝗻𝘁𝗼, 𝗦𝗼𝘆 𝗟𝗲𝗻𝘁𝗮 ...*';
 
 //Enlaces
-var grupo = 'https://chat.whatsapp.com/H5bw4MJucS1BBHnZ9wv3vI'
+var grupo = 'https://chat.whatsapp.com/F4QEFF2Hn4102NdbPJ2ZOi'
 var canal = 'https://whatsapp.com/channel/0029VacDy0R6hENqnTKnG820'  
 var git = 'https://github.com/David-Chian' 
 var youtube = 'https://youtube.com/@davidchian4957' 
