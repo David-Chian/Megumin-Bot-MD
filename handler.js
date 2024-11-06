@@ -157,7 +157,8 @@ global.db.data.chats[m.chat] = {}
 
 if (chat) {
 if (!('isBanned' in chat)) chat.isBanned = false         
-if (!('welcome' in chat)) chat.welcome = true           
+if (!('welcome' in chat)) chat.welcome = true 
+if (!('autoresponder' in chat)) chat.autoresponder = false          
 if (!('detect' in chat)) chat.detect = true               
 if (!('sWelcome' in chat)) chat.sWelcome = ''          
 if (!('sBye' in chat)) chat.sBye = ''                    
@@ -204,6 +205,7 @@ sPromote: '',
 sDemote: '', 
 sCondition: JSON.stringify([{ grupo: { usuario: [], condicion: [], admin: '' }, prefijos: []}]), 
 delete: false,
+autoresponder: false,
 autoAceptar: false,
 nsfw: false,
 autosticker: false,
