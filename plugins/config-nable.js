@@ -5,6 +5,7 @@ let fkontak = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status
 const miniopcion = `🚩 *OPCIONES PARA GRUPOS*
 
 ${usedPrefix + command} welcome
+${usedPrefix + command} autoresponder
 ${usedPrefix + command} autoaceptar
 ${usedPrefix + command} detect
 ${usedPrefix + command} antidelete
@@ -206,6 +207,15 @@ global.dfail('admin', m, conn)
 throw false
 }}
 chat.antiDiscord = isEnable 
+break
+
+case 'autoresponder': case 'autorespond':
+if (m.isGroup) {
+if (!(isAdmin || isOwner)) {
+global.dfail('admin', m, conn)
+throw false
+}}
+chat.autoresponder = isEnable          
 break
 
 case 'antithreads':
