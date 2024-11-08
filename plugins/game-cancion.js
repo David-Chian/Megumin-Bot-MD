@@ -28,7 +28,7 @@ RESPONDE A ESTE MENSAJE CON LAS RESPUESTAS!`.trim();
   ];
   const aa = await conn.sendMessage(m.chat, {audio: {url: json.link_song}, fileName: `error.mp3`, mimetype: 'audio/mpeg'}, {quoted: m});
   if (!aa) return conn.sendFile(m.chat, json.link_song, 'coba-lagi.mp3', '', m);
- await conn.sendButton(m.chat, '> Pedir Pista Al Bot', wm, img, [['Pedir Pista', '/pista'] ], m, rcanal);
+ await conn.reply(m.chat, '💥 Para pedir pista use el comando:\n> #pista', m, rcanal);
 
 };
 handler.help = ['cancion'];
