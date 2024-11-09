@@ -16,19 +16,19 @@ let limit_a2 = 400;
 const handler = async (m, { conn, command, args, text, usedPrefix }) => {
 try {
   if (!text) throw `*💥 Hace falta el título o enlace del video de YouTube.*\n\n*𔔢 𝗘𝗷𝗲𝗺𝗽𝗹𝗼: _${usedPrefix + command} Goku sexo*`;
+  let video = `https://qu.ax/qRia.mp4`;
+let sentMessage = await conn.sendMessage(m.chat, { video: { url: video }, gifPlayback: true, mentions: [m.sender] }, { quoted: estilo });
   const yt_play = await search(args.join(' '));
-    if (!yt_play || !yt_play[0]?.title) return m.reply('> *[❗] Error: Audio/Video not found.*`');
   let additionalText = '';
   if (['play', 'play3', 'playdoc'].includes(command)) {
     additionalText = 'audio';
   } else if (['play2', 'play4', 'playdoc2'].includes(command)) {
     additionalText = 'vídeo';
   }
-  const texto1 = `*𖹭.╭╭ִ╼࣪━ִﮩ٨ـﮩ♡̫𝗆𝖾𝗀֟፝𝗎꯭𝗆𝗂꯭𝗇𖦹ׅ♡ִ̫ﮩ٨ـﮩ━ִ╾࣪╮╮.𖹭*\n> ♡ *Título:* ${yt_play[0].title}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Publicado:* ${yt_play[0].ago}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Duración:* ${secondString(yt_play[0].duration.seconds)}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Vistas:* ${MilesNumber(yt_play[0].views)}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Autor:* ${yt_play[0].author.name}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *ID:* ${yt_play[0].videoId}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Tipo:* ${yt_play[0].type}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Enlace:* ${yt_play[0].url}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Canal:* ${yt_play[0].author.url}\n*⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ׄۛ۫۫۫۫۫۫ۜ⏝*\n> *[ ℹ️ ] Se está enviando el ${additionalText}, espere...`.trim();
-let sentMessage = await conn.sendMessage(m.chat, {
-image: { url: yt_play[0].thumbnail }, caption: texto1, contextInfo: { externalAdReply: { title: '♡  ͜ ۬︵࣪᷼⏜݊᷼𝘿𝙚𝙨𝙘𝙖𝙧𝙜𝙖𝙨⏜࣪᷼︵۬ ͜ ', body: '<(✿◠‿◠)> 𝙈𝙚𝙜𝙪𝙢𝙞𝙣🔥', sourceUrl: cn, thumbnail: logo7 }}, quoted: estilo});
 
-  if (['play', 'ytmp3doc', 'playdoc'].includes(command)) {
+  if (!yt_play || !yt_play[0]?.title) return m.reply('> *[❗] Error: Audio/Video not found.*`');
+
+  if (['play5', 'ytmp3doc', 'playdoc'].includes(command)) {
     try {
       const buff_aud = await downloadMedia(yt_play[0].url, 'audio');
       const fileSizeInBytes = buff_aud.byteLength;
@@ -46,7 +46,7 @@ image: { url: yt_play[0].thumbnail }, caption: texto1, contextInfo: { externalAd
         conn.sendMessage(m.chat, {delete: sentMessage.key});
         return;
       } else {
-        if (['playdoc', 'play'].includes(command)) await conn.sendMessage(m.chat, { audio: buff_aud, mimetype: 'audio/mpeg', fileName: `${yt_play[0].title}.mp3` }, { quoted: m }) 
+        if (['playdoc', 'play5'].includes(command)) await conn.sendMessage(m.chat, { audio: buff_aud, mimetype: 'audio/mpeg', fileName: `${yt_play[0].title}.mp3` }, { quoted: m }) 
         await conn.sendMessage(m.chat, { delete: sentMessage.key });
         return 
       }
@@ -57,7 +57,7 @@ image: { url: yt_play[0].thumbnail }, caption: texto1, contextInfo: { externalAd
     }
   }
 
-  if (['play2', 'ytmp4doc', 'playdoc2'].includes(command)) {
+  if (['play6', 'ytmp4doc', 'playdoc2'].includes(command)) {
     try {
       const buff_vid = await downloadMedia(yt_play[0].url, 'video');
       const fileSizeInBytes2 = buff_vid.byteLength;
@@ -94,7 +94,7 @@ image: { url: yt_play[0].thumbnail }, caption: texto1, contextInfo: { externalAd
         return 
 };
 }
-handler.command = /^(play|play2|ytmp3doc|ytmp4doc|playdoc|playdoc2)$/i;
+handler.command = /^(play5|play6|ytmp3doc|ytmp4doc|playdoc|playdoc2)$/i;
 export default handler;
 
 async function search(query, options = {}) {
