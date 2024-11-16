@@ -10,6 +10,9 @@ await conn.groupRequestParticipantsUpdate(m.chat, [m.sender], 'reject')}
 if (m.sender.startsWith('90')) {
 await conn.groupRequestParticipantsUpdate(m.chat, [m.sender], 'reject')}
 
+if (m.sender.startsWith('967')) {
+await conn.groupRequestParticipantsUpdate(m.chat, [m.sender], 'reject')}
+
 if (m.sender.startsWith('212')) {
 await conn.groupRequestParticipantsUpdate(m.chat, [m.sender], 'reject')}
 
