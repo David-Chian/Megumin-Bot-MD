@@ -1,4 +1,4 @@
-//GataNina-Li
+/*//GataNina-Li
 const roles = {
 '*𝗡𝗼𝘃𝗮𝘁𝗼 V* 🍷': 0,
 '*𝗡𝗼𝘃𝗮𝘁𝗼 IV* 🍷': 2,
@@ -91,4 +91,4 @@ handler.before = async function (m, { conn }) {
         return !0
 
 }
-export default handler 
+export default handler */
