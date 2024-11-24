@@ -28,7 +28,7 @@ let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? c
 let mentionedJid = [who]
 let perfil = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://qu.ax/QGAVS.jpg')
 let taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
-const imgs = [imagen1, imagen2, imagen3] //Aquí se definen las imagenes del menú.
+let img = "https://qu.ax/fcOAa.jpg" //puedes agregar mas utilizando: ["URL1", "URL2"] y en la definición al enviar el menú ponle: img.getRandom()
 
 let menu = `.........․⁀⸱⁀⸱︵⸌⸃૰⳹․💥․⳼૰⸂⸍︵⸱⁀⸱⁀․........
 𔓕꯭  ꯭ 𓏲꯭֟፝੭ ꯭⌑(꯭𝐄).꯭𝐗.꯭𝐏.꯭𝐋.꯭𝐎.꯭𝐒.꯭𝐈.꯭𝐎.꯭𝐍꯭⌑꯭ 𓏲꯭֟፝੭ ꯭  ꯭𔓕
@@ -519,7 +519,7 @@ let menu = `.........․⁀⸱⁀⸱︵⸌⸃૰⳹․💥․⳼૰⸂⸍︵⸱�
 
 > © ⍴᥆ᥕᥱrᥱძ ᑲᥡ sᥙᥒᥣіgһ𝗍 𝗍ᥱᥲm ❀`.trim()
 
-await conn.sendMessage(m.chat, { image: { url: imgs.getRandom() }, caption: menu, contextInfo: { mentionedJid: [m.sender], isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: '120363307382381547@newsletter', newsletterName: '⏤͟͞ू⃪ ፝͜⁞M͢ᴇɢ፝֟ᴜᴍ⃨ɪɴ⃜✰⃔࿐/ᥫᩣᎠ꯭I𝚫⃥꯭M꯭Ꭷ꯭Ꮑ꯭Ꭰ࠭⋆̟(◣_◢)凸', serverMessageId: -1, }, forwardingScore: 999, externalAdReply: { title: '⏤͟͞ू⃪ ፝͜⁞M͢ᴇɢ፝֟ᴜᴍ⃨ɪɴ⃜✰⃔࿐', body: dev, thumbnailUrl: perfil, sourceUrl: redes, mediaType: 1, renderLargerThumbnail: false,
+await conn.sendMessage(m.chat, { image: { url: img }, caption: menu, contextInfo: { mentionedJid: [m.sender], isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: '120363307382381547@newsletter', newsletterName: '⏤͟͞ू⃪ ፝͜⁞M͢ᴇɢ፝֟ᴜᴍ⃨ɪɴ⃜✰⃔࿐/ᥫᩣᎠ꯭I𝚫⃥꯭M꯭Ꭷ꯭Ꮑ꯭Ꭰ࠭⋆̟(◣_◢)凸', serverMessageId: -1, }, forwardingScore: 999, externalAdReply: { title: '⏤͟͞ू⃪ ፝͜⁞M͢ᴇɢ፝֟ᴜᴍ⃨ɪɴ⃜✰⃔࿐', body: dev, thumbnailUrl: perfil, sourceUrl: redes, mediaType: 1, renderLargerThumbnail: false,
 }, }, gifPlayback: true, gifAttribution: 0 }, { quoted: null })
 await m.react(emojis)    
 
