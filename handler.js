@@ -39,7 +39,7 @@ m = smsg(this, m) || m
 if (!m)
 return
 m.exp = 0
-m.moras = false
+m.cookies = false //se cambiará a Chocolates, después.
 try {
 let user = global.db.data.users[m.sender]
 //if (typeof user !== 'object')
