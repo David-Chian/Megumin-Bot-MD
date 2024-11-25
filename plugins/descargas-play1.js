@@ -24,7 +24,7 @@ let sentMessage = await conn.sendMessage(m.chat, {
         gifPlayback: false, 
         mimetype: isVideo ? "video/mp4" : "audio/mpeg" 
     }, { quoted: m });
-    await conn.sendMessage(m.chat, { delete: sentMessage.key });
+  // await conn.sendMessage(m.chat, { delete: sentMessage.key });
     } catch(error) {
     conn.reply(m.chat, `Hubo un error en la descarga.\nDetalles: ${error}.`, m, rcanal)
     return
