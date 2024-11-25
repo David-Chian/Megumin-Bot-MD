@@ -33,7 +33,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     }, { quoted: m });
 }
 
-handler.command = ['musica', 'video'];
+handler.command = ['musica', 'playvid'];
 handler.help = ['play', 'playvid'];
 handler.tags = ['dl'];
 handler.group = true
