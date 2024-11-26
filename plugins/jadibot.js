@@ -16,7 +16,7 @@ console.log(e)
 switch (true) {       
 case isCommand1:
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-let uniqid = `${who.split`@`[0]}`
+let uniqid = `${mentionedJid.split`@`[0]}`
 const path = `./${jadi}/${uniqid}`
 
 if (!await fs.existsSync(path)) {
