@@ -54,6 +54,7 @@
 "fluent-ffmpeg": "^2.1.2",
 "formdata-node": "^5.0.0",
 "human-readable": "^0.2.1",
+"didyoumean": "^1.2.2",
 "jsdom": "^20.0.1",
 "link-preview-js": "^3.0.0",
 "lodash": "^4.17.21",
