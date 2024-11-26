@@ -51,8 +51,8 @@ global.colab3 = 'Dino'
 
 //Ids channel
 global.idchannel = '120363350554513092@newsletter'
-global.canalIdM = ["120363350554513092@newsletter", "120363371018732371@newsletter", "120363370415738881@newsletter", "120363307382381547@newsletter", "120363263466636910@newsletter"]
-global.canalNombreM = ["Megumin - Test 💥", "Hutao - Test ❤️‍🔥", "Yaemori - Test 🍄", "Megumin - Channel 💥", "Yaemori - Channel 🍭"]
+global.canalIdM = ["120363307382381547@newsletter", ""]
+global.canalNombreM = ["⏤͟͞ू⃪ ፝͜⁞M͢ᴇɢ፝֟ᴜᴍ⃨ɪɴ⃜✰⃔࿐/ᥫᩣᎠ꯭I𝚫⃥꯭M꯭Ꭷ꯭Ꮑ꯭Ꭰ࠭⋆̟(◣_◢)凸", "Megumin - Test 💥"]
 global.channelRD = await getRandomChannel()
 
 //Reacciones De Comandos.!
