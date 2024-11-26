@@ -15,7 +15,7 @@ console.log(e)
 
 switch (true) {       
 case isCommand1:
-let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let mentionedJid = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 let uniqid = `${mentionedJid.split`@`[0]}`
 const path = `./${jadi}/${uniqid}`
 
