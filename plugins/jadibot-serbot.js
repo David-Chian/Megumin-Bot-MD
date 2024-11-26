@@ -200,7 +200,7 @@ wa.me/${m.sender.split`@`[0]}?text=.serbot%20--code
 `.trim()
 let ppch = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://qu.ax/QGAVS.jpg')
 // await sleep(3000)
-await parentw.sendMessage(global.idchannel, { text: chtxt, contextInfo: {
+await conn.sendMessage(global.idchannel, { text: chtxt, contextInfo: {
 externalAdReply: {
 title: "【 🔔 𝐍𝐎𝐓𝐈𝐅𝐈𝐂𝐀𝐂𝐈𝐎́𝐍 🔔 】",
 body: '🥳 ¡𝐔𝐧 𝐧𝐮𝐞𝐯𝐨 𝐬𝐮𝐛-𝐛𝐨𝐭 𝐚𝐜𝐭𝐢𝐯𝐨!',
