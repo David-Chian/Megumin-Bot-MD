@@ -4,7 +4,7 @@ import { levelup } from '../lib/canvas.js'
 let handler = m => m
 handler.before = async function (m, { conn, usedPrefix }) {
 
-// if (!db.data.chats[m.chat].autolevelup) return
+if (!db.data.chats[m.chat].autolevelup) return
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 let perfil = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://qu.ax/QGAVS.jpg')
 let mentionedJid = [who]
@@ -13,8 +13,8 @@ let userName = m.pushName || 'Anónimo'
 
 let user = global.db.data.users[m.sender]
 let chat = global.db.data.chats[m.chat]
-//if (!chat.autolevelup)
-//return !0
+if (!chat.autolevelup)
+return !0
 
 let level = user.level
 let before = user.level * 1
@@ -32,10 +32,10 @@ if (nextRole) {
 text22 += `\n\n> Próximo rango ${nextRole}, en el *nivel ${roles[nextRole]}*. ¡Sigue así!`
 }
 
-await conn.sendMessage(m.chat, { text: text22, contextInfo: {
+await conn.sendMessage(idchannel, { text: text22, contextInfo: {
 externalAdReply: {
-title: "【 🔔 𝗡𝗢𝗧𝗜𝗙𝗜𝗖𝗔𝗖𝗜𝗢́𝗡 🔔 】",
-body: '🥳 ¡Alguien obtuvo un nuevo Rango!',
+title: "【 🔔 𝐍𝐎𝐓𝐈𝐅𝐈𝐂𝐀𝐂𝐈𝐎́𝐍 🔔 】",
+body: '🥳 ¡𝙰𝚕𝚐𝚞𝚒𝚎𝚗 𝚘𝚋𝚝𝚞𝚟𝚘 𝚞𝚗 𝚗𝚞𝚎𝚟𝚘 𝚛𝚊𝚗𝚐𝚘!',
 thumbnailUrl: perfil,
 sourceUrl: redes,
 mediaType: 1,
@@ -73,10 +73,10 @@ let chtxt = `👤 *Usuario:* ${userName}\n🐢 *Nivel anterior:* ${before}\n⭐�
 - *${especialCant4 * (Math.floor(((level + 1) - 5) / 10) + 1)} 🪙 ${especial4}*
 
 > 👀 Siguiente recompensa en el *nivel ${level + 6}*` : ''}`.trim()
-await conn.sendMessage(m.chat, { text: chtxt, contextInfo: {
+await conn.sendMessage(idchannel, { text: chtxt, contextInfo: {
 externalAdReply: {
-title: "【 🔔 𝗡𝗢𝗧𝗜𝗙𝗜𝗖𝗔𝗖𝗜𝗢́𝗡 🔔 】",
-body: '🥳 ¡Un usuario obtiene un nuevo nivel!',
+title: "【 🔔 𝐍𝐎𝐓𝐈𝐅𝐈𝐂𝐀𝐂𝐈𝐎́𝐍 🔔 】",
+body: '🥳 ¡𝚄𝚗 𝚞𝚜𝚞𝚊𝚛𝚒𝚘 𝚘𝚋𝚝𝚒𝚎𝚗𝚎 𝚞𝚗 𝚗𝚞𝚎𝚟𝚘 𝚗𝚒𝚟𝚎𝚕!',
 thumbnailUrl: perfil, 
 sourceUrl: redes,
 mediaType: 1,
