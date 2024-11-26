@@ -49,6 +49,9 @@ global.colab1 = 'Miguelon'
 global.colab2 = 'Steven'
 global.colab3 = 'Dino'
 
+//Ids channel
+global.idchannel = '120363350554513092@newsletter'
+
 //Reacciones De Comandos.!
 global.rwait = '🕒'
 global.done = '✅'
