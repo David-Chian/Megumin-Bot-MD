@@ -119,6 +119,7 @@ global.gp1 = 'https://chat.whatsapp.com/J9gyFJLbhVIJXaUZlpo8Xt' //Grupo
 global.gp2 = 'https://chat.whatsapp.com/LJKcR8QBJgu37bVFWuhRVn'//
 global.comunidad1 = 'https://chat.whatsapp.com/GPEtINYPyIB6a6S55ZJcAO' //Comunidad Megumin
 global.channel = 'https://whatsapp.com/channel/0029VacDy0R6hENqnTKnG820' //Canal Oficial
+global.channel2 = 'https://whatsapp.com/channel/0029Vaxr2YgLCoWy2NS1Ab0a' //Canal test
 global.yt = 'https://youtube.com/@davidchian4957' //Canal De Youtube
 global.md = 'https://github.com/David-Chian/Megumin-Bot-MD' //Github Oficial
 global.correo = 'noisebot@gmail.com'
