@@ -281,17 +281,17 @@ ch = await conn.newsletterMetadata("invite", channelUrl).then(data => data.id).c
 try {
 const chtitle = await conn.newsletterMetadata(text.includes("@newsletter") ? "jid" : "invite", text.includes("@newsletter") ? ch : channelUrl).then(data => data.name).catch(e => null)
 await conn.newsletterUpdatePicture(ch, media)
-await conn.reply(m.chat, `🚩 El bot ha cambiando la imagen del canal *${chtitle}* con éxito.`, m, rcanal) 
-/*await conn.sendMessage(ch, { text: `🚩MeguminBot ha cambiando la imagen del canal *${chtitle}* con éxito.`, contextInfo: {
+// await conn.reply(m.chat, `🚩 El bot ha cambiando la imagen del canal *${chtitle}* con éxito.`, m, rcanal) 
+await conn.sendMessage(ch, { text: `🚩MeguminBot ha cambiando la imagen del canal *${chtitle}* con éxito.`, contextInfo: {
 externalAdReply: {
-title: "【 🔔 𝗡𝗢𝗧𝗜𝗙𝗜𝗖𝗔𝗖𝗜𝗢́𝗡 🔔 】",
-body: '✨️ Nueva imagen de perfil del canal.',
+title: "【 🔔 𝐍𝐎𝐓𝐈𝐅𝐈𝐂𝐀𝐂𝐈𝐎́𝐍 🔔 】",
+body: '✨️ 𝙽𝚞𝚎𝚟𝚊 𝚏𝚘𝚝𝚘 𝚙𝚊𝚛𝚊 𝚙𝚎𝚛𝚏𝚒𝚕 𝚍𝚎𝚕 𝚌𝚊𝚗𝚊𝚕.',
 thumbnailUrl: pp,
 sourceUrl: redes,
 mediaType: 1,
 showAdAttribution: false,
 renderLargerThumbnail: false
-}}}, { quoted: null })*/
+}}}, { quoted: null })
 } catch (e) {
 reportError(e)
 }
@@ -310,17 +310,17 @@ ch = await conn.newsletterMetadata("invite", channelUrl).then(data => data.id).c
 try {
 const chtitle = await conn.newsletterMetadata(text.includes("@newsletter") ? "jid" : "invite", text.includes("@newsletter") ? ch : channelUrl).then(data => data.name).catch(e => null)
 await conn.newsletterRemovePicture(ch)
-await conn.reply(m.chat, `🚩 El bot ha eliminado la imagen del canal *${chtitle}* con éxito.`, m, rcanal) 
-/*await conn.sendMessage(ch, { text: `🚩 MeguminBot ha eliminado la imagen del canal *${chtitle}* con éxito.`, contextInfo: {
+// await conn.reply(m.chat, `🚩 El bot ha eliminado la imagen del canal *${chtitle}* con éxito.`, m, rcanal) 
+await conn.sendMessage(ch, { text: `🚩 MeguminBot ha eliminado la imagen del canal *${chtitle}* con éxito.`, contextInfo: {
 externalAdReply: {
-title: "【 🔔 𝗡𝗢𝗧𝗜𝗙𝗜𝗖𝗔𝗖𝗜𝗢́𝗡 🔔 】",
-body: '✨️ Imagen eliminada.',
+title: "【 🔔 𝐍𝐎𝐓𝐈𝐅𝐈𝐂𝐀𝐂𝐈𝐎́𝐍 🔔 】",
+body: '✨️ 𝙵𝚘𝚝𝚘 𝚍𝚎 𝚙𝚎𝚛𝚏𝚕 𝚍𝚎𝚕 𝚌𝚊𝚗𝚊𝚕 𝚎𝚕𝚒𝚖𝚒𝚗𝚊𝚍𝚊.',
 thumbnailUrl: pp,
 sourceUrl: redes,
 mediaType: 1,
 showAdAttribution: false,
 renderLargerThumbnail: false
-}}}, { quoted: null })*/
+}}}, { quoted: null })
 } catch (e) {
 reportError(e)
 }
@@ -403,17 +403,17 @@ ch = await conn.newsletterMetadata("invite", ch).then(data => data.id).catch(e =
 try {
 const chtitle = await conn.newsletterMetadata(ch.includes("@newsletter") ? "jid" : "invite", ch.includes("@newsletter") ? ch : channelUrl).then(data => data.name).catch(e => null)
 await conn.newsletterReactionMode(ch, mode)
-await conn.reply(m.chat, `🚩 El bot ha establecido el modo de reacciones como \`"${mode}"\` para el canal *${chtitle}*`, m,  rcanal)
-/*await conn.sendMessage(ch, { text: `🚩 MeguminBot ha establecido el modo de reacciones como \`"${mode}"\` para el canal *${chtitle}*`, contextInfo: {
+// await conn.reply(m.chat, `🚩 El bot ha establecido el modo de reacciones como \`"${mode}"\` para el canal *${chtitle}*`, m,  rcanal)
+await conn.sendMessage(ch, { text: `🚩 MeguminBot ha establecido el modo de reacciones como \`"${mode}"\` para el canal *${chtitle}*`, contextInfo: {
 externalAdReply: {
-title: "【 🔔 𝗡𝗢𝗧𝗜𝗙𝗜𝗖𝗔𝗖𝗜𝗢́𝗡 🔔 】",
-body: '✨️ Ajustes en reacciones.',
+title: "【 🔔 𝐍𝐎𝐓𝐈𝐅𝐈𝐂𝐀𝐂𝐈𝐎́𝐍 🔔 】",
+body: '✨️ 𝙰𝚓𝚞𝚜𝚝𝚎𝚜 𝚎𝚗 𝚛𝚎𝚊𝚌𝚌𝚒𝚘𝚗𝚎𝚜.',
 thumbnailUrl: pp,
 sourceUrl: redes,
 mediaType: 1,
 showAdAttribution: false,
 renderLargerThumbnail: false
-}}}, { quoted: null })*/
+}}}, { quoted: null })
 } catch (e) {
 reportError(e)
 }
@@ -439,17 +439,17 @@ ch = await conn.newsletterMetadata("invite", channelUrl).then(data => data.id).c
 try {
 const chtitle = await conn.newsletterMetadata(text.includes("@newsletter") ? "jid" : "invite", text.includes("@newsletter") ? ch : channelUrl).then(data => data.name).catch(e => null)
 await conn.newsletterUpdateName(ch, name)
-await conn.reply(m.chat, `🚩 El bot ha cambiado el nombre del canal *${name}*\n\n*Anterior nombre:* ${chtitle}\n*Nuevo nombre:* ${name}`, m, rcanal) 
-/*await conn.sendMessage(ch, { text: `🚩 MeguminBot ha cambiado el nombre del canal *${name}*\n\n*Anterior nombre:* ${chtitle}\n*Nuevo nombre:* ${name}`, contextInfo: {
+// await conn.reply(m.chat, `🚩 El bot ha cambiado el nombre del canal *${name}*\n\n*Anterior nombre:* ${chtitle}\n*Nuevo nombre:* ${name}`, m, rcanal) 
+await conn.sendMessage(ch, { text: `🚩 MeguminBot ha cambiado el nombre del canal *${name}*\n\n*Anterior nombre:* ${chtitle}\n*Nuevo nombre:* ${name}`, contextInfo: {
 externalAdReply: {
-title: "【 🔔 𝗡𝗢𝗧𝗜𝗙𝗜𝗖𝗔𝗖𝗜𝗢́𝗡 🔔 】",
-body: '✨️ Un nuevo nombre para el canal.',
+title: "【 🔔 𝐍𝐎𝐓𝐈𝐅𝐈𝐂𝐀𝐂𝐈𝐎́𝐍 🔔 】",
+body: '✨️ 𝚄𝚗 𝚗𝚞𝚎𝚟𝚘 𝚗𝚘𝚖𝚋𝚛𝚎 𝚙𝚊𝚛𝚊 𝚎𝚕 𝚌𝚊𝚗𝚊𝚕.',
 thumbnailUrl: pp,
 sourceUrl: redes,
 mediaType: 1,
 showAdAttribution: false,
 renderLargerThumbnail: false
-}}}, { quoted: null })*/
+}}}, { quoted: null })
 } catch (e) {
 reportError(e)
 }
@@ -474,17 +474,17 @@ ch = await conn.newsletterMetadata("invite", channelUrl).then(data => data.id).c
 try {
 const chtitle = await conn.newsletterMetadata(text.includes("@newsletter") ? "jid" : "invite", text.includes("@newsletter") ? ch : channelUrl).then(data => data.name).catch(e => null)
 await conn.newsletterUpdateDescription(ch, description)
-await conn.reply(m.chat, `🚩 El bot ha modificado la descripción del canal *${chtitle}*`, m, rcanal) 
-/*await conn.sendMessage(ch, { text: `🚩 MeguminBot ha modificado la descripción del canal *${chtitle}*`, contextInfo: {
+// await conn.reply(m.chat, `🚩 El bot ha modificado la descripción del canal *${chtitle}*`, m, rcanal) 
+await conn.sendMessage(ch, { text: `🚩 MeguminBot ha modificado la descripción del canal *${chtitle}*`, contextInfo: {
 externalAdReply: {
-title: "【 🔔 𝗡𝗢𝗧𝗜𝗙𝗜𝗖𝗔𝗖𝗜𝗢́𝗡 🔔 】",
-body: '✨️ Una nueva descripción al canal.',
+title: "【 🔔 𝐍𝐎𝐓𝐈𝐅𝐈𝐂𝐀𝐂𝐈𝐎́𝐍 🔔 】",
+body: '✨️ 𝚄𝚗𝚊 𝚗𝚞𝚎𝚟𝚊 𝚍𝚎𝚜𝚌𝚛𝚒𝚙𝚌𝚒𝚘́𝚗 𝚊𝚕 𝚌𝚊𝚗𝚊𝚕.',
 thumbnailUrl: pp,
 sourceUrl: redes,
 mediaType: 1,
 showAdAttribution: false,
 renderLargerThumbnail: false
-}}}, { quoted: null })*/
+}}}, { quoted: null })
 } catch (e) {
 reportError(e)
 }
