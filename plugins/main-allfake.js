@@ -51,7 +51,7 @@ global.colab3 = 'Dino'
 
 //Ids channel
 global.idchannel = '120363350554513092@newsletter'
-global.canalIdM = ["120363307382381547@newsletter", ""]
+global.canalIdM = ["120363307382381547@newsletter", "120363358338732714@newsletter"]
 global.canalNombreM = ["⏤͟͞ू⃪ ፝͜⁞M͢ᴇɢ፝֟ᴜᴍ⃨ɪɴ⃜✰⃔࿐/ᥫᩣᎠ꯭I𝚫⃥꯭M꯭Ꭷ꯭Ꮑ꯭Ꭰ࠭⋆̟(◣_◢)凸", "Megumin - Test 💥"]
 global.channelRD = await getRandomChannel()
 
