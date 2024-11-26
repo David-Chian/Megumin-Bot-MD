@@ -10,7 +10,6 @@ const __dirname = dirname(__filename);
 
 let suggestionQueue = {};
 const idgroup = "120363351999685409@g.us";
-const id = "120363025577001986@g.us"; //Aquí la id del grupo/comunidad o Canal ("Si detecta channels", si no no te funcionará)
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
     let who = m.mentionedJid && m.mentionedJid.length > 0 ? m.mentionedJid[0] : (m.fromMe ? conn.user.jid : m.sender);
@@ -145,7 +144,7 @@ showAdAttribution: false,
 renderLargerThumbnail: false
 }}};
 
-await conn.sendMessage(id, { text: approvedText, contextInfo: options.contextInfo }, { quoted: null });
+await conn.sendMessage(idchannel, { text: approvedText, contextInfo: options.contextInfo }, { quoted: null });
 
 await conn.reply(sender, `🍄 Solicitud aceptada, Grupo:\n${gp4}`);
 delete suggestionQueue[suggestionId];
