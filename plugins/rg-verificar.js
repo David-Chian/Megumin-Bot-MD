@@ -38,8 +38,25 @@ https://whatsapp.com/channel/0029Vaxr2YgLCoWy2NS1Ab0a
 •┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄•
 ${packname}`
 await conn.sendMini(m.chat, '⊱『✅𝆺𝅥 𝗥𝗘𝗚𝗜𝗦𝗧𝗥𝗔𝗗𝗢(𝗔) 𝆹𝅥✅』⊰', textbot, regbot, imagen1, imagen1, channel, m)
-//await m.reply(`${sn}`)        
+//await m.reply(`${sn}`)   
+  
+let chtxt = `
+👤 *𝚄𝚜𝚎𝚛* » ${m.pushName || 'Anónimo'}
+🌎 *𝙿𝚊𝚒𝚜* » ${mundo}
+🗂 *𝚅𝚎𝚛𝚒𝚏𝚒𝚌𝚊𝚌𝚒𝚘́𝚗* » ${user.name}
+⭐️ *𝙴𝚍𝚊𝚍* » ${user.age} años
+📆 *𝙵𝚎𝚌𝚑𝚊* » ${moment.tz('America/Bogota').format('DD/MM/YY')}
+☁️ *𝙽𝚞𝚖𝚎𝚛𝚘 𝚍𝚎 𝚛𝚎𝚐𝚒𝚜𝚝𝚛𝚘* »
+⤷ ${sn}
 
+🎁 𝐑𝐞𝐜𝐨𝐦𝐩𝐞𝐧𝐬𝐚𝐬
+23 • 𝙼𝚘𝚗𝚎𝚢 💰
+45 • 𝙴𝚡𝚙 💫
+60 • galletas 🍪 
+
+> ¡Gracias por registrarte en nuestro bot: Hutao Proyect! Disfruta tu estadía y déjate sorprender por todo lo que tenemos para ofrecer. ✨🚀
+`.trim()
+  
 await conn.sendMessage(global.idchannel, { text: chtxt, contextInfo: {
 externalAdReply: {
 title: "【 🔔 𝐍𝐎𝐓𝐈𝐅𝐈𝐂𝐀𝐂𝐈𝐎́𝐍 🔔 】",
