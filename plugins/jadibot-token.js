@@ -7,7 +7,7 @@ if (fs.existsSync(`./${jadi}/` + user + '/creds.json')) {
 let token = Buffer.from(fs.readFileSync(`./${jadi}/` + user + '/creds.json'), 'utf-8').toString('base64')    
 
 await conn.reply(m.chat, `🍄 *El token te permite iniciar sesion en otros bots, recomendamos no compartirlo con nadie*\n\nTu token es:`, m, rcanal)
-await conn.reply(m.sender, token, m, fake)
+await conn.reply(m.chat, token, m, fake)
 } else {
 await conn.reply(m.chat, `🚩 *No tienes ningun token activo, usa !jadibot para crear uno*`, m, fake)
 }
