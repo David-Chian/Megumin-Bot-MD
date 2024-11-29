@@ -1,4 +1,4 @@
-/*import { canLevelUp, xpRange } from '../lib/levelling.js'
+import { canLevelUp, xpRange } from '../lib/levelling.js'
 import { levelup } from '../lib/canvas.js'
 
 let handler = m => m
@@ -13,8 +13,8 @@ let userName = m.pushName || 'Anónimo'
 
 let user = global.db.data.users[m.sender]
 let chat = global.db.data.chats[m.chat]
-if (!chat.autolevelup)
-return !0
+//if (!chat.autolevelup)
+//return !0
 
 let level = user.level
 let before = user.level * 1
@@ -309,7 +309,7 @@ user[especial4] += especialCant4 * 10
 
 }
 
-}}                
+}}    
 export default handler
 
 global.roles = {
