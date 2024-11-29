@@ -32,6 +32,7 @@ if (age < 5) throw '*『🍼』Ven aquí, te adoptare!!*'
 user.name = name.trim()
 user.age = age
 user.descripcion = bio
+user.persona = age >= 18? '(Persona adulta)' : '(Persona joven'
 user.regTime = + new Date
 user.registered = true
 global.db.data.users[m.sender].money += 600
@@ -62,10 +63,9 @@ let chtxt = `
 👤 *𝚄𝚜𝚎𝚛* » ${m.pushName || 'Anónimo'}
 🌎 *𝙿𝚊𝚒𝚜* » ${mundo}
 🗂 *𝚅𝚎𝚛𝚒𝚏𝚒𝚌𝚊𝚌𝚒𝚘́𝚗* » ${user.name}
-⭐️ *𝙴𝚍𝚊𝚍* » ${user.age} años
+⭐️ *𝙴𝚍𝚊𝚍* » ${user.age} años ${user.persona}
 👀 *Descripción* » ${user.descripcion} 
 ⏳ *Modificación de descripción* » ${fechaBio}
-🌹 *Bot* » ${packname}
 📆 *𝙵𝚎𝚌𝚑𝚊* » ${moment.tz('America/Bogota').format('DD/MM/YY')}
 ☁️ *𝙽𝚞𝚖𝚎𝚛𝚘 𝚍𝚎 𝚛𝚎𝚐𝚒𝚜𝚝𝚛𝚘* »
 ⤷ ${sn}
