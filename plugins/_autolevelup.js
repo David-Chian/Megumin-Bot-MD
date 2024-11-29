@@ -451,4 +451,4 @@ global.roles = {
 '🔥 *Héroe(a) Inmortal II*': 4000,
 '🔥 *Héroe(a) Inmortal I*': 5000,
 '👑🌌 *Eterna Deidad del Multiverso* ⚡': 10000,
-}*/
+}
