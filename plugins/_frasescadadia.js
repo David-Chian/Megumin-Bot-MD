@@ -1,5 +1,7 @@
 // Powered By >> OfcKing
 
+import fs from "fs";
+
 let frases = [];
 
 fs.readFile('./src/FRASE/frases.json', 'utf8', (err, data) => {
