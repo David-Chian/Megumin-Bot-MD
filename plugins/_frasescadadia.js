@@ -3,6 +3,7 @@
 import fs from "fs";
 
 let frases = [];
+let frasesEnviadas = [];
 
 fs.readFile('./src/FRASE/frases.json', 'utf8', (err, data) => {
   if (err) {
@@ -13,14 +14,34 @@ fs.readFile('./src/FRASE/frases.json', 'utf8', (err, data) => {
   frases = jsonData.frasesMotivadoras;
 });
 
-function enviarFrase() {
+function enviarFrase(conn, idCreator) {
   if (frases.length === 0) {
-    conn.reply(idchannel, '👏 No hay frases disponibles, por enviar.', null, fake);
+    conn.sendMessage(idCreator, { text: "No hay más frases disponibles. Por favor, agrega más frases motivadoras." });
     return;
   }
-  const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
-  conn.reply(idchannel, `${fraseAleatoria}`, null, fake);
+
+  let fraseAleatoriaIndex;
+  do {
+    fraseAleatoriaIndex = Math.floor(Math.random() * frases.length);
+  } while (frasesEnviadas.includes(fraseAleatoriaIndex));
+
+  frasesEnviadas.push(fraseAleatoriaIndex);
+
+  if (frasesEnviadas.length === frases.length) {
+    frasesEnviadas = []; // Reiniciar las frases enviadas cuando todas hayan sido usadas
+  }
+
+  const fraseAleatoria = frases[fraseAleatoriaIndex];
+  conn.sendMessage(idchannel, { text: `👏 ${fraseAleatoria}` });
 }
 
+const conn = {
+  sendMessage: (chatId, message) => {
+   // console.log(`Mensaje enviado a ${chatId}: ${message.text}`);
+  }
+};
+
+const idCreator = '573012482597@s.whatsapp.net';
+
 // Enviar frase cada minuto (60000 ms)
-setInterval(enviarFrase, 60000);
+setInterval(() => enviarFrase(conn, idCreator), 60000);
