@@ -1,21 +1,22 @@
 // Powered By >> OfcKing
 
 const frases = [
-  "♻️♻️♻️",
-  "🙌🙌🙌"
+  "Hola",
+  "78"
 ];
 
-let ultimaFrase = '';
+let ultimaFraseIndex = -1;
 
 function enviarFrase() {
-  let fraseAleatoria;
+  let nuevaFraseIndex;
   do {
-    fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
-  } while (fraseAleatoria === ultimaFrase);
+    nuevaFraseIndex = Math.floor(Math.random() * frases.length);
+  } while (nuevaFraseIndex === ultimaFraseIndex);
 
-  ultimaFrase = fraseAleatoria;
-    conn.reply(idchannel, `🚩 ${fraseAleatoria}`, null, fake);
+  ultimaFraseIndex = nuevaFraseIndex;
+  const fraseAleatoria = frases[nuevaFraseIndex];
+  console.log(`🚩 ${fraseAleatoria}`); // Simula el envío del mensaje en la consola
 }
 
-// Enviar frase cada minuto
+// Enviar frase cada minuto (60000 ms)
 setInterval(enviarFrase, 60000);
