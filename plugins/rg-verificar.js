@@ -66,6 +66,7 @@ let chtxt = `
 ⭐️ *𝙴𝚍𝚊𝚍* » ${user.age} años
 👀 *Descripción* » ${user.descripcion} 
 ⏳ *Modificación de descripción* » ${fechaBio}
+🍄 *Bot* » 𝙈𝙚𝙜𝙪𝙢𝙞𝙣𝘽𝙤𝙩-𝙈𝘿 💥❤️‍🔥
 📆 *𝙵𝚎𝚌𝚑𝚊* » ${moment.tz('America/Bogota').format('DD/MM/YY')}
 ☁️ *𝙽𝚞𝚖𝚎𝚛𝚘 𝚍𝚎 𝚛𝚎𝚐𝚒𝚜𝚝𝚛𝚘* »
 ⤷ ${sn}
