@@ -27,9 +27,9 @@ let nextRole = Object.entries(roles).sort((a, b) => a[1] - b[1]) .find(([, minLe
 //if (user.role != currentRole && level >= 1) {
 if (level >= 1) {
 user.role = currentRole
-let text22 = `✨ ¡Felicidades *${userName}*, por tu nuevo rango!\n\n\`Nuevo Rango:\`\n${currentRole}`
+let text22 = `✨ ¡𝙵𝚎𝚕𝚒𝚌𝚒𝚍𝚊𝚍𝚎𝚜 *${userName}*, 𝚙𝚘𝚛 𝚝𝚞 𝚗𝚞𝚎𝚟𝚘 𝚛𝚊𝚗𝚐𝚘!\n\n\`𝙽𝚞𝚎𝚟𝚘 𝚁𝚊𝚗𝚐𝚘:\`\n${currentRole}`
 if (nextRole) {
-text22 += `\n\n> Próximo rango ${nextRole}, en el *nivel ${roles[nextRole]}*. ¡Sigue así!`
+text22 += `\n\n> 𝙿𝚛𝚘́𝚡𝚒𝚖𝚘 𝚛𝚊𝚗𝚐𝚘 ${nextRole}, 𝚎𝚗 𝚎𝚕 *𝚗𝚒𝚟𝚎𝚕 ${roles[nextRole]}*. ¡𝚂𝚒𝚐𝚞𝚎 𝚊𝚜𝚒!`
 }
 
 await conn.sendMessage(idchannel, { text: text22, contextInfo: {
@@ -65,7 +65,7 @@ let normalCant2 = [1, 3, 2, 2, 4, 4, 2, 2, 4, 4, 5, 5, 1].getRandom()
 let normalCant3 = [1, 3, 3, 3, 4, 4, 2, 2, 4, 4, 4, 4, 1].getRandom() 
 
 if (level >= 1) {
-let chtxt = `👤 *Usuario:* ${userName}\n🐢 *Nivel anterior:* ${before}\n⭐️ *Nivel actual:* ${level + 1}\n👾 *Rango:* ${user.role}${(level + 1) % 5 === 0 ? `\n\n💰 *Recompensa por alacanzar el nivel ${level + 1}:*
+let chtxt = `👤 *𝚄𝚜𝚞𝚊𝚛𝚒𝚘:* ${userName}\n🐢 *𝙽𝚒𝚟𝚎𝚕 𝚊𝚗𝚝𝚎𝚛𝚒𝚘𝚛:* ${before}\n⭐️ *𝙽𝚒𝚟𝚎𝚕 𝚊𝚌𝚝𝚞𝚊𝚕:* ${level + 1}\n👾 *𝚁𝚊𝚗𝚐𝚘:* ${user.role}\n🍄 *𝙱𝚘𝚝* » 𝙈𝙚𝙜𝙪𝙢𝙞𝙣𝘽𝙤𝙩-𝙈𝘿 💥❤️‍🔥${(level + 1) % 5 === 0 ? `\n\n💰 *𝚁𝚎𝚌𝚘𝚖𝚙𝚎𝚗𝚜𝚊 𝚙𝚘𝚛 𝚊𝚕𝚊𝚌𝚊𝚗𝚣𝚊𝚛 𝚎𝚕 𝚗𝚒𝚟𝚎𝚕 ${level + 1}:*
 🎁 *Bono:* \`X${Math.floor(((level + 1) - 5) / 10) + 1}\`
 - *${especialCant * (Math.floor(((level + 1) - 5) / 10) + 1)} 🍪 ${especial}*
 - *${especialCant2 * (Math.floor(((level + 1) - 5) / 10) + 1)} ✨️ ${especial2}*
