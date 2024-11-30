@@ -10,7 +10,7 @@ El codigo de este archivo fue parchado por:
 - ReyEndymion >> https://github.com/ReyEndymion
 - BrunoSobrino >> https://github.com/BrunoSobrino
 
-Contenido adaptado por:
+Adaptación y edición hecha por:
 - David-Chian >> https://github.com/David-Chian
 - OfcKing >> https://github.com/OfcKing
 */
