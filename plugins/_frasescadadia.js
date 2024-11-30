@@ -1,10 +1,5 @@
 // Powered By >> OfcKing
 
-// import { createRequire } from 'module';
-// const require = createRequire(import.meta.url);
-// import { WAConnection } from '@adiwajshing/baileys';
-const conn = new WAConnection();
-
 const frases = [
   "¡Sigue adelante! Cada paso cuenta.",
   "¡Eres increíble! No te detengas.",
@@ -13,9 +8,17 @@ const frases = [
   "¡Tu esfuerzo vale la pena! Sigue así."
 ];
 
-function enviarFrase() {
+function enviarFrase(conn) {
   const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
-  conn.sendMessage(idchannel, `🚩 ${fraseAleatoria}`, MessageType.text);
+  conn.sendMessage(idchannel, { text: `🚩 ${fraseAleatoria}` });
 }
 
-setInterval(enviarFrase, 60000);  // 60000 ms = 1 minuto
+// Simulación de la conexión del bot
+const conn = {
+  sendMessage: (chatId, message) => {
+    console.log(`Mensaje enviado a ${chatId}: ${message.text}`);
+  }
+};
+
+// Enviar frase cada minuto (60000 ms)
+setInterval(() => enviarFrase(conn), 60000);
