@@ -1,16 +1,16 @@
-/*⚠ PROHIBIDO EDITAR ⚠
+/* ⚠️ PROHIBIDO EDITAR ⚠️
 
-El codigo de este archivo esta totalmente hecho por:
+Este archivo ha sido desarrollado por:
 - Aiden_NotLogic >> https://github.com/ferhacks
 
-El codigo de este archivo fue creado para:
+Creado originalmente para:
 - Megumin-Bot-MD >> https://github.com/David-Chian/Megumin-Bot-MD
 
-El codigo de este archivo fue parchado por:
+Parchado y optimizado por:
 - ReyEndymion >> https://github.com/ReyEndymion
-- BrunoSobrino >> https://github.com/BrunoSobrino
+- Bruno://github.com/BrunoSobrino
 
-Adaptación y edición hecha por:
+Adaptación y edición realizadas por:
 - David-Chian >> https://github.com/David-Chian
 - OfcKing >> https://github.com/OfcKing
 */
