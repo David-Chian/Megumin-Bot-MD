@@ -15,7 +15,7 @@ function enviarFrase() {
 
   ultimaFraseIndex = nuevaFraseIndex;
   const fraseAleatoria = frases[nuevaFraseIndex];
-  console.log(`🚩 ${fraseAleatoria}`); // Simula el envío del mensaje en la consola
+    conn.reply(idchannel, `🚩 ${fraseAleatoria}`, null, fake);
 }
 
 // Enviar frase cada minuto (60000 ms)
