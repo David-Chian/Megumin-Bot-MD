@@ -20,6 +20,10 @@ function enviarFrase(conn, idCreator) {
     return;
   }
 
+  if (frasesEnviadas.length === frases.length) {
+    frasesEnviadas = []; // Reiniciar las frases enviadas cuando todas hayan sido usadas
+  }
+
   let fraseAleatoriaIndex;
   do {
     fraseAleatoriaIndex = Math.floor(Math.random() * frases.length);
@@ -27,12 +31,8 @@ function enviarFrase(conn, idCreator) {
 
   frasesEnviadas.push(fraseAleatoriaIndex);
 
-  if (frasesEnviadas.length === frases.length) {
-    frasesEnviadas = []; // Reiniciar las frases enviadas cuando todas hayan sido usadas
-  }
-
   const fraseAleatoria = frases[fraseAleatoriaIndex];
-  conn.sendMessage(idchannel, { text: `👏 ${fraseAleatoria}` });
+    conn.sendMessage(idCreator, { text: `👏 ${fraseAleatoria}` });
 }
 
 const conn = {
