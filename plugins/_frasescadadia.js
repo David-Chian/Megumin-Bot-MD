@@ -13,6 +13,6 @@ export function before(m, { conn }) {
 
   // Enviar la frase después de 1 minuto
   setTimeout(() => {
-    conn.reply(channelid, `🚩 ${fraseAleatoria}`, null, fake)
+    conn.reply(idchannel, `🚩 ${fraseAleatoria}`, null, fake)
   }, 60000)  // 60000 ms = 1 minuto
 }
