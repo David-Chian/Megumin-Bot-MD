@@ -37,7 +37,7 @@ function enviarFrase(conn, idCreator) {
 
 const conn = {
   sendMessage: (chatId, message) => {
-   // console.log(`Mensaje enviado a ${chatId}: ${message.text}`);
+    console.log(`Mensaje enviado a ${chatId}: ${message.text}`);
   }
 };
 
