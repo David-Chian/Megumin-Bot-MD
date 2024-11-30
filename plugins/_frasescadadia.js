@@ -5,17 +5,10 @@ const frases = [
   "Prueba2"
 ];
 
-function enviarFrase(conn) {
+function enviarFrase() {
   const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
-  conn.sendMessage(idchannel, { text: `🚩 ${fraseAleatoria}` });
+  conn.reply(idchannel, `🚩 ${fraseAleatoria}`, null, fake);
 }
 
-// Simulación de la conexión del bot
-const conn = {
-  sendMessage: (chatId, message) => {
-    console.log(`Mensaje enviado a ${chatId}: ${message.text}`);
-  }
-};
-
 // Enviar frase cada minuto (60000 ms)
-setInterval(() => enviarFrase(conn), 60000);
+setInterval(enviarFrase, 60000);
