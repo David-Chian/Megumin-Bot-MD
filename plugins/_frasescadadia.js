@@ -19,13 +19,13 @@ function enviarFrase() {
     conn.reply(idchannel, '🍄 No hay frases disponibles para enviar', null, fake);
     return;
   }
- 
+
   if (frasesEnviadas.length === frases.length) {
     conn.reply(idchannel, '✨️ Todas las frases ya fueron enviadas, reiniciaremos la raíz para que se vuelven a enviar las frases antiguas!', null, fake);
       frasesEnviadas = []; 
     return;
   }
- 
+
   let fraseAleatoriaIndex;
   do {
     fraseAleatoriaIndex = Math.floor(Math.random() * frases.length);
@@ -37,5 +37,5 @@ function enviarFrase() {
   conn.reply(idchannel, `${fraseAleatoria}`, null, fake);
 }
 
-// Enviar frase cada 1 minuto
-setInterval(enviarFrase, 60000);
+// Enviar frase cada 1 dia
+setInterval(enviarFrase, 86400000);
