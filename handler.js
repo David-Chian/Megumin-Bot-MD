@@ -144,6 +144,7 @@ global.db.data.chats[m.chat] = {}
 if (chat) {
 if (!('isBanned' in chat)) chat.isBanned = false         
 if (!('welcome' in chat)) chat.welcome = true 
+if (!('frases' in chat)) chat.frases = false
 if (!('autoresponder' in chat)) chat.autoresponder = false          
 if (!('detect' in chat)) chat.detect = true               
 if (!('sWelcome' in chat)) chat.sWelcome = ''          
@@ -185,6 +186,7 @@ if (!isNumber(chat.expired)) chat.expired = 0
 global.db.data.chats[m.chat] = {
 isBanned: false,
 welcome: true,
+frases: false,
 detect: true,
 sWelcome: '',
 sBye: '',
