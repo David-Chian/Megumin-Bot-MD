@@ -3,7 +3,7 @@ let handler = async (m, { conn, usedPrefix, isRowner}) => {
 let _muptime
 let totalreg = Object.keys(global.db.data.users).length
 let totalchats = Object.keys(global.db.data.chats).length
-let pp = [`${imagen1}`, `${imagen2}`, `${imagen3}`].getRandom()
+let pp = "https://qu.ax/cPxDh.jpg"
 if (process.send) {
 process.send('uptime')
 _muptime = await new Promise(resolve => {
