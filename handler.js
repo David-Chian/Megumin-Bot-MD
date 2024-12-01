@@ -144,7 +144,6 @@ global.db.data.chats[m.chat] = {}
 if (chat) {
 if (!('isBanned' in chat)) chat.isBanned = false         
 if (!('welcome' in chat)) chat.welcome = true 
-if (!('frases' in chat)) chat.frases = false
 if (!('autoresponder' in chat)) chat.autoresponder = false          
 if (!('detect' in chat)) chat.detect = true               
 if (!('sWelcome' in chat)) chat.sWelcome = ''          
@@ -186,7 +185,6 @@ if (!isNumber(chat.expired)) chat.expired = 0
 global.db.data.chats[m.chat] = {
 isBanned: false,
 welcome: true,
-frases: false,
 detect: true,
 sWelcome: '',
 sBye: '',
@@ -234,6 +232,7 @@ if (!('autoread2' in settings)) settings.autoread2 = false
 if (!('restrict' in settings)) settings.restrict = false
 if (!('antiPrivate' in settings)) settings.antiPrivate = false
 if (!('antiCall' in settings)) settings.antiCall = true
+if (!('frases' in chat)) chat.frases = false
 if (!('antiSpam' in settings)) settings.antiSpam = true
 if (!('modoia' in settings)) settings.modoia = false
 if (!('jadibotmd' in settings)) settings.jadibotmd = false  
@@ -243,6 +242,7 @@ self: false,
 autoread: false,
 autoread2: false,
 restrict: false,
+frases: false,
 antiPrivate: false,
 antiCall: true,
 antiSpam: true,
