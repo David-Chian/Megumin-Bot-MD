@@ -22,7 +22,9 @@ function enviarFrase() {
 
   if (frasesEnviadas.length === frases.length) {
     conn.reply(idchannel, '👏 Todas las frases han sido enviadas', null, fake);
-  //  frasesEnviadas = []; // Reiniciar las frases enviadas
+      setTimeout(() => {
+      frasesEnviadas = []; // Reiniciar las frases enviadas después de 2 minutos
+    }, 120009); // 120000 ms = 2 minitos
     return;
   }
 
