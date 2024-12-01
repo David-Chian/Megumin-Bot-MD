@@ -37,5 +37,5 @@ function enviarFrase() {
   conn.reply(idchannel, `${fraseAleatoria}`, null, fake);
 }
 
-// Enviar frase cada 1 minuto
-setInterval(enviarFrase, 60000);
+// Enviar frase cada 1 dia
+setInterval(enviarFrase, 86400000);
