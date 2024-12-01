@@ -24,7 +24,7 @@ function enviarFrase() {
     conn.reply(idchannel, '👏 Todas las frases han sido enviadas', null, fake);
       setTimeout(() => {
       frasesEnviadas = []; // Reiniciar las frases enviadas después de 2 minutos
-    }, 120009); // 120000 ms = 2 minitos
+    }, 120000); // 120000 ms = 2 minitos
     return;
   }
 
