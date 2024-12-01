@@ -4,7 +4,7 @@ import fs from "fs";
 
 let frases = [];
 let frasesEnviadas = [];
-let chat = global.db.data.chats[m.chat];
+let chat = global.db.data.settings[conn.user.jid];
 
 if (chat.frases) { 
 fs.readFile('./src/FRASE/frases.json', 'utf8', (err, data) => {
