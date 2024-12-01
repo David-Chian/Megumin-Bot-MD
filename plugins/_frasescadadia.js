@@ -16,15 +16,13 @@ fs.readFile('./src/FRASE/frases.json', 'utf8', (err, data) => {
 
 function enviarFrase() {
   if (frases.length === 0) {
-    conn.reply(idchannel, '👏 No hay frases disponibles, por enviar.', null, fake);
+    conn.reply(idchannel, '🍄 No hay frases disponibles para enviar', null, fake);
     return;
   }
 
   if (frasesEnviadas.length === frases.length) {
-    conn.reply(idchannel, '👏 Todas las frases han sido enviadas', null, fake);
-      setTimeout(() => {
-      frasesEnviadas = []; // Reiniciar las frases enviadas después de 2 minutos
-    }, 120000); // 120000 ms = 2 minitos
+    conn.reply(idchannel, '✨️ Todas las frases ya fueron enviadas, reiniciaremos la raíz para que se vuelven a enviar las frases antiguas!', null, fake);
+      frasesEnviadas = []; 
     return;
   }
 
@@ -39,5 +37,5 @@ function enviarFrase() {
   conn.reply(idchannel, `${fraseAleatoria}`, null, fake);
 }
 
-// Enviar frase cada minuto (60000 ms)
+// Enviar frase cada 1 minuto
 setInterval(enviarFrase, 60000);
