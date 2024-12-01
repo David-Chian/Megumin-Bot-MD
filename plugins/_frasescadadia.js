@@ -3,6 +3,7 @@
 import fs from "fs";
 
 let frases = [];
+let frasesEnviadas = [];
 
 fs.readFile('./src/FRASE/frases.json', 'utf8', (err, data) => {
   if (err) {
@@ -18,7 +19,21 @@ function enviarFrase() {
     conn.reply(idchannel, '👏 No hay frases disponibles, por enviar.', null, fake);
     return;
   }
-  const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
+
+  if (frasesEnviadas.length === frases.length) {
+    conn.reply(idchannel, '👏 Todas las frases han sido enviadas', null, fake);
+    frasesEnviadas = []; // Reiniciar las frases enviadas
+    return;
+  }
+
+  let fraseAleatoriaIndex;
+  do {
+    fraseAleatoriaIndex = Math.floor(Math.random() * frases.length);
+  } while (frasesEnviadas.includes(fraseAleatoriaIndex));
+
+  frasesEnviadas.push(fraseAleatoriaIndex);
+
+  const fraseAleatoria = frases[fraseAleatoriaIndex];
   conn.reply(idchannel, `${fraseAleatoria}`, null, fake);
 }
 
