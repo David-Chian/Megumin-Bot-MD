@@ -4,7 +4,9 @@ import fs from "fs";
 
 let frases = [];
 let frasesEnviadas = [];
+let chat = global.db.data.chats[m.chat];
 
+if (chat.frases) { 
 fs.readFile('./src/FRASE/frases.json', 'utf8', (err, data) => {
   if (err) {
     console.error('Error al leer el archivo JSON:', err);
@@ -35,7 +37,7 @@ function enviarFrase() {
 
   const fraseAleatoria = frases[fraseAleatoriaIndex];
   conn.reply(idchannel, `${fraseAleatoria}`, null, fake);
-}
+}}
 
-// Enviar frase cada 1 dia
-setInterval(enviarFrase, 86400000);
+// Enviar frase cada 1 minuto
+setInterval(enviarFrase, 60000);
