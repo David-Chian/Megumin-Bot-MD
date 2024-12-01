@@ -22,7 +22,7 @@ function enviarFrase() {
 
   if (frasesEnviadas.length === frases.length) {
     conn.reply(idchannel, '👏 Todas las frases han sido enviadas', null, fake);
-    frasesEnviadas = []; // Reiniciar las frases enviadas
+  //  frasesEnviadas = []; // Reiniciar las frases enviadas
     return;
   }
 
