@@ -4,9 +4,8 @@ import fs from "fs";
 
 let frases = [];
 let frasesEnviadas = [];
-let chat = global.db.data.settings[conn.user.jid];
+let bot = global.db.data.settings[conn.user.jid];
 
-if (chat.frases) { 
 fs.readFile('./src/FRASE/frases.json', 'utf8', (err, data) => {
   if (err) {
     console.error('Error al leer el archivo JSON:', err);
@@ -16,18 +15,21 @@ fs.readFile('./src/FRASE/frases.json', 'utf8', (err, data) => {
   frases = jsonData.frasesMotivadoras;
 });
 
+if (bot.frases) { 
 function enviarFrase() {
   if (frases.length === 0) {
     conn.reply(idchannel, '🍄 No hay frases disponibles para enviar', null, fake);
     return;
-  }
+  }}
 
+  if (bot.frases) { 
   if (frasesEnviadas.length === frases.length) {
     conn.reply(idchannel, '✨️ Todas las frases ya fueron enviadas, reiniciaremos la raíz para que se vuelven a enviar las frases antiguas!', null, fake);
       frasesEnviadas = []; 
     return;
-  }
+  }}
 
+  if (bot.frases) { 
   let fraseAleatoriaIndex;
   do {
     fraseAleatoriaIndex = Math.floor(Math.random() * frases.length);
