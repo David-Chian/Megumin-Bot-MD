@@ -5,8 +5,6 @@ import fs from "fs";
 let frases = [];
 let frasesEnviadas = [];
 
-let isfrases = global.db.data.settings[this.user.jid].frases  
-if (!isfrases) return
 fs.readFile('./src/FRASE/frases.json', 'utf8', (err, data) => {
   if (err) {
     console.error('Error al leer el archivo JSON:', err);
