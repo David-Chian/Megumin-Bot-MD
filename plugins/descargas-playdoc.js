@@ -119,7 +119,7 @@ return conn.reply(m.chat, '🌟 *Inténtelo de nuevo*', m, rcanal, )}
 }
 handler.help = ['ytmp3doc', 'ytmp4doc']
 handler.tags = ['descargas']
-handler.command = ['playdoc','playdoc2','ytmp3doc','ytmp4doc']
+handler.command = ['ytmp3doc','ytmp4doc']
 
 //handler.estrellas = 1
 handler.group = true;
