@@ -9,7 +9,7 @@ const LimitVid = 425 * 1024 * 1024; //425MB
 const handler = async (m, {conn, command, args, text, usedPrefix}) => {
 
 if (command == 'play' || command == 'mp3') {
-if (!text) return conn.reply(m.chat, `🦋 *Ingrese el nombre de un video de YouTube*\n\nEjemplo, !${command} save that shit- lil peep`,  m, rcanal, ); 
+if (!text) return conn.reply(m.chat, `🦋 *Ingrese el nombre de un video de YouTube*\n\nEjemplo, !${command} Distancia - Kimberly Contreraxx`,  m, rcanal, ); 
 await m.react(rwait);
 conn.reply(m.chat, global.wait, m, {
 contextInfo: { externalAdReply :{ mediaUrl: null, mediaType: 1, showAdAttribution: true,
@@ -19,7 +19,17 @@ previewType: 0, thumbnail: icons,
 sourceUrl: channel }}});
 const yt_play = await search(args.join(' '));
 const ytplay2 = await yts(text);
-const texto1 = `* ${search.all[0].title}\n> ♡ *Vistas:* ${search.all[0].views}\n> ♡ *Duración:* ${search.all[0].timestamp}\n> ♡ *Subido:* ${search.all[0].ago}\n> ♡ *Url:* ${urls}\n*⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ׄۛ۫۫۫۫۫۫ۜ*\n🕒 *Su ${isVideo ? 'Video' : 'Audio'} se está enviando, espere un momento...*`.trim();
+const texto1 = `*𖹭.╭╭ִ╼࣪━ִﮩ٨ـﮩ♡̫𝗆𝖾𝗀֟፝𝗎꯭𝗆𝗂꯭𝗇♡ִ̫ﮩ٨ـﮩ━ִ╾࣪╮╮.𖹭
+> ♡ *Título:*
+» ${yt_play[0].title}
+
+> ♡ *Subido:*
+» ${yt_play[0].ago}
+
+> ♡ *Duración:*
+» ${secondString(yt_play[0].duration.seconds)}
+
+> 🕒 *Su audio se está enviando, espere un momento...*`.trim();
 
 await conn.sendFile(m.chat, yt_play[0].thumbnail, 'error.jpg', texto1, m, null, rcanal);
 try {
@@ -79,7 +89,7 @@ console.log(e);
 }}}}}}}
 
 if (command == 'play2' || command == 'mp4') {
-if (!text) return conn.reply(m.chat, `🦋 *Ingrese el nombre de un video de YouTube*\n\nEjemplo, !${command} Distancia - Kimberly Contreraxx`,  m, rcanal, );
+if (!text) return conn.reply(m.chat, `🦋 *Ingrese el nombre de un video de YouTube*\n\nEjemplo, !${command} save that shit-lil peep`,  m, rcanal, );
 await m.react(rwait);
 conn.reply(m.chat, global.wait, m, {
 contextInfo: { externalAdReply :{ mediaUrl: null, mediaType: 1, showAdAttribution: true,
@@ -89,7 +99,17 @@ previewType: 0, thumbnail: icons,
 sourceUrl: channel }}});
 const yt_play = await search(args.join(' '));
 const ytplay2 = await yts(text);
-const texto1 = `* ${search.all[0].title}\n> ♡ *Vistas:* ${search.all[0].views}\n> ♡ *Duración:* ${search.all[0].timestamp}\n> ♡ *Subido:* ${search.all[0].ago}\n> ♡ *Url:* ${urls}\n*⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ׄۛ۫۫۫۫۫۫ۜ*\n🕒 *Su ${isVideo ? 'Video' : 'Audio'} se está enviando, espere un momento...*`.trim();
+const texto1 = `*𖹭.╭╭ִ╼࣪━ִﮩ٨ـﮩ♡̫𝗆𝖾𝗀֟፝𝗎꯭𝗆𝗂꯭𝗇♡ִ̫ﮩ٨ـﮩ━ִ╾࣪╮╮.𖹭
+> ♡ *Título:*
+» ${yt_play[0].title}
+
+> ♡ *Subido:*
+» ${yt_play[0].ago}
+
+> ♡ *Duración:*
+» ${secondString(yt_play[0].duration.seconds)}
+
+> 🕒 *Su video se está enviando, espere un momento...*`.trim();
 
 await conn.sendFile(m.chat, yt_play[0].thumbnail, 'error.jpg', texto1, m, null, rcanal);
 try {
@@ -164,7 +184,7 @@ console.log(e);
 }}}}}}}}
 
 if (command == 'play3' || command == 'playdoc') {
-if (!text) return conn.reply(m.chat, `🦋 *Ingrese el nombre de un video de YouTube*\n\nEjemplo, !${command} Distancia - Kimberly Contreraxx`,  m, rcanal, );
+if (!text) return conn.reply(m.chat, `🦋 *Ingrese el nombre de un video de YouTube*\n\nEjemplo, !${command} save that shit-lil peep`,  m, rcanal, );
 await m.react(rwait);
 conn.reply(m.chat, global.wait, m, {
 contextInfo: { externalAdReply :{ mediaUrl: null, mediaType: 1, showAdAttribution: true,
@@ -174,16 +194,17 @@ previewType: 0, thumbnail: icons,
 sourceUrl: channel }}});
 const yt_play = await search(args.join(' '));
 const ytplay2 = await yts(text);
-const texto1 = `🦋 *Título* 
+const texto1 = `*𖹭.╭╭ִ╼࣪━ִﮩ٨ـﮩ♡̫𝗆𝖾𝗀֟፝𝗎꯭𝗆𝗂꯭𝗇♡ִ̫ﮩ٨ـﮩ━ִ╾࣪╮╮.𖹭
+> ♡ *Título:*
 » ${yt_play[0].title}
 
-📆 *Publicado* 
-»${yt_play[0].ago}
+> ♡ *Subido:*
+» ${yt_play[0].ago}
 
-🕑 *Duración* 
+> ♡ *Duración:*
 » ${secondString(yt_play[0].duration.seconds)}
 
-> _Descargado el audio 🔊 en documento, aguarde un momento por favor...._`.trim();
+> 🕒 *Su audio documento  se está enviando, espere un momento...*`.trim();
 
 await conn.sendFile(m.chat, yt_play[0].thumbnail, 'error.jpg', texto1, m, null, rcanal);
 try {
@@ -241,7 +262,7 @@ console.log(e);
 }}}}}}}
 
 if (command == 'play4' || command == 'playdoc2') {
-if (!text) return conn.reply(m.chat, `🦋 *Ingrese el nombre de un video de YouTube*\n\nEjemplo, !${command} Distancia - Kimberly Contreraxx`,  m, rcanal, );
+if (!text) return conn.reply(m.chat, `🦋 *Ingrese el nombre de un video de YouTube*\n\nEjemplo, !${command} save that shit- lil peep`,  m, rcanal, );
 await m.react(rwait);
 conn.reply(m.chat, global.wait, m, {
 contextInfo: { externalAdReply :{ mediaUrl: null, mediaType: 1, showAdAttribution: true,
@@ -251,7 +272,17 @@ previewType: 0, thumbnail: icons,
 sourceUrl: channel }}});
 const yt_play = await search(args.join(' '));
 const ytplay2 = await yts(text);
-const texto1 = `* ${search.all[0].title}\n> ♡ *Vistas:* ${search.all[0].views}\n> ♡ *Duración:* ${search.all[0].timestamp}\n> ♡ *Subido:* ${search.all[0].ago}\n> ♡ *Url:* ${urls}\n*⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ׄۛ۫۫۫۫۫۫ۜ*\n🕒 *Su ${isVideo ? 'Video' : 'Audio'} se está enviando, espere un momento...*`.trim();
+const texto1 = `*𖹭.╭╭ִ╼࣪━ִﮩ٨ـﮩ♡̫𝗆𝖾𝗀֟፝𝗎꯭𝗆𝗂꯭𝗇♡ִ̫ﮩ٨ـﮩ━ִ╾࣪╮╮.𖹭
+> ♡ *Título:*
+» ${yt_play[0].title}
+
+> ♡ *Subido:*
+» ${yt_play[0].ago}
+
+> ♡ *Duración:*
+» ${secondString(yt_play[0].duration.seconds)}
+
+> 🕒 *Su video documento se está enviando, espere un momento...*`.trim();
 
 await conn.sendFile(m.chat, yt_play[0].thumbnail, 'error.jpg', texto1, m, null, rcanal);
 try {
@@ -282,7 +313,6 @@ handler.help = ['play', 'play2', 'play3', 'play4', 'playdoc'];
 handler.tags = ['descargas'];
 handler.command = ['play', 'play2', 'play3', 'play4', 'mp3', 'mp4', 'playdoc', 'playdoc2']
 handler.group = true;
-handler.register = true
 export default handler;
 
 async function search(query, options = {}) {
