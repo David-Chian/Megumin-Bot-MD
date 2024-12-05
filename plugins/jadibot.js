@@ -1,6 +1,6 @@
 import fs from 'fs';
 import ws from 'ws';
-const path = './jadibots'; 
+const path = './MeguminJadiBot'; 
 
 let handler = async (m, { conn }) => {
     let sesiones = {
