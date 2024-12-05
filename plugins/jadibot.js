@@ -54,7 +54,7 @@ let handler = async (m, { conn: _envio, command, usedPrefix, args, text, isOwner
             }
             const users = [...new Set([...global.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED && m.chat.includes(conn.user.jid)).map((conn) => conn)])];
 
-            const testuser2 = [...new Set([...global.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED && m.chat.includes(conn.user.jid)).map((conn) => conn)])];
+            const testuser2 = [...new Set([...global.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED).map((conn) => conn)])];
 
             const message = users.map((v, index) => `• 「 ${index + 1} 」\n✐ Usuario: ${v.user.name || 'Sub-Bot'}\n @${v.user.jid.replace(/[^0-9]/g, '')}`).join('\n\n__________________________\n\n');
             const replyMessage = message.length === 0 ? `` : message;
