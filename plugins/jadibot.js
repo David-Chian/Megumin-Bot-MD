@@ -2,7 +2,7 @@ import { readdirSync, statSync, unlinkSync, existsSync, readFileSync, rmSync } f
 import path, { join } from 'path';
 import ws from 'ws';
 
-const jadi = 'MeguminSession';
+const jadi = 'MeguminJadiBot';
 
 let handler = async (m, { conn: _envio, command, usedPrefix, args, text, isOwner }) => {
     const isCommand1 = /^(deletesesion|deletebot|deletesession|deletesesaion)$/i.test(command);
