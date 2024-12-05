@@ -29,9 +29,10 @@ let handler = async (m, { conn }) => {
 
     const message = users.map((v, index) => `• 「 ${index + 1} 」\n✐ Usuario: ${v.user.name || 'Sub-Bot'}\n @${v.user.jid.replace(/[^0-9]/g, '')}`).join('\n\n__________________________\n\n');
     const replyMessage = message.length === 0 ? `` : message;
+    const mentions = users.map(v => v.user.jid);
     const responseMessage = `「✦」Lista de bots activos (*${totalSessions}*)\n\n✐ Sesiones: ${totalSessions}\n✧ Sockets: ${totalUsers || '0'}\n\n${replyMessage.trim()}`.trim();
-    
-    await conn.reply(m.chat, responseMessage, m);
+
+    await conn.sendMessage(m.chat, { text: responseMessage, mentions: mentions }, { quoted: m });
 };
 
 handler.help = ['bots'];
