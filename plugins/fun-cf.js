@@ -18,19 +18,19 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     if (!users[userId]) users[userId] = { moras: 100 };
 
     let user = users[userId];
-    if (user.moras < cantidad) {
-        return m.reply(`💥 No tienes suficientes chocolates para apostar. Tienes ${user.moras} chocolates.`);
+    if (user.cookies < cantidad) {
+        return m.reply(`💥 No tienes suficientes galletas para apostar. Tienes ${user.cookies} gallegas.`);
     }
 
     let resultado = Math.random() < 0.5 ? 'cara' : 'cruz';
 
-    let mensaje = `❤️‍🔥 Has elegido *${eleccion}* y apostado *${cantidad} moras*.\n`;
+    let mensaje = `❤️‍🔥 Has elegido *${eleccion}* y apostado *${cantidad} galletas*.\n`;
     if (resultado === eleccion) {
-        user.moras += cantidad;
-        mensaje += `¡Felicidades! Ha salido *${resultado}* y ganas *${cantidad} moras*.\nTienes ahora *${user.moras} moras*.`;
+        user.cookies += cantidad;
+        mensaje += `¡Felicidades! Ha salido *${resultado}* y ganas *${cantidad} galletas*.\nTienes ahora *${user.cookies} galletas*.`;
     } else {
-        user.moras -= cantidad;
-        mensaje += `Lo siento. Ha salido *${resultado}* y pierdes *${cantidad} moras*.\nTienes ahora *${user.moras} moras*.`;
+        user.cookies -= cantidad;
+        mensaje += `Lo siento. Ha salido *${resultado}* y pierdes *${cantidad} galletas*.\nTienes ahora *${user.cookies} galletas*.`;
     }
 
     await conn.reply(m.chat, mensaje, m);
