@@ -1,5 +1,4 @@
-import { readdirSync, statSync, unlinkSync, existsSync, readFileSync, watch, rmSync, promises as fsPromises } from "fs";
-const fs = { ...fsPromises, existsSync };
+import { readdirSync, statSync, unlinkSync, existsSync, readFileSync, rmSync } from 'fs';
 import path, { join } from 'path';
 import ws from 'ws';
 
@@ -19,36 +18,38 @@ let handler = async (m, { conn: _envio, command, usedPrefix, args, text, isOwner
         case isCommand1:
             let mentionedJid = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender;
             let uniqid = `${mentionedJid.split`@`[0]}`;
-            const path = `./${jadi}/${uniqid}`;
+            const deletePath = `./${jadi}/${uniqid}`;
 
-            if (!await fs.existsSync(path)) {
-                await conn.sendMessage(m.chat, { text: `💥 Usted no tiene una sesión, puede crear una usando:\n${usedPrefix + command}\n\nSi tiene una *(ID)* puede usar para saltarse el paso anterior usando:\n*${usedPrefix + command}* \`\`\`(ID)\`\`\`` }, { quoted: m });
+            if (!existsSync(deletePath)) {
+                await _envio.sendMessage(m.chat, { text: `💥 Usted no tiene una sesión, puede crear una usando:\n${usedPrefix + command}\n\nSi tiene una *(ID)* puede usar para saltarse el paso anterior usando:\n*${usedPrefix + command}* \`\`\`(ID)\`\`\`` }, { quoted: m });
                 return;
             }
-            if (global.conn.user.jid !== conn.user.jid) return conn.sendMessage(m.chat, { text: `💥 Use este comando al *Bot* principal.\n\n*https://api.whatsapp.com/send/?phone=${global.conn.user.jid.split`@`[0]}&text=${usedPrefix + command}&type=phone_number&app_absent=0*` }, { quoted: m });
-            else {
-                await conn.sendMessage(m.chat, { text: `💫 Tu sesión como *Sub-Bot* se ha eliminado` }, { quoted: m });
+            if (global.conn.user.jid !== _envio.user.jid) {
+                return _envio.sendMessage(m.chat, { text: `💥 Use este comando al *Bot* principal.\n\n*https://api.whatsapp.com/send/?phone=${global.conn.user.jid.split`@`[0]}&text=${usedPrefix + command}&type=phone_number&app_absent=0*` }, { quoted: m });
+            } else {
+                await _envio.sendMessage(m.chat, { text: `💫 Tu sesión como *Sub-Bot* se ha eliminado` }, { quoted: m });
             }
             try {
-                fs.rmdir(`./${jadi}/` + uniqid, { recursive: true, force: true });
-                await conn.sendMessage(m.chat, { text: `Ha cerrado sesión y borrado todo rastro.` }, { quoted: m });
+                rmSync(`./${jadi}/` + uniqid, { recursive: true, force: true });
+                await _envio.sendMessage(m.chat, { text: `Ha cerrado sesión y borrado todo rastro.` }, { quoted: m });
             } catch (e) {
                 reportError(e);
             }
             break;
 
         case isCommand2:
-            if (global.conn.user.jid == conn.user.jid) conn.reply(m.chat, `💥 Si no es *SubBot* comuníquese al numero principal del *Bot* para ser *SubBot*`, m);
-            else {
-                await conn.reply(m.chat, `💥 Megumin desactivada.`, m);
-                conn.ws.close();
+            if (global.conn.user.jid == _envio.user.jid) {
+                _envio.reply(m.chat, `💥 Si no es *SubBot* comuníquese al numero principal del *Bot* para ser *SubBot*`, m);
+            } else {
+                await _envio.reply(m.chat, `💥 Megumin desactivada.`, m);
+                _envio.ws.close();
             }
             break;
 
         case isCommand3:
             let totalSessions = 0;
-            if (fs.existsSync(jadi)) {
-                const files = fs.readdirSync(jadi);
+            if (existsSync(jadi)) {
+                const files = readdirSync(jadi);
                 totalSessions = files.length;
             }
             const users = [...new Set([...global.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED).map((conn) => conn)])];
