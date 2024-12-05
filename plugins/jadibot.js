@@ -2,7 +2,7 @@ import { readdirSync, statSync, unlinkSync, existsSync, readFileSync, rmSync } f
 import path, { join } from 'path';
 import ws from 'ws';
 
-const jadi = 'MeguminJadiBot';
+const jadi = 'MeguminSession';
 
 let handler = async (m, { conn: _envio, command, usedPrefix, args, text, isOwner }) => {
     const isCommand1 = /^(deletesesion|deletebot|deletesession|deletesesaion)$/i.test(command);
@@ -60,7 +60,7 @@ let handler = async (m, { conn: _envio, command, usedPrefix, args, text, isOwner
             const replyMessage = message.length === 0 ? `` : message;
             const totalUsers = users.length || 0;
             const testuser = testuser2.length || 0;
-            const responseMessage = `「✦」Lista de subbots activos en este grupo\n\n✐ Sesiones: ${totalSessions}\n✧ Sockets: ${testuser}\n❐ Sockets en el grupo: ${totalUsers}\n\n${replyMessage.trim()}`.trim();
+            const responseMessage = `⭐️ List - Sockets\n\n🍁 Sesiones: ${totalSessions}\n💥 Sockets: ${testuser}\n❤️‍🔥 Sockets en el grupo: ${totalUsers}\n\n${replyMessage.trim()}`.trim();
             await _envio.sendMessage(m.chat, { text: responseMessage, mentions: _envio.parseMention(responseMessage) }, { quoted: m });
             break;
     }
