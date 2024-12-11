@@ -24,5 +24,6 @@ handler.help = ['navidad'];
 handler.tags = ['christmas'];
 handler.command = ['navidad', 'christmas', 'xmas']; 
 handler.register = true;
+handler.group = true;
 
 export default handler;
