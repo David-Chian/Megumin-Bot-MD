@@ -39,7 +39,7 @@ handler.group = true;
 handler.register = true
 
 // handler.estrellas = 1
-handler.command = ['ia', 'chatgpt']
+handler.command = ['ia', 'chatgpt', 'megumin']
 
 export default handler
 
