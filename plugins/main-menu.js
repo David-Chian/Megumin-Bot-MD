@@ -528,7 +528,7 @@ await m.reply(`✘ Ocurrió un error al enviar el menú\n\n${e}`)
 await m.react(error)
 }}
 
-handler.help = ['allmenu']
+handler.help = ['menu']
 handler.tags = ['main']
 handler.command = ['menu', 'help', 'menú', 'allmenú', 'allmenu', 'menucompleto'] 
 handler.register = true
