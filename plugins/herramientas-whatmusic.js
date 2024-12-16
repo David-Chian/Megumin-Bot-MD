@@ -12,8 +12,8 @@ if (/audio|video/.test(mime)) { if ((q.msg || q).seconds > 20) return m.reply('�
 await conn.reply(m.chat, wait, m)
 let media = await q.download()
 let ext = mime.split('/')[1]
-fs.writeFileSync(`./tmp/${m.sender}.${ext}`, media)
-let res = await acr.identify(fs.readFileSync(`./tmp/${m.sender}.${ext}`))
+fs.writeFileSync(`./megumin/tmp/${m.sender}.${ext}`, media)
+let res = await acr.identify(fs.readFileSync(`./megumin/tmp/${m.sender}.${ext}`))
 let { code, msg } = res.status
 if (code !== 0) throw msg
 let { title, artists, album, genres, release_date } = res.metadata.music[0]
@@ -21,7 +21,7 @@ let txt = `
 𝐍𝐎𝐌𝐁𝐑𝐄: ${title}
 𝐀𝐑𝐓𝐈𝐒𝐓𝐀: ${artists !== undefined ? artists.map(v => v.name).join(', ') : 'No encontrado'}
 `.trim()
-fs.unlinkSync(`./tmp/${m.sender}.${ext}`)
+fs.unlinkSync(`./megumin/tmp/${m.sender}.${ext}`)
 m.reply(txt)
 } else throw '᥀·࣭࣪̇˖⛔◗ 𝙊𝙘𝙪𝙧𝙧𝙞𝙤 𝙪𝙣 𝙚𝙧𝙧𝙤𝙧 𝙞𝙣𝙚𝙨𝙥𝙚𝙧𝙖𝙙𝙤, 𝙞𝙣𝙩𝙚𝙣𝙩𝙖𝙡𝙤 𝙙𝙚 𝙣𝙪𝙚𝙫𝙤, 𝙧𝙚𝙨𝙥𝙤𝙣𝙙𝙖 𝙖 𝙪𝙣 𝙖𝙪𝙙𝙞𝙤 𝙤 𝙫𝙞𝙙𝙚𝙤.'
 }
