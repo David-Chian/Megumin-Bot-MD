@@ -519,10 +519,10 @@ await plugin.after.call(this, m, extra)
 console.error(e)
 }}
 if (m.cookies)
-conn.reply(m.chat, `Utilizaste *${+m.cookies}* 🍪`, m, fake)
+conn.reply(m.chat, `Utilizaste *${+m.cookies}* 🍪`, m)
 }
 if (m.money)
-conn.reply(m.chat, `Utilizaste *${+m.money}* 💰`, m, fake)
+conn.reply(m.chat, `Utilizaste *${+m.money}* 💰`, m)
 break
 }}} catch (e) {
 console.error(e)
@@ -751,7 +751,7 @@ const file = global.__filename(import.meta.url, true);
 // NO TOCAR
 watchFile(file, async () => {
 unwatchFile(file);
-console.log(chalk.green('Actualizando "handler.js"'));
+console.log(chalk.green('Actualizando "megumin/handler.js"'));
 // if (global.reloadHandler) console.log(await global.reloadHandler());
 
 if (global.conns && global.conns.length > 0 ) {
