@@ -67,17 +67,7 @@ global.imagen7 = fs.readFileSync('./src/menus/Menu5.jpg');
 global.imagen8 = fs.readFileSync('./src/menus/Menu4.jpg')
 global.imagen9 = fs.readFileSync('./src/menu_en.png')
 global.imagen10 = fs.readFileSync('./src/nuevobot.jpg')
-global.que = fs.readFileSync('./src/ke/que1.jpg')
-global.que2 = fs.readFileSync('./src/ke/que2.jpg')
-global.que3 = fs.readFileSync('./src/ke/que3.jpg')
-global.que4 = fs.readFileSync('./src/ke/que4.jpg')
-global.que5 = fs.readFileSync('./src/ke/que5.jpg')
-global.que6 = fs.readFileSync('./src/ke/que6.jpg')
-global.amor = fs.readFileSync('./src/amor/amor1.webp')
-global.amor2 = fs.readFileSync('./src/amor/amor2.webp')
-global.amor3 = fs.readFileSync('./src/amor/amor3.webp')
-global.amor4 = fs.readFileSync('./src/amor/amor4.webp')
-global.amor5 = fs.readFileSync('./src/amor/amor5.webp')
+
 global.miniurl = fs.readFileSync('./src/Grupo.jpg');
 global.logo2 = fs.readFileSync('./src/logo2.jpg')
 global.logo3 = fs.readFileSync('./src/logo3.jpg')
@@ -89,9 +79,6 @@ global.logo8 = fs.readFileSync('./src/Logo8.jpg')
 global.rule = fs.readFileSync('./src/rule.jpg')
 global.welcome = fs.readFileSync('./src/Welcome.jpg')
 global.adios = fs.readFileSync('./src/Bye.jpg')
-
-global.stickeramor = [amor, amor2, amor3, amor4, amor5]
-global.sickerque = [que, que2, que3, que4, que5, que6]
 global.photoSity = [imagen8, imagen1, imagen4, imagen6]
 
 //• ↳ ◜𝑭𝑨𝑲𝑬 𝑬𝑺𝑻𝑰𝑳𝑶◞ • 🪩
