@@ -57,6 +57,28 @@ align: 'center',
 colors: ['yellow']
 })
 
+let p = fork()
+p.on('message', data => {
+switch (data) {
+case 'reset':
+p.process.kill()
+isRunning = false
+start.apply(this, arguments)
+break
+}
+})
+
+p.on('exit', (_, code) => {
+isRunning = false
+console.error('🚩 Error:\n', code)
+process.exit()
+if (code === 0) return
+watchFile(args[0], () => {
+unwatchFile(args[0])
+start(file)
+})
+})
+
 protoType()
 serialize()
 
