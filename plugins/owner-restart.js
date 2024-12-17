@@ -1,16 +1,11 @@
 import { spawn } from 'child_process'
 let handler = async (m, { conn, isROwner, text }) => {
 
-if (!process.send) throw '*『✦』Reiniciar: sunlight.js*\n*『✦』Reiniciar: index.js*'
+if (!process.send) throw 'Reset: megumin/start.js'
 
 if (conn.user.jid == conn.user.jid) {
 
-const { key } = await conn.sendMessage(m.chat, {text: `🗂️ Cargando...`}, {quoted: m})
-await delay(1000 * 1)
-await conn.sendMessage(m.chat, {text: `📦 Cargando...`, edit: key})
-await delay(1000 * 1)
-await conn.sendMessage(m.chat, {text: `♻️ Cargando...`, edit: key})
-await conn.sendMessage(m.chat, {text: `*『⛏️』Comenzar reinicio completo...*`, edit: key})
+m.reply('💥 R E I N I C I A N D O')
 
 process.send('reset')
 } else throw 'eh'
