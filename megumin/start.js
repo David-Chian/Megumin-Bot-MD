@@ -240,7 +240,7 @@ if (opts['autocleartmp'] && (global.support || {}).find) (tmp = [os.tmpdir(), 't
 
 if (opts['server']) (await import('./server.js')).default(global.conn, PORT);
 
-let ppBot = await conn.profilePictureUrl(global.conn.user.jid, 'image').catch((_) => 'https://telegra.ph/file/24fa902ead26340f3df2c.png')
+let ppBot = 'https://telegra.ph/file/24fa902ead26340f3df2c.png'
 
 async function connectionUpdate(update) {
 const {connection, lastDisconnect, isNewLogin} = update;
