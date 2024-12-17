@@ -1,4 +1,4 @@
-/*import { spawn } from 'child_process'
+import { spawn } from 'child_process'
 let handler = async (m, { conn, isROwner, text }) => {
 
 if (!process.send) throw 'Reset: megumin/start.js'
@@ -17,4 +17,4 @@ handler.command = ['restart','reiniciar']
 handler.rowner = true
 
 export default handler
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))*/
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
