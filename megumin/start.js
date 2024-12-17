@@ -57,7 +57,7 @@ align: 'center',
 colors: ['yellow']
 })
 
-let p = fork()
+/*let p = fork()
 p.on('message', data => {
 switch (data) {
 case 'reset':
@@ -77,7 +77,7 @@ watchFile(args[0], () => {
 unwatchFile(args[0])
 start(file)
 })
-})
+})*/
 
 protoType()
 serialize()
