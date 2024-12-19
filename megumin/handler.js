@@ -38,6 +38,7 @@ try {
 m = smsg(this, m) || m
 if (!m)
 return
+global.mconn = m 
 m.exp = 0
 m.cookies = false //se cambiará a Chocolates, después.
 try {
@@ -237,6 +238,7 @@ if (!('antiSpam' in settings)) settings.antiSpam = true
 if (!('modoia' in settings)) settings.modoia = false
 if (!('jadibotmd' in settings)) settings.jadibotmd = false  
 if (!('autobio' in settings)) settings.autobio = false
+if (!('botcommandCount' in settings)) settings.botcommandCount = 0
 } else global.db.data.settings[this.user.jid] = {
 self: false,
 autoread: false,
@@ -249,6 +251,7 @@ antiSpam: true,
 modoia: false, 
 jadibotmd: true,
 autobio: false,
+botcommandCount: 0,
 }} catch (e) {
 console.error(e)
 }
@@ -382,6 +385,9 @@ false
 if (!isAccept) {
 continue
 }
+
+global.db.data.settings[mconn.conn.user.jid].botcommandCount += 1
+
 m.plugin = name
 if (m.chat in global.db.data.chats || m.sender in global.db.data.users) {
 let chat = global.db.data.chats[m.chat]
