@@ -34,9 +34,11 @@ let api = await axios.get(`https://deliriussapi-oficial.vercel.app/tools/country
 let userNationalityData = api.data.result
 global.userNationality = userNationalityData ? `${userNationalityData.name} ${userNationalityData.emoji}` : 'Desconocido'
 let user = global.db.data.users[who]
+let bot = global.db.data.settings[this.user.jid]
 let pushname = m.pushName || 'Sin nombre'
 
 //creador y otros
+global.botcommandcount = bot.botcommandCount //Ver cuantos comandos fueron ejecutados.
 global.creador = 'Wa.me/5351524614'
 global.ofcbot = `${conn.user.jid.split('@')[0]}`
 global.asistencia = 'Wa.me/5351524614'
