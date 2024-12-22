@@ -259,7 +259,8 @@ console.log(chalk.bold.yellow(`\n✅ ESCANEA EL CÓDIGO QR EXPIRA EN 45 SEGUNDOS
 if (connection == 'open') {
 console.log(chalk.bold.green('\n❒⸺⸺⸺⸺【• CONECTADO •】⸺⸺⸺⸺❒\n│\n│ 🟢  Se ha conectado con WhatsApp exitosamente.\n│\n❒⸺⸺⸺⸺【• CONECTADO •】⸺⸺⸺⸺❒'))
 await joinChannels(conn)
-/*conn.sendMessage("120363350554513092@newsletter", { text: '👋 Hola seguidores!\n💥 Me he conectado nuevamente!!', contextInfo: { externalAdReply: { title: "💥 MEGUMIN BOT - MD ❤️‍🔥", body: '💥 Megumin Bot conectada nuevamente!', thumbnailUrl: ppBot, sourceUrl: 'https://cafirexos.com', mediaType: 1, showAdAttribution: false, renderLargerThumbnail: false }}}, { quoted: null })}*/
+/*conn.sendMessage("120363350554513092@newsletter", { text: '👋 Hola seguidores!\n💥 Me he conectado nuevamente!!', contextInfo: { externalAdReply: { title: "💥 MEGUMIN BOT - MD ❤️‍🔥", body: '💥 Megumin Bot conectada nuevamente!', thumbnailUrl: ppBot, sourceUrl: 'https://cafirexos.com', mediaType: 1, showAdAttribution: false, renderLargerThumbnail: false }}}, { quoted: null })*/
+}
 let reason = new Boom(lastDisconnect?.error)?.output?.statusCode
 if (connection === 'close') {
 if (reason === DisconnectReason.badSession) {
