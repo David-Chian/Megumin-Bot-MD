@@ -5,20 +5,18 @@ let user = global.db.data.users[m.sender]
 let tiempo = 5 * 60
 if (cooldowns[m.sender] && Date.now() - cooldowns[m.sender] < tiempo * 1000) {
 const tiempo2 = segundosAHMS(Math.ceil((cooldowns[m.sender] + tiempo * 1000 - Date.now()) / 1000))
-conn.reply(m.chat, `🚩 Espera ⏱️ *${tiempo2}* para volver a Trabajar.`, m, rcanal)
+conn.reply(m.chat, `✧ Debes esperar *${tiempo2}* para trabajar de nuevo en este Grupo.`, m, rcanal)
 return
 }
 let rsl = Math.floor(Math.random() * 5000)
 cooldowns[m.sender] = Date.now()
-await conn.reply(m.chat, `🚩 ${pickRandom(trabajo)} *${toNum(rsl)}* ( *${rsl}* ) XP 🍭.`, m, rcanal)
+await conn.reply(m.chat, `✿ ${pickRandom(trabajo)} *${toNum(rsl)}* ( *${rsl}* ) ${globalThis.monedas}.`, m, rcanal)
 user.exp += rsl
 }
 
-handler.help = ['trabajar']
+handler.help = ['w', 'work']
 handler.tags = ['rpg']
-handler.command = ['w','work','chambear','chamba', 'trabajar']
-handler.group = true;
-handler.register = true
+handler.command = ['w','work']
 export default handler
 
 function toNum(number) {
@@ -43,7 +41,6 @@ function pickRandom(list) {
 return list[Math.floor(list.length * Math.random())];
 }
 
-// Thanks to FG98
 const trabajo = [
    "Trabajas como cortador de galletas y ganas",
    "Trabaja para una empresa militar privada, ganando",
