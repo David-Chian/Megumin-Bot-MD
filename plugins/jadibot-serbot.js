@@ -150,12 +150,12 @@ let handler = async (m, { conn: _conn, args, usedPrefix, command, isOwner }) => 
       if (connection == 'open') {
         conn.isInit = true;
         global.conns.push(conn);
-        await parent.reply(m.chat, args[0] ? 'Conectado con éxito' : 'Conectado exitosamente con WhatsApp\n\n*Nota:* Esto es temporal\nSi el Bot principal se reinicia o se desactiva, todos los sub bots también lo harán\n\nEl número del bot puede cambiar, guarda este enlace:\n*-* https://whatsapp.com/channel/0029VaBfsIwGk1FyaqFcK91S', m, rcanal);
+        await conn.reply(m.chat, args[0] ? 'Conectado con éxito' : 'Conectado exitosamente con WhatsApp\n\n*Nota:* Esto es temporal\nSi el Bot principal se reinicia o se desactiva, todos los sub bots también lo harán\n\nEl número del bot puede cambiar, guarda este enlace:\n*-* https://whatsapp.com/channel/0029VaBfsIwGk1FyaqFcK91S', m, rcanal);
         await sleep(5000);
-        if (args[0]) return;
+       // if (args[0]) return;
 
-        await parent.reply(conn.user.jid, `La siguiente vez que se conecte envía el siguiente mensaje para iniciar sesión sin utilizar otro código `, m, rcanal);
-        await parent.sendMessage(conn.user.jid, { text: usedPrefix + command + ' ' + Buffer.from(fs.readFileSync(`./serbot/${authFolderB}/creds.json`), 'utf-8').toString('base64') }, { quoted: m });
+       // await parent.reply(conn.user.jid, `La siguiente vez que se conecte envía el siguiente mensaje para iniciar sesión sin utilizar otro código `, m, rcanal);
+       // await parent.sendMessage(conn.user.jid, { text: usedPrefix + command + ' ' + Buffer.from(fs.readFileSync(`./serbot/${authFolderB}/creds.json`), 'utf-8').toString('base64') }, { quoted: m });
       }
     }
     const timeoutId = setTimeout(() => {
