@@ -18,7 +18,7 @@ let handler = async (m, { conn, args }) => {
     await conn.updateProfilePicture(groupId, { url: newImage });
     m.reply('「✦」 Imagen de perfil del grupo actualizada exitosamente.');
   } catch (e) {
-    m.reply('⚠︎ *Error:* ${e.message}`);
+    m.reply(`⚠︎ *Error:* ${e.message}`);
   }
 };
 
