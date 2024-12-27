@@ -1,3 +1,8 @@
+/*
+「✦」 Credits: OfcKing
+- github.com/OfcKing
+*/
+
 import { makeWASocket } from '@whiskeysockets/baileys';
 import fs from 'fs';
 
