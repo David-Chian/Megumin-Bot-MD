@@ -7,7 +7,7 @@ title: packname,
 body: wm,
 previewType: 0, thumbnail: icons,
 sourceUrl: channel }}})
-const res = (await axios.get(`https://raw.githubusercontent.com/DevDiegoxyz/YaemoriBot-MD/master/src/JSON/${command}.json`)).data;
+const res = (await axios.get(`https://raw.githubusercontent.com/CheirZ/HuTao-Proyect/master/src/JSON/${command}.json`)).data;
 const haha = await res[Math.floor(res.length * Math.random())];
 conn.sendFile(m.chat, haha, 'error.jpg', `🔥 *${command}*`, m, null, rcanal);
 };
