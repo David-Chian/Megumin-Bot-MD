@@ -38,6 +38,7 @@ global.languaje = 'Español'
 global.nameqr = 'Megumin Bot - MD'
 global.sessions = 'MeguminSession'
 global.jadi = 'MeguminJadiBot'
+global.meguminJadibts = true
 
 //• ↳ ◜𝑴𝑨𝑹𝑪𝑨𝑺 𝑫𝑬 𝑨𝑮𝑼𝑨◞ • 💌
 global.packsticker = `♾ ━━━━━━━━\n├ ɓσƭ:\n├ ρяοριєταяιο:\n├ ƒєϲнα ∂є ϲяєαϲιόи:\n├ нοяα:\n♾━━━━━━━━`
