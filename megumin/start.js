@@ -11,7 +11,7 @@ import {readdirSync, statSync, unlinkSync, existsSync, readFileSync, rmSync, wat
 import yargs from 'yargs';
 import {spawn} from 'child_process'
 import lodash from 'lodash'
-import { meguminJadiBot } from './plugins/jadibot-serbot.js';
+import { meguminJadiBot } from '../plugins/jadibot-serbot.js';
 import chalk from 'chalk'
 import syntaxerror from 'syntax-error'
 import {tmpdir} from 'os'
