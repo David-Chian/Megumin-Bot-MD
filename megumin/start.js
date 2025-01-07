@@ -11,6 +11,7 @@ import {readdirSync, statSync, unlinkSync, existsSync, readFileSync, rmSync, wat
 import yargs from 'yargs';
 import {spawn} from 'child_process'
 import lodash from 'lodash'
+import { meguminJadiBot } from './plugins/jadibot-serbot.js';
 import chalk from 'chalk'
 import syntaxerror from 'syntax-error'
 import {tmpdir} from 'os'
@@ -165,7 +166,7 @@ const filterStrings = [
 "RGVjcnlwdGVkIG1lc3NhZ2U=" // "Decrypted message" 
 ]
 
-console.info = () => {} 
+/*console.info = () => {} 
 console.debug = () => {} 
 ['log', 'warn', 'error'].forEach(methodName => redefineConsoleMethod(methodName, filterStrings))
 
@@ -189,7 +190,29 @@ msgRetryCounterCache, // Resolver mensajes en espera
 msgRetryCounterMap, // Determinar si se debe volver a intentar enviar un mensaje o no
 defaultQueryTimeoutMs: undefined,
 version: [2, 3000, 1015901307],
-}
+}*/
+
+const connectionOptions = {
+logger: pino({ level: 'silent' }),
+printQRInTerminal: opcion == '1' ? true : methodCodeQR ? true : false,
+mobile: MethodMobile, 
+browser: opcion == '1' ? ['MeguminBot-MD', 'Edge', '20.0.04'] : methodCodeQR ? ['MeguminBot-MD', 'Edge', '20.0.04'] : ["Ubuntu", "Chrome", "20.0.04"],
+auth: {
+creds: state.creds,
+keys: makeCacheableSignalKeyStore(state.keys, pino({ level: "fatal" }).child({ level: "fatal" })),
+},
+markOnlineOnConnect: true,
+generateHighQualityLinkPreview: true,
+getMessage: async (clave) => {
+let jid = jidNormalizedUser(clave.remoteJid);
+let msg = await store.loadMessage(jid, clave.id);
+return msg?.message || "";
+},
+msgRetryCounterCache,
+msgRetryCounterMap,
+defaultQueryTimeoutMs: undefined,
+version: [2, 3000, 1015901307]
+};
 
 global.conn = makeWASocket(connectionOptions);
 
@@ -331,6 +354,29 @@ conn.ev.on('creds.update', conn.credsUpdate)
 isInit = false
 return true
 };
+
+global.rutaJadiBot = join(__dirname, '../MeguminJadiBot')
+
+if (global.meguminJadibts) {
+if (!existsSync(global.rutaJadiBot)) {
+mkdirSync(global.rutaJadiBot, { recursive: true }) 
+console.log(chalk.bold.cyan(`La carpeta: ${jadi} se creó correctamente.`))
+} else {
+console.log(chalk.bold.cyan(`La carpeta: ${jadi} ya está creada.`)) 
+}
+
+const readRutaJadiBot = readdirSync(rutaJadiBot)
+if (readRutaJadiBot.length > 0) {
+const creds = 'creds.json'
+for (const gjbts of readRutaJadiBot) {
+const botPath = join(rutaJadiBot, gjbts)
+const readBotPath = readdirSync(botPath)
+if (readBotPath.includes(creds)) {
+sanJadiBot({pathSanJadiBot: botPath, m: null, conn, args: '', usedPrefix: '/', command: 'serbot'})
+}
+}
+}
+}
 
 const pluginFolder = global.__dirname(join(__dirname, '../plugins/index'))
 const pluginFilter = (filename) => /\.js$/.test(filename)
