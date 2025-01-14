@@ -19,26 +19,28 @@
 ---
 
 ### 🌋 Cafirexos 🚀
-<a href="https://cafirexos.com">
-  <img width="180px" src="https://cdn.cafirexos.com/logos/logo_cfros_2000x2000.png" alt="Cafirexos Logo"/>
-</a>
+<div align="center">
+    <a href="https://cafirexos.com">
+        <img width="200px" src="https://cdn.cafirexos.com/logos/logo_cfros_2000x2000.png" alt="Cafirexos Logo" style="border-radius:10px; box-shadow: 0 0 15px rgba(0,0,0,0.2);"/>
+    </a>
+</div>
 
 <details>
  <summary><b>📎 Enlaces Importantes</b></summary>
 
-- **Sitio Web:** [🌐 cafirexos.com](https://cafirexos.com)
-- **Área de Clientes:** [💼 clientes.cafirexos.com](https://clientes.cafirexos.com)
-- **Panel de Control:** [🛠️ panel.cafirexos.com](https://panel.cafirexos.com)
-- **Estado de los Servicios:** [📊 estado.cafirexos.com](https://estado.cafirexos.com)
-- **Documentación:** [📄 docs.cafirexos.com](https://docs.cafirexos.com)
-- **Canal de WhatsApp:** [💬 ¡Únete aquí!](https://cafirexos.com/whatsapp)
-- **Comunidad de WhatsApp:** [👥 ¡Únete aquí!](https://cafirexos.com/comunidad)
+- **Sitio Web:** [🌐 **Aquí**](https://cafirexos.com)
+- **Área de Clientes:** [💼 **Aquí**](https://clientes.cafirexos.com)
+- **Panel de Control:** [🛠️ **Aquí**](https://panel.cafirexos.com)
+- **Estado de los Servicios:** [📊 **Aquí**](https://estado.cafirexos.com)
+- **Documentación:** [📄 **Aquí**](https://docs.cafirexos.com)
+- **Canal de WhatsApp:** [💬 **Aquí**](https://cafirexos.com/whatsapp)
+- **Comunidad de WhatsApp:** [👥 **Aquí**](https://cafirexos.com/comunidad)
 
 </details>
 
 ---
 
-#### **💣 Instalación por cloudshell**
+#### 💣 Instalación por cloudshell
 
 <details>
  <summary><b>💥 Comandos</b></summary>
@@ -127,20 +129,13 @@ Si tiene éxito, le dará un mensaje como: `SUCCESS: specified value was saved`.
 
 ---
 
-### 🌴 Colaboradores
-<a href="https://github.com/David-Chian/Megumin-Bot-MD/graphs/contributors">
-<img src="https://contrib.rocks/image?repo=David-Chian/Megumin-Bot-MD" /> 
-</a>
-
----
-
-### 👑 Propietario
-<a href="https://github.com/David-Chian"><img src="https://github.com/David-Chian.png" width="130" height="130" alt="David"/></a>
-
----
-
-### 🌹 Créditos
-<a href="https://github.com/BrunoSobrino"><img src="https://github.com/BrunoSobrino.png" width="130" height="130" alt="BrunoSobrino"/></a>
+### 🌟 Creador
+<h2 align="center">David-Chian</h2>
+<p align="center">
+  <a href="https://github.com/David-Chian">
+    <img src="https://github.com/David-Chian.png" width="130" height="130" alt="David"/>
+  </a>
+</p>
 
 ---
 
