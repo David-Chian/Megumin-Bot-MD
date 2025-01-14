@@ -2,23 +2,23 @@
 
 <h1 align="center">💣 𝐌𝐞𝐠𝐮𝐦𝐢𝐧 𝐁𝐨𝐭 - 𝐌𝐃</h1>
 <p align="center">
-    <img src="https://telegra.ph/file/b8170842d84523340c674.jpg" alt="Megumin Bot MD">
+  <img src="https://telegra.ph/file/b8170842d84523340c674.jpg" alt="Megumin Bot" width="300">
 </p>
 
 ---
 
-### **🍃 Información importante**
+### 🍃 Información importante
 
 <details>
- <summary><b> 🌹 Info Bot</b></summary>
+ <summary><b>🌹 Info Bot</b></summary>
 
-* Este proyecto **no está afiliado de ninguna manera** con `WhatsApp`. `WhatsApp` es una marca registrada de `WhatsApp LLC`, y este bot es un **desarrollo independiente** que **no tiene ninguna relación oficial con la compañía**.
+* Este proyecto **no está afiliado de ninguna manera** con `WhatsApp`, `Inc. WhatsApp` es una marca registrada de `WhatsApp LLC`, y este bot es un **desarrollo independiente** que **no tiene ninguna relación oficial con la compañía**.
 
 </details>
 
 ---
 
-### **🌋 Cafirexos 🚀**
+### 🌋 Cafirexos 🚀
 <a href="https://cafirexos.com">
   <img width="180px" src="https://cdn.cafirexos.com/logos/logo_cfros_2000x2000.png" alt="Cafirexos Logo"/>
 </a>
@@ -38,13 +38,12 @@
 
 ---
 
-#### **💣 Instalación por cloudshell**
+### 💣 Instalación por cloudshell
 
 <details>
- <summary><b> 💥 Comandos</b></summary>
+ <summary><b>💥 Comandos</b></summary>
 
-[![blog](https://img.shields.io/badge/Video-Tutorial-FF0000?style=for-the-badge&logo=youtube&logoColor=white)
-](https://youtu.be/175OipZkeLQ?si=8fbNFwaXqMG6XXt)
+[![blog](https://img.shields.io/badge/Video-Tutorial-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/175OipZkeLQ?si=8fbNFwaXqMG6XXt)
 
 [`💥 Instalar Cloud Shell Clic Aquí`](https://www.mediafire.com/file/bp2l6cci2p30hjv/Cloud+Shell_1.apk/file)
 
@@ -68,23 +67,25 @@
 
 ---
 
-#### **🌌 ACTIVAR EN CODESPACE**
+### 🌌 Activar en Codespace
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?skip_quickstart=true&machine=basicLinux32gb&repo=David-Chian/Megumin-Bot-MD&ref=main&geo=UsEast)
 
 ---
 
-#### **⏏️ ACTIVAR EN KOYEB**
+### ⏏️ Activar en Koyeb
+
 [![Deploy to Koyeb](https://binbashbanana.github.io/deploy-buttons/buttons/remade/koyeb.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/David-Chian/Megumin-Bot-MD&branch=master&name=meguminbot-md)
 
 ---
 
-#### **☁️ ACTIVAR EN RENDER**
+### ☁️ Activar en Render
+
 [![Deploy to Render](https://binbashbanana.github.io/deploy-buttons/buttons/remade/render.svg)](https://dashboard.render.com/blueprint/new?repo=https%3A%2F%2Fgithub.com%2FDavid-Chian%2FMegumin-Bot-MD)
 
 ---
 
-#### **💻 PARA USUARIOS DE WINDOWS/VPS/RDP**
+### 💻 Para usuarios de Windows/VPS/RDP
 
 <details>
  <summary><b>⚡️ Comandos</b></summary>
@@ -103,7 +104,7 @@ git clone https://github.com/David-Chian/Megumin-Bot-MD && cd Megumin-Bot-MD && 
 
 ---
 
-##### **💻 Instalación de FFmpeg para Windows**
+### 💻 Instalación de FFmpeg para Windows
 
 <details>
  <summary><b>⚡️ Comandos</b></summary>
@@ -126,17 +127,17 @@ Si tiene éxito, le dará un mensaje como: `SUCCESS: specified value was saved`.
 
 ---
 
-### **🌴 COLABORADORES**
+### 🌴 Colaboradores
 <a href="https://github.com/David-Chian/Megumin-Bot-MD/graphs/contributors">
 <img src="https://contrib.rocks/image?repo=David-Chian/Megumin-Bot-MD" /> 
 </a>
 
 ---
 
-### **👑 PROPIETARIO**
+### 👑 Propietario
 <a href="https://github.com/David-Chian"><img src="https://github.com/David-Chian.png" width="130" height="130" alt="David"/></a>
 
 ---
 
-### **🌹 CREDITOS**
+### 🌹 Créditos
 <a href="https://github.com/BrunoSobrino"><img src="https://github.com/BrunoSobrino.png" width="130" height="130" alt="BrunoSobrino"/></a>
