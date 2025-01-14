@@ -32,8 +32,8 @@ global.suittag = ['5351524614']
 global.prems = []
 
 global.libreria = 'Baileys'
-global.baileys = 'V 6.7.8'
-global.vs = '3.0.3'
+global.baileys = '^6.7.5'
+global.vs = '^3.0.3'
 global.languaje = 'Español'
 global.nameqr = 'Megumin Bot - MD'
 global.sessions = 'MeguminSession'
