@@ -31,6 +31,24 @@
 
 ---
 
+### **`🌋 Cafirexos 🚀`**
+<a href="https://cafirexos.com">
+  <img width="180px" src="https://cdn.cafirexos.com/logos/logo_cfros_2000x2000.png"/>
+</a>
+
+<details>
+ <summary><b>:paperclip: Enlaces Importantes</b></summary>
+
+- **Sitio Web:** [cafirexos.com](https://cafirexos.com)
+- **Área de Clientes:** [clientes.cafirexos.com](https://clientes.cafirexos.com)
+- **Panel de Control:** [panel.cafirexos.com](https://panel.cafirexos.com)
+- **Estado de los Servicios:** [estado.cafirexos.com](https://estado.cafirexos.com)
+- **Documentación:** [docs.cafirexos.com](https://docs.cafirexos.com)
+- **Canal de WhatsApp:** [¡Únete aquí!](https://cafirexos.com/whatsapp)
+- **Comunidad de WhatsApp:** [¡Únete aquí!](https://cafirexos.com/comunidad)
+
+</details>
+
 ### **`☁️ Vortexus Cloud 🚀`**
 <a href="https://vortexuscloud.com"><img src="https://qu.ax/xjKv.jpg" height="125px"></a>
 
