@@ -1,4 +1,7 @@
 // *[ ❀ PLAY ]*
+/*Créditos A Quien Correspondan 
+Play Traido y Editado 
+Por Cuervo-Team-Supreme*/
 import fetch from "node-fetch";
 import yts from "yt-search";
 
@@ -54,5 +57,5 @@ console.error(error)
 }}
 
 handler.command = ['play']
-
+handler.help = ['play']
 export default handler
