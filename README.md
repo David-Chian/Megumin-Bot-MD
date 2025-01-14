@@ -1,4 +1,7 @@
-<h1 align="center">💣 𝐌𝐞𝐠𝐮𝐦𝐢𝐧 𝐁𝐨𝐭 - 𝐌𝐃 💣</p>
+<h1 align="center">💣 𝐌𝐞𝐠𝐮𝐦𝐢𝐧 𝐁𝐨𝐭 - 𝐌𝐃</p>
+<p>
+        <img src= "https://telegra.ph/file/b8170842d84523340c674.jpg">
+    </p>
 
 ---
 
