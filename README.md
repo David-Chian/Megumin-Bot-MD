@@ -26,19 +26,19 @@
 <details>
  <summary><b>📎 Enlaces Importantes</b></summary>
 
-- **Sitio Web:** [cafirexos.com](https://cafirexos.com)
-- **Área de Clientes:** [clientes.cafirexos.com](https://clientes.cafirexos.com)
-- **Panel de Control:** [panel.cafirexos.com](https://panel.cafirexos.com)
-- **Estado de los Servicios:** [estado.cafirexos.com](https://estado.cafirexos.com)
-- **Documentación:** [docs.cafirexos.com](https://docs.cafirexos.com)
-- **Canal de WhatsApp:** [¡Únete aquí!](https://cafirexos.com/whatsapp)
-- **Comunidad de WhatsApp:** [¡Únete aquí!](https://cafirexos.com/comunidad)
+- **Sitio Web:** [🌐 cafirexos.com](https://cafirexos.com)
+- **Área de Clientes:** [💼 clientes.cafirexos.com](https://clientes.cafirexos.com)
+- **Panel de Control:** [🛠️ panel.cafirexos.com](https://panel.cafirexos.com)
+- **Estado de los Servicios:** [📊 estado.cafirexos.com](https://estado.cafirexos.com)
+- **Documentación:** [📄 docs.cafirexos.com](https://docs.cafirexos.com)
+- **Canal de WhatsApp:** [💬 ¡Únete aquí!](https://cafirexos.com/whatsapp)
+- **Comunidad de WhatsApp:** [👥 ¡Únete aquí!](https://cafirexos.com/comunidad)
 
 </details>
 
 ---
 
-### 💣 Instalación por cloudshell
+#### **💣 Instalación por cloudshell**
 
 <details>
  <summary><b>💥 Comandos</b></summary>
@@ -141,3 +141,34 @@ Si tiene éxito, le dará un mensaje como: `SUCCESS: specified value was saved`.
 
 ### 🌹 Créditos
 <a href="https://github.com/BrunoSobrino"><img src="https://github.com/BrunoSobrino.png" width="130" height="130" alt="BrunoSobrino"/></a>
+
+---
+
+### 🚀 Extras y Funcionalidades Avanzadas
+
+<details>
+ <summary><b>🔧 Personalización</b></summary>
+
+* **Cambiar el nombre del Bot:** Modifica el archivo `config.js` para personalizar el nombre de tu bot.
+* **Añadir comandos personalizados:** Sigue la guía en el archivo `README.md` para agregar tus propios comandos.
+* **Integración con APIs externas:** Conéctate a servicios externos y APIs para expandir las capacidades de tu bot.
+
+</details>
+
+<details>
+ <summary><b>📈 Monitoreo y Análisis</b></summary>
+
+* **Estadísticas de uso:** Visualiza las estadísticas de uso de tu bot en tiempo real utilizando herramientas de monitoreo.
+* **Reportes de errores:** Activa el registro de errores para identificar y solucionar problemas rápidamente.
+* **Feedback de usuarios:** Recopila opiniones y sugerencias de los usuarios para mejorar continuamente el bot.
+
+</details>
+
+<details>
+ <summary><b>🌐 Opciones de Implementación</b></summary>
+
+* **Implementar en Heroku:** Sigue las instrucciones en el archivo `DEPLOY.md` para implementar tu bot en Heroku.
+* **Usar Docker:** Utiliza el archivo `Dockerfile` incluido para crear contenedores Docker de tu bot y desplegarlos fácilmente.
+* **Integración CI/CD:** Configura pipelines de integración y despliegue continuo para automatizar el proceso de desarrollo y lanzamiento de nuevas versiones.
+
+</details>
