@@ -110,13 +110,27 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       }
     } else if (command === 'play2' || command === 'ytmp4') {
       try {
+        const apiUrl = `https://delirius-apiofc.vercel.app/download/ytmp4?url=${url}`;
+        const response = await axios.get(apiUrl);
+        const { data } = response.data;
+
+        if (data && data.download && data.download.url) {
           await conn.sendMessage(m.chat, {
-            video: { url: url },
+            video: { url: data.download.url },
             mimetype: "video/mp4",
           }, { quoted: m });
+        } else {
+          throw new Error('URL de descarga no encontrada');
+        }
       } catch (error) {
-        return m.reply(`${error.message}`);
+        return m.reply(`🪛 *Error:* ${error.message}`);
       }
+    } else {
+      throw "Comando no reconocido.";
+    }
+  } catch (error) {
+    return m.reply(`🪛 *Error:* ${error.message}`);
+  }
 };
 
 handler.command = handler.help = ['play', 'ytmp4', 'play2'];
