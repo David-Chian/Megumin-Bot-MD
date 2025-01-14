@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import axios from 'axios';
 const timeout = 30000;
 const poin = 200;
-let img = './Menu.jpg'
+let img = './src/menus/Menu.jpg'
 const handler = async (m, {conn, usedPrefix}) => {
   conn.tebaklagu = conn.tebaklagu ? conn.tebaklagu : {};
   const id = m.chat;
