@@ -7,25 +7,12 @@
 
 ---
 
-### **`❕️ Información importante`**
+### **`🍃 Información importante`**
 
 <details>
  <summary><b> 🌹 Info Bot</b></summary>
 
 * Este proyecto **no está afiliado de ninguna manera** con `WhatsApp`, `Inc. WhatsApp` es una marca registrada de `WhatsApp LLC`, y este bot es un **desarrollo independiente** que **no tiene ninguna relación oficial con la compañía**.
-
-</details>
-
----
-
-### **`💭 Contáctanos`**
-
-<details>
-<summary><b> 💣 Contáctos</b></summary>
-
-* themeguminbot@gmail.com
-* https://wa.me/5493876432076
-* https://wa.me/5351524614
 
 </details>
 
@@ -57,104 +44,6 @@
 
 - **Pagina Principal:** [`Aquí`](https://vortexuscloud.com)
 - **Grupo - Soporte:** [`Aquí`](https://chat.whatsapp.com/DSs6k5EnzzE2FeFrTj3Fao)
-
-</details>
-
----
-
-#### **`🚀 Instalación por termux`**
-
-<details>
- <summary><b> 🌸 Comandos</b></summary>
-
-#### **✨️ Instalación automatica por termux**
-
-> Copia los códigos uno por uno, no los pegues todos juntos a la vez.
-
-```bash
-termux-setup-storage
-```
-
-```bash
-apt update -y && yes | apt upgrade && pkg install -y bash wget mpv && wget -O - https://raw.githubusercontent.com/David-Chian/Megumin-Bot-MD/master/megu.sh | bash
-```
-
-#### **🌺 Instalación manual por termux**
-
-```bash
-termux-setup-storage
-```
-
-```bash
-apt-get update -y && apt-get upgrade -y
-```
-
-```bash
-pkg install -y git nodejs ffmpeg imagemagick && pkg install yarn 
-```
-
-```bash
-git clone https://github.com/David-Chian/Megumin-Bot-MD && cd Megumin-Bot-MD 
-```
-
-```bash
-yarn install
-```
-
-```bash
-npm install
-```
-
-```bash
-npm start
-```
-
----
-
-#### **🟢 Activar en caso de detenerse en termux**
-
-Si después de instalar el bot en Termux se detiene (pantalla en blanco, pérdida de conexión a Internet, reinicio del dispositivo), sigue estos pasos:
-
-1. Abre Termux y navega al directorio del bot:
-    ```bash
-    cd Megumin-Bot-MD
-    ```
-
-2. Inicia el bot nuevamente:
-    ```bash
-    npm start
-    ```
-
----
-
-#### **🍬 Obtener otro codigo qr en termux**
-
-Si después de instalar el bot en Termux y iniciar la session del bot (el numero se va a soporte, se cierra la conexión o demorastes al conectar), sigue estos pasos:
-
-1. Abre Termux y navega al directorio del bot:
-    ```bash
-    cd Megumin-Bot-MD
-    ```
-
-2. Elimina la carpeta MiniSession:
-    ```bash
-    rm -rf MeguminSession
-    ```
-
-3. Inicia el bot nuevamente:
-    ```bash
-    npm start
-    ```
-
----
-
-### **🤖 Para activar 24/7 (termux)**
-
-> comando para obtener la bot 24/7 en termux
-
-```bash
-npm i -g pm2 && pm2 start index.js && pm2 save && pm2 logs
-```
 
 </details>
 
@@ -242,16 +131,6 @@ Si tiene éxito, le dará un mensaje como: `SUCCESS: specified value was saved`.
 
 ---
 
-## **`🔗 Enlaces útiles`**
-
-| APP | TIPO | ENLACE |
-|------|-------------|-------|
-| WhatsApp | Canal | [¡Click aquí!](https://whatsapp.com/channel/0029VacDy0R6hENqnTKnG820) |
-| WhatsApp | Canal Sunlight | [¡Click aquí!](https://whatsapp.com/channel/0029Vam7yUg77qVaz3sIAp0z) |
-| WhatsApp | Gc Megumin | [¡Click aquí!](https://chat.whatsapp.com/F4QEFF2Hn4102NdbPJ2ZOi) |
-
----
-
 ### **`🌴 COLABORADORES`**
 <a href="https://github.com/David-Chian/Megumin-Bot-MD/graphs/contributors">
 <img src="https://contrib.rocks/image?repo=David-Chian/Megumin-Bot-MD" /> 
@@ -264,5 +143,3 @@ href="https://github.com/David-Chian"><img src="https://github.com/David-Chian.p
 ### **`🌹 CREDITOS`**
 <a
 href="https://github.com/BrunoSobrino"><img src="https://github.com/BrunoSobrino.png" width="130" height="130" alt="BrunoSobrino"/></a>
-
-[© Powered By Sunlight Team ⚡︎](https://whatsapp.com/channel/0029Vam7yUg77qVaz3sIAp0z)
