@@ -1,3 +1,6 @@
+/*Créditos A Quien Correspondan 
+Play Traido y Editado 
+Por Cuervo-Team-Supreme*/
 import fetch from 'node-fetch';
 import yts from 'yt-search';
 
@@ -46,7 +49,7 @@ let handler = async (m, { conn, text, args }) => {
 };
 
 handler.command = ['play2']
-
+handler.help = ['play2']
 export default handler;
 
 async function search(query, options = {}) {
