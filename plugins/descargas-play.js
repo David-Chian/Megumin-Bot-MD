@@ -14,9 +14,9 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     }
 
     const videoInfo = search.all[0];
-    const { title, thumbnail, timestamp, views, ago, url } = videoInfo;
+    const { title, thumbnail, timestamp, views, ago, url, author } = videoInfo;
     const vistas = formatViews(views);
-    const infoMessage = `✨ *Titulo:* ${title}\n⌛ *Duración:* ${timestamp}\n👀 *Vistas:* ${vistas}\n💡 *Canal:* ${videoInfo.author.name || 'Desconocido'}\n📆 *Publicado:* ${ago}\n⛓️ *Url:* ${url}`;
+    const infoMessage = `✨ *Titulo:* ${title}\n⌛ *Duración:* ${timestamp}\n👀 *Vistas:* ${vistas}\n💡 *Canal:* ${author?.name || 'Desconocido'}\n📆 *Publicado:* ${ago}\n⛓️ *Url:* ${url}`;
     const thumb = (await conn.getFile(thumbnail))?.data;
 
     const JT = {
@@ -40,10 +40,10 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       try {
         const apiUrl = `https://delirius-apiofc.vercel.app/download/ytmp3?url=${url}`;
         const response = await axios.get(apiUrl);
-        const { download } = response.data.data;
+        const { data } = response.data;
 
-        if (download && download.url) {
-          await conn.sendMessage(m.chat, { audio: { url: download.url }, mimetype: "audio/mpeg" }, { quoted: m });
+        if (data && data.download && data.download.url) {
+          await conn.sendMessage(m.chat, { audio: { url: data.download.url }, mimetype: "audio/mpeg" }, { quoted: m });
         } else {
           throw new Error('URL de descarga no encontrada');
         }
@@ -54,11 +54,11 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       try {
         const apiUrl = `https://delirius-apiofc.vercel.app/download/ytmp4?url=${url}`;
         const response = await axios.get(apiUrl);
-        const { download } = response.data.data;
+        const { data } = response.data;
 
-        if (download && download.url) {
+        if (data && data.download && data.download.url) {
           await conn.sendMessage(m.chat, {
-            video: { url: download.url },
+            video: { url: data.download.url },
             mimetype: "video/mp4",
           }, { quoted: m });
         } else {
