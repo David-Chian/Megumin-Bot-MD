@@ -115,7 +115,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
             mimetype: "video/mp4",
           }, { quoted: m });
       } catch (error) {
-        return m.reply(`🪛 *Error:* ${error.message}`);
+        return m.reply(`${error.message}`);
       }
 };
 
