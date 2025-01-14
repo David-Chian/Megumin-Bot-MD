@@ -2,9 +2,6 @@ import fetch from 'node-fetch';
 import yts from 'yt-search';
 import axios from 'axios';
 
-const formatAudio = ['mp3', 'm4a', 'webm', 'acc', 'flac', 'opus', 'ogg', 'wav'];
-const formatVideo = ['360', '480', '720', '1080', '1440', '4k'];
-
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   try {
     if (!text.trim()) {
@@ -41,24 +38,32 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
     if (command === 'play') {
       try {
-        const apiUrl = `https://delirius-apiofc.vercel.app/download/ytmp3?url=${encodeURIComponent(url)}`;
+        const apiUrl = `https://delirius-apiofc.vercel.app/download/ytmp3?url=${url}`;
         const response = await axios.get(apiUrl);
-        const { download_url } = response.data;
+        const { download } = response.data.data;
 
-        await conn.sendMessage(m.chat, { audio: { url: download_url }, mimetype: "audio/mpeg" }, { quoted: m });
+        if (download && download.url) {
+          await conn.sendMessage(m.chat, { audio: { url: download.url }, mimetype: "audio/mpeg" }, { quoted: m });
+        } else {
+          throw new Error('URL de descarga no encontrada');
+        }
       } catch (error) {
         return m.reply(`🪛 *Error:* ${error.message}`);
       }
     } else if (command === 'play2' || command === 'ytmp4') {
       try {
-        const apiUrl = `https://delirius-apiofc.vercel.app/download/ytmp4?url=${encodeURIComponent(url)}`;
+        const apiUrl = `https://delirius-apiofc.vercel.app/download/ytmp4?url=${url}`;
         const response = await axios.get(apiUrl);
-        const { download_url } = response.data;
+        const { download } = response.data.data;
 
-        await conn.sendMessage(m.chat, {
-          video: { url: download_url },
-          mimetype: "video/mp4",
-        }, { quoted: m });
+        if (download && download.url) {
+          await conn.sendMessage(m.chat, {
+            video: { url: download.url },
+            mimetype: "video/mp4",
+          }, { quoted: m });
+        } else {
+          throw new Error('URL de descarga no encontrada');
+        }
       } catch (error) {
         return m.reply(`🪛 *Error:* ${error.message}`);
       }
@@ -75,19 +80,12 @@ handler.tags = ['downloader'];
 
 export default handler;
 
-const getVideoId = (url) => {
-  const regex = /(?:v=|\/)([0-9A-Za-z_-]{11}).*/;
-  const match = url.match(regex);
-  if (match) {
-    return match[1];
-  }
-  throw new Error("Invalid YouTube URL");
-};
-
 function formatViews(views) {
-  if (views >= 1000) {
+  if (views && views >= 1000) {
     return (views / 1000).toFixed(1) + 'k (' + views.toLocaleString() + ')';
-  } else {
+  } else if (views) {
     return views.toString();
+  } else {
+    return '0';
   }
 }
