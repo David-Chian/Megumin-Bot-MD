@@ -43,8 +43,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
         const { data } = response.data;
 
         if (data && data.download && data.download.url) {
-          const audioBuffer = await fetch(data.download.url).then(res => res.arrayBuffer());
-          await conn.sendMessage(m.chat, { audio: audioBuffer, mimetype: 'audio/mpeg' }, { quoted: m });
+          await conn.sendMessage(m.chat, { audio: { url: data.download.url }, mimetype: "audio/mpeg" }, { quoted: m });
         } else {
           throw new Error('URL de descarga no encontrada');
         }
@@ -60,7 +59,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
         if (data && data.download && data.download.url) {
           await conn.sendMessage(m.chat, {
             video: { url: data.download.url },
-            mimetype: 'video/mp4',
+            mimetype: "video/mp4",
           }, { quoted: m });
         } else {
           throw new Error('URL de descarga no encontrada');
