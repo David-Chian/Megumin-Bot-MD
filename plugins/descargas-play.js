@@ -80,7 +80,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     const videoInfo = search.all[0];
     const { title, thumbnail, timestamp, views, ago, url } = videoInfo;
     const vistas = formatViews(views);
-    const infoMessage = `✨ *Titulo:* ${title}\n\n> ⌛ *Duración:* ${timestamp}\n> 📲 *Vistas:* ${vistas}\n> 💡 *Canal:* ${videoInfo.author.name || 'Desconocido'}\n> 📆 *Publicado:* ${ago}\n> ⛓️ *Url:* ${url}`;
+    const infoMessage = `✨ *Titulo:* ${title}\n⌛ *Duración:* ${timestamp}\n👀 *Vistas:* ${vistas}\n💡 *Canal:* ${videoInfo.author.name || 'Desconocido'}\n📆 *Publicado:* ${ago}\n⛓️ *Url:* ${url}`;
     const thumb = (await conn.getFile(thumbnail))?.data;
 
     const JT = {
