@@ -38,7 +38,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
     if (command === 'play') {
       try {
-        const apiUrl = `https://delirius-apiofc.vercel.app/download/ytmp3?url=${url}`;
+        const apiUrl = `https://delirius-apiofc.vercel.app/download/ytmp3?url=${encodeURIComponent(url)}`;
         const response = await axios.get(apiUrl);
         const { data } = response.data;
 
@@ -53,7 +53,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       }
     } else if (command === 'play2' || command === 'ytmp4') {
       try {
-        const apiUrl = `https://delirius-apiofc.vercel.app/download/ytmp4?url=${url}`;
+        const apiUrl = `https://delirius-apiofc.vercel.app/download/ytmp4?url=${encodeURIComponent(url)}`;
         const response = await axios.get(apiUrl);
         const { data } = response.data;
 
