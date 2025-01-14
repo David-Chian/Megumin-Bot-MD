@@ -1,6 +1,5 @@
-<h1 align="center">Megumin Bot - MD 💥</h1>
- <p align="center">💣 WhatsApp Bot Node-Js.</p>
-</p>
+<h1 align="center">💣 𝐌𝐞𝐠𝐮𝐦𝐢𝐧 𝐁𝐨𝐭 - 𝐌𝐃 💣</p>
+<p>
 
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=FF0000&lines=Bienvenido+al+Repositorio;Megumin+-+Bot+-+MD;Gracias+por+preferirnos;Creado+por+David+Chian;💥+BOOM!!!;🔥)](https://git.io/typing-svg)
 ![Megumin](https://telegra.ph/file/b8170842d84523340c674.jpg)
