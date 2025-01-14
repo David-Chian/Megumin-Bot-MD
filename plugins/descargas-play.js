@@ -116,7 +116,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
         if (data && data.download && data.download.url) {
           await conn.sendMessage(m.chat, {
-            video: { url: data.download.url },
+            video: { url: url },
             mimetype: "video/mp4",
           }, { quoted: m });
         } else {
