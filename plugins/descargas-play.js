@@ -8,6 +8,15 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       return conn.reply(m.chat, `💣 Ingresa el nombre de la música a descargar.`, m);
     }
 
+const formatAudio = ['mp3', 'm4a', 'webm', 'acc', 'flac', 'opus', 'ogg', 'wav'];
+const formatVideo = ['360', '480', '720', '1080', '1440', '4k'];
+
+const ddownr = {
+  download: async (url, format) => {
+    if (!formatAudio.includes(format) && !formatVideo.includes(format)) {
+      throw new Error('Formato no soportado, verifica la lista de formatos disponibles.');
+    }
+
     const search = await yts(text);
     if (!search.all || search.all.length === 0) {
       return m.reply('No se encontraron resultados para tu búsqueda.');
