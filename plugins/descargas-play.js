@@ -127,9 +127,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
                 return m.reply(`🪛 *Error final:* ${e5.message}`);
               }
             }
-          }
         }
-      }
     } else {
       throw "Comando no reconocido.";
     }
