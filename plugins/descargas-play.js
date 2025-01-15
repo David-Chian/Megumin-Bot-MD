@@ -124,11 +124,12 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
                   caption: `${title}`
                 }, { quoted: m });
               } catch (e5) {
+              //  m.reply('⚠︎ *Error:*' + e5)
                 await conn.sendMessage(m.chat, {
                   video: { url: data.download.url },
                   fileName: `${title}.mp4`,
                   mimetype: 'video/mp4',
-                  caption: `${dev}`
+                  caption: `${title}`
                 }, { quoted: m });
               }
             }
@@ -136,7 +137,12 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       throw "Comando no reconocido.";
     }
   } catch (error) {
-    return m.reply(`🪛 *Error:* ${error.message}`);
+                    await conn.sendMessage(m.chat, {
+                  video: { url: data.download.url },
+                  fileName: `${title}.mp4`,
+                  mimetype: 'video/mp4',
+                  caption: `${title}`
+                }, { quoted: m });
   }
 };
 
