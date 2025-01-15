@@ -67,7 +67,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
               video: { url: downloadUrl },
               fileName: `${title}.mp4`,
               mimetype: 'video/mp4',
-              caption: `${title}`,
+              caption: `${dev}`,
               thumbnail: thumb
             }, { quoted: m });
             break;
