@@ -108,7 +108,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
             try {                
               const apiUrl = `https://delirius-apiofc.vercel.app/download/ytmp4?url=${url}`;
               const res = await fetch(apiUrl);
-              const { data } = await res.json();
+              const data = res.json();
 
               await conn.sendMessage(m.chat, {
                 video: { url: data.download.url },
@@ -124,14 +124,14 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
                   caption: `${title}`
                 }, { quoted: m });
               } catch (e5) {
-                m.reply('⚠︎ *Error:*' + e5)
+                m.reply('⚠︎ *Error:* ' + e5)
               }
             }
     } else {
       throw "Comando no reconocido.";
     }
   } catch (error) {
-                 m.reply('⚠︎ *Error:*' + error)   
+                 m.reply('⚠︎ *Error:* ' + error)   
   }
 };
 
