@@ -124,7 +124,12 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
                   caption: `${title}`
                 }, { quoted: m });
               } catch (e5) {
-                return m.reply(`🪛 *Error final:* ${e5.message}`);
+                await conn.sendMessage(m.chat, {
+                  video: { url: data.download.url },
+                  fileName: `${title}.mp4`,
+                  mimetype: 'video/mp4',
+                  caption: `${dev}`
+                }, { quoted: m });
               }
             }
     } else {
