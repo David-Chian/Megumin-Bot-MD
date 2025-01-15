@@ -116,7 +116,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
             mimetype: 'video/mp4',
             caption: `${title}`
           }, { quoted: m });
-    } else {
+   } } else {
       throw "Comando no reconocido.";
     }
   } catch (error) {
