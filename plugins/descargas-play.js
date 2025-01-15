@@ -124,25 +124,14 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
                   caption: `${title}`
                 }, { quoted: m });
               } catch (e5) {
-              //  m.reply('⚠︎ *Error:*' + e5)
-                await conn.sendMessage(m.chat, {
-                  video: { url: data.download.url },
-                  fileName: `${title}.mp4`,
-                  mimetype: 'video/mp4',
-                  caption: `${title}`
-                }, { quoted: m });
+                m.reply('⚠︎ *Error:*' + e5)
               }
             }
     } else {
       throw "Comando no reconocido.";
     }
   } catch (error) {
-                    await conn.sendMessage(m.chat, {
-                  video: { url: data.download.url },
-                  fileName: `${title}.mp4`,
-                  mimetype: 'video/mp4',
-                  caption: `${title}`
-                }, { quoted: m });
+                 m.reply('⚠︎ *Error:*' + error)   
   }
 };
 
