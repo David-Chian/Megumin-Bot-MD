@@ -126,7 +126,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
               video: { url: downloadUrl },
               fileName: `${title}.mp4`,
               mimetype: 'video/mp4',
-              caption: `${title}`,
+              caption: `${dev}`,
               thumbnail: thumb
             }, { quoted: m });
             break;
@@ -137,13 +137,13 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       }
 
       if (!success) {
-        return m.reply(`🪛 *No se pudo descargar el video:* No se encontró un enlace de descarga válido.`);
+        return m.reply(`⚠︎ *No se pudo descargar el video:* No se encontró un enlace de descarga válido.`);
       }
     } else {
       throw "Comando no reconocido.";
     }
   } catch (error) {
-    return m.reply(`🪛 *Error:* ${error.message}`);
+    return m.reply(`⚠︎ *Error:* ${error.message}`);
   }
 };
 
