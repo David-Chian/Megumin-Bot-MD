@@ -21,8 +21,8 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     const JT = {
       contextInfo: {
         externalAdReply: {
-          title: "Descarga de YouTube",
-          body: "Descarga rápida",
+          title: packname,
+          body: dev,
           mediaType: 1,
           previewType: 0,
           mediaUrl: url,
@@ -41,7 +41,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       const { data } = await res.json();
 
       await conn.sendMessage(m.chat, { 
-      audio: { url: result }, 
+      audio: { url: data.dl }, 
       mimetype: "audio/mpeg" }, 
       { quoted: m });
 
