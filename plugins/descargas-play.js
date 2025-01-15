@@ -1,16 +1,6 @@
 import fetch from "node-fetch";
 import yts from 'yt-search';
 
-
-const formatAudio = ['mp3', 'm4a', 'webm', 'acc', 'flac', 'opus', 'ogg', 'wav'];
-const formatVideo = ['360', '480', '720', '1080', '1440', '4k'];
-
-const ddownr = {
-  download: async (url, format) => {
-    if (!formatAudio.includes(format) && !formatVideo.includes(format)) {
-      throw new Error('Formato no soportado, verifica la lista de formatos disponibles.');
-    }
-
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   try {
     if (!text.trim()) {
@@ -31,8 +21,8 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     const JT = {
       contextInfo: {
         externalAdReply: {
-          title: packname,
-          body: dev,
+          title: "Descarga de YouTube",
+          body: "Descarga rápida",
           mediaType: 1,
           previewType: 0,
           mediaUrl: url,
@@ -46,9 +36,14 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     await conn.reply(m.chat, infoMessage, m, JT);
 
     if (command === 'play') {
-        const api = await ddownr.download(url, 'mp3');
-        const result = api.downloadUrl;
-        await conn.sendMessage(m.chat, { audio: { url: result }, mimetype: "audio/mpeg" }, { quoted: m });
+      const apiUrl = `https://api.siputzx.my.id/api/d/ytmp3?url=${url}`;
+      const res = await fetch(apiUrl);
+      const { data } = await res.json();
+
+      await conn.sendMessage(m.chat, { 
+      audio: { url: result }, 
+      mimetype: "audio/mpeg" }, 
+      { quoted: m });
 
     } else if (command === 'play2' || command === 'ytmp4') {
       let sources = [
@@ -71,7 +66,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
               video: { url: downloadUrl },
               fileName: `${title}.mp4`,
               mimetype: 'video/mp4',
-              caption: `${dev}`,
+              caption: `${title}`,
               thumbnail: thumb
             }, { quoted: m });
             break;
