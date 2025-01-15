@@ -110,14 +110,6 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
         const res = await fetch(apiUrl);
         const { data } = await res.json();
 
-        await conn.sendMessage(m.chat, {
-          video: { url: data.download.url },
-          fileName: `${title}.mp4`,
-          mimetype: 'video/mp4',
-          caption: `${title}`
-        }, { quoted: m });
-      } catch (e1) {
-        try {
           await conn.sendMessage(m.chat, {
             video: { url: data.download.url },
             fileName: `${title}.mp4`,
@@ -125,7 +117,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
             caption: `${title}`
           }, { quoted: m });
           }
-      }
+      
     } else {
       throw "Comando no reconocido.";
     }
