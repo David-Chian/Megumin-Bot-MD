@@ -98,7 +98,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       },
     };
 
-    await conn.reply(m.chat, 'test', m, JT);
+    await conn.reply(m.chat, 'test22', m, JT);
 
      if (command === 'play') {
         const api = await ddownr.download(url, 'mp3');
