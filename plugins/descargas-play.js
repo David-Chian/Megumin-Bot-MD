@@ -104,8 +104,8 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
         const api = await ddownr.download(url, 'mp3');
         const result = api.downloadUrl;
         await conn.sendMessage(m.chat, { audio: { url: result }, mimetype: "audio/mpeg" }, { quoted: m });
-    } else if (command === 'play2' || command === 'ytmp4') {
-      try {
+   
+     } else if (command === 'play2' || command === 'ytmp4') {
         const apiUrl = `https://delirius-apiofc.vercel.app/download/ytmp4?url=${url}`;
         const res = await fetch(apiUrl);
         const { data } = await res.json();
@@ -116,7 +116,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
             mimetype: 'video/mp4',
             caption: `${title}`
           }, { quoted: m });
-   } } } else {
+   } else {
       throw "Comando no reconocido.";
     }
   } catch (error) {
