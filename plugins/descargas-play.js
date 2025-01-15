@@ -98,7 +98,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       },
     };
 
-    await conn.reply(m.chat, 'test22', m, JT);
+    await conn.reply(m.chat, '22', m, JT);
 
      if (command === 'play') {
         const api = await ddownr.download(url, 'mp3');
@@ -116,7 +116,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
             mimetype: 'video/mp4',
             caption: `${title}`
           }, { quoted: m });
-   } } else {
+   } } } else {
       throw "Comando no reconocido.";
     }
   } catch (error) {
