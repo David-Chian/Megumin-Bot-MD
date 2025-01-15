@@ -1,6 +1,8 @@
+!![Menu5](https://github.com/user-attachments/assets/d58f479b-384e-42b2-bbdd-eb3fdef4ed55)
+[Menu](https://github.com/user-attachments/assets/a7b95d04-7785-4aa5-9278-4e5d62a24ba6)
 > 💥 Versión actual: ^3.0.3
 
-<h1 align="center">💣 𝐌𝐞𝐠𝐮𝐦𝐢𝐧 𝐁𝐨𝐭 - 𝐌𝐃</p>
+<h1 align="center">💣 bot victor 𝐌𝐞𝐠𝐮𝐦𝐢𝐧 𝐁𝐨𝐭 - 𝐌𝐃</p>
 <p>
         <img src= "https://telegra.ph/file/b8170842d84523340c674.jpg">
     </p>
@@ -9,10 +11,10 @@
 
 ### **`🍃 Información importante`**
 
-<details>
- <summary><b> 🌹 Info Bot</b></summary>
+<details> .menu, 
+ <summary><b> 🌹 .Info Bot</b></summary>
 
-* Este proyecto **no está afiliado de ninguna manera** con `WhatsApp`, `Inc. WhatsApp` es una marca registrada de `WhatsApp LLC`, y este bot es un **desarrollo independiente** que **no tiene ninguna relación oficial con la compañía**.
+* Este proyecto **no está afiliado de ninguna manera. con `WhatsApp`, `Inc. WhatsApp` es una marca registrada de `WhatsApp LLC`, y este bot es un **desarrollo independiente** que **no tiene ninguna relación oficial con la compañía**.
 
 </details>
 
