@@ -2,63 +2,6 @@ import fetch from "node-fetch";
 import yts from 'yt-search';
 import axios from "axios";
 
-const ddownr = {
-  download: async (url, format) => {
-    const config = {
-      method: 'GET',
-      url: `https://p.oceansaver.in/ajax/download.php?format=${format}&url=${encodeURIComponent(url)}&api=dfcb6d76f2f6a9894gjkege8a4ab232222`,
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, como Gecko) Chrome/91.0.4472.124 Safari/537.36'
-      }
-    };
-
-    try {
-      const response = await axios.request(config);
-
-      if (response.data && response.data.success) {
-        const { id, title, info } = response.data;
-        const { image } = info;
-        const downloadUrl = await ddownr.cekProgress(id);
-
-        return {
-          id: id,
-          image: image,
-          title: title,
-          downloadUrl: downloadUrl
-        };
-      } else {
-        throw new Error('Fallo al obtener los detalles del video.');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      throw error;
-    }
-  },
-  cekProgress: async (id) => {
-    const config = {
-      method: 'GET',
-      url: `https://p.oceansaver.in/ajax/progress.php?id=${id}`,
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, como Gecko) Chrome/91.0.4472.124 Safari/537.36'
-      }
-    };
-
-    try {
-      while (true) {
-        const response = await axios.request(config);
-
-        if (response.data && response.data.success && response.data.progress === 1000) {
-          return response.data.download_url;
-        }
-        await new Promise(resolve => setTimeout(resolve, 5000));
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      throw error;
-    }
-  }
-};
-
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   try {
     if (!text.trim()) {
@@ -73,7 +16,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     const videoInfo = search.all[0];
     const { title, thumbnail, timestamp, views, ago, url } = videoInfo;
     const vistas = formatViews(views);
-    const infoMessage = `*𖹭.╭╭ִ╼࣪━ִﮩ٨ـﮩ♡̫𝗆𝖾𝗀֟፝𝗎꯭𝗆𝗂꯭𝗇♡ִ̫ﮩ٨ـﮩ━ִ╾࣪╮╮.𖹭*\n> ♡ *Título:* ${title}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Duración:* ${timestamp}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Vistas:* ${vistas}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Canal:* ${videoInfo.author.name || 'Desconocido'}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Publicado:* ${ago}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Enlace:* ${url}\n*⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ׄۛ۫۫۫۫۫۫ۜ*`;
+    const infoMessage = `*𖹭.╭╭ִ╼࣪━ִﮩ٨ـﮩ♡̫𝗆𝖾𝗀֟፝𝗎꯭𝗆𝗂꯭𝗇♡ִ̫ﮩ٨ـﮩ━ִ╾࣪╮╮.𖹭*\n> ♡ *Título:* ${title}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Duración:* ${timestamp}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Vistas:* ${vistas}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Canal:* ${videoInfo.author.name || 'Desconocido'}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Publicado:* ${ago}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Enlace:* ${url}\n*⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ׄۛ۫۫۫۫۫۫ۜ*`;
     const thumb = (await conn.getFile(thumbnail))?.data;
 
     const JT = {
@@ -93,62 +36,55 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
     await conn.reply(m.chat, infoMessage, m, JT);
 
-    if (command === 'play') {
-      const api = await ddownr.download(url, 'mp3');
-      const result = api.downloadUrl;
-      await conn.sendMessage(m.chat, { audio: { url: result }, mimetype: "audio/mpeg" }, { quoted: m });
-    } else if (command === 'play2' || command === 'ytmp4') {
+    let downloadUrl;
+    let success = false;
+
+    const sources = [
+      `https://api.siputzx.my.id/api/d/ytmp4?url=${url}`,
+      `https://api.zenkey.my.id/api/download/ytmp3?apikey=zenkey&url=${url}`,
+      `https://axeel.my.id/api/download/video?url=${encodeURIComponent(url)}`,
+      `${apis}/download/ytmp4?url=${encodeURIComponent(url)}`,
+      `https://delirius-apiofc.vercel.app/download/ytmp4?url=${url}`
+    ];
+
+    for (let i = 0; i < sources.length; i++) {
       try {
-        const apiUrl = `https://delirius-apiofc.vercel.app/download/ytmp4?url=${url}`;
-        const response = await axios.get(apiUrl);
-        const { data } = response.data;
-
-        if (data && data.download && data.download.url) {
-          await conn.sendMessage(m.chat, {
-            video: { url: data.download.url },
-            mimetype: "video/mp4",
-          }, { quoted: m });
-        } else {
-          throw new Error('URL de descarga no encontrada');
+        const res = await fetch(sources[i]);
+        const { data } = await res.json();
+        downloadUrl = data?.download?.url || data?.dl || data?.url;
+        if (downloadUrl) {
+          success = true;
+          break;
         }
-      } catch (error) {
-        console.error('Error al enviar video:', error.message);
-        try {
-          const apiUrl = `https://delirius-apiofc.vercel.app/download/ytmp4?url=${url}`;
-          const response = await axios.get(apiUrl);
-          const { data } = response.data;
-
-          if (data && data.download && data.download.url) {
-            await conn.sendMessage(m.chat, {
-              video: { url: data.download.url },
-              mimetype: "video/mp4",
-            }, { quoted: m });
-          } else {
-            throw new Error('URL de descarga no encontrada');
-          }
-        } catch (retryError) {
-          console.error('Error al reintentar enviar video:', retryError.message);
-          try {
-            const apiUrl = `https://delirius-apiofc.vercel.app/download/ytmp4?url=${url}`;
-            const response = await axios.get(apiUrl);
-            const { data } = response.data;
-
-            if (data && data.download && data.download.url) {
-              await conn.sendMessage(m.chat, {
-                document: { url: data.download.url },
-                mimetype: "video/mp4",
-                fileName: `${title}.mp4`
-              }, { quoted: m });
-            } else {
-              throw new Error('URL de descarga no encontrada');
-            }
-          } catch (finalError) {
-            return m.reply(`🪛 *Error final:* ${finalError.message}`);
-          }
-        }
+      } catch (e) {
+        console.error(`Error con la fuente ${i + 1}:`, e.message);
       }
-    } else {
-      throw "Comando no reconocido.";
+    }
+
+    if (!success) {
+      throw new Error('No se pudo encontrar un enlace de descarga válido.');
+    }
+
+    try {
+      await conn.sendMessage(m.chat, {
+        video: { url: downloadUrl },
+        fileName: `${title}.mp4`,
+        mimetype: "video/mp4",
+        caption: `${title}`,
+        thumbnail: thumb
+      }, { quoted: m });
+    } catch (e) {
+      console.error('Error al enviar video:', e.message);
+      try {
+        await conn.sendMessage(m.chat, {
+          document: { url: downloadUrl },
+          fileName: `${title}.mp4`,
+          mimetype: "video/mp4",
+          caption: `${title}`
+        }, { quoted: m });
+      } catch (finalError) {
+        return m.reply(`🪛 *Error final:* ${finalError.message}`);
+      }
     }
   } catch (error) {
     return m.reply(`🪛 *Error:* ${error.message}`);
@@ -159,15 +95,6 @@ handler.command = handler.help = ['play', 'ytmp4', 'play2'];
 handler.tags = ['downloader'];
 
 export default handler;
-
-const getVideoId = (url) => {
-  const regex = /(?:v=|\/)([0-9A-Za-z_-]{11}).*/;
-  const match = url.match(regex);
-  if (match) {
-    return match[1];
-  }
-  throw new Error("Invalid YouTube URL");
-};
 
 function formatViews(views) {
   if (views >= 1000) {
