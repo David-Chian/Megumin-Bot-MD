@@ -125,7 +125,6 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
             caption: `${title}`
           }, { quoted: m });
           }
-        }
       }
     } else {
       throw "Comando no reconocido.";
