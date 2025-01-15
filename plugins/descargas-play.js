@@ -36,31 +36,10 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
     await conn.reply(m.chat, infoMessage, m, JT);
 
-    if (command === 'play') {
-      try {
-        const apiUrl = `https://api.siputzx.my.id/api/d/ytmp3?url=${url}`;
-        const res = await fetch(apiUrl);
-        const { data } = await res.json();
-
-        await conn.sendMessage(m.chat, {
-          audio: { url: data.dl },
-          mimetype: 'audio/mp4',
-          fileName: `${title}.mp3`
-        }, { quoted: m || null });
-      } catch (e1) {
-        try {    
-          const apiUrl = `https://api.zenkey.my.id/api/download/ytmp3?apikey=zenkey&url=${url}`;
-          const res = await fetch(apiUrl);
-          const { result } = await res.json();
-
-          await conn.sendMessage(m.chat, {
-            audio: { url: result.download.url },
-            fileName: `${title}.mp3`
-          }, { quoted: m });
-        } catch (e2) {
-          return m.reply(`🪛 *Error de descarga:* ${e2.message}`);
-        }
-      }
+     if (command === 'play') {
+        const api = await ddownr.download(url, 'mp3');
+        const result = api.downloadUrl;
+        await conn.sendMessage(m.chat, { audio: { url: result }, mimetype: "audio/mpeg" }, { quoted: m });
     } else if (command === 'play2' || command === 'ytmp4') {
       try {
         const apiUrl = `https://api.siputzx.my.id/api/d/ytmp4?url=${url}`;
