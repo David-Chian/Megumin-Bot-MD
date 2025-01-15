@@ -16,7 +16,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     const videoInfo = search.all[0];
     const { title, thumbnail, timestamp, views, ago, url } = videoInfo;
     const vistas = formatViews(views);
-    const infoMessage = `*𖹭.╭╭ִ╼࣪━ִﮩ٨ـﮩ♡̫𝗆𝖾𝗀֟፝𝗎꯭𝗆𝗂꯭𝗇♡ִ̫ﮩ٨ـﮩ━ִ╾࣪╮╮.𖹭*\n> ♡ *Título:* ${title}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Duración:* ${timestamp}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Vistas:* ${vistas}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Canal:* ${videoInfo.author.name || 'Desconocido'}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Publicado:* ${ago}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Enlace:* ${url}\n*⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ׄۛ۫۫۫۫۫۫ۜ*`;
+    const infoMessage = `*𖹭.╭╭ִ╼࣪━ִﮩ٨ـﮩ♡̫𝗆𝖾𝗀֟፝𝗎꯭𝗆𝗂꯭𝗇♡ִ̫ﮩ٨ـﮩ━ִ╾࣪╮╮.𖹭*\n> ♡ *Título:* ${title}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Duración:* ${timestamp}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Vistas:* ${vistas}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Canal:* ${videoInfo.author.name || 'Desconocido'}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Publicado:* ${ago}\n*°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°*\n> ♡ *Enlace:* ${url}\n*⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ۛ۫۫۫۫۫۫ۜ⏝ּׅ︣︢ۛ۫۫۫۫۫۫ۜ⏝ּׅ︢︣ׄۛ۫۫۫۫۫۫ۜ*`;
     const thumb = (await conn.getFile(thumbnail))?.data;
 
     const JT = {
@@ -36,54 +36,94 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
     await conn.reply(m.chat, infoMessage, m, JT);
 
-    let downloadUrl;
-    let success = false;
-
-    const sources = [
-      `https://api.siputzx.my.id/api/d/ytmp4?url=${url}`,
-      `https://api.zenkey.my.id/api/download/ytmp3?apikey=zenkey&url=${url}`,
-      `https://axeel.my.id/api/download/video?url=${encodeURIComponent(url)}`,
-      `https://delirius-apiofc.vercel.app/download/ytmp4?url=${url}`
-    ];
-
-    for (let i = 0; i < sources.length; i++) {
+    if (command === 'play') {
       try {
-        const res = await fetch(sources[i]);
+        const apiUrl = `https://api.siputzx.my.id/api/d/ytmp3?url=${url}`;
+        const res = await fetch(apiUrl);
         const { data } = await res.json();
-        downloadUrl = data?.download?.url || data?.dl || data?.url;
-        if (downloadUrl) {
-          success = true;
-          break;
-        }
-      } catch (e) {
-        console.error(`Error con la fuente ${i + 1}:`, e.message);
-      }
-    }
 
-    if (!success) {
-      throw new Error('No se pudo encontrar un enlace de descarga válido.');
-    }
-
-    try {
-      await conn.sendMessage(m.chat, {
-        video: { url: downloadUrl },
-        fileName: `${title}.mp4`,
-        mimetype: "video/mp4",
-        caption: `${title}`,
-        thumbnail: thumb
-      }, { quoted: m });
-    } catch (e) {
-      console.error('Error al enviar video:', e.message);
-      try {
         await conn.sendMessage(m.chat, {
-          video: { url: downloadUrl },
-          fileName: `${title}.mp4`,
-          mimetype: "video/mp4",
-          caption: `${title}`
-        }, { quoted: m });
-      } catch (finalError) {
-        return m.reply(`🪛 *Error final:* ${finalError.message}`);
+          audio: { url: data.dl },
+          mimetype: 'audio/mp4',
+          fileName: `${title}.mp3`
+        }, { quoted: m || null });
+      } catch (e1) {
+        try {    
+          const apiUrl = `https://api.zenkey.my.id/api/download/ytmp3?apikey=zenkey&url=${url}`;
+          const res = await fetch(apiUrl);
+          const { result } = await res.json();
+
+          await conn.sendMessage(m.chat, {
+            audio: { url: result.download.url },
+            fileName: `${title}.mp3`
+          }, { quoted: m });
+        } catch (e2) {
+          return m.reply(`🪛 *Error de descarga:* ${e2.message}`);
+        }
       }
+    } else if (command === 'play2' || command === 'ytmp4') {
+      try {
+        const apiUrl = `https://api.siputzx.my.id/api/d/ytmp4?url=${url}`;
+        const res = await fetch(apiUrl);
+        const { data } = await res.json();
+
+        await conn.sendMessage(m.chat, {
+          video: { url: data.dl },
+          fileName: `${title}.mp4`,
+          mimetype: 'video/mp4',
+          caption: `${title}`,
+          thumbnail: thumb
+        }, { quoted: m || null });
+      } catch (e1) {
+        try {    
+          const apiUrl = `https://api.zenkey.my.id/api/download/ytmp4?apikey=zenkey&url=${url}`;
+          const res = await fetch(apiUrl);
+          const { result } = await res.json();
+
+          await conn.sendMessage(m.chat, {
+            video: { url: result.download.url },
+            fileName: `${title}.mp4`,
+            caption: `${title}`
+          }, { quoted: m });
+        } catch (e2) {
+          try {    
+            const apiUrl = `https://axeel.my.id/api/download/video?url=${encodeURIComponent(url)}`;
+            const res = await fetch(apiUrl);
+            const { downloads } = await res.json();
+
+            await conn.sendMessage(m.chat, {
+              video: { url: downloads.url },
+              fileName: `${title}.mp4`,
+              caption: `${title}`
+            }, { quoted: m });
+          } catch (e3) {
+            try {                
+              const apiUrl = `https://delirius-apiofc.vercel.app/download/ytmp4?url=${url}`;
+              const res = await fetch(apiUrl);
+              const { data } = await res.json();
+
+              await conn.sendMessage(m.chat, {
+                video: { url: data.download.url },
+                fileName: `${title}.mp4`,
+                caption: `${title}`
+              }, { quoted: m });
+            } catch (e4) {
+              try {
+                await conn.sendMessage(m.chat, {
+                  video: { url: data.download.url },
+                  fileName: `${title}.mp4`,
+                  mimetype: 'video/mp4',
+                  caption: `${title}`
+                }, { quoted: m });
+              } catch (e5) {
+                return m.reply(`🪛 *Error final:* ${e5.message}`);
+              }
+            }
+          }
+        }
+      }
+    } else {
+      throw "Comando no reconocido.";
     }
   } catch (error) {
     return m.reply(`🪛 *Error:* ${error.message}`);
