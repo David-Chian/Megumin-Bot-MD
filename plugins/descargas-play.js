@@ -105,28 +105,28 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
         const result = api.downloadUrl;
         await conn.sendMessage(m.chat, { audio: { url: result }, mimetype: "audio/mpeg" }, { quoted: m });
     } else if (command === 'play2' || command === 'ytmp4') {
-            try {                
-              const apiUrl = `https://delirius-apiofc.vercel.app/download/ytmp4?url=${url}`;
-              const res = await fetch(apiUrl);
-              const { data } = await res.json();
+      try {
+        const apiUrl = `https://delirius-apiofc.vercel.app/download/ytmp4?url=${url}`;
+        const res = await fetch(apiUrl);
+        const { data } = await res.json();
 
-              await conn.sendMessage(m.chat, {
-                video: { url: data.download.url },
-                fileName: `${title}.mp4`,
-                caption: `${title}`
-              }, { quoted: m });
-            } catch (e4) {
-              try {
-                await conn.sendMessage(m.chat, {
-                  video: { url: data.download.url },
-                  fileName: `${title}.mp4`,
-                  mimetype: 'video/mp4',
-                  caption: `${title}`
-                }, { quoted: m });
-              } catch (e5) {
-                return m.reply(`🪛 *Error final:* ${e5.message}`);
-              }
-            }
+        await conn.sendMessage(m.chat, {
+          video: { url: data.download.url },
+          fileName: `${title}.mp4`,
+          mimetype: 'video/mp4',
+          caption: `${title}`
+        }, { quoted: m });
+      } catch (e1) {
+        try {
+          await conn.sendMessage(m.chat, {
+            video: { url: data.download.url },
+            fileName: `${title}.mp4`,
+            mimetype: 'video/mp4',
+            caption: `${title}`
+          }, { quoted: m });
+          }
+        }
+      }
     } else {
       throw "Comando no reconocido.";
     }
