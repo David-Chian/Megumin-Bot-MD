@@ -76,7 +76,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       console.error('Error al enviar video:', e.message);
       try {
         await conn.sendMessage(m.chat, {
-          document: { url: downloadUrl },
+          video: { url: downloadUrl },
           fileName: `${title}.mp4`,
           mimetype: "video/mp4",
           caption: `${title}`
