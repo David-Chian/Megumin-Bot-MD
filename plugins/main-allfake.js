@@ -36,6 +36,7 @@ global.userNationality = userNationalityData ? `${userNationalityData.name} ${us
 let user = global.db.data.users[who]
 let bot = global.db.data.settings[this.user.jid]
 let pushname = m.pushName || 'Sin nombre'
+global.opts['gconly'] = true
 
 //creador y otros
 global.botcommandcount = bot.botcommandCount //Ver cuantos comandos fueron ejecutados.
