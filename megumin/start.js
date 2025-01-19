@@ -58,7 +58,7 @@ align: 'center',
 colors: ['yellow']
 })
 
-const rl = createInterface(process.stdin, process.stdout);
+/*const rl = createInterface(process.stdin, process.stdout);
 let p = fork();
 p.on('message', data => {
 switch (data) {
@@ -93,7 +93,7 @@ if (warning.name === 'MaxListenersExceededWarning') {
 console.warn('🚩 Se excedió el límite de Listeners en:');
 console.warn(warning.stack);
 }
-});
+});*/
 
 protoType()
 serialize()
