@@ -17,6 +17,20 @@
 </details>
 
 ---
+### **`❤️ YouTube 🍄`**
+<a href="https://youtube.com/@davidchian4957">
+  <img width="180px" src="https://files.catbox.moe/3m3dih.jpg"/>
+</a>
+
+<details>
+ <summary><b>:paperclip: Tutoriales</b></summary>
+
+- **Servidor Metodo 1:** [youtu.be/tiZ1scp5-EA?si=PgU2U7Nclk4wEJzR](https://youtu.be/tiZ1scp5-EA?si=PgU2U7Nclk4wEJzR)
+- **Servidor Metodo 2:** [youtu.be/TzHyGH_6GH0?si=uKS3h8MXIhMOGrEM](https://youtu.be/TzHyGH_6GH0?si=uKS3h8MXIhMOGrEM)
+
+</details>
+
+---
 
 ### **`🌋 Cafirexos 🚀`**
 <a href="https://cafirexos.com">
