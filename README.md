@@ -25,8 +25,8 @@
 <details>
  <summary><b>:paperclip: Tutoriales</b></summary>
 
-- **Servidor Metodo 1:** [youtu.be/tiZ1scp5-EA?si=PgU2U7Nclk4wEJzR](https://youtu.be/tiZ1scp5-EA?si=PgU2U7Nclk4wEJzR)
-- **Servidor Metodo 2:** [youtu.be/TzHyGH_6GH0?si=uKS3h8MXIhMOGrEM](https://youtu.be/TzHyGH_6GH0?si=uKS3h8MXIhMOGrEM)
+- **Cafirexos:** [youtu.be/tiZ1scp5-EA?si=PgU2U7Nclk4wEJzR](https://youtu.be/tiZ1scp5-EA?si=PgU2U7Nclk4wEJzR)
+- **Sky Ultra Plus:** [youtu.be/TzHyGH_6GH0?si=uKS3h8MXIhMOGrEM](https://youtu.be/TzHyGH_6GH0?si=uKS3h8MXIhMOGrEM)
 
 </details>
 
