@@ -53,7 +53,7 @@ global.colab3 = 'Dino'
 //Ids channel
 global.idchannel = '120363350554513092@newsletter'
 global.canalIdM = ["120363307382381547@newsletter", "120363350554513092@newsletter"]
-global.canalNombreM = ["⏤͟͞ू⃪ ፝͜⁞M͢ᴇɢ፝֟ᴜᴍ⃨ɪɴ⃜✰⃔࿐/ᥫᩣᎠ꯭I𝚫⃥꯭M꯭Ꭷ꯭Ꮑ꯭Ꭰ࠭⋆̟(◣_◢)凸", "Megumin - Test 💥"]
+global.canalNombreM = ["──͟͞꘩𓎇̶𝐿̸𝑒̤𝑔֟֯፝𝑒⃯𝑛̷̈𝑑̤𝑠͡𔗓𝐵̸͜𝑜𝑡͜ꤩꤨ𝑠ꦁ⃯㍰ꫂ", "Megumin - Test 💥"]
 global.channelRD = await getRandomChannel()
 
 //Reacciones De Comandos.!
@@ -61,7 +61,7 @@ global.rwait = '🕒'
 global.done = '✅'
 global.error = '✖️'
 
-//Emojis determinado de Ai Yaemori
+//Emojis determinado de Megumin
 global.emoji = '🔥'
 global.emoji2 = '💥'
 global.emoji3 = '❤️‍🔥'
