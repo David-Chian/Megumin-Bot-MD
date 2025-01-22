@@ -17,7 +17,7 @@
 </details>
 
 ---
-### **`❤️ YouTube 🍄`**
+### **`❤️ YouTube 🍬`**
 <a href="https://youtube.com/@davidchian4957">
   <img width="180px" src="https://files.catbox.moe/3m3dih.jpg"/>
 </a>
