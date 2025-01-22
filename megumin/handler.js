@@ -270,18 +270,6 @@ if (queque.indexOf(previousID) === -1) clearInterval(this)
 await delay(time)
 }, time)
 }
-
-if (opts['nyimak']) return
-if (!isROwner && opts['self']) return 
-if (opts['pconly'] && m.chat.endsWith('g.us')) return
-if (opts['gconly'] && !m.chat.endsWith('g.us')) return
-if (opts['swonly'] && m.chat !== 'status@broadcast') return
-if (typeof m.text !== 'string')
-m.text = ''
-
-if (m.isBaileys) {
-return
-}
 m.exp += Math.ceil(Math.random() * 10)
 let usedPrefix
 let _user = global.db.data && global.db.data.users && global.db.data.users[m.sender]
@@ -401,7 +389,19 @@ ${user.bannedReason}` : '💌 *Motivo:* Sin Especificar'}\n\n⚠️ *Si este bot
 user.antispam++        
 return
 }
+if (opts['nyimak']) return;
+if (!isROwner && opts['self']) return;
+if (opts['pconly'] && m.chat.endsWith('g.us')) return;
+if (opts['gconly'] && !m.chat.endsWith('g.us')) {
+const allowedInPrivate = ['serbot', 'serbot --code', 'menu', 'info'];
+if (!allowedInPrivate.includes(command)) return;
+}
+if (opts['swonly'] && m.chat !== 'status@broadcast') return;
+if (typeof m.text !== 'string') m.text = '';
 
+        if (m.isBaileys) {
+          return 
+         }
 //Antispam 2                
 if (user.antispam2 && isROwner) return
 let time = global.db.data.users[m.sender].spam + 3000
