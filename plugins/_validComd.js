@@ -1,4 +1,4 @@
-import didyoumean from 'didyoumean'
+/*import didyoumean from 'didyoumean'
 import similarity from 'similarity'
 
 export async function before(m, { conn, match, usedPrefix, command }) {
@@ -21,4 +21,4 @@ El comando no existe, pero se encontraron resultados similares
  ❗ *Similitud:* _${parseInt(som)}%_`
 if (mean) conn.reply(m.chat, caption, m, { mentions: [who]})
 }
-}
+}*/
