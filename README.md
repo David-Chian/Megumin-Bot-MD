@@ -25,8 +25,8 @@
 <details>
  <summary><b>:paperclip: Tutoriales</b></summary>
 
-- **Cafirexos:** [youtu.be/tiZ1scp5-EA?si=PgU2U7Nclk4wEJzR](https://youtu.be/tiZ1scp5-EA?si=PgU2U7Nclk4wEJzR)
-- **Sky Ultra Plus:** [youtu.be/TzHyGH_6GH0?si=uKS3h8MXIhMOGrEM](https://youtu.be/TzHyGH_6GH0?si=uKS3h8MXIhMOGrEM)
+- **Cafirexos:** [Aquí](https://youtu.be/tiZ1scp5-EA?si=PgU2U7Nclk4wEJzR)
+- **Termux:** [Aquí](https://youtu.be/gqtGeXRLImQ?si=PpM7EitywqFunEU5)
 
 </details>
 
