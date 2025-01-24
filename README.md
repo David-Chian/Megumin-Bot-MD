@@ -27,7 +27,7 @@
 
 - **Cafirexos:** [Aquí](https://youtu.be/tiZ1scp5-EA?si=PgU2U7Nclk4wEJzR)
 - **Termux:** [Aquí](https://youtu.be/gqtGeXRLImQ?si=PpM7EitywqFunEU5)
-- **Sky:** [youtu.be/TzHyGH_6GH0?si=uKS3h8MXIhMOGrEM](https://youtu.be/TzHyGH_6GH0?si=uKS3h8MXIhMOGrEM)
+- **Sky:** [Aquí](https://youtu.be/TzHyGH_6GH0?si=uKS3h8MXIhMOGrEM)
 
 </details>
 
