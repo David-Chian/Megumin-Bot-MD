@@ -1,22 +1,28 @@
-import fetch from 'node-fetch';
+// - OfcKing >> https://github.com/OfcKing
 
-const handler = async (m, {conn, text, usedPrefix, command}) => {
-    if (!text) throw `*🧧 ingrese una petición para generar una imagen con dalle...*`;
-    m.react('🕒')
-    await conn.sendMessage(m.chat, {text: '*🧧 Espere un momento...*'}, {quoted: m});
-    
-    try {
-        const response = await fetch(`https://api-xovvip.vercel.app/text2img?text=${encodeURIComponent(text)}`);
-        if (!response.ok) throw new Error('Network response was not ok');
-        
-        const buffer = await response.buffer();
-        m.react('☑️')
-        await conn.sendMessage(m.chat, {image: buffer}, {quoted: m});
-    } catch {
-        throw `Error...`;
+import axios from 'axios';
+
+const handler = async (m, { conn, args }) => {
+    if (!args[0]) {
+        await conn.reply(m.chat, '✨ Por favor proporciona una descripción para generar la imagen.', m);
+        return;
     }
-}
-handler.tags = ['ia']
-handler.help = ['dalle']
+
+    const prompt = args.join(' ');
+    const apiUrl = `https://eliasar-yt-api.vercel.app/api/ai/text2img?prompt=${prompt}`;
+
+    try {
+        const response = await axios.get(apiUrl, { responseType: 'arraybuffer' });
+
+        await conn.sendMessage(m.chat, { image: Buffer.from(response.data) }, { quoted: m });
+    } catch (error) {
+        console.error('Error al generar la imagen:', error);
+        await conn.reply(m.chat, '🍃 No se pudo generar la imagen, intenta nuevamente mas tarde.', m);
+    }
+};
+
 handler.command = ['dalle'];
+handler.help = ['dalle'];
+handler.tags = ['tools'];
+
 export default handler;
