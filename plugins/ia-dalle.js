@@ -12,7 +12,7 @@ const handler = async (m, { conn, args }) => {
     const apiUrl = `https://eliasar-yt-api.vercel.app/api/ai/text2img?prompt=${prompt}`;
 
     try {
-        conn.reply(m.chat, '🧨 Cargando, espere un momento...', m)
+        conn.reply(m.chat, '*🧧 Espere un momento...*', m)
 
         const response = await axios.get(apiUrl, { responseType: 'arraybuffer' });
 
