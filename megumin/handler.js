@@ -399,7 +399,7 @@ if (typeof m.text !== 'string') m.text = '';
 
         if (m.isBaileys) {
           return 
-         }
+         }}
 
 let hl = _prefix 
 let adminMode = global.db.data.chats[m.chat].modoadmin
