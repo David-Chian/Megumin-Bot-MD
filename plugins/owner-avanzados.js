@@ -28,8 +28,8 @@ const handler = async (m, _2, msg, pickRandom, isOwner ) => {
     if (err) _syntax = '```' + err + '```\n\n';
     _return = e;
   } finally {
-    conn.reply(m.chat, _syntax + format(_return), m);
-    m.exp = old;
+   // conn.reply(m.chat, _syntax + format(_return), m);
+   // m.exp = old;
   }
 };
 handler.help = ['>', '=>'];
