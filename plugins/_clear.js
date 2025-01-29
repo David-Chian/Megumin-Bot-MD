@@ -4,13 +4,13 @@
 import fs from 'fs';
 
 const paths = {
-  SanJadiBot: `./${jadi}/`,
-  SanSession: `./${sessions}/`
+  MeguminJadiBot: './MeguminJadiBot/',
+  MeguminSession: './MeguminSession/'
 };
 
 function cleanSubbotDirectories() {
   for (const [name, path] of Object.entries(paths)) {
-    if (name === 'SanSession') continue; // Skip SanSession for this function
+    if (name === 'MeguminSession') continue; // Skip SanSession for this function
 
     fs.readdir(path, (err, subbotDirs) => {
       if (err) {
@@ -63,8 +63,8 @@ function cleanSubbotDirectories() {
   }
 }
 
-function cleanSanSession() {
-  const sessionPath = paths.SanSession;
+function cleanMeguminSession() {
+  const sessionPath = paths.MeguminSession;
 
   fs.readdir(sessionPath, (err, files) => {
     if (err) {
@@ -91,7 +91,7 @@ function cleanSanSession() {
       if (filesDeleted > 0) {
         console.log(`Se eliminaron ${filesDeleted} archivos de la sesión SanSession`);
       } else {
-        console.log('0 Archivos eliminados en SanSession');
+        console.log('0 Archivos eliminados en MeguminSession');
       }
     }).catch((err) => {
       console.log('Error al eliminar archivos: ' + err);
@@ -120,5 +120,5 @@ setInterval(cleanSanSession, 60 * 1000);
 setInterval(displayNoFilesDeleted, 60 * 1000);
 
 cleanSubbotDirectories();
-cleanSanSession();
+cleanMeguminSession();
 displayNoFilesDeleted();
