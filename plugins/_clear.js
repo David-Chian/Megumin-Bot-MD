@@ -3,61 +3,122 @@
 
 import fs from 'fs';
 
-const directoryPath = `./${jadi}/`;
-const sanSessionPath = `./${sessions}/`;
+const paths = {
+  SanJadiBot: `./${jadi}/`,
+  SanSession: `./${sessions}/`
+};
 
 function cleanSubbotDirectories() {
-  fs.readdir(directoryPath, (err, subbotDirs) => {
-    if (err) {
-      return console.log('No se puede escanear el directorio: ' + err);
-    }
+  for (const [name, path] of Object.entries(paths)) {
+    if (name === 'SanSession') continue; // Skip SanSession for this function
 
-    subbotDirs.forEach((subbotDir) => {
-      const subbotPath = `${directoryPath}${subbotDir}/`;
+    fs.readdir(path, (err, subbotDirs) => {
+      if (err) {
+        return console.log(`No se puede escanear el directorio ${name}: ` + err);
+      }
 
-      fs.readdir(subbotPath, (err, files) => {
-        if (err) {
-          return console.log('No se puede escanear el directorio: ' + err);
-        }
+      let totalFilesDeleted = 0;
 
-        files.forEach((file) => {
-          if (file !== 'creds.json') {
-            fs.unlink(`${subbotPath}${file}`, (err) => {
-              if (err && err.code !== 'ENOENT') {
-                console.log(`Error al eliminar JadiBot: ${file}: ` + err);
-              } else {
-                console.log(`JadiBot: ${file} eliminado.`);
-              }
-            });
+      subbotDirs.forEach((subbotDir) => {
+        const subbotPath = `${path}${subbotDir}/`;
+
+        fs.readdir(subbotPath, (err, files) => {
+          if (err) {
+            return console.log(`No se puede escanear el directorio ${subbotPath}: ` + err);
           }
+
+          let filesDeleted = 0;
+          const deletePromises = files.map((file) => {
+            if (file !== 'creds.json') {
+              return new Promise((resolve, reject) => {
+                fs.unlink(`${subbotPath}${file}`, (err) => {
+                  if (!err || err.code === 'ENOENT') {
+                    filesDeleted++;
+                    totalFilesDeleted++;
+                    resolve();
+                  } else {
+                    reject(err);
+                  }
+                });
+              });
+            }
+          });
+
+          Promise.all(deletePromises).then(() => {
+            if (filesDeleted > 0) {
+              console.log(`Se eliminaron ${filesDeleted} archivos de la sesión Jadibot: ${subbotDir}`);
+            }
+          }).catch((err) => {
+            console.log('Error al eliminar archivos: ' + err);
+          });
         });
       });
+
+      if (totalFilesDeleted === 0) {
+        console.log(`0 Archivos eliminados en ${name}`);
+      } else {
+        console.log(`Se eliminaron un total de ${totalFilesDeleted} archivos de todas las sesiones Jadibot en ${name}`);
+      }
     });
-  });
+  }
 }
 
-function cleanSessionFiles() {
-  fs.readdir(sanSessionPath, (err, files) => {
+function cleanSanSession() {
+  const sessionPath = paths.SanSession;
+
+  fs.readdir(sessionPath, (err, files) => {
     if (err) {
-      return console.log('No se puede escanear el directorio: ' + err);
+      return console.log('No se puede escanear el directorio SanSession: ' + err);
     }
 
-    files.forEach((file) => {
+    let filesDeleted = 0;
+    const deletePromises = files.map((file) => {
       if (file !== 'creds.json') {
-        fs.unlink(`${sanSessionPath}${file}`, (err) => {
-          if (err && err.code !== 'ENOENT') {
-            console.log(`Error al eliminar Session: ${file}: ` + err);
-          } else {
-            console.log(`Session: ${file} elimiando.`);
-          }
+        return new Promise((resolve, reject) => {
+          fs.unlink(`${sessionPath}${file}`, (err) => {
+            if (!err || err.code === 'ENOENT') {
+              filesDeleted++;
+              resolve();
+            } else {
+              reject(err);
+            }
+          });
         });
       }
     });
+
+    Promise.all(deletePromises).then(() => {
+      if (filesDeleted > 0) {
+        console.log(`Se eliminaron ${filesDeleted} archivos de la sesión SanSession`);
+      } else {
+        console.log('0 Archivos eliminados en SanSession');
+      }
+    }).catch((err) => {
+      console.log('Error al eliminar archivos: ' + err);
+    });
   });
 }
 
-setInterval(cleanSubbotDirectories, 10 * 1000);
-setInterval(cleanSessionFiles, 10 * 1000);
+function displayNoFilesDeleted() {
+  const noFilesDeletedInSessions = [];
+
+  for (const [name, path] of Object.entries(paths)) {
+    fs.readdir(path, (err, files) => {
+      if (!err && files.length === 1 && files[0] === 'creds.json') {
+        noFilesDeletedInSessions.push(name);
+      }
+
+      if (noFilesDeletedInSessions.length > 0) {
+        console.log(`0 sesiones en: ${noFilesDeletedInSessions.join(', ')}`);
+      }
+    });
+  }
+}
+
+setInterval(cleanSubbotDirectories, 60 * 1000);
+setInterval(cleanSanSession, 60 * 1000);
+setInterval(displayNoFilesDeleted, 60 * 1000);
 
 cleanSubbotDirectories();
-cleanSessionFiles();
+cleanSanSession();
+displayNoFilesDeleted();
