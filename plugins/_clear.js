@@ -68,7 +68,7 @@ function cleanMeguminSession() {
 
   fs.readdir(sessionPath, (err, files) => {
     if (err) {
-      return console.log('No se puede escanear el directorio SanSession: ' + err);
+      return console.log('No se puede escanear el directorio MeguminSession: ' + err);
     }
 
     let filesDeleted = 0;
@@ -89,7 +89,7 @@ function cleanMeguminSession() {
 
     Promise.all(deletePromises).then(() => {
       if (filesDeleted > 0) {
-        console.log(`Se eliminaron ${filesDeleted} archivos de la sesión SanSession`);
+        console.log(`Se eliminaron ${filesDeleted} archivos de la sesión MeguminSession`);
       } else {
         console.log('0 Archivos eliminados en MeguminSession');
       }
@@ -116,7 +116,7 @@ function displayNoFilesDeleted() {
 }
 
 setInterval(cleanSubbotDirectories, 60 * 1000);
-setInterval(cleanSanSession, 60 * 1000);
+setInterval(cleanMeguminSession, 60 * 1000);
 setInterval(displayNoFilesDeleted, 60 * 1000);
 
 cleanSubbotDirectories();
