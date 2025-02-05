@@ -209,9 +209,9 @@ version: [2, 3000, 1015901307],
 
 const connectionOptions = {
 logger: pino({ level: 'silent' }),
-printQRInTerminal: opcion == '1' ? true : methodCodeQR ? true : false,
+printQRInTerminal: opcion == '1' ? true : methodCodeQR ? true : true,
 mobile: MethodMobile, 
-browser: opcion == '1' ? ['MeguminBot-MD', 'Edge', '20.0.04'] : methodCodeQR ? ['MeguminBot-MD', 'Edge', '20.0.04'] : ["Ubuntu", "Chrome", "20.0.04"],
+browser: ["Fantasia", "Aurora", "88.0.4324.182"],
 auth: {
 creds: state.creds,
 keys: makeCacheableSignalKeyStore(state.keys, pino({ level: "fatal" }).child({ level: "fatal" })),
