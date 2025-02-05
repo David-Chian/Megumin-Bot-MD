@@ -234,7 +234,7 @@ if (!('restrict' in settings)) settings.restrict = false
 if (!('antiPrivate' in settings)) settings.antiPrivate = false
 if (!('antiCall' in settings)) settings.antiCall = true
 if (!('frases' in chat)) chat.frases = false
-if (!('antiSpam' in settings)) settings.antiSpam = true
+if (!('antiSpam' in settings)) settings.antiSpam = false
 if (!('modoia' in settings)) settings.modoia = false
 if (!('jadibotmd' in settings)) settings.jadibotmd = false  
 if (!('autobio' in settings)) settings.autobio = false
@@ -247,7 +247,7 @@ restrict: false,
 frases: false,
 antiPrivate: false,
 antiCall: true,
-antiSpam: true,
+antiSpam: false,
 modoia: false, 
 jadibotmd: true,
 autobio: false,
