@@ -209,14 +209,7 @@ console.log(chalk.bold.cyanBright(`\n❒⸺⸺⸺⸺【• SUB-BOT •】⸺⸺�
 sock.isInit = true
 global.conns.push(sock)
 
-//let user = global.db.data?.users[`${path.basename(pathameguminJadiBot)}@s.whatsapp.net`]
 m?.chat ? await conn.sendMessage(m.chat, {text: args[0] ? `@${m.sender.split('@')[0]}, ya estás conectado, leyendo mensajes entrantes...` : `@${m.sender.split('@')[0]}, genial ya eres parte de nuestra familia de SubBots.`, mentions: [m.sender]}, { quoted: m }) : ''
-//await sleep(3000)
-//await conn.sendMessage(m.chat, {text : `Cargando.. ✨`}, { quoted: m })
-//if (global.conn.user.jid.split`@`[0] != sock.user.jid.split`@`[0]) return
-//if (!args[0]) m?.chat ? conn.sendMessage(m.sender, {text : usedPrefix + command + " " + Buffer.from(fs.readFileSync(pathCreds), "utf-8").toString("base64")}, { quoted: m }) : ''    
-//await sleep(5000)
-//if (!args[0]) conn.sendMessage(m.chat, {text: usedPrefix + command + " " + Buffer.from(fs.readFileSync(`./${jadi}/` + uniqid + "/creds.json"), "utf-8").toString("base64")}, { quoted: m })
 }}
 setInterval(async () => {
 if (!sock.user) {
@@ -278,8 +271,3 @@ minutes = (minutes < 10) ? '0' + minutes : minutes
 seconds = (seconds < 10) ? '0' + seconds : seconds
 return minutes + ' m y ' + seconds + ' s '
 }
-
-async function joinChannels(conn) {
-for (const channelId of Object.values(global.ch)) {
-await conn.newsletterFollow(channelId).catch(() => {})
-}}
