@@ -189,7 +189,7 @@ const connectionOptions = {
 logger: pino({ level: 'silent' }),
 printQRInTerminal: opcion == '1' ? true : methodCodeQR ? true : true,
 mobile: MethodMobile, 
-browser: ["Fantasia", "Aurora", "88.0.4324.182"],
+browser: ["Fantasia", "Chrome", "110.0.5585.95"],
 auth: {
 creds: state.creds,
 keys: makeCacheableSignalKeyStore(state.keys, Pino({ level: "fatal" }).child({ level: "fatal" })),
