@@ -8,117 +8,78 @@ const paths = {
   MeguminSession: './MeguminSession/'
 };
 
-function cleanSubbotDirectories() {
+async function cleanSubbotDirectories() {
+  let totalFilesDeleted = 0;
+
   for (const [name, path] of Object.entries(paths)) {
-    if (name === 'MeguminSession') continue; // Skip SanSession for this function
+    if (name === 'MeguminSession') continue; // Saltar MeguminSession en esta función
 
-    fs.readdir(path, (err, subbotDirs) => {
-      if (err) {
-        return console.log(`No se puede escanear el directorio ${name}: ` + err);
-      }
-
-      let totalFilesDeleted = 0;
-
-      subbotDirs.forEach((subbotDir) => {
+    try {
+      const subbotDirs = await fs.promises.readdir(path);
+      for (const subbotDir of subbotDirs) {
         const subbotPath = `${path}${subbotDir}/`;
 
-        fs.readdir(subbotPath, (err, files) => {
-          if (err) {
-            return console.log(`No se puede escanear el directorio ${subbotPath}: ` + err);
+        try {
+          const files = await fs.promises.readdir(subbotPath);
+          const deletePromises = files
+            .filter(file => file !== 'creds.json')
+            .map(file => fs.promises.unlink(`${subbotPath}${file}`).then(() => totalFilesDeleted++));
+
+          await Promise.all(deletePromises);
+          if (deletePromises.length > 0) {
+            console.log(`Se eliminaron ${deletePromises.length} archivos de la sesión Jadibot: ${subbotDir}`);
           }
-
-          let filesDeleted = 0;
-          const deletePromises = files.map((file) => {
-            if (file !== 'creds.json') {
-              return new Promise((resolve, reject) => {
-                fs.unlink(`${subbotPath}${file}`, (err) => {
-                  if (!err || err.code === 'ENOENT') {
-                    filesDeleted++;
-                    totalFilesDeleted++;
-                    resolve();
-                  } else {
-                    reject(err);
-                  }
-                });
-              });
-            }
-          });
-
-          Promise.all(deletePromises).then(() => {
-            if (filesDeleted > 0) {
-              console.log(`Se eliminaron ${filesDeleted} archivos de la sesión Jadibot: ${subbotDir}`);
-            }
-          }).catch((err) => {
-            console.log('Error al eliminar archivos: ' + err);
-          });
-        });
-      });
-
-      if (totalFilesDeleted === 0) {
-        console.log(`0 Archivos eliminados en ${name}`);
-      } else {
-        console.log(`Se eliminaron un total de ${totalFilesDeleted} archivos de todas las sesiones Jadibot en ${name}`);
+        } catch (err) {
+          console.log(`No se puede escanear el directorio ${subbotPath}: ${err}`);
+        }
       }
-    });
+
+      console.log(`Se eliminaron un total de ${totalFilesDeleted} archivos de todas las sesiones Jadibot en ${name}`);
+    } catch (err) {
+      console.log(`No se puede escanear el directorio ${name}: ${err}`);
+    }
   }
 }
 
-function cleanMeguminSession() {
+async function cleanMeguminSession() {
   const sessionPath = paths.MeguminSession;
 
-  fs.readdir(sessionPath, (err, files) => {
-    if (err) {
-      return console.log('No se puede escanear el directorio MeguminSession: ' + err);
-    }
+  try {
+    const files = await fs.promises.readdir(sessionPath);
+    const deletePromises = files
+      .filter(file => file !== 'creds.json')
+      .map(file => fs.promises.unlink(`${sessionPath}${file}`));
 
-    let filesDeleted = 0;
-    const deletePromises = files.map((file) => {
-      if (file !== 'creds.json') {
-        return new Promise((resolve, reject) => {
-          fs.unlink(`${sessionPath}${file}`, (err) => {
-            if (!err || err.code === 'ENOENT') {
-              filesDeleted++;
-              resolve();
-            } else {
-              reject(err);
-            }
-          });
-        });
-      }
-    });
-
-    Promise.all(deletePromises).then(() => {
-      if (filesDeleted > 0) {
-        console.log(`Se eliminaron ${filesDeleted} archivos de la sesión MeguminSession`);
-      } else {
-        console.log('0 Archivos eliminados en MeguminSession');
-      }
-    }).catch((err) => {
-      console.log('Error al eliminar archivos: ' + err);
-    });
-  });
+    await Promise.all(deletePromises);
+    console.log(`Se eliminaron ${deletePromises.length} archivos de la sesión MeguminSession`);
+  } catch (err) {
+    console.log('No se puede escanear el directorio MeguminSession: ' + err);
+  }
 }
 
-function displayNoFilesDeleted() {
+async function displayNoFilesDeleted() {
   const noFilesDeletedInSessions = [];
 
   for (const [name, path] of Object.entries(paths)) {
-    fs.readdir(path, (err, files) => {
-      if (!err && files.length === 1 && files[0] === 'creds.json') {
+    try {
+      const files = await fs.promises.readdir(path);
+      if (files.length === 1 && files[0] === 'creds.json') {
         noFilesDeletedInSessions.push(name);
       }
+    } catch (err) {
+      console.log(`Error al escanear ${name}: ${err}`);
+    }
+  }
 
-      if (noFilesDeletedInSessions.length > 0) {
-        console.log(`0 sesiones en: ${noFilesDeletedInSessions.join(', ')}`);
-      }
-    });
+  if (noFilesDeletedInSessions.length > 0) {
+    console.log(`0 sesiones activas en: ${noFilesDeletedInSessions.join(', ')}`);
   }
 }
-
-setInterval(cleanSubbotDirectories, 60 * 1000);
-setInterval(cleanMeguminSession, 60 * 1000);
-setInterval(displayNoFilesDeleted, 60 * 1000);
 
 cleanSubbotDirectories();
 cleanMeguminSession();
 displayNoFilesDeleted();
+
+setInterval(cleanSubbotDirectories, 60 * 1000);
+setInterval(cleanMeguminSession, 60 * 1000);
+setInterval(displayNoFilesDeleted, 60 * 1000);
