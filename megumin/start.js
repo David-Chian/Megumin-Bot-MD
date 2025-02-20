@@ -49,11 +49,54 @@ align: 'center',
 colors: ['white']
 })
 
+say(`Multi Device`, {
+font: 'chrome',
+align: 'center',
+colors: ['red']
+})
+
 say(`Developed By • David-Chian`, {
 font: 'console',
 align: 'center',
 colors: ['yellow']
 })
+
+/*const rl = createInterface(process.stdin, process.stdout);
+let p = fork();
+p.on('message', data => {
+switch (data) {
+case 'reset':
+p.process.kill();
+isRunning = false;
+start.apply(this, arguments);
+break;
+case 'uptime':
+p.send(process.uptime());
+break;
+}
+});
+p.on('exit', (_, code) => {
+isRunning = false;
+console.error('🚩 Error:\n', code);
+process.exit();
+if (code === 0) return;
+watchFile(args[0], () => {
+unwatchFile(args[0]);
+start(file);
+});
+});
+let opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse());
+if (!opts['test'])
+if (!rl.listenerCount()) rl.on('line', line => {
+p.emit('message', line.trim());
+});
+}
+process.on('warning', (warning) => {
+if (warning.name === 'MaxListenersExceededWarning') {
+console.warn('🚩 Se excedió el límite de Listeners en:');
+console.warn(warning.stack);
+}
+});*/
 
 protoType()
 serialize()
@@ -108,20 +151,38 @@ const {state, saveState, saveCreds} = await useMultiFileAuthState(global.session
 const msgRetryCounterMap = (MessageRetryMap) => { };
 const msgRetryCounterCache = new NodeCache()
 const {version} = await fetchLatestBaileysVersion();
+let phoneNumber = global.botNumberCode
 
 const methodCodeQR = process.argv.includes("qr")
+const methodCode = !!phoneNumber || process.argv.includes("code")
 const MethodMobile = process.argv.includes("mobile")
+const colores = chalk.bgMagenta.white
+const opcionQR = chalk.bold.green
+const opcionTexto = chalk.bold.cyan
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
 const question = (texto) => new Promise((resolver) => rl.question(texto, resolver))
+
+let opcion
+if (methodCodeQR) {
+opcion = '1'
+}
+if (!methodCodeQR && !methodCode && !fs.existsSync(`./${sessions}/creds.json`)) {
+do {
+opcion = await question(colores('Seleccione una opción:\n') + opcionQR('1. Con código QR\n') + opcionTexto('2. Con código de texto de 8 dígitos\n--> '))
+
+if (!/^[1-2]$/.test(opcion)) {
+console.log(chalk.bold.redBright(`🚩 No se permiten numeros que no sean 1 o 2, tampoco letras o símbolos especiales.`))
+}} while (opcion !== '1' && opcion !== '2' || fs.existsSync(`./${sessions}/creds.json`))
+} 
 
 console.info = () => {} 
 console.debug = () => {} 
 
 const connectionOptions = {
 logger: pino({ level: 'silent' }),
-printQRInTerminal: true,
+printQRInTerminal: opcion == '1' ? true : methodCodeQR ? true : false,
 mobile: MethodMobile, 
-browser: ['Ubuntu', 'Edge', '110.0.1587.56'],
+browser: opcion == '1' ? [`${nameqr}`, 'Edge', '20.0.04'] : methodCodeQR ? [`${nameqr}`, 'Edge', '20.0.04'] : ['Ubuntu', 'Edge', '110.0.1587.56'],
 auth: {
 creds: state.creds,
 keys: makeCacheableSignalKeyStore(state.keys, Pino({ level: "fatal" }).child({ level: "fatal" })),
@@ -140,6 +201,31 @@ version,
 }
 
 global.conn = makeWASocket(connectionOptions);
+
+if (!fs.existsSync(`./${sessions}/creds.json`)) {
+if (opcion === '2' || methodCode) {
+opcion = '2'
+if (!conn.authState.creds.registered) {
+let addNumber
+if (!!phoneNumber) {
+addNumber = phoneNumber.replace(/[^0-9]/g, '')
+} else {
+do {
+phoneNumber = await question(chalk.bgBlack(chalk.bold.greenBright(`🚩 Por favor, Ingrese el número de WhatsApp.\n${chalk.bold.yellowBright(`☁️  Ejemplo: 57321×××××××`)}\n${chalk.bold.magentaBright('---> ')}`)))
+phoneNumber = phoneNumber.replace(/\D/g,'')
+if (!phoneNumber.startsWith('+')) {
+phoneNumber = `+${phoneNumber}`
+}
+} while (!await isValidPhoneNumber(phoneNumber))
+rl.close()
+addNumber = phoneNumber.replace(/\D/g, '')
+setTimeout(async () => {
+let codeBot = await conn.requestPairingCode(addNumber)
+codeBot = codeBot?.match(/.{1,4}/g)?.join("-") || codeBot
+console.log(chalk.bold.white(chalk.bgMagenta(`👑 CÓDIGO DE VINCULACIÓN 👑`)), chalk.bold.white(chalk.white(codeBot)))
+}, 3000)
+}}}
+}
 
 conn.isInit = false;
 conn.well = false;
@@ -165,7 +251,7 @@ global.timestamp.connect = new Date;
 }
 if (global.db.data == null) loadDatabase();
 if (update.qr != 0 && update.qr != undefined || methodCodeQR) {
-if (methodCodeQR) {
+if (opcion == '1' || methodCodeQR) {
 console.log(chalk.bold.yellow(`\n✅ ESCANEA EL CÓDIGO QR EXPIRA EN 45 SEGUNDOS`))}
 }
 if (connection == 'open') {
