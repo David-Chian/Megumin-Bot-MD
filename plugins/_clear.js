@@ -63,7 +63,7 @@ function cleanSubbotDirectories() {
   }
 }
 
-function cleanSanSession() {
+function cleanMeguminSession() {
   const sessionPath = paths.MeguminSession;
 
   fs.readdir(sessionPath, (err, files) => {
