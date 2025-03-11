@@ -19,7 +19,6 @@ const limpiarPersonajesReservados = () => {
         data.chats[chatId].personajesReservados = [];
     });
     guardarDatos(data);
-    console.log('Se han eliminado todos los personajes reservados.');
 };
 
 setInterval(limpiarPersonajesReservados, 1800000); //30 minutos :v
