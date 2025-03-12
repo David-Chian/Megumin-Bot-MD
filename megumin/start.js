@@ -475,7 +475,7 @@ setInterval(async () => {
   if (stopped === 'close' || !conn || !conn?.user) return;
   const _uptime = process.uptime() * 1000;
   const uptime = clockString(_uptime);
-  const bio = `💥 _𝙈𝙚𝙜𝙪𝙣𝙞𝙣-𝘽𝙤𝙩-𝙈𝘿 |「🕒」𝘼𝙘𝙩𝙞𝙫𝙤: ${uptime}_`;
+  const bio = `💥 Mᥱgᥙᥒіᥒ-B᥆𝗍-MD |「🕒」Aᥴ𝗍і᥎᥆: ${uptime}`;
   await conn?.updateProfileStatus(bio).catch((_) => _);
 }, 60000);
 function clockString(ms) {
