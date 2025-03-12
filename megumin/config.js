@@ -60,8 +60,6 @@ global.imagen1 = 'https://files.catbox.moe/6lhjit.jpg'
 global.imagen2 = 'https://files.catbox.moe/bm0q3s.jpg'
 global.imagen3 = 'https://files.catbox.moe/zrbazr.jpg'
 global.imagenadult = 'https://files.catbox.moe/3dbuvw.jpg'
-
-global.miniurl = fs.readFileSync('./src/Grupo.jpg');
 global.logo = 'https://files.catbox.moe/magmik.jpg'
 
 //• ↳ ◜𝑭𝑨𝑲𝑬 𝑬𝑺𝑻𝑰𝑳𝑶◞ • 🪩
