@@ -24,7 +24,7 @@ let staff = `🚩 *EQUIPO DE AYUDANTES*
 🍟 *Rol:* Editor
 🚩 *Número:* Wa.me/527774603921
 `
-await conn.sendFile(m.chat, icons, 'yaemori.jpg', staff.trim(), fkontak, true, {
+await conn.sendFile(m.chat, icons, 'megumin.jpg', staff.trim(), fkontak, true, {
 contextInfo: {
 'forwardingScore': 200,
 'isForwarded': false,
