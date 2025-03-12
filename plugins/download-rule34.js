@@ -61,8 +61,8 @@ if (!db.data.chats[m.chat].nsfw && m.isGroup) return m.reply('🚩 *¡Estos coma
           title: '♡  ͜ ۬︵࣪᷼⏜݊᷼𝙍𝙪𝙡𝙚 𝟑𝟒⏜࣪᷼︵۬ ͜ ',
           body: '(⁄ ⁄•⁄ω⁄•⁄ ⁄) 𝙈𝙚𝙜𝙪𝙢𝙞𝙣🔥',
           previewType: 0, 
-          thumbnail: rule,
-          sourceUrl: cn 
+          thumbnail: logo,
+          sourceUrl: channel
         }
       }
     });
