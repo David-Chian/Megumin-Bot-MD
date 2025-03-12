@@ -2,7 +2,7 @@ let handler = async (m, { conn, usedPrefix, command}) => {
 
 let fkontak = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
 
-let yaemori = `🚩 *Respeta las reglas de Megumin-Bot*\n
+let megu = `🚩 *Respeta las reglas de Megumin-Bot-MD*\n
 ✰ No llamar Al Bot
 ✰ No hacer spam
 ✰ Contacta al creador si es necesario
@@ -10,10 +10,10 @@ let yaemori = `🚩 *Respeta las reglas de Megumin-Bot*\n
 
 🍬 𝗡𝗼𝘁𝗮: *Si no cumples con las reglas del bot, seras bloqueado.*
 
-⚠️ 𝗔𝘃𝗶𝘀𝗼: *Puedes apoyarnos dejando una estrellita 🌟 al repositorio oficial de Yaemori.*
+⚠️ 𝗔𝘃𝗶𝘀𝗼: *Puedes apoyarnos dejando una estrellita 🌟 al repositorio oficial de Megumin-Bot-MD.*
 
 ${global.md}`.trim()
-await conn.reply(m.chat, yaemori, m, fake)
+await conn.reply(m.chat, megu, m, fake)
 
 }
 handler.help = ['botreglas']
