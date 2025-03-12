@@ -56,8 +56,22 @@ let regbot = `👤 𝗥 𝗘 𝗚 𝗜 𝗦 𝗧 𝗥 𝗢 👤
 ${channel2}
 •┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄•
 ${packname}`
-await conn.sendMini(m.chat, '⊱『✅𝆺𝅥 𝗥𝗘𝗚𝗜𝗦𝗧𝗥𝗔𝗗𝗢(𝗔) 𝆹𝅥✅』⊰', textbot, regbot, imagen3, imagen3, channel, m)
-//await m.reply(`${sn}`)    
+await conn.sendMessage(m.chat, {
+            image: { url: imagen3 },
+            caption: regbot,
+            mimetype: 'image/jpeg',
+            contextInfo: {
+externalAdReply: {
+            showAdAttribution: true,
+            title: '¡Usᥙᥲrі᥆ rᥱgіs𝗍rᥲძ᥆!',
+            body: '💥 ᴱˡ ᵇᵒᵗ ᵐᵃˢ ᵉˣᵖˡᵒˢᶦᵛᵒꜝꜝꜝ',
+            thumbnailUrl: imagen3,
+            sourceUrl: redes,
+            previewType: "PHOTO",
+            mediaType: 1,
+            renderLargerThumbnail: false
+        }}
+    })
 }
 handler.help = ['reg']
 handler.tags = ['rg']
