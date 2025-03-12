@@ -1,4 +1,4 @@
-let media = imagen10; // Asegúrate de que imagen10 contenga la ruta de la imagen que deseas enviar
+let media = imagen1; // Asegúrate de que imagen10 contenga la ruta de la imagen que deseas enviar
 let handler = async (m, { conn, command }) => {
     let fkontak = {
         "key": {
