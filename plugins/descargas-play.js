@@ -3,8 +3,6 @@ import yts from 'yt-search';
 import axios from 'axios';
 
 const MAX_SIZE_MB = 100;
-const formatAudio = ['mp3', 'm4a', 'webm', 'acc', 'flac', 'opus', 'ogg', 'wav'];
-const formatVideo = ['360', '480', '720', '1080', '1440', '4k'];
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   let user = globalThis.db.data.users[m.sender];
@@ -41,7 +39,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       contextInfo: {
         externalAdReply: {
           title: botname,
-          body: dev,
+          body: dev, 
           mediaType: 1,
           previewType: 0,
           mediaUrl: url,
@@ -58,7 +56,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     const type = command.includes('mp4') ? 'video' : 'audio';
 
     api = await fetchWithFallback(url, type);
-    result = api.download || api.data.url || api.downloadUrl;
+    result = api.download || api.data.url;
 
     fileSizeMB = await getFileSize(result);
     const isLargeFile = fileSizeMB > MAX_SIZE_MB;
@@ -103,11 +101,7 @@ const fetchWithFallback = async (url, type) => {
       console.warn(`⚠️ ${key} falló, intentando con la siguiente...`);
     }
   }
-  try {
-    return await ddownr.download(url, type === 'audio' ? 'mp3' : '720');
-  } catch (error) {
-    throw new Error(`⚠️ Todas las APIs fallaron, ${error.message}`);
-  }
+  throw new Error("⚠️ Todas las APIs fallaron. Intenta más tarde.");
 };
 
 const fetchWithTimeout = (url, timeout) => {
@@ -127,65 +121,14 @@ const getFileSize = async (url) => {
   }
 };
 
-const ddownr = {
-  download: async (url, format) => {
-    if (!formatAudio.includes(format) && !formatVideo.includes(format)) {
-      throw new Error('⚠️ Formato no válido. Usa mp3 para audio o 360/480/720p para video.');
-    }
-
-    const config = {
-      method: 'GET',
-      url: `https://p.oceansaver.in/ajax/download.php?format=${format}&url=${encodeURIComponent(url)}&api=dfcb6d76f2f6a9894gjkege8a4ab232222`,
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-      }
-    };
-
-    try {
-      const response = await axios.request(config);
-      if (response.data && response.data.success) {
-        const { id, title, info } = response.data;
-        const downloadUrl = await ddownr.cekProgress(id);
-        return { id, image: info.image, title, downloadUrl };
-      } else {
-        throw new Error('⚠️ No se pudo obtener la información del video.');
-      }
-    } catch (error) {
-      console.error('Error en ddownr:', error);
-      throw error;
-    }
-  },
-  cekProgress: async (id) => {
-    const config = {
-      method: 'GET',
-      url: `https://p.oceansaver.in/ajax/progress.php?id=${id}`,
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-      }
-    };
-
-    try {
-      while (true) {
-        const response = await axios.request(config);
-        if (response.data && response.data.success && response.data.progress === 1000) {
-          return response.data.download_url;
-        }
-        await new Promise(resolve => setTimeout(resolve, 5000));
-      }
-    } catch (error) {
-      console.error('Error obteniendo progreso:', error);
-      throw error;
-    }
-  }
-};
-
 handler.command = ['play', 'mp3', 'play2', 'mp4'];
 handler.tags = ['downloader'];
 
 export default handler;
 
 function formatViews(views) {
-  if (views >= 1_000_000) return `${(views / 1_000_000).toFixed(1)}M`;
-  if (views >= 1_000) return `${(views / 1_000).toFixed(1)}k`;
+  if (views >= 1_000_000_000) return `${(views / 1_000_000_000).toFixed(1)}B (${views.toLocaleString()})`;
+  if (views >= 1_000_000) return `${(views / 1_000_000).toFixed(1)}M (${views.toLocaleString()})`;
+  if (views >= 1_000) return `${(views / 1_000).toFixed(1)}k (${views.toLocaleString()})`;
   return views.toString();
 }
