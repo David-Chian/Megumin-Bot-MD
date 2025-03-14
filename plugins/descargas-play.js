@@ -88,7 +88,6 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 const fetchWithFallback = async (url, type) => {
   const apis = {
     neoxr: `https://api.neoxr.eu/api/youtube?url=${url}&type=${type}&quality=${type === 'audio' ? '128kbps' : '720p'}&apikey=GataDios`,
-    y2mate: `https://y2mate.bhadran.com/api/youtube/${type === 'audio' ? 'mp3' : 'mp4'}?url=${url}`,
     delirius: `https://delirius-apiofc.vercel.app/download/ytmp4?url=${url}`,
   };
 
