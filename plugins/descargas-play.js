@@ -106,7 +106,7 @@ const fetchWithFallback = async (url, type) => {
   try {
     return await ddownr.download(url, type === 'audio' ? 'mp3' : '720');
   } catch (error) {
-    throw new Error("⚠️ Todas las APIs fallaron, incluyendo ddownr. Intenta más tarde.");
+    throw new Error(`⚠️ Todas las APIs fallaron, ${error.message}`);
   }
 };
 
