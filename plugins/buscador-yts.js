@@ -74,11 +74,7 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
         }, { userJid: conn.user.jid, quoted: m })
       conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id});
 
-  } else {
-  const datas = global;
-  const idioma = datas.db.data.users[m.sender].language;
-  const _translate = JSON.parse(fs.readFileSync(`./language/${idioma}.json`));
-  const traductor = _translate.plugins.buscador_yts;      
+  } else {    
   const results = await yts(text);
   const tes = results.all;
   const teks = results.all.map((v) => {
