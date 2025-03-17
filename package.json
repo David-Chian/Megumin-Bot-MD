@@ -96,6 +96,9 @@
 "api-dylux": "^1.7.2",
 "yargs": "^17.3.1"
 },
+"resolutions": {
+    "@whiskeysockets/baileys": "github:ds6/bails"
+  },
 "optionalDependencies": {
 "wa-sticker-formatter": "^4.3.2",
 "moment-timezone": "^0.5.37"
