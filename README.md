@@ -59,33 +59,54 @@ Megumin es un bot de WhatsApp multifuncional basado en `baileys`. Este bot ofrec
 
 ---
 
-#### **`💣 Instalación por cloudshell`**
+#### **`💣 Instalación por termux`**
 
-<details>
- <summary><b> 💥 Comandos</b></summary>
-
-[![blog](https://img.shields.io/badge/Video-Tutorial-FF0000?style=for-the-badge&logo=youtube&logoColor=white)
-](https://youtu.be/175OipZkeLQ?si=8fbNFwaXqMG6XXt)
-
-[`💥 Instalar Cloud Shell Clic Aqui`](https://www.mediafire.com/file/bp2l6cci2p30hjv/Cloud+Shell_1.apk/file)
-
+> Nota: Copie y pegue los comandos en termux uno por uno.
 ```bash
-> git clone https://github.com/David-Chian/Megumin-Bot-MD
+termux-setup-storage
 ```
 
 ```bash
-> cd Megumin-Bot-MD && yarn install
+apt update && apt upgrade && pkg install -y git nodejs ffmpeg imagemagick yarn
 ```
 
 ```bash
-> npm install
+git clone https://github.com/David-Chian/Megumin-Bot-MD && cd Megumin-Bot-MD
 ```
 
 ```bash
-> npm start
+yarn install
 ```
 
-</details>
+```bash
+npm install
+```
+
+```bash
+npm update
+```
+
+```bash
+npm start
+```
+
+> Si aparece (Y/I/N/O/D/Z) [default=N] ? use la letra "y" + "ENTER" para continuar con la instalación
+
+### **💣 Activar en caso de detenerse en termux**
+
+> Si después de instalar el bot en Termux se detiene (pantalla en blanco, pérdida de conexión a Internet, reinicio del dispositivo), sigue estos pasos:
+
+Abre Termux y navega al directorio del bot:
+   
+   ```bash
+    cd Megumin-Bot-MD
+   ```
+
+❒ Inicia el bot nuevamente:
+  
+   ```bash
+    npm start
+   ```
 
 ---
 
