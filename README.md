@@ -63,6 +63,7 @@ Megumin es un bot de WhatsApp multifuncional basado en `baileys`. Este bot ofrec
 
 <details>
  <summary><b>:paperclip: 🖤 Comandos</b></summary>
+
 > Nota: Copie y pegue los comandos en termux uno por uno.
 ```bash
 termux-setup-storage
