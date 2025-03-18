@@ -34,12 +34,11 @@
 ---
 
 ### **`☁️ Sky Ultra Plus 🚀`**
-<a href="https://www.skyultraplus.com/"><img src="https://files.catbox.moe/62pqnw.jpg" height="125px"></a>
+<a href="https://dash.skyultraplus.com/"><img src="https://files.catbox.moe/62pqnw.jpg" height="100px"></a>
 
 <details>
  <summary><b>:paperclip: Enlaces Importantes</b></summary>
 
-- **Pagina Principal:** [`Aquí`](https://www.skyultraplus.com/)
 - **Dash:** [`Aquí`](https://dash.skyultraplus.com)
 - **Panel:** [`Aquí`](https://panel.skyultraplus.com)
 
