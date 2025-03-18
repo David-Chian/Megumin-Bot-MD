@@ -1,6 +1,6 @@
-> 💥 Versión actual: ^3.0.3
+> 💥 Versión actual: ^2.0.5
 
-<h1 align="center">💣 𝐌𝐞𝐠𝐮𝐦𝐢𝐧 𝐁𝐨𝐭 - 𝐌𝐃</p>
+<h1 align="center">Megumin WaBot</p>
 <p>
         <img src= "https://telegra.ph/file/b8170842d84523340c674.jpg">
     </p>
