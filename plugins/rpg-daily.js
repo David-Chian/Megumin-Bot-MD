@@ -19,7 +19,7 @@ Recursos:
 💎 Diamantes : *+${d}*
 ❤️‍🔥 MeguCoins : *+${coin}*`
 //conn.reply(m.chat,text,  m, )
-await conn.sendMessage(m.chat, { text: str, footer: `Recompensa diaria`, buttons: [ { buttonId: `.menu`, buttonText: { displayText: "𝑴𝒆𝒏𝒖́ ♡" }},], headerType: 4}, { quoted: m });
+await conn.sendMessage(m.chat, { text: str, footer: `Recompensa diaria`, buttons: [ { buttonId: `.menu`, buttonText: { displayText: "𝑴𝒆𝒏𝒖́ ♡" },type: 1},], headerType: 4}, { quoted: m });
 
 global.db.data.users[m.sender].lastclaim = new Date * 1
 
