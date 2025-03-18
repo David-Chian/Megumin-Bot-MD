@@ -45,9 +45,6 @@
 - **Área de Clientes:** [Aquí](https://clientes.cafirexos.com)
 - **Panel de Control:** [Aquí](https://panel.cafirexos.com)
 - **Estado de los Servicios:** [Aquí](https://estado.cafirexos.com)
-- **Documentación:** [Aquí](https://docs.cafirexos.com)
-- **Canal de WhatsApp:** [Aquí](https://cafirexos.com/whatsapp)
-- **Comunidad de WhatsApp:** [Aquí](https://cafirexos.com/comunidad)
 
 </details>
 
