@@ -2,7 +2,7 @@ const handler = async (m, {isPrems, conn}) => {
   const time = global.db.data.users[m.sender].lastcofre + 86400000; // 36000000 10 Horas //86400000 24 Horas
   if (new Date - global.db.data.users[m.sender].lastcofre < 86400000) throw `🎁 Ya Reclamastes Tu Cofre\n⏰️Regresa En: *${msToTime(time - new Date())}* Para Volver A Reclamar`;
 
-  const img = 'https://telegra.ph/file/62ba6688963b0ad407edd.png';
+  const img = imagen1
   const dia = Math.floor(Math.random() * 30);
   const tok = Math.floor(Math.random() * 10);
   const ai = Math.floor(Math.random() * 4000);
@@ -42,7 +42,7 @@ const handler = async (m, {isPrems, conn}) => {
   };
 
  // await conn.sendFile(m.chat, img, 'yoshiko.jpg', texto, fkontak);
-   await conn.sendButton(m.chat, texto, wm, img, [['💲 ʙᴀʟᴀɴᴄᴇ', '/balance'] ], fkontak, m)
+   await conn.sendButton(m.chat, texto, wm, img, [['💲 ʙᴀʟᴀɴᴄᴇ', '/balance'] ], fkontak)
   global.db.data.users[m.sender].lastcofre = new Date * 1;
 };
 handler.help = ['daily'];
