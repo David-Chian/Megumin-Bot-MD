@@ -155,8 +155,7 @@ if (!('sAutoresponder' in chat)) chat.sAutoresponder = ''
 if (!('sCondition' in chat)) chat.sCondition = JSON.stringify([{ grupo: { usuario: [], condicion: [], admin: '' }, prefijos: []}])
 if (!('delete' in chat)) chat.delete = false                   
 if (!('nsfw' in chat)) chat.nsfw = false
-if (!('autoAceptar' in chat)) chat.autoAceptar = false                   
-if (!('autosticker' in chat)) chat.autosticker = false      
+if (!('autoAceptar' in chat)) chat.autoAceptar = false                         
 if (!('audios' in chat)) chat.audios = false
 if (!('antiBot' in chat)) chat.antiBot = false 
 if (!('antiBot2' in chat)) chat.antiBot2 = false               
@@ -179,8 +178,6 @@ if (!('viewonce' in chat)) chat.viewonce = false
 if (!('modoadmin' in chat)) chat.modoadmin = false    
 if (!('antitoxic' in chat)) chat.antitoxic = false
 if (!('simi' in chat)) chat.simi = false
-if (!('antiTraba' in chat)) chat.antiTraba = false
-if (!('autolevelup' in chat))  chat.autolevelup = false
 if (!isNumber(chat.expired)) chat.expired = 0
 } else
 global.db.data.chats[m.chat] = {
@@ -197,7 +194,6 @@ delete: false,
 autoresponder: false,
 autoAceptar: false,
 nsfw: false,
-autosticker: false,
 audios: false,
 antiBot: false,
 antiBot2: false,
@@ -220,8 +216,6 @@ viewonce: false,
 modoadmin: false,
 antitoxic: false, 
 simi: false,
-antiTraba: false,
-autolevelup: false,
 expired: 0,
 }
 let settings = global.db.data.settings[this.user.jid]
