@@ -57,9 +57,7 @@ ${channel2}
 •┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄•
 ${packname}`
 await conn.sendMessage(m.chat, {
-            image: { url: imagen3 },
-            caption: regbot,
-            mimetype: 'image/jpeg',
+            text: regbot,
             contextInfo: {
 externalAdReply: {
             showAdAttribution: true,
@@ -69,7 +67,7 @@ externalAdReply: {
             sourceUrl: redes,
             previewType: "PHOTO",
             mediaType: 1,
-            renderLargerThumbnail: false
+            renderLargerThumbnail: true
         }}
     })
 }
