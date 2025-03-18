@@ -24,8 +24,7 @@ let buttons = [
 ];
 
 await conn.sendMessage(m.chat, { 
-    text: str, 
-    footer: "Recompensa diaria", 
+    text: str,  
     buttons: buttons, 
     headerType: 1 
 }, { quoted: m });
