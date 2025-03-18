@@ -223,28 +223,22 @@ if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
 if (settings) {
 if (!('self' in settings)) settings.self = false
 if (!('autoread' in settings)) settings.autoread = false
-if (!('autoread2' in settings)) settings.autoread2 = false
 if (!('restrict' in settings)) settings.restrict = false
 if (!('antiPrivate' in settings)) settings.antiPrivate = false
 if (!('antiCall' in settings)) settings.antiCall = true
-if (!('frases' in chat)) chat.frases = false
 if (!('antiSpam' in settings)) settings.antiSpam = false
 if (!('modoia' in settings)) settings.modoia = false
 if (!('jadibotmd' in settings)) settings.jadibotmd = false  
-if (!('autobio' in settings)) settings.autobio = false
 if (!('botcommandCount' in settings)) settings.botcommandCount = 0
 } else global.db.data.settings[this.user.jid] = {
 self: false,
 autoread: false,
-autoread2: false,
 restrict: false,
-frases: false,
 antiPrivate: false,
 antiCall: true,
 antiSpam: false,
 modoia: false, 
 jadibotmd: true,
-autobio: false,
 botcommandCount: 0,
 }} catch (e) {
 console.error(e)
@@ -571,9 +565,6 @@ if (!opts['noprint']) await (await import(`../lib/print.js`)).default(m, this)
 console.log(m, m.quoted, e)}
 let settingsREAD = global.db.data.settings[this.user.jid] || {}  
 if (opts['autoread']) await this.readMessages([m.key])
-if (settingsREAD.autoread2) await this.readMessages([m.key])  
-//await conn.sendPresenceUpdate('composing', m.chat);
-//this.sendPresenceUpdate('recording', m.chat);
 
 if (db.data.chats[m.chat].reaction && m.text.match(/(ción|dad|aje|oso|izar|mente|pero|tion|age|ous|ate|and|but|ify|ai|megumin|megu|a|s)/gi)) {
 let emot = pickRandom(["🚩", "🍟", "🔥","✨️", "🌸", "💥", "⭐️", "🌟", "🍂", "🫂", "🍁", "💖", "💞", "💕", "💋"])
