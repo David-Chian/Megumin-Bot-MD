@@ -21,7 +21,7 @@ isForwarded: false,
 "externalAdReply": {
 "showAdAttribution": true,
 "containsAutoReply": true,
-title: `☁ S K Y - U L T R A ☁`
+title: `☁ S K Y - U L T R A ☁`,
 body: `⚜️ Super Hosting 24/7 ⚜️`,
 "previewType": "PHOTO",
 thumbnailUrl: 'https://files.catbox.moe/62pqnw.jpg', 
