@@ -34,7 +34,7 @@
 ---
 
 ### **`☁️ Sky Ultra Plus 🚀`**
-<a href="https://www.skyultraplus.com/"><img src="https://panel.skyultraplus.com/logo.png" height="125px"></a>
+<a href="https://www.skyultraplus.com/"><img src="https://files.catbox.moe/62pqnw.jpg" height="125px"></a>
 
 <details>
  <summary><b>:paperclip: Enlaces Importantes</b></summary>
