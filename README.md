@@ -33,19 +33,6 @@
 
 ---
 
-### **`☁️ Sky Ultra Plus 🚀`**
-<a href="https://dash.skyultraplus.com/"><img src="https://files.catbox.moe/62pqnw.jpg" height="100px"></a>
-
-<details>
- <summary><b>:paperclip: Enlaces Importantes</b></summary>
-
-- **Dash:** [`Aquí`](https://dash.skyultraplus.com)
-- **Panel:** [`Aquí`](https://panel.skyultraplus.com)
-
-</details>
-
----
-
 ### **`🌋 Cafirexos 🚀`**
 <a href="https://cafirexos.com">
   <img width="180px" src="https://cdn.cafirexos.com/logos/logo_cfros_2000x2000.png"/>
@@ -54,13 +41,26 @@
 <details>
  <summary><b>:paperclip: Enlaces Importantes</b></summary>
 
-- **Sitio Web:** [cafirexos.com](https://cafirexos.com)
-- **Área de Clientes:** [clientes.cafirexos.com](https://clientes.cafirexos.com)
-- **Panel de Control:** [panel.cafirexos.com](https://panel.cafirexos.com)
-- **Estado de los Servicios:** [estado.cafirexos.com](https://estado.cafirexos.com)
-- **Documentación:** [docs.cafirexos.com](https://docs.cafirexos.com)
-- **Canal de WhatsApp:** [¡Únete aquí!](https://cafirexos.com/whatsapp)
-- **Comunidad de WhatsApp:** [¡Únete aquí!](https://cafirexos.com/comunidad)
+- **Sitio Web:** [Aquí](https://cafirexos.com)
+- **Área de Clientes:** [Aquí](https://clientes.cafirexos.com)
+- **Panel de Control:** [Aquí](https://panel.cafirexos.com)
+- **Estado de los Servicios:** [Aquí](https://estado.cafirexos.com)
+- **Documentación:** [Aquí](https://docs.cafirexos.com)
+- **Canal de WhatsApp:** [Aquí](https://cafirexos.com/whatsapp)
+- **Comunidad de WhatsApp:** [Aquí](https://cafirexos.com/comunidad)
+
+</details>
+
+---
+
+### **`☁️ Sky Ultra Plus 🚀`**
+<a href="https://dash.skyultraplus.com/"><img src="https://files.catbox.moe/62pqnw.jpg" height="100px"></a>
+
+<details>
+ <summary><b>:paperclip: Enlaces Importantes</b></summary>
+
+- **Dash:** [`Aquí`](https://dash.skyultraplus.com)
+- **Panel:** [`Aquí`](https://panel.skyultraplus.com)
 
 </details>
 
