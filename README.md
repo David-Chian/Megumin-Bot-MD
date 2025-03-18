@@ -61,6 +61,8 @@ Megumin es un bot de WhatsApp multifuncional basado en `baileys`. Este bot ofrec
 
 ### **`💣 Instalación por termux`**
 
+<details>
+ <summary><b>:paperclip: 🖤 Comandos</b></summary>
 > Nota: Copie y pegue los comandos en termux uno por uno.
 ```bash
 termux-setup-storage
@@ -108,17 +110,19 @@ Inicia el bot nuevamente:
     npm start
    ```
 
+</details>
+
 ---
 
-### **`🌴 Collaborator`**
+### **`🌴 CONTRIBUTORS`**
 <a href="https://github.com/David-Chian/Megumin-Bot-MD/graphs/contributors">
 <img src="https://contrib.rocks/image?repo=David-Chian/Megumin-Bot-MD" /> 
 </a>
 
-### **`👑 Creador`**
+### **`👑 CREADOR`**
 <a
 href="https://github.com/David-Chian"><img src="https://github.com/David-Chian.png" width="130" height="130" alt="David"/></a>
 
-## **`✨ Gracias`**
+## **`✨ GRACIAS`**
 <a
 href="https://github.com/BrunoSobrino"><img src="https://github.com/BrunoSobrino.png" width="130" height="130" alt="BrunoSobrino"/></a>
