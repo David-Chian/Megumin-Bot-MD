@@ -38,8 +38,8 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
           title: '♡  ͜ ۬︵࣪᷼⏜݊᷼𝘿𝙚𝙨𝙘𝙖𝙧𝙜𝙖𝙨⏜࣪᷼︵۬ ͜ ',
           body: '<(✿◠‿◠)> 𝙈𝙚𝙜𝙪𝙢𝙞𝙣🔥',
           previewType: 0, 
-          thumbnail: logo5,
-          sourceUrl: cn 
+          thumbnail: logo,
+          sourceUrl: redes 
         }
       }
     });
