@@ -33,6 +33,20 @@
 
 ---
 
+### **`☁️ Sky Ultra Plus 🚀`**
+<a href="https://www.skyultraplus.com/"><img src="https://panel.skyultraplus.com/logo.png" height="125px"></a>
+
+<details>
+ <summary><b>:paperclip: Enlaces Importantes</b></summary>
+
+- **Pagina Principal:** [`Aquí`](https://www.skyultraplus.com/)
+- **Dash:** [`Aquí`](https://dash.skyultraplus.com)
+- **Panel:** [`Aquí`](https://panel.skyultraplus.com)
+
+</details>
+
+---
+
 ### **`🌋 Cafirexos 🚀`**
 <a href="https://cafirexos.com">
   <img width="180px" src="https://cdn.cafirexos.com/logos/logo_cfros_2000x2000.png"/>
