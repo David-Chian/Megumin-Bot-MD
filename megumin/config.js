@@ -27,7 +27,7 @@ global.suittag = ['5351524614']
 global.prems = []
 
 global.libreria = 'Baileys'
-global.baileys = 'ds6/bails'
+global.baileys = 'fizzxydev/baileys-pro'
 global.vs = '^2.0.5'
 global.languaje = 'Español'
 global.nameqr = 'Megumin Bot - MD'
