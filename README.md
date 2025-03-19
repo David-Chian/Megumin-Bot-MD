@@ -2,7 +2,7 @@
 
 <h1 align="center">💣 Megumin WaBot</p>
 <p>
-        <img src= "https://telegra.ph/file/b8170842d84523340c674.jpg">
+        <img src= "https://qu.ax/dpnqY.jpg">
     </p>
 
 ---
