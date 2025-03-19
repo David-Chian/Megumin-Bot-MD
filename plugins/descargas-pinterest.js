@@ -1,3 +1,8 @@
+/*
+• @David-Chian
+- https://github.com/David-Chian
+*/
+
 import fetch from 'node-fetch';
 import baileys from '@whiskeysockets/baileys';
 
