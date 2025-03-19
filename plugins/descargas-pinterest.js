@@ -36,7 +36,7 @@ async function sendAlbumMessage(jid, medias, options = {}) {
 }
 
 const pinterest = async (m, { conn, text, usedPrefix, command }) => {
-    if (!text) return conn.reply(m.chat, `*📌 Uso Correcto: ${usedPrefix + command} Akame*`, m);
+    if (!text) return conn.reply(m.chat, `*📌 Uso Correcto: ${usedPrefix + command} Megumin*`, m);
 
     await m.react('⏳');
     conn.reply(m.chat, '📌 *Descargando imágenes de Pinterest...*', m, {
@@ -62,7 +62,7 @@ const pinterest = async (m, { conn, text, usedPrefix, command }) => {
             return conn.reply(m.chat, '❌ No se encontraron suficientes imágenes para un álbum.', m);
         }
 
-        const images = data.slice(0, 3).map(img => ({ type: "image", data: { url: img.image_large_url } }));
+        const images = data.slice(0, 10).map(img => ({ type: "image", data: { url: img.image_large_url } }));
 
         const caption = `📌 *Resultados de búsqueda para:* ${text}`;
         await sendAlbumMessage(m.chat, images, { caption, quoted: m });
