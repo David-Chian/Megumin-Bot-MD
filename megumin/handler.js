@@ -487,7 +487,7 @@ m.error = e
 console.error(e)
 if (e) {
 let text = format(e)
-for (let key of Object.values(global.APIKeys))
+// for (let key of Object.values(global.APIKeys))
 text = text.replace(new RegExp(key, 'g'), 'Admin')
 if (e.name)
 /*for (let [jid] of global.owner.filter(([number, _, isDeveloper]) => isDeveloper && number)) {
