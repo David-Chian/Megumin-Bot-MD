@@ -58,5 +58,4 @@ handler.help = ["formarpareja5"];
 handler.tags = ["main", "fun"];
 handler.command = ["formarpareja5"];
 handler.register = true;
-handler.group = true;
 export default handler;
