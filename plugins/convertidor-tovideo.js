@@ -1,4 +1,4 @@
-/*import {webp2mp4} from '../lib/webp2mp4.js';
+import {webp2mp4} from '../lib/webp2mp4.js';
 import {ffmpeg} from '../lib/converter.js';
 const handler = async (m, {conn, usedPrefix, command}) => {
   if (!m.quoted) throw `*🛑 Responda A Un Sticker Que Desee Convertir En  Video Con El Comando ${usedPrefix + command}*`;
@@ -23,10 +23,10 @@ const handler = async (m, {conn, usedPrefix, command}) => {
       '-shortest',
     ], 'mp3', 'mp4');
   }
-  await conn.sendFile(m.chat, out, 'error.mp4', '*Listo.* 💣' m, 0, {thumbnail: out});
+  await conn.sendFile(m.chat, out, 'error.mp4', '*Listo.* 💣', m, 0, {thumbnail: out});
 };
 handler.help = ['tovideo'];
 handler.tags = ['transformador'];
 handler.register = true
 handler.command = ['tovideo', 'tomp4', 'mp4', 'togif'];
-export default handler;*/
+export default handler;
