@@ -521,7 +521,6 @@ global.dfail = (type, m, conn) => {
 const msg = {
 rowner: '「👑」 *Esta función solo puede ser usada por mi creador*\n\n> David-Chian.', 
 owner: '「👑」 *Esta función solo puede ser usada por mi desarrollador.', 
-mods: '「🤴🏻」 *Esta función solo puede ser usada por mis desarrolladores.*', 
 premium: '「🍧」 *Esta función solo es para usuarios Premium.', 
 group: '「🐢」 *Esta funcion solo puede ser ejecutada en grupos.*', 
 private: '「🍭」 *Esta función solo puede ser usada en chat privado.*', 
