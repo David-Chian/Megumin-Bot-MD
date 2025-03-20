@@ -12,8 +12,7 @@ let handler = async (m, {conn, usedPrefix}) => {
    let name = conn.getName(who);
    let txt = (`${who == m.sender ? `╭━〔  ${global.packname}  〕⬣\n┋ *Usuario:* ${name}\n┋ *Chocolates En Cartera*: ${user.chocolates}\n┋ *Chocolates En Banco*: ${user.bank}\n┋ *Experiencia:* ${user.exp}\n┋ *Nivel:* ${user.level}\n┋ *Rol:* ${user.role}\n┋ *Fecha:* ${new Date().toLocaleString('id-ID')}\n╰━━━━━━━━━━━━⬣` : `╭━〔  ${global.packname}  〕⬣\n┋ *Usuario:* @${who.split('@')[0]}\n┋ *Chocolates En Cartera*: ${user.chocolates}\n┋ *Chocolates En Banco*: ${user.bank}\n┋ *Experiencia:* ${user.exp}\n┋ *Nivel:* ${user.level}\n┋ *Rol:* ${user.role}\n┋ *Fecha:* ${new Date().toLocaleString('id-ID')}\n╰━━━━━━━━━━━━⬣`}`)
 await conn.sendButton(m.chat, texto, wm, img, [['Retirar Todo', `${usedPrefix}retirar all`], ['Meter Al Banco Todo', `${usedPrefix}d all`] ], null, { mentions: [who] })
-else {
-await conn.sendFile(m.chat, img, 'thumbnail.jpg', txt, m, null, {mentions: [who] }, rcanal)}
+//await conn.sendFile(m.chat, img, 'thumbnail.jpg', txt, m, null, {mentions: [who] }, rcanal)
 }
 
 handler.help = ['bank']
