@@ -42,7 +42,6 @@ const handler = async (m, {conn, args, usedPrefix, command}) => {
 handler.help = ['math <mode>'];
 handler.tags = ['fun'];
 handler.command = /^math|mates|matemáticas/i;
-handler.group = true;
 handler.register = true;
 export default handler;
 
