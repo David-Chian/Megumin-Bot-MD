@@ -23,11 +23,10 @@ const handler = async (m, {conn, usedPrefix, command}) => {
       '-shortest',
     ], 'mp3', 'mp4');
   }
-  await conn.sendFile(m.chat, out, 'error.mp4', '*🌳 Su Video*', m, 0, {thumbnail: out});
+  await conn.sendFile(m.chat, out, 'error.mp4', '*Listo.* 💣' m, 0, {thumbnail: out});
 };
 handler.help = ['tovideo'];
 handler.tags = ['transformador'];
-handler.group = true;
 handler.register = true
 handler.command = ['tovideo', 'tomp4', 'mp4', 'togif'];
 export default handler;
