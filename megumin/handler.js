@@ -329,11 +329,12 @@ ${user.bannedReason}` : '💌 *Motivo:* Sin Especificar'}\n\n⚠️ *Si este bot
 user.antispam++
 return
 }
+
 if (user.antispam2 && isROwner) return
 let time = global.db.data.users[m.sender].spam + 3000
 if (new Date - global.db.data.users[m.sender].spam < 3000) return console.log(`[ SPAM ]`) 
 global.db.data.users[m.sender].spam = new Date * 1
-}
+
 if (opts['nyimak']) return;
 if (!isROwner && opts['self']) return;
 if (opts['pconly'] && m.chat.endsWith('g.us')) return;
