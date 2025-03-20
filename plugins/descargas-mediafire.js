@@ -21,7 +21,6 @@ handler.help = ['mediafire'].map(v => v + ' <url>')
 handler.tags = ['descargas']
 handler.command = /^(mediafire|mdfire|mf)$/i
 handler.register = true
-handler.group = true
 export default handler
 
 async function mediafireDl(url) {
