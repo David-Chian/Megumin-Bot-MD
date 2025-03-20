@@ -46,7 +46,6 @@ else return conn.reply(m.chat, '⚠️ *_La conversión ha fallado, intenta envi
 }}
 handler.help = ['stiker <img>', 'sticker <url>']
 handler.tags = ['sticker']
-handler.group = true;
 handler.register = true
 handler.command = ['s', 'sticker', 'stiker']
 
