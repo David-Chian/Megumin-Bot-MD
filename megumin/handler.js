@@ -159,8 +159,7 @@ if (!('antiBot' in chat)) chat.antiBot = false
 if (!('antiBot2' in chat)) chat.antiBot2 = false                    
 if (!('antiLink' in chat)) chat.antiLink = false     
 if (!('antiLink2' in chat)) chat.antiLink2 = false
-if (!('antifake' in chat)) chat.antifake = false
-if (!('reaction' in chat)) chat.reaction = false         
+if (!('antifake' in chat)) chat.antifake = false         
 if (!('modoadmin' in chat)) chat.modoadmin = false    
 if (!isNumber(chat.expired)) chat.expired = 0
 } else
@@ -182,7 +181,6 @@ antiBot2: false,
 antiLink: false,
 antiLink2: false,
 antifake: false,
-reaction: false,
 modoadmin: false,
 expired: 0,
 }
@@ -210,8 +208,6 @@ console.error(e)
 
 const isROwner = [conn.decodeJid(global.conn.user.id), ...global.owner.map(([number]) => number)].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
 const isOwner = isROwner || m.fromMe
-const isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
-//const isPrems = isROwner || global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
 const isPrems = isROwner || global.db.data.users[m.sender].premiumTime > 0
 if (opts['queque'] && m.text && !(isMods || isPrems)) {
 let queque = this.msgqueque, time = 1000 * 5
@@ -369,10 +365,6 @@ if (plugin.owner && !isOwner) {
 fail('owner', m, this)
 continue
 }
-if (plugin.mods && !isMods) { 
-fail('mods', m, this)
-continue
-}
 if (plugin.premium && !isPrems) { 
 fail('premium', m, this)
 continue
@@ -411,7 +403,6 @@ if (plugin.chocolates && global.db.data.users[m.sender].chocolates < plugin.choc
 m.reply(`No tienes suficiente chocolates para usar este comando. 🍫`) 
 continue
 }
-
 
 if (plugin.level > _user.level) {
 m.reply(`No tienes el nivel para usar este comando. 💣`)  
@@ -524,12 +515,6 @@ if (!opts['noprint']) await (await import(`../lib/print.js`)).default(m, this)
 console.log(m, m.quoted, e)}
 let settingsREAD = global.db.data.settings[this.user.jid] || {}  
 if (opts['autoread']) await this.readMessages([m.key])
-
-/*if (db.data.chats[m.chat].reaction && m.text.match(/(ción|dad|aje|oso|izar|mente|pero|tion|age|ous|ate|and|but|ify|ai|megumin|megu|a|s)/gi)) {
-let emot = pickRandom(["🚩", "🍟", "🔥","✨️", "🌸", "💥", "⭐️", "🌟", "🍂", "🫂", "🍁", "💖", "💞", "💕", "💋"])
-if (!m.fromMe) return this.sendMessage(m.chat, { react: { text: emot, key: m.key }})
-}
-function pickRandom(list) { return list[Math.floor(Math.random() * list.length)]}*/
 }}
 
 global.dfail = (type, m, conn) => {
