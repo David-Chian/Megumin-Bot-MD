@@ -6,8 +6,8 @@ const MAX_SIZE_MB = 100
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   let user = globalThis.db.data.users[m.sender];
 
-  if (user.cookies < 2) {
-    return conn.reply(m.chat, `💔 No tienes suficientes 🍪 Cookies. Necesitas 2 más para usar este comando.`, m);
+  if (user.chocolates < 2) {
+    return conn.reply(m.chat, `💔 No tienes suficientes 🍫 Chocolates. Necesitas 2 más para usar este comando.`, m);
   }
 
   if (!text.trim()) {
@@ -80,8 +80,8 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       throw new Error("Comando no reconocido.");
     }
 
-    user.cookies -= 2
-    conn.reply(m.chat, `💥 Has utilizado 2 🍪 Cookies`, m);
+    user.chocolates -= 2
+    conn.reply(m.chat, `💥 Has utilizado 2 🍫 Chocolates`, m);
 
   } catch (error) {
     return m.reply(`⚠︎ Ocurrió un error: ${error.message}`);
