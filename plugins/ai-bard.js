@@ -17,8 +17,7 @@ return conn.reply(m.chat, '🚩 *Ocurrió un fallo*', m, rcanal)
 
 handler.command = ['bard']
 handler.help = ['bard']
-handler.group = true;
-handler.register = true
 handler.tags = ['ai']
-handler.premium = false
+handler.register = true
+
 export default handler
