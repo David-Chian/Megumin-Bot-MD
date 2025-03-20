@@ -335,13 +335,16 @@ let time = global.db.data.users[m.sender].spam + 3000
 if (new Date - global.db.data.users[m.sender].spam < 3000) return console.log(`[ SPAM ]`) 
 global.db.data.users[m.sender].spam = new Date * 1
 
+if ((m.id.startsWith('NJX-') || (m.id.startsWith('BAE5') && m.id.length === 16) || (m.id.startsWith('B24E') && m.id.length === 20))) return
+
 if (opts['nyimak']) return;
 if (!isROwner && opts['self']) return;
 if (opts['pconly'] && m.chat.endsWith('g.us')) return;
 if (opts['gconly'] && !m.chat.endsWith('g.us')) {
-const allowedInPrivate = ['serbot', 'serbot --code', 'menu', 'info'];
-if (!allowedInPrivate.includes(command)) return;
-}
+const allowedInPrivateForUsers = ['serbot', 'serbot --code', 'menu', 'info'];
+if (!isOwner && !allowedInPrivateForUsers.includes(command)) {
+return
+}}
 if (opts['swonly'] && m.chat !== 'status@broadcast') return;
 if (typeof m.text !== 'string') m.text = '';
 
