@@ -7,7 +7,7 @@ let coin = `${pickRandom([5, 6, 7, 9, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60
 let exp = `${pickRandom([500, 600, 700, 800, 900, 999, 1000, 1300, 1500, 1800])}` * 1
 let exppremium = `${pickRandom([1000, 1500, 1800, 2100, 2500, 2900, 3300, 3600, 4000, 4500])}` * 1
 let d = Math.floor(Math.random() * 30)
-global.db.data.users[m.sender].cookies += d
+global.db.data.users[m.sender].chocolates += d
 global.db.data.users[m.sender].money += d
 let time = global.db.data.users[m.sender].lastclaim + 86400000 //12 Horas
 if (new Date - global.db.data.users[m.sender].lastclaim < 7200000) return conn.reply(m.chat, `🕚 *Vuelve en ${msToTime(time - new Date())}*`, m, )
@@ -16,7 +16,7 @@ let str = `🎁 *Recompensa Diaria*
 
 Recursos:
 ✨ Xp : *+${isPrems ? exppremium : exp}*
-🍪 Cookies : *+${d}*
+🍫 Chocolates : *+${d}*
 ❤️‍🔥 MeguCoins : *+${coin}*`
 conn.reply(m.chat,text,  m, )
 global.db.data.users[m.sender].lastclaim = new Date * 1
@@ -24,10 +24,8 @@ global.db.data.users[m.sender].lastclaim = new Date * 1
 }
 handler.help = ['daily', 'claim']
 handler.tags = ['rpg']
-
 handler.command = ['daily', 'claim']
 
-handler.group = true;
 handler.register = true
 
 export default handler
