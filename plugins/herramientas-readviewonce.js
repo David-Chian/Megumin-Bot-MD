@@ -11,6 +11,5 @@ return conn.sendFile(m.chat, buffer, 'media.jpg', m.quoted?.caption || '', m)
 }}
 
 handler.command = ['readviewonce', 'read', 'readvo', 'rvo', 'ver'] 
-handler.group = true;
 
 export default handler
