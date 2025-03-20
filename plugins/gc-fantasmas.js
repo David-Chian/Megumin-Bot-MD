@@ -53,10 +53,8 @@ break
 }
 handler.tags = ['grupo']
 handler.command = ['fantasmas', 'kickfantasmas']
-handler.group = true
 handler.botAdmin = true
 handler.admin = true
-handler.fail = null
 
 export default handler
 
