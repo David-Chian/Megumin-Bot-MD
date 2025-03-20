@@ -7,7 +7,7 @@ import { join } from 'path'
 let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, command }) => {
 try {        
 /*let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => ({}))) || {}*/
-let { exp, cookies, level, role } = global.db.data.users[m.sender]
+let { exp, chocolates, level, role } = global.db.data.users[m.sender]
 let { min, xp, max } = xpRange(level, global.multiplier)
 let name = await conn.getName(m.sender)
 let _uptime = process.uptime() * 1000
@@ -54,7 +54,7 @@ let menu = `.........․⁀⸱⁀⸱︵⸌⸃૰⳹․💥․⳼૰⸂⸍︵⸱�
 ├ׁ̟̇❍✎ *🄲ʟɪᴇɴᴛᴇ:* ${nombre}
 ├ׁ̟̇❍✎ *🄿ᴀɪs:* ${global.userNationality}
 ├ׁ̟̇❍✎ *🄴xᴘ:* ${exp}
-├ׁ̟̇❍✎ *🄶ᴀʟʟᴇᴛᴀs:* ${cookies}
+├ׁ̟̇❍✎ *🄶ᴀʟʟᴇᴛᴀs:* ${chocolates}
 ├ׁ̟̇❍✎ *🄽ɪᴠᴇʟ:* ${level}
 ├ׁ̟̇❍✎ *🅁ᴀɴɢᴏ:* ${role}
 ╚▭࣪▬ִ▭࣪▬ִ▭࣪▬ִ▭࣪▬ִ▭࣪▬ִ▭࣪▬▭╝
