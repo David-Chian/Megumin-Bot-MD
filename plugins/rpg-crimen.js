@@ -23,25 +23,25 @@ let amountTaken = Math.floor(Math.random() * (maxAmount - minAmount + 1)) + minA
 let randomOption = Math.floor(Math.random() * 3)
 switch (randomOption) {
 case 0:
-users[senderId].cookies += amountTaken
-users[randomUserId].cookies -= amountTaken
+users[senderId].chocolates += amountTaken
+users[randomUserId].chocolates -= amountTaken
 conn.sendMessage(m.chat, {
-text: `🚩¡Lograste cometer tu crimen con exito!, acabas de robar *${amountTaken} Cookies 🍪* a @${randomUserId.split("@")[0]}\n\nSe suman *+${amountTaken} Cookies 🍪* a ${senderName}.`,
+text: `🚩¡Lograste cometer tu crimen con exito!, acabas de robar *${amountTaken} Chocolates 🍫* a @${randomUserId.split("@")[0]}\n\nSe suman *+${amountTaken} Chocolates 🍫* a ${senderName}.`,
 contextInfo: { 
 mentionedJid: [randomUserId],
 }}, { quoted: m })
 break
 case 1:
 let amountSubtracted = Math.min(Math.floor(Math.random() * (senderCookies - minAmount + 1)) + minAmount, maxAmount)
-users[senderId].cookies -= amountSubtracted
-conn.reply(m.chat, `🚩 No fuiste cuidadoso y te atraparon mientras cometias tu cirme, se restaron *-${amountSubtracted} Cookies 🍪* a ${senderName}.`, m, rcanal)
+users[senderId].chocolates -= amountSubtracted
+conn.reply(m.chat, `🚩 No fuiste cuidadoso y te atraparon mientras cometias tu cirme, se restaron *-${amountSubtracted} Chocolates 🍫* a ${senderName}.`, m, rcanal)
 break
 case 2:
 let smallAmountTaken = Math.min(Math.floor(Math.random() * (randomUserCookies / 2 - minAmount + 1)) + minAmount, maxAmount)
-users[senderId].cookies += smallAmountTaken
-users[randomUserId].cookies -= smallAmountTaken
+users[senderId].chocolates += smallAmountTaken
+users[randomUserId].chocolates -= smallAmountTaken
 conn.sendMessage(m.chat, {
-text: `🚩 Lograste cometer tu crimen con exito, pero te descubrieron y solo lograste tomar *${smallAmountTaken} Cookies 🍪* de @${randomUserId.split("@")[0]}\n\nSe suman *+${smallAmountTaken} Cookies 🍪* a ${senderName}.`,
+text: `🚩 Lograste cometer tu crimen con exito, pero te descubrieron y solo lograste tomar *${smallAmountTaken} Chocolates 🍫* de @${randomUserId.split("@")[0]}\n\nSe suman *+${smallAmountTaken} Chocolates 🍫* a ${senderName}.`,
 contextInfo: { 
 mentionedJid: [randomUserId],
 }}, { quoted: m })
@@ -53,7 +53,6 @@ handler.tags = ['rpg']
 handler.help = ['crimen']
 handler.command = ['crimen', 'crime']
 handler.register = true
-handler.group = true
 
 export default handler
 
