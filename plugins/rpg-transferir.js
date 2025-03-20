@@ -1,4 +1,4 @@
-const items = ['cookies', 'exp'];
+const items = ['chocolates', 'exp'];
 const confirmation = {};
 
 async function handler(m, { conn, args, usedPrefix, command }) {
@@ -11,7 +11,7 @@ async function handler(m, { conn, args, usedPrefix, command }) {
 *┃🍁 𝑬𝒋𝒆𝒎𝒑𝒍𝒐:* ${usedPrefix + command} exp 65 @${m.sender.split('@')[0]}
 ┣❣◤▬▭▬▭▬ ◆ ▬▭▬▭▬ ◤❢
 *┃◉ 🔥 𝑨𝒓𝒕𝒊𝒄𝒖𝒍𝒐𝒔 𝒕𝒓𝒂𝒏𝒔𝒇𝒆𝒓𝒊𝒃𝒍𝒆𝒔.*
-┃▢ *cookies* = 𝑪𝒐𝒐𝒌𝒊𝒆𝒔 🍪
+┃▢ *chocolates* = 𝑪𝒉𝒐𝒄𝒐𝒍𝒂𝒕𝒆𝒔 🍫
 ┃▢ *exp* = 𝑬𝒙𝒑𝒆𝒓𝒊𝒆𝒏𝒄𝒊𝒂
 *┗━┅┉┅┄┈┄⟞⟨⟠⟩⟝┄┈┄┉┉┉━┛*
 `.trim();
@@ -64,8 +64,7 @@ handler.before = async (m) => {
 handler.help = ['transfer'].map((v) => v + ' [tipo] [cantidad] [@tag]');
 handler.tags = ['rpg'];
 handler.command = ['payxp', 'transfer', 'darxp', 'transferir'];
-handler.disabled = false;
-handler.group = true
+
 handler.register = true
 export default handler;
 
