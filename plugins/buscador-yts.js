@@ -94,5 +94,4 @@ handler.help = ['ytsearch <texto>'];
 handler.tags = ['search'];
 handler.command = ['ytsearch','yts','searchyt','buscaryt','videosearch','audiosearch'];
 handler.register = true;
-handler.group = true;
 export default handler;
