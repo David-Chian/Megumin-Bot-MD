@@ -1,6 +1,6 @@
 //Codígo creado por David Chian wa.me/5351524614
 
-testimport fs from 'fs';
+import fs from 'fs';
 import path from 'path';
 
 let handler = async (m, { conn, usedPrefix }) => {
