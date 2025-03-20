@@ -8,7 +8,7 @@ await conn.reply(m.chat, '🚩 *¡MEGUMIN-BOT YA FUÉ DESBANEADA EN ESTE CHAT!*'
 handler.help = ['unbanchat'];
 handler.tags = ['mods'];
 handler.command = ['unbanchat','desbanearchat','desbanchat']
-handler.mods = true 
+handler.rowner = true 
 //handler.group = true
 
 export default handler
