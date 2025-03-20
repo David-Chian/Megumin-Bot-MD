@@ -40,7 +40,7 @@ if (!m)
 return
 global.mconn = m 
 m.exp = 0
-m.cookies = false //se cambiará a Chocolates, después.
+m.chocolates = false
 try {
 let user = global.db.data.users[m.sender]
 //if (typeof user !== 'object')
@@ -52,7 +52,7 @@ if (!('premium' in user)) user.premium = false
 if (!('muto' in user)) user.muto = false
 if (!isNumber(user.joincount)) user.joincount = 1
 if (!isNumber(user.money)) user.money = 150
-if (!isNumber(user.cookies)) user.cookies = 20
+if (!isNumber(user.chocolates)) user.chocolates = 10
 if (!('registered' in user)) user.registered = false
 
 if (!user.registered) {
@@ -62,7 +62,7 @@ if (!isNumber(user.regTime)) user.regTime = -1
 }
 
 if (!isNumber(user.afk)) user.afk = -1
-if (!('role' in user)) user.role = 'Novato'
+if (!('role' in user)) user.role = 'Nuv'
 if (!isNumber(user.bank)) user.bank = 0
 if (!isNumber(user.coin)) user.coin = 0
 if (!isNumber(user.diamond)) user.diamond = 3
@@ -104,7 +104,7 @@ lastduel: 0,
 lastpago: 0,
 lastrob: 0,
 level: 0,
-cookies: 20,
+chocolates: 10,
 money: 100,
 muto: false,
 premium: false,
@@ -156,28 +156,13 @@ if (!('sCondition' in chat)) chat.sCondition = JSON.stringify([{ grupo: { usuari
 if (!('delete' in chat)) chat.delete = false                   
 if (!('nsfw' in chat)) chat.nsfw = false
 if (!('autoAceptar' in chat)) chat.autoAceptar = false                         
-if (!('audios' in chat)) chat.audios = false
 if (!('antiBot' in chat)) chat.antiBot = false 
-if (!('antiBot2' in chat)) chat.antiBot2 = false               
-if (!('antiver' in chat)) chat.antiver = false 
-if (!('antiPorn' in chat)) chat.antiPorn = false     
+if (!('antiBot2' in chat)) chat.antiBot2 = false                    
 if (!('antiLink' in chat)) chat.antiLink = false     
 if (!('antiLink2' in chat)) chat.antiLink2 = false
-if (!('antiTiktok' in chat)) chat.antiTiktok = false
-if (!('antiYoutube' in chat)) chat.antiYoutube = false
-if (!('antiTelegram' in chat)) chat.antiTelegram = false
-if (!('antiFacebook' in chat)) chat.antiFacebook = false
-if (!('antiInstagram' in chat)) chat.antiInstagram = false
-if (!('antiTwitter' in chat)) chat.antiTwitter = false
-if (!('antiDiscord' in chat)) chat.antiDiscord = false
-if (!('antiThreads' in chat)) chat.antiThreads = false
-if (!('antiTwitch' in chat)) chat.antiTwitch = false
 if (!('antifake' in chat)) chat.antifake = false
-if (!('reaction' in chat)) chat.reaction = false  
-if (!('viewonce' in chat)) chat.viewonce = false       
+if (!('reaction' in chat)) chat.reaction = false         
 if (!('modoadmin' in chat)) chat.modoadmin = false    
-if (!('antitoxic' in chat)) chat.antitoxic = false
-if (!('simi' in chat)) chat.simi = false
 if (!isNumber(chat.expired)) chat.expired = 0
 } else
 global.db.data.chats[m.chat] = {
@@ -194,28 +179,13 @@ delete: false,
 autoresponder: false,
 autoAceptar: false,
 nsfw: false,
-audios: false,
 antiBot: false,
 antiBot2: false,
-antiver: false,
-antiPorn: false,
 antiLink: false,
 antiLink2: false,
-antiTiktok: false,
-antiYoutube: false,
-antiTelegram: false,
-antiFacebook: false,
-antiInstagram: false,
-antiTwitter: false,
-antiDiscord: false,
-antiThreads: false,
-antiTwitch: false,
 antifake: false,
 reaction: false,
-viewonce: false,
 modoadmin: false,
-antitoxic: false, 
-simi: false,
 expired: 0,
 }
 let settings = global.db.data.settings[this.user.jid]
@@ -437,22 +407,23 @@ let xp = 'exp' in plugin ? parseInt(plugin.exp) : 10
 if (xp > 2000)
 m.reply('Chirrido -_-') 
 else               
-if (!isPrems && plugin.money && global.db.data.users[m.sender].money < plugin.money * 1) {
-conn.reply(m.chat, `❮💰❯ 𝗡𝗼 𝘁𝗶𝗲𝗻𝗲𝘀 𝘀𝘂𝗳𝗶𝗰𝗶𝗲𝗻𝘁𝗲𝘀 𝗠𝗲𝗴𝘂𝗖𝗼𝗶𝗻𝘀 𝗽𝗮𝗿𝗮 𝘂𝘀𝗮𝗿 𝗲𝘀𝘁𝗲 𝗰𝗼𝗺𝗮𝗻𝗱𝗼.`, m, rcanal)       
+if (plugin.money && global.db.data.users[m.sender].money < plugin.money * 1) {
+m.reply(`No tienes suficiente Money para usar este comando. 🚩`)       
 continue     
 }
 
 m.exp += xp
-if (!isPrems && plugin.cookies && global.db.data.users[m.sender].cookies < plugin.cookies * 1) {
-conn.reply(m.chat, `❮🌟❯ 𝗡𝗼 𝘁𝗶𝗲𝗻𝗲𝘀 𝘀𝘂𝗳𝗶𝗰𝗶𝗲𝗻𝘁𝗲𝘀 𝗖𝗼𝗼𝗸𝗶𝗲𝘀 𝗽𝗮𝗿𝗮 𝘂𝘀𝗮𝗿 𝗲𝘀𝘁𝗲 𝗰𝗼𝗺𝗮𝗻𝗱𝗼. 𝗣𝗮𝗿𝗮 𝗰𝗼𝗺𝗽𝗿𝗮𝗿 𝗺𝗮𝘀 𝗖𝗼𝗼𝗸𝗶𝗲𝘀, 𝘂𝘀𝗲 𝗲𝘀𝘁𝗲 𝗰𝗼𝗺𝗮𝗻𝗱𝗼.\n\n• 𝗣𝗼𝗿 𝗘𝗷𝗲𝗺𝗽𝗹𝗼:\n\n*${usedPrefix}buyall*\n*${usedPrefix}buy*`, m, rcanal) 
+if (plugin.chocolates && global.db.data.users[m.sender].chocolates < plugin.chocolates * 1) {
+m.reply(`No tienes suficiente chocolates para usar este comando. 🍫`) 
 continue
 }
 
 
 if (plugin.level > _user.level) {
-conn.reply(m.chat, `❮📣❯ 𝗥𝗲𝗾𝘂𝗶𝗲𝗿𝗲 𝗲𝗹 𝗻𝗶𝘃𝗲𝗹: *${plugin.level}*\n\n• 𝗧𝘂 𝗻𝗶𝘃𝗲𝗹 𝗮𝗰𝘁𝘂𝗮𝗹 𝗲𝘀: *${_user.level}*\n\n• 𝗨𝘀𝗮 𝗲𝘀𝘁𝗲 𝗰𝗼𝗺𝗮𝗻𝗱𝗼 𝗽𝗮𝗿𝗮 𝘀𝘂𝗯𝗶𝗿 𝗱𝗲 𝗻𝗶𝘃𝗲𝗹:\n*${usedPrefix}levelup*`, m, rcanal)       
+m.reply(`No tienes el nivel para usar este comando. 💣`)  
 continue
 }
+
 let extra = {
 match,
 usedPrefix,
@@ -478,8 +449,7 @@ __filename
 }
 try {
 await plugin.call(this, m, extra)
-if (!isPrems)
-m.cookies = m.cookies || plugin.cookies || false
+m.chocolates = m.chocolates || plugin.chocolates || false
 m.money = m.money || plugin.money || false
 } catch (e) {
 // Error occured
@@ -504,8 +474,8 @@ await plugin.after.call(this, m, extra)
 } catch (e) {
 console.error(e)
 }}
-if (m.cookies)
-conn.reply(m.chat, `Utilizaste *${+m.cookies}* 🍪`, m)
+if (m.chocolates)
+conn.reply(m.chat, `Utilizaste *${+m.chocolates}* 🍫`, m)
 }
 if (m.money)
 conn.reply(m.chat, `Utilizaste *${+m.money}* 💰`, m)
@@ -520,15 +490,10 @@ this.msgqueque.splice(quequeIndex, 1)
 }
 //console.log(global.db.data.users[m.sender])
 let user, stats = global.db.data.stats
-if (m) { let utente = global.db.data.users[m.sender]
-if (utente.muto == true) {
-let bang = m.key.id
-let cancellazzione = m.key.participant
-await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: bang, participant: cancellazzione }})
-}
+if (m) {
 if (m.sender && (user = global.db.data.users[m.sender])) {
 user.exp += m.exp
-user.cookies -= m.cookies * 1
+user.chocolates -= m.chocolates * 1
 user.money -= m.money * 1
 }
 
@@ -604,7 +569,7 @@ const isBotAdminNn = botTt2?.admin === "admin" || false
 text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@date', global.botdate).replace('@time', global.bottime).replace('@readMore', global.readMore).replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || '*Megumin-Bot-MD*\n𝗦𝗶𝗻 𝗗𝗲𝘀𝗰𝗿𝗶𝗽𝗰𝗶𝗼𝗻') :
 (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0]).replace('@date', global.botdate).replace('@time', global.bottime)
 
-if (chat.antifake && isBotAdminNn && action === 'add') {
+/*if (chat.antifake && isBotAdminNn && action === 'add') {
 const prefijosPredeterminados = [1, 2, 4, 6, 7, 8, 9] // Puedes editar que usuarios deseas que se eliminen si empieza por algunos de los números
 const rutaArchivo = './prefijos.json'
 let prefijos = []
@@ -625,7 +590,7 @@ let texto = mid.mAdvertencia + mid.mFake2(user)
 await conn.sendMessage(id, { text: texto, mentions: [user] })
 let responseb = await conn.groupParticipantsUpdate(id, [user], 'remove')
 if (responseb[0].status === "404") return      
-}}
+}}*/
 
 let fkontak2 = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${user.split('@')[0]}:${user.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }      
 this.sendMessage(id, { text: text, 
