@@ -11,7 +11,6 @@ conn.reply(m.chat, `*┏━_͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡
 
 handler.help = ['reto']
 handler.tags = ['fun']
-handler.group = true;
 handler.register = true
 handler.command = ['reto']
 export default handler
