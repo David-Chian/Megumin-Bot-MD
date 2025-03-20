@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 const handler = async (m, {conn, command, usedPrefix}) => {
-  if (!db.data.chats[m.chat].nsfw && m.isGroup) throw '🚩 *¡Estos comandos están desactivados!*';
+  if (!db.data.chats[m.chat].nsfw) throw '🚩 *¡Estos comandos están desactivados!*';
 conn.reply(m.chat, `🚩 Enviando el *${command}*`, m, {
 contextInfo: { externalAdReply :{ mediaUrl: null, mediaType: 1, showAdAttribution: true,
 title: packname,
@@ -31,7 +31,6 @@ sourceUrl: channel }}})
   }
 };
 handler.command = ['pack','pack2','pack3','videoxxx','vídeoxxx','videoxxxlesbi','videolesbixxx','pornolesbivid','pornolesbianavid','pornolesbiv','pornolesbianav','pornolesv'];
-handler.group = true;
 handler.register = true
 export default handler;
 
