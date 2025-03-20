@@ -15,7 +15,6 @@ let handler = async (m, { conn, usedPrefix }) => {
    // m.react('⏳');
     await conn.sendMessage(m.chat, { react: { text: '😶‍🌫️', key: m.key } })
     let str = `${name2} está  tímid﹫ por ${name}`.trim();
-    if (m.isGroup){
     
     let pp = 'https://telegra.ph/file/a9ccfa5013d58fad2e677.mp4' 
     let pp2 = 'https://telegra.ph/file/2cd355afa143095b97890.mp4' 
@@ -30,13 +29,11 @@ let handler = async (m, { conn, usedPrefix }) => {
     const videos = [pp, pp2, pp3, pp4, pp5, pp6, pp7, pp8, pp9, pp10];
     const video = videos[Math.floor(Math.random() * videos.length)];
     conn.sendMessage(m.chat, { video: { url: video }, gifPlayback: true, caption:str, mentions: [m.sender] },{ quoted: estilo })
-    };
 
 }
 
 handler.help = ['timida @tag'];
 handler.tags = ['fun'];
 handler.command = ['shy','timido'];
-handler.group = true;
 
 export default handler;
