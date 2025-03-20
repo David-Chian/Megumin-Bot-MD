@@ -40,7 +40,6 @@ const handler = async (m, {conn, args, command, usedPrefix}) => {
 };
 handler.command = ['xnxxdl'];
 handler.register = true;
-handler.group = true;
 export default handler;
 
 async function xnxxdl(URL) {
