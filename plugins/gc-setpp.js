@@ -23,7 +23,6 @@ let handler = async (m, { conn, args }) => {
 };
 
 handler.command = ['setppgroup', 'setgrouppic'];
-handler.group = true;
 handler.admin = true;
 handler.botAdmin = true;
 
