@@ -1,4 +1,4 @@
-/*const free = 25
+const free = 25
 const prem = 15
 
 var handler = async (m, {conn, isPrems }) => {
@@ -44,4 +44,4 @@ minutes = (minutes < 10) ? '0' + minutes : minutes
 seconds = (seconds < 10) ? '0' + seconds : seconds
 
 return hours + ' Horas ' + minutes + ' Minutos'
-}*/
+}
