@@ -98,7 +98,7 @@ async function sendAlbumMessage(jid, medias, options = {}) {
 }
 
 const handler = async (m, { conn, text }) => {
-  if (!db.data.chats[m.chat].nsfw && m.isGroup) return m.reply('🚩 *¡Estos comandos están desactivados!*');
+  if (!db.data.chats[m.chat].nsfw) return m.reply('🚩 *¡Estos comandos están desactivados!*');
   if (!text) throw 'Por favor, proporciona un texto';
 
   try {
@@ -145,7 +145,6 @@ const handler = async (m, { conn, text }) => {
 
 handler.help = ['rule34'];
 handler.tags = ['ai'];
-handler.group = true;
 handler.register = true;
 handler.command = ['rule34', 'rule'];
 
