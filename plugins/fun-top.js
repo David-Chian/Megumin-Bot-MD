@@ -35,7 +35,6 @@ m.reply(top, null, { mentions: [a, b, c, d, e, f, g, h, i, j]})
 handler.help = ['top *<texto>*']
 handler.command = ['top']
 handler.tags = ['fun']
-handler.group = true;
 handler.register = true
 export default handler
 function pickRandom(list) {
