@@ -529,9 +529,8 @@ if (opts['autoread']) await this.readMessages([m.key])
 let emot = pickRandom(["🚩", "🍟", "🔥","✨️", "🌸", "💥", "⭐️", "🌟", "🍂", "🫂", "🍁", "💖", "💞", "💕", "💋"])
 if (!m.fromMe) return this.sendMessage(m.chat, { react: { text: emot, key: m.key }})
 }
-function pickRandom(list) { return list[Math.floor(Math.random() * list.length)]}
-}*/
-}
+function pickRandom(list) { return list[Math.floor(Math.random() * list.length)]}*/
+}}
 
 global.dfail = (type, m, conn) => {
 const msg = {
