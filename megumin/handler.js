@@ -372,9 +372,6 @@ if (plugin.premium && !isPrems) {
 fail('premium', m, this)
 continue
 }
-if (plugin.group && !m.isGroup) {
-fail('group', m, this)
-continue
 } else if (plugin.botAdmin && !isBotAdmin) { 
 fail('botAdmin', m, this)
 continue
@@ -524,8 +521,7 @@ global.dfail = (type, m, conn) => {
 const msg = {
 rowner: '「👑」 *Esta función solo puede ser usada por mi creador*\n\n> David-Chian.', 
 owner: '「👑」 *Esta función solo puede ser usada por mi desarrollador.', 
-premium: '「🍧」 *Esta función solo es para usuarios Premium.', 
-group: '「🐢」 *Esta funcion solo puede ser ejecutada en grupos.*', 
+premium: '「🍧」 *Esta función solo es para usuarios Premium.',  
 private: '「🍭」 *Esta función solo puede ser usada en chat privado.*', 
 admin: '「👑」 *Este comando solo puede ser usado por admins.*', 
 botAdmin: '「🚩」 *Para usar esta función debo ser admin.*', 
