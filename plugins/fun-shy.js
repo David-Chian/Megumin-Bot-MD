@@ -1,6 +1,6 @@
 //Codígo creado por David Chian wa.me/5351524614
 
-import fs from 'fs';
+/*import fs from 'fs';
 import path from 'path';
 
 let handler = async (m, { conn, usedPrefix }) => {
@@ -36,4 +36,4 @@ handler.help = ['timida @tag'];
 handler.tags = ['fun'];
 handler.command = ['shy','timido'];
 
-export default handler;
+export default handler;*/
