@@ -40,8 +40,7 @@ return conn.reply(m.chat, '🚩 *Error al enviar el video.*', m, rcanal)}}
 handler.help = ['facebook', 'fb']
 handler.tags = ['descargas']
 handler.command = ['facebook', 'fb']
-handler.estrellas = 1
-handler.group = true;
+handler.chocolates = 1
 handler.register = true
 
 export default handler
