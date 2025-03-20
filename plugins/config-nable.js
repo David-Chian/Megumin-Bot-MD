@@ -9,15 +9,9 @@ ${usedPrefix + command} autoresponder
 ${usedPrefix + command} autoaceptar
 ${usedPrefix + command} autorechazar
 ${usedPrefix + command} detect
-${usedPrefix + command} antidelete
 ${usedPrefix + command} antilink
 ${usedPrefix + command} antilink2
 ${usedPrefix + command} nsfw
-${usedPrefix + command} autolevelup
-${usedPrefix + command} autosticker
-${usedPrefix + command} reaction
-${usedPrefix + command} antitoxic
-${usedPrefix + command} audios
 ${usedPrefix + command} modoadmin
 ${usedPrefix + command} antifake
 ${usedPrefix + command} antibot
@@ -25,13 +19,9 @@ ${usedPrefix + command} antibot
 🍟 *OPCIONES PARA MI PROPIETARIO*
 
 ${usedPrefix + command} public
-${usedPrefix + command} autofrases
-${usedPrefix + command} status
 ${usedPrefix + command} serbot
 ${usedPrefix + command} restrict
 ${usedPrefix + command} autoread
-${usedPrefix + command} antillamar
-${usedPrefix + command} antispam
 ${usedPrefix + command} pconly
 ${usedPrefix + command} gconly
 ${usedPrefix + command} antiprivado`
@@ -118,15 +108,6 @@ throw false
 chat.antiBot2 = isEnable
 break
 
-case 'antidelete': case 'antieliminar': case 'delete':
-if (m.isGroup) {
-if (!(isAdmin || isOwner)) {
-global.dfail('admin', m, conn)
-throw false
-}}
-chat.delete = isEnable
-break
-
 case 'public': case 'publico':
 isAll = true
 if (!isROwner) {
@@ -153,85 +134,6 @@ throw false
 }}
 chat.antiLink2 = isEnable 
 break
-case 'autobiografia': case 'bio': case 'biografia': case 'status': 
-isAll = true
-if (!isROwner) {
-global.dfail('rowner', m, conn)
-throw false
-}
-bot.autobio = isEnable
-break 
-case 'antitiktok': case 'antitk': case 'antitik':
-if (m.isGroup) {
-if (!(isAdmin || isOwner)) {
-global.dfail('admin', m, conn)
-throw false
-}}
-chat.antiTiktok = isEnable 
-break
-
-case 'frases': case 'autofrases': 
-isAll = true
-if (!isROwner) {
-global.dfail('rowner', m, conn)
-throw false
-}
-bot.frases = isEnable
-break 
-
-case 'antiyoutube': case 'antiyt':
-if (m.isGroup) {
-if (!(isAdmin || isOwner)) {
-global.dfail('admin', m, conn)
-throw false
-}}
-chat.antiYoutube = isEnable 
-break
-
-case 'antitelegram': case 'antitl': case 'antitele': case 'antitg': case 'antitel':
-if (m.isGroup) {
-if (!(isAdmin || isOwner)) {
-global.dfail('admin', m, conn)
-throw false
-}}
-chat.antiTelegram = isEnable 
-break
-
-case 'antifacebook': case 'antifb': case 'antifbook':
-if (m.isGroup) {
-if (!(isAdmin || isOwner)) {
-global.dfail('admin', m, conn)
-throw false
-}}
-chat.antiFacebook = isEnable 
-break
-
-case 'antiinstagram': case 'antinstagram': case 'antiig': case 'antig': case 'antiinsta': case 'antinsta':
-if (m.isGroup) {
-if (!(isAdmin || isOwner)) {
-global.dfail('admin', m, conn)
-throw false
-}}
-chat.antiInstagram = isEnable 
-break
-
-case 'antitwitter': case 'antitw': case 'antitwit': case 'antitwter': case 'antitwiter': case 'antix':
-if (m.isGroup) {
-if (!(isAdmin || isOwner)) {
-global.dfail('admin', m, conn)
-throw false
-}}
-chat.antiTwitter = isEnable 
-break
-
-case 'antidiscord':
-if (m.isGroup) {
-if (!(isAdmin || isOwner)) {
-global.dfail('admin', m, conn)
-throw false
-}}
-chat.antiDiscord = isEnable 
-break
 
 case 'autoresponder': case 'autorespond':
 if (m.isGroup) {
@@ -242,24 +144,6 @@ throw false
 chat.autoresponder = isEnable          
 break
 
-case 'antithreads':
-if (m.isGroup) {
-if (!(isAdmin || isOwner)) {
-global.dfail('admin', m, conn)
-throw false
-}}
-chat.antiThreads = isEnable 
-break
-
-case 'antitwitch':
-if (m.isGroup) {
-if (!(isAdmin || isOwner)) {
-global.dfail('admin', m, conn)
-throw false
-}}
-chat.antiTwitch = isEnable 
-break
-
 case 'nsfw': case 'nsfwhot': case 'nsfwhorny':
 if (m.isGroup) {
 if (!(isAdmin || isOwner)) {
@@ -267,60 +151,6 @@ global.dfail('admin', m, conn)
 throw false
 }}
 chat.nsfw = isEnable          
-break
-    
-case 'autolevelup': case 'autonivel': case 'nivelautomatico':
-if (m.isGroup) {
-if (!(isAdmin || isOwner)) {
-global.dfail('admin', m, conn)
-throw false
-}}
-chat.autolevelup = isEnable          
-break
-
-case 'autosticker':
-if (m.isGroup) {
-if (!(isAdmin || isOwner)) {
-global.dfail('admin', m, conn)
-throw false
-}}
-chat.autosticker = isEnable          
-break
-
-case 'reaction': case 'reaccion': case 'emojis': case 'antiemojis': case 'reacciones': case 'reaciones':
-if (m.isGroup) {
-if (!(isAdmin || isOwner)) {
-global.dfail('admin', m, conn)
-throw false
-}}
-chat.reaction = isEnable          
-break
-
-case 'antitoxic': case 'antitoxicos': case 'antimalos':
-if (m.isGroup) {
-if (!(isAdmin || isOwner)) {
-global.dfail('admin', m, conn)
-throw false
-}}
-chat.antitoxic = isEnable
-break
-
-case 'audios':
-if (m.isGroup) {
-if (!(isAdmin || isOwner)) {
-global.dfail('admin', m, conn)
-throw false
-}}
-chat.audios = isEnable          
-break
-
-case 'antiver': case 'modover': case 'modoobservar': case 'modobservar': case 'antiviewonce':
-if (m.isGroup) {
-if (!(isAdmin || isOwner)) {
-global.dfail('admin', m, conn)
-throw false
-}}
-chat.antiver = isEnable 
 break
 
 case 'antiinternacional': case 'antinternacional': case 'antinternational': case 'antifake': case 'antifalsos': case 'antivirtuales': case 'antiextranjeros':                
@@ -350,15 +180,6 @@ throw false
 bot.restrict = isEnable
 break
 
-case 'antiporn': case 'antiporno':
-if (m.isGroup) {
-if (!(isAdmin || isOwner)) {
-global.dfail('admin', m, conn)
-throw false
-}}
-chat.antiPorn = isEnable          
-break
-
 case 'nyimak':
 isAll = true
 if (!isROwner) {
@@ -376,33 +197,6 @@ throw false
 }
 bot.autoread2 = isEnable    
 global.opts['autoread'] = isEnable  
-break
-
-case 'anticall': case 'antillamar':
-isAll = true
-if (!isROwner) {
-global.dfail('rowner', m, conn)
-throw false
-}
-bot.antiCall = isEnable
-break
-
-case 'antispam':
-isAll = true
-if (!isOwner) {
-global.dfail('owner', m, conn)
-throw false
-}
-bot.antiSpam = isEnable
-break
-
-case 'antispam2':
-isAll = true
-if (!isOwner) {
-global.dfail('owner', m, conn)
-throw false
-}
-bot.antiSpam2 = isEnable
 break
 
 case 'modoadmin': case 'soloadmin': case 'modeadmin':
@@ -440,22 +234,6 @@ throw false
 }
 bot.antiPrivate = isEnable
 break
-case 'antitrabas': case 'antitraba': case 'antilag':
-if (m.isGroup) {
-if (!(isAdmin || isOwner)) {
-global.dfail('admin', m, conn)
-throw false
-}}
-chat.antiTraba = isEnable
-break
-case 'simi': case 'chatbot':
-if (m.isGroup) {
-if (!(isAdmin || isOwner)) {
-global.dfail('admin', m, conn)
-throw false
-}}
-chat.simi = isEnable
-break      
 
 case 'swonly': case 'statusonly':
 isAll = true
