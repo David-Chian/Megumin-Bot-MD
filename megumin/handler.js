@@ -371,7 +371,6 @@ continue
 if (plugin.premium && !isPrems) { 
 fail('premium', m, this)
 continue
-}
 } else if (plugin.botAdmin && !isBotAdmin) { 
 fail('botAdmin', m, this)
 continue
