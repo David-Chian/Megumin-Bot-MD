@@ -152,8 +152,7 @@ if (!('sBye' in chat)) chat.sBye = ''
 if (!('sPromote' in chat)) chat.sPromote = ''             
 if (!('sDemote' in chat)) chat.sDemote = ''
 if (!('sAutoresponder' in chat)) chat.sAutoresponder = '' 
-if (!('sCondition' in chat)) chat.sCondition = JSON.stringify([{ grupo: { usuario: [], condicion: [], admin: '' }, prefijos: []}])
-if (!('delete' in chat)) chat.delete = false                   
+if (!('sCondition' in chat)) chat.sCondition = JSON.stringify([{ grupo: { usuario: [], condicion: [], admin: '' }, prefijos: []}])                   
 if (!('nsfw' in chat)) chat.nsfw = false
 if (!('autoAceptar' in chat)) chat.autoAceptar = false                         
 if (!('antiBot' in chat)) chat.antiBot = false 
@@ -175,7 +174,6 @@ sPromote: '',
 sDemote: '', 
 sAutoresponder: '',
 sCondition: JSON.stringify([{ grupo: { usuario: [], condicion: [], admin: '' }, prefijos: []}]), 
-delete: false,
 autoresponder: false,
 autoAceptar: false,
 nsfw: false,
@@ -527,12 +525,12 @@ console.log(m, m.quoted, e)}
 let settingsREAD = global.db.data.settings[this.user.jid] || {}  
 if (opts['autoread']) await this.readMessages([m.key])
 
-/*if (db.data.chats[m.chat].reaction && m.text.match(/(ción|dad|aje|oso|izar|mente|pero|tion|age|ous|ate|and|but|ify|ai|megumin|megu|a|s)/gi)) {
+if (db.data.chats[m.chat].reaction && m.text.match(/(ción|dad|aje|oso|izar|mente|pero|tion|age|ous|ate|and|but|ify|ai|megumin|megu|a|s)/gi)) {
 let emot = pickRandom(["🚩", "🍟", "🔥","✨️", "🌸", "💥", "⭐️", "🌟", "🍂", "🫂", "🍁", "💖", "💞", "💕", "💋"])
 if (!m.fromMe) return this.sendMessage(m.chat, { react: { text: emot, key: m.key }})
 }
 function pickRandom(list) { return list[Math.floor(Math.random() * list.length)]}
-}}*/
+}}
 
 /*export async function participantsUpdate({ id, participants, action }) {
 if (opts['self'])
