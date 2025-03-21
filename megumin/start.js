@@ -266,7 +266,7 @@ console.log(chalk.bold.redBright(`\n⚠️❗ RAZON DE DESCONEXIÓN DESCONOCIDA:
 }
 process.on('uncaughtException', console.error);
 
-global.rutaJadiBot = join(__dirname, './MeguminJadiBot')
+global.rutaJadiBot = join(__dirname, '../MeguminJadiBot')
 
 if (global.meguminJadibts) {
 if (!existsSync(global.rutaJadiBot)) {
