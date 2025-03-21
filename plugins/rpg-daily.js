@@ -18,7 +18,7 @@ Recursos:
 ✨ Xp : *+${isPrems ? exppremium : exp}*
 🍫 Chocolates : *+${d}*
 ❤️‍🔥 MeguCoins : *+${coin}*`
-conn.reply(m.chat,text,  m, )
+conn.reply(m.chat,str, m, rcanal)
 global.db.data.users[m.sender].lastclaim = new Date * 1
 
 }
