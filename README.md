@@ -2,7 +2,7 @@
 
 <h1 align="center">💣 Megumin WaBot</p>
 <p>
-        <img src= "https://qu.ax/dpnqY.jpg">
+        <img src= "https://qu.ax/CbzQU.jpg">
     </p>
 
 ---
