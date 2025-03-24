@@ -2,7 +2,7 @@
 "name": "Megumin-Bot-MD",
 "version": "2.0.5",
 "description": "El Bot Más Explosivo De WhatsApp",
-"main": "megumin/start.js",
+"main": "index.js",
 "type": "module",
 "directories": {
 "lib": "lib",
@@ -10,11 +10,9 @@
 "plugins": "plugins"
 },
 "scripts": {
-"start": "node megumin/start.js",
-"qr": "node megumin/start.js qr",
-"code": "node megumin/start.js code",
-"test": "node test.js",
-"test2": "nodemon megumin/start.js",
+"start": "node index.js",
+"qr": "node index.js qr",
+"code": "node index.js code",
 "eslint": "eslint .",
 "eslintfix": "eslint --fix ."
 },
