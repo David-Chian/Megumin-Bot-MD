@@ -39,7 +39,7 @@ let pushname = m.pushName || 'Sin nombre'
 global.opts['gconly'] = true
 
 //creador y otros
-global.botcommandcount = bot.botcommandCount //Ver cuantos comandos fueron ejecutados.
+global.botcommandcount = bot.botcommandCount
 global.creador = 'Wa.me/5351524614'
 global.ofcbot = `${conn.user.jid.split('@')[0]}`
 global.asistencia = 'Wa.me/5351524614'
