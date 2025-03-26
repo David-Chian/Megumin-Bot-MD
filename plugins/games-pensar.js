@@ -1,3 +1,5 @@
+// Porque cojones perdí tiempo yo haciendo esta mierda en serio no tenía nada mejor que hacer.... Nesesito una novia enseguida....
+
 import { delay } from '@whiskeysockets/baileys';
 
 const pensandoUsuarios = {};
