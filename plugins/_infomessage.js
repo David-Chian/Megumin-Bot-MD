@@ -6,7 +6,7 @@ import path from 'path'
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 let handler = m => m
-handler.before = async function (m, { conn, isAdmin, isBotAdmin participants, groupMetadata }) {
+handler.before = async function (m, { conn, isAdmin, isBotAdmin, groupMetadata }) {
 if (!m.messageStubType || !m.isGroup) return
 
 let usuario = `@${m.sender.split`@`[0]}`
