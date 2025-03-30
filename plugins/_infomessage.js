@@ -31,7 +31,6 @@ return m.messageStubParameters.map(param => `${param}@s.whatsapp.net`)
 let who = m.messageStubParameters[0] + '@s.whatsapp.net'
 let user = global.db.data.users[who]
 let userName = user ? user.name : await conn.getName(who)
-
 const users = [...new Set([...global.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED).map((conn) => conn)])]
 const participants = m.isGroup ? (await conn.groupMetadata(m.chat).catch(() => ({ participants: [] }))).participants : []
 const mainBotInGroup = participants.some(p => p.id === global.conn.user.jid)
@@ -39,16 +38,7 @@ const primaryBot = chat.primaryBot
 const primaryBotConnected = users.some(conn => conn.user.jid === primaryBot)
 const primaryBotInGroup = participants.some(p => p.id === primaryBot)
 
-if (primaryBot) {
-
-if (primaryBotConnected && primaryBotInGroup) {
-if (conn.user.jid !== primaryBot) throw !1
-
-} if (mainBotInGroup) {
-if (conn.user.jid !== global.conn.user.jid) throw !1
-}}
-
-} if (chat.detect && m.messageStubType == 2) {
+if (chat.detect && m.messageStubType == 2) {
 const uniqid = (m.isGroup ? m.chat : m.sender).split('@')[0]
 const sessionPath = './MeguminSession/'
 for (const file of await fs.readdir(sessionPath)) {
@@ -57,6 +47,13 @@ await fs.unlink(path.join(sessionPath, file))
 console.log(`${chalk.yellow.bold('[ ⚠️ Archivo Eliminado ]')} ${chalk.greenBright(`'${file}'`)}\n` +
 `${chalk.blue('(Session PreKey)')} ${chalk.redBright('que provoca el "undefined" en el chat')}`
 )}}
+
+} if (primaryBot) {
+if (primaryBotConnected && primaryBotInGroup) {
+if (conn.user.jid !== primaryBot) return
+} if (mainBotInGroup) {
+if (conn.user.jid !== global.conn.user.jid) return
+}}
 
 } for (const user of Object.values(global.db.data.users)) {
 if (user.premiumTime != 0 && user.premium) {
