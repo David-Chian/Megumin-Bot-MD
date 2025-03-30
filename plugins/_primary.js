@@ -1,6 +1,6 @@
 import ws from 'ws'
 
-export async function before(m, { conn }) {
+export async function before(m, { conn, groupMedata }) {
 
 let chat = global.db.data.chats[m.chat]
 const users = [...new Set([...global.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED).map((conn) => conn)])]
