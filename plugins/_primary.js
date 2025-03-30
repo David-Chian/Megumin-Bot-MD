@@ -1,4 +1,4 @@
-/*import ws from 'ws'
+import ws from 'ws'
 
 export async function before(m, { conn, groupMedata }) {
 
@@ -17,4 +17,4 @@ if (this.user.jid !== primaryBot) throw !1
 } else if (mainBotInGroup) {
 if (this.user.jid !== global.conn.user.jid) throw !1
 }}
-}*/
+}
