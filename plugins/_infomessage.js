@@ -49,7 +49,8 @@ await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}}
 const prefixes = ['6', '90', '963', '966', '967', '249', '212', '92', '93', '94', '7', '49', '2', '91', '48']
 if (prefixes.some(prefix => m.sender.startsWith(prefix))) {
 await conn.groupRequestParticipantsUpdate(m.chat, [m.sender], 'reject')}
-}if (!chat.antiBot2) {
+
+} if (!chat.antiBot2) {
 return
 }
 let botJid = global.conn.user.jid
@@ -59,6 +60,7 @@ return
 let isBotPresent = participants.some(p => areJidsSameUser(botJid, p.id))
 if (isBotPresent) {
 await conn.groupLeave(m.chat)}
+
 } if (chat.autoAceptar && !isAdmin) {
 if (!isBotAdmin) return !0
 const participants = await conn.groupRequestParticipantsList(m.chat)
@@ -70,14 +72,18 @@ if (m.messageStubType === 172 && m.messageStubParameters) {
 const [jid] = m.messageStubParameters
 if (jid.includes('@s.whatsapp.net') && jid.split('@')[0].startsWith(latinPrefix)) {
 await conn.groupRequestParticipantsUpdate(m.chat, [jid], "approve")}}
+
 } if (chat.detect && m.messageStubType == 29) {
 let txt1 = `🚩 @${m.messageStubParameters[0].split`@`[0]} ha sido promovido a Administrador por @${m.sender.split`@`[0]}`
 await conn.sendMessage(m.chat, { text: txt1, mentions: [...txt1.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net') })
+
 } if (chat.detect && m.messageStubType == 30) {
 let txt2 = `🚩 @${m.messageStubParameters[0].split`@`[0]} ha sido degradado de Administrador por @${m.sender.split`@`[0]}`
 await conn.sendMessage(m.chat, { text: txt2, mentions: [...txt2.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net') })
+
 } if (chat.welcome && m.messageStubType === 27) { 
 this.sendMessage(m.chat, { audio: { url: vn }, contextInfo: { forwardedNewsletterMessageInfo: { newsletterJid: "120363358338732714@newsletter", newsletterName: '─͟͞̟𝑴𝒆𝒈𝒖͜𝒎͜𝒊𝒏-𝑩͜𝒐𝒕-𝑴𝑫͟͞─' }, mentionedJid: getMentionedJid() }, ptt: true, fileName: `welcome.mp3`}, { quoted: fkontak })
+
 } if (chat.welcome && (m.messageStubType === 28 || m.messageStubType === 32)) { 
 this.sendMessage(m.chat, { audio: { url: vn2 }, contextInfo: { forwardedNewsletterMessageInfo: { newsletterJid: "120363358338732714@newsletter", newsletterName: '─͟͞̟𝑴𝒆𝒈𝒖͜𝒎͜𝒊𝒏-𝑩͜𝒐𝒕-𝑴𝑫͟͞─' }, mentionedJid: getMentionedJid() }, ptt: true, fileName: `goodbye.mp3` }, { quoted: fkontak })
 
