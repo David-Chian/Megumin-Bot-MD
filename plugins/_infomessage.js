@@ -56,7 +56,7 @@ this.sendMessage(m.chat, { audio: { url: vn }, contextInfo: { forwardedNewslette
 } if (chat.welcome && (m.messageStubType === 28 || m.messageStubType === 32)) { 
 this.sendMessage(m.chat, { audio: { url: vn2 }, contextInfo: { forwardedNewsletterMessageInfo: { newsletterJid: "120363358338732714@newsletter", newsletterName: '─͟͞̟𝑴𝒆𝒈𝒖͜𝒎͜𝒊𝒏-𝑩͜𝒐𝒕-𝑴𝑫͟͞─' }, mentionedJid: getMentionedJid() }, ptt: true, fileName: `goodbye.mp3` }, { quoted: fkontak })
 
-}} else {
+} else {
 if (m.messageStubType == 2) return
 console.log({messageStubType: m.messageStubType,
 messageStubParameters: m.messageStubParameters,
