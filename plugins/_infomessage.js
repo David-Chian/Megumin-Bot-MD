@@ -1,4 +1,5 @@
-let WAMessageStubType = (await import('@whiskeysockets/baileys')).default
+let WAMessageStubType = (await import('@whiskeysockets/baileys')).defaul
+import { areJidsSameUser } from '@whiskeysockets/baileys'
 import fetch from 'node-fetch'
 import { readdirSync, unlinkSync, existsSync, promises as fs, rmSync } from 'fs'
 import path from 'path'
@@ -45,6 +46,7 @@ if (chat.antiBot) {
 if (isBotAdmin) {
 await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: bang, participant: delet }})
 await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}}
+
 } if (isBotAdmin && chat.autoRechazar) {
 const prefixes = ['6', '90', '963', '966', '967', '249', '212', '92', '93', '94', '7', '49', '2', '91', '48']
 if (prefixes.some(prefix => m.sender.startsWith(prefix))) {
