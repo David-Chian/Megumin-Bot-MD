@@ -11,7 +11,7 @@ let handler = m => m
 handler.before = async function (m, { conn, isAdmin, isBotAdmin, groupMetadata }) {
 if (!m.messageStubType || !m.isGroup) return
 
-let usuario = `@${m.sender.split`@`[0]}`
+const usuario = `@${m.sender.split`@`[0]}`
 const groupName = (await conn.groupMetadata(m.chat)).subject
 const groupAdmins = participants.filter((p) => p.admin)
 const img = imagen1
@@ -23,6 +23,13 @@ const vn2 = 'https://qu.ax/OzTbp.mp3'
 const delet = m.key.participant
 const bang = m.key.id
 const bot = global.db.data.settings[conn.user.jid] || {}
+const users = [...new Set([...global.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED).map((conn) => conn)])]
+const participants = m.isGroup ? (await conn.groupMetadata(m.chat).catch(() => ({ participants: [] }))).participants : []
+const mainBotInGroup = participants.some(p => p.id === global.conn.user.jid)
+const primaryBot = chat.primaryBot
+const primaryBotConnected = users.some(conn => conn.user.jid === primaryBot)
+const primaryBotInGroup = participants.some(p => p.id === primaryBot)
+
 
 const getMentionedJid = () => {
 return m.messageStubParameters.map(param => `${param}@s.whatsapp.net`)
@@ -31,12 +38,6 @@ return m.messageStubParameters.map(param => `${param}@s.whatsapp.net`)
 let who = m.messageStubParameters[0] + '@s.whatsapp.net'
 let user = global.db.data.users[who]
 let userName = user ? user.name : await conn.getName(who)
-const users = [...new Set([...global.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED).map((conn) => conn)])]
-const participants = m.isGroup ? (await conn.groupMetadata(m.chat).catch(() => ({ participants: [] }))).participants : []
-const mainBotInGroup = participants.some(p => p.id === global.conn.user.jid)
-const primaryBot = chat.primaryBot
-const primaryBotConnected = users.some(conn => conn.user.jid === primaryBot)
-const primaryBotInGroup = participants.some(p => p.id === primaryBot)
 
 if (chat.detect && m.messageStubType == 2) {
 const uniqid = (m.isGroup ? m.chat : m.sender).split('@')[0]
