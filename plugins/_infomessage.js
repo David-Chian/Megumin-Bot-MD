@@ -41,6 +41,17 @@ console.log(`${chalk.yellow.bold('[ ⚠️ Archivo Eliminado ]')} ${chalk.greenB
 const prefixes = ['6', '90', '963', '966', '967', '249', '212', '92', '93', '94', '7', '49', '2', '91', '48']
 if (prefixes.some(prefix => m.sender.startsWith(prefix))) {
 await conn.groupRequestParticipantsUpdate(m.chat, [m.sender], 'reject')}
+} if (chat.autoAceptar && !isAdmin) {
+if (!isBotAdmin) return !0
+const participants = await conn.groupRequestParticipantsList(m.chat)
+const latinPrefix = '5'
+const filteredParticipants = participants.filter(p => p.jid.includes('@s.whatsapp.net') && p.jid.split('@')[0].startsWith(latinPrefix))
+for (const participant of filteredParticipants) {
+await conn.groupRequestParticipantsUpdate(m.chat, [participant.jid], "approve")}
+if (m.messageStubType === 172 && m.messageStubParameters) {
+const [jid] = m.messageStubParameters
+if (jid.includes('@s.whatsapp.net') && jid.split('@')[0].startsWith(latinPrefix)) {
+await conn.groupRequestParticipantsUpdate(m.chat, [jid], "approve")}}
 } if (chat.detect && m.messageStubType == 29) {
 let txt1 = `🚩 @${m.messageStubParameters[0].split`@`[0]} ha sido promovido a Administrador por @${m.sender.split`@`[0]}`
 await conn.sendMessage(m.chat, { text: txt1, mentions: [...txt1.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net') })
