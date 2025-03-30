@@ -1,4 +1,4 @@
-let WAMessageStubType = (await import('@whiskeysockets/baileys')).default
+/*let WAMessageStubType = (await import('@whiskeysockets/baileys')).default
 import fetch from 'node-fetch'
 import { readdirSync, unlinkSync, existsSync, promises as fs, rmSync } from 'fs'
 import path from 'path'
@@ -64,4 +64,4 @@ type: WAMessageStubType[m.messageStubType],
 })
 }}
 
-export default handler
+export default handler*/
