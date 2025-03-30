@@ -56,7 +56,7 @@ if (conn.user.jid !== primaryBot) return
 if (conn.user.jid !== global.conn.user.jid) return
 }
 
-} fou (const user of Object.values(global.db.data.users)) {
+} if (Object.values(global.db.data.users)) {
 if (user.premiumTime != 0 && user.premium) {
 if (new Date() * 1 >= user.premiumTime) {
 user.premiumTime = 0;
