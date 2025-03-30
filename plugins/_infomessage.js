@@ -1,4 +1,4 @@
-let WAMessageStubType = (await import('@whiskeysockets/baileys')).defaul
+let WAMessageStubType = (await import('@whiskeysockets/baileys')).default
 import { areJidsSameUser } from '@whiskeysockets/baileys'
 import fetch from 'node-fetch'
 import { readdirSync, unlinkSync, existsSync, promises as fs, rmSync } from 'fs'
