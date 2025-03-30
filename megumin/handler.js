@@ -529,10 +529,9 @@ unreg: '「🍟」 *¡Hey! no estas registrado, registrese para usar esta funci�
 restrict: '「💫」 *Esta característica esta desactivada.*'
 }[type];
 if (msg) return conn.reply(m.chat, msg, m, rcanal).then(_ => m.react('✖️'))}
-const file = global.__filename(import.meta.url, true);
 
 if (global.conns && global.conns.length > 0 ) {
 const users = [...new Set([...global.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED).map((conn) => conn)])];
 for (const userr of users) {
 userr.subreloadHandler(false)
-}}});
+}});
