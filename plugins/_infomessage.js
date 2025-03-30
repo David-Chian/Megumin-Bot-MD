@@ -32,7 +32,7 @@ let who = m.messageStubParameters[0] + '@s.whatsapp.net'
 let user = global.db.data.users[who]
 let userName = user ? user.name : await conn.getName(who)
 
-const users = [...new Set([...global.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED).map((conn) => conn)])]
+/*const users = [...new Set([...global.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED).map((conn) => conn)])]
 const participants = m.isGroup ? (await conn.groupMetadata(m.chat).catch(() => ({ participants: [] }))).participants : []
 const mainBotInGroup = participants.some(p => p.id === global.conn.user.jid)
 const primaryBot = chat.primaryBot
@@ -45,7 +45,7 @@ if (this.user.jid !== primaryBot) throw !1
 if (this.user.jid !== global.conn.user.jid) throw !1
 }}
 
-} if (chat.detect && m.messageStubType == 2) {
+}*/ if (chat.detect && m.messageStubType == 2) {
 const uniqid = (m.isGroup ? m.chat : m.sender).split('@')[0]
 const sessionPath = './MeguminSession/'
 for (const file of await fs.readdir(sessionPath)) {
@@ -65,7 +65,7 @@ const usuarioJid = JID.split`@`[0];
 const textoo = `🤍 @${usuarioJid} Se agotó tu tiempo como usuario premium`;
 await this.sendMessage(JID, {text: textoo, mentions: [JID]}, {quoted: ''})}}
 
-/*} if (isBotAdmin && chat.antifake) {
+} if (isBotAdmin && chat.antifake) {
 if (m.sender.startsWith('6' || '6')) {
 global.db.data.users[m.sender].block = true
 await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
@@ -98,7 +98,7 @@ global.db.data.users[m.sender].block = true
 await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
 if (m.sender.startsWith('48' || '48')) {
 global.db.data.users[m.sender].block = true
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}*/
+await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
 
 } if (m.id.startsWith('3EB0') && m.id.length === 22) {
 if (chat.antiBot) {
