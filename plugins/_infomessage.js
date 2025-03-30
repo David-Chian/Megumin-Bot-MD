@@ -41,7 +41,7 @@ const primaryBotInGroup = participants.some(p => p.id === primaryBot)
 
 if (primaryBot) {
 
-else if (primaryBotConnected && primaryBotInGroup) {
+if (primaryBotConnected && primaryBotInGroup) {
 if (this.user.jid !== primaryBot) throw !1
 
 } if (mainBotInGroup) {
