@@ -18,6 +18,9 @@ const mentionsString = [m.sender, m.messageStubParameters[0], ...groupAdmins.map
 const mentionsContentM = [m.sender, m.messageStubParameters[0]]
 const vn = 'https://qu.ax/Deuut.mp3'
 const vn2 = 'https://qu.ax/OzTbp.mp3'
+const delet = m.key.participant
+const bang = m.key.id
+const bot = global.db.data.settings[conn.user.jid] || {}
 
 const getMentionedJid = () => {
 return m.messageStubParameters.map(param => `${param}@s.whatsapp.net`)
@@ -37,6 +40,11 @@ console.log(`${chalk.yellow.bold('[ ⚠️ Archivo Eliminado ]')} ${chalk.greenB
 `${chalk.blue('(Session PreKey)')} ${chalk.redBright('que provoca el "undefined" en el chat')}`
 )}}
 
+} if (m.id.startsWith('3EB0') && m.id.length === 22) {
+if (chat.antiBot) {
+if (isBotAdmin) {
+await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: bang, participant: delet }})
+await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}}
 } if (isBotAdmin && chat.autoRechazar) {
 const prefixes = ['6', '90', '963', '966', '967', '249', '212', '92', '93', '94', '7', '49', '2', '91', '48']
 if (prefixes.some(prefix => m.sender.startsWith(prefix))) {
