@@ -53,7 +53,8 @@ let txt2 = `🚩 *Un admin menos*\n\nNombre: @${m.messageStubParameters[0].split
 await conn.sendMessage(m.chat, { text: txt2, mentions: [...txt2.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net') })
 } if (chat.welcome && m.messageStubType === 27) { 
 this.sendMessage(m.chat, { audio: { url: vn }, contextInfo: { forwardedNewsletterMessageInfo: { newsletterJid: "120363358338732714@newsletter", newsletterName: '─͟͞̟𝑴𝒆𝒈𝒖͜𝒎͜𝒊𝒏-𝑩͜𝒐𝒕-𝑴𝑫͟͞─' }, mentionedJid: getMentionedJid() }, ptt: true, fileName: `welcome.mp3`}, { quoted: fkontak })
-} if (chat.welcome && (m.messageStubType === 28 || m.messageStubType === 32)) { this.sendMessage(m.chat, { audio: { url: vn2 }, contextInfo: { forwardedNewsletterMessageInfo: { newsletterJid: "120363358338732714@newsletter", newsletterName: '─͟͞̟𝑴𝒆𝒈𝒖͜𝒎͜𝒊𝒏-𝑩͜𝒐𝒕-𝑴𝑫͟͞─' }, mentionedJid: getMentionedJid() }, ptt: true, fileName: `goodbye.mp3` }, { quoted: fkontak })
+} if (chat.welcome && (m.messageStubType === 28 || m.messageStubType === 32)) { 
+this.sendMessage(m.chat, { audio: { url: vn2 }, contextInfo: { forwardedNewsletterMessageInfo: { newsletterJid: "120363358338732714@newsletter", newsletterName: '─͟͞̟𝑴𝒆𝒈𝒖͜𝒎͜𝒊𝒏-𝑩͜𝒐𝒕-𝑴𝑫͟͞─' }, mentionedJid: getMentionedJid() }, ptt: true, fileName: `goodbye.mp3` }, { quoted: fkontak })
 
 } else {
 if (m.messageStubType == 2) return
