@@ -21,8 +21,11 @@ var handler = async (m, { usedPrefix, command }) => {
             } catch (error) {
                 hasErrors = true
                 const stackLines = error.stack.split('\n')
-                const errorLine = stackLines.find(line => line.includes(pluginsDir))
-                response += `🚩 *Error en:* ${file}\n${error.message}\n${errorLine || 'No se pudo encontrar el número de la linea'}\n\n`
+
+                const errorLineMatch = stackLines[0].match(/:(\d+):\d+/) 
+                const errorLine = errorLineMatch ? errorLineMatch[1] : 'Desconocido'
+
+                response += `🚩 *Error en:* ${file}\n\n> ● Mensaje: ${error.message}\n> ● Número de línea: ${errorLine}\n\n${dev}`
             }
         }
 
