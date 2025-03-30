@@ -55,7 +55,7 @@ console.log(`${chalk.yellow.bold('[ ⚠️ Archivo Eliminado ]')} ${chalk.greenB
 `${chalk.blue('(Session PreKey)')} ${chalk.redBright('que provoca el "undefined" en el chat')}`
 )}}
 
-} for (const user of Object.values(global.db.data.users)) {
+} if for (const user of Object.values(global.db.data.users)) {
 if (user.premiumTime != 0 && user.premium) {
 if (new Date() * 1 >= user.premiumTime) {
 user.premiumTime = 0;
