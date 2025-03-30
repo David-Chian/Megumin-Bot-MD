@@ -389,8 +389,7 @@ continue
 
 m.isCommand = true
 let xp = 'exp' in plugin ? parseInt(plugin.exp) : 10
-if (xp > 2000)
-m.reply('Chirrido -_-') 
+if (xp > 2000) 
 else               
 if (plugin.money && global.db.data.users[m.sender].money < plugin.money * 1) {
 m.reply(`No tienes suficiente Money para usar este comando. 🚩`)       
@@ -529,12 +528,6 @@ restrict: '「💫」 *Esta característica esta desactivada.*'
 }[type];
 if (msg) return conn.reply(m.chat, msg, m, rcanal).then(_ => m.react('✖️'))}
 const file = global.__filename(import.meta.url, true);
-
-// NO TOCAR
-watchFile(file, async () => {
-unwatchFile(file);
-console.log(chalk.green('Actualizando "megumin/handler.js"'));
-// if (global.reloadHandler) console.log(await global.reloadHandler());
 
 if (global.conns && global.conns.length > 0 ) {
 const users = [...new Set([...global.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED).map((conn) => conn)])];
