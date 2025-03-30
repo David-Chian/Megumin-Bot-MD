@@ -48,7 +48,7 @@ console.log(`${chalk.yellow.bold('[ ⚠️ Archivo Eliminado ]')} ${chalk.greenB
 `${chalk.blue('(Session PreKey)')} ${chalk.redBright('que provoca el "undefined" en el chat')}`
 )}}
 
-} if (!primaryBot) {
+} if (primaryBot) {
 if (primaryBotConnected && primaryBotInGroup) {
 if (conn.user.jid !== primaryBot) return 
 } if (mainBotInGroup) {
