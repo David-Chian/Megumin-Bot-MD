@@ -41,6 +41,16 @@ console.log(`${chalk.yellow.bold('[ ⚠️ Archivo Eliminado ]')} ${chalk.greenB
 `${chalk.blue('(Session PreKey)')} ${chalk.redBright('que provoca el "undefined" en el chat')}`
 )}}
 
+} for (const user of Object.values(global.db.data.users)) {
+if (user.premiumTime != 0 && user.premium) {
+if (new Date() * 1 >= user.premiumTime) {
+user.premiumTime = 0;
+user.premium = false;
+const JID = Object.keys(global.db.data.users).find((key) => global.db.data.users[key] === user);
+const usuarioJid = JID.split`@`[0];
+const textoo = `🤍 @${usuarioJid} Se agotó tu tiempo como usuario premium`;
+await this.sendMessage(JID, {text: textoo, mentions: [JID]}, {quoted: ''})}}
+
 } if (isBotAdmin && chat.antifake) {
 if (m.sender.startsWith('6' || '6')) {
 global.db.data.users[m.sender].block = true
