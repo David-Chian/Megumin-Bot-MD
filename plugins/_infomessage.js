@@ -6,7 +6,7 @@ import path from 'path'
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 let handler = m => m
-handler.before = async function (m, { conn, participants, groupMetadata }) {
+handler.before = async function (m, { conn, isGroup, isBotAdmin participants, groupMetadata }) {
 if (!m.messageStubType || !m.isGroup) return
 
 let usuario = `@${m.sender.split`@`[0]}`
@@ -37,7 +37,13 @@ console.log(`${chalk.yellow.bold('[ ⚠️ Archivo Eliminado ]')} ${chalk.greenB
 `${chalk.blue('(Session PreKey)')} ${chalk.redBright('que provoca el "undefined" en el chat')}`
 )}} 
 
-} else if (chat.detect && m.messageStubType == 25) {
+if (!m.isGroup) return !1
+let chat = global.db.data.chats[m.chat]
+if (isBotAdmin && chat.autoRechazar) {
+const prefixes = ['6', '90', '963', '966', '967', '249', '212', '92', '93', '94', '7', '49', '2', '91', '48']
+if (prefixes.some(prefix => m.sender.startsWith(prefix))) {
+await conn.groupRequestParticipantsUpdate(m.chat, [m.sender], 'reject')
+}} else if (chat.detect && m.messageStubType == 25) {
 await this.sendMessage(m.chat, { text: `💫 *Ahora ${m.messageStubParameters[0] == 'on' ? 'solo admins' : 'todos'} pueden editar la información del grupo*`, mentions: [m.sender] }, { quoted: fkontak, ephemeralExpiration: 24 * 60 * 100, disappearingMessagesInChat: 24 * 60 * 100 })
 } else if (chat.detect && m.messageStubType == 26) {
 await this.sendMessage(m.chat, { text: `💫 *El grupo ha sido ${m.messageStubParameters[0] == 'on' ? 'cerrado' : 'abierto'}*\n\n${m.messageStubParameters[0] == 'on' ? 'solo admins' : 'todos'} pueden enviar mensajes`, mentions: [m.sender] }, { quoted: fkontak, ephemeralExpiration: 24 * 60 * 100, disappearingMessagesInChat: 24 * 60 * 100 })
