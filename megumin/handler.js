@@ -391,8 +391,7 @@ continue
 
 m.isCommand = true
 let xp = 'exp' in plugin ? parseInt(plugin.exp) : 10
-if (xp > 2000) {     
-} else if (plugin.money && global.db.data.users[m.sender].money < plugin.money * 1) {
+if (plugin.money && global.db.data.users[m.sender].money < plugin.money * 1) {
 m.reply(`No tienes suficiente Money para usar este comando. 🚩`)       
 continue     
 }
