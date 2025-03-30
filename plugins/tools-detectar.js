@@ -21,18 +21,8 @@ var handler = async (m, { usedPrefix, command }) => {
             } catch (error) {
                 hasErrors = true
                 const stackLines = error.stack.split('\n')
-                const errorLine = stackLines.find(line => line.includes(pluginsDir)) || 'No se pudo determinar la línea del error'
-
-                let suggestion = '❌ Error desconocido. Verifique el archivo manualmente.'
-                if (error.message.includes('SyntaxError')) {
-                    suggestion = '💡 Revisa la sintaxis: puede faltar un paréntesis, corchete o comilla.'
-                } else if (error.message.includes('Cannot find module')) {
-                    suggestion = '💡 Verifica que todos los módulos requeridos estén instalados y disponibles.'
-                } else if (error.message.includes('Unexpected token')) {
-                    suggestion = '💡 Puede ser un error en la estructura del código, como un símbolo mal colocado.'
-                }
-
-                response += `🚩 *Error en:* ${file}\n📍 *Línea sospechosa:* ${errorLine}\n🔎 *Mensaje del error:* ${error.message}\n💡 *Sugerencia:* ${suggestion}\n\n`
+                const errorLine = stackLines.find(line => line.includes(pluginsDir))
+                response += `🚩 *Error en:* ${file}\n${error.message}\n${errorLine || 'No se pudo encontrar el número de la linea'}\n\n`
             }
         }
 
@@ -52,6 +42,7 @@ var handler = async (m, { usedPrefix, command }) => {
 handler.command = ['detectarsyntax']
 handler.help = ['detectarsyntax']
 handler.tags = ['tools']
+handler.rowner = true
 handler.register = true
 
 export default handler
