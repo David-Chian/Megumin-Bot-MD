@@ -148,8 +148,7 @@ if (!('sCondition' in chat)) chat.sCondition = JSON.stringify([{ grupo: { usuari
 if (!('primaryBot' in chat)) chat.primaryBot = null                  
 if (!('nsfw' in chat)) chat.nsfw = false
 if (!('autoAceptar' in chat)) chat.autoAceptar = false                     
-if (!('antiLink' in chat)) chat.antiLink = false     
-if (!('antifake' in chat)) chat.antifake = false         
+if (!('antiLink' in chat)) chat.antiLink = false              
 if (!('modoadmin' in chat)) chat.modoadmin = false    
 if (!isNumber(chat.expired)) chat.expired = 0
 } else
@@ -168,7 +167,6 @@ autoresponder: false,
 autoAceptar: false,
 nsfw: false,
 antiLink: false,
-antifake: false,
 modoadmin: false,
 expired: 0,
 }
