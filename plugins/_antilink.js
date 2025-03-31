@@ -6,13 +6,13 @@ export async function before(m, { conn, isAdmin, isBotAdmin, isOwner, isROwner, 
 if (!m.isGroup) return;
 if (isAdmin || isOwner || m.fromMe || isROwner) return;
 
-let chat = globalThis.db.data.chats[m.chat];
+let chat = global.db.data.chats[m.chat];
 let delet = m.key.participant;
 let bang = m.key.id;
 const user = `@${m.sender.split`@`[0]}`;
 const groupAdmins = participants.filter(p => p.admin);
 const listAdmin = groupAdmins.map((v, i) => `*» ${i + 1}. @${v.id.split('@')[0]}*`).join('\n');
-let bot = globalThis.db.data.settings[this.user.jid] || {};
+let bot = global.db.data.settings[conn.user.jid] || {};
 const isGroupLink = linkRegex.exec(m.text) || linkRegex1.exec(m.text);
 const grupo = `https://chat.whatsapp.com`;
 if (chat.antilink && isGroupLink && !isAdmin) {
