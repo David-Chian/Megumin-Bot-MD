@@ -34,6 +34,13 @@ const listAdmin = groupAdmins.map((v, i) => `*» ${i + 1}. @${v.id.split('@')[0]
 const isGroupLink = linkRegex.exec(m.text) || linkRegex1.exec(m.text)
 const grupo = `https://chat.whatsapp.com`
 
+if (primaryBot) {
+if (primaryBotConnected && primaryBotInGroup) {
+if (conn.user.jid !== primaryBot) return 
+} if (mainBotInGroup) {
+if (conn.user.jid !== global.conn.user.jid) return
+}}
+
 const getMentionedJid = () => {
 return m.messageStubParameters.map(param => `${param}@s.whatsapp.net`)
 }
@@ -68,13 +75,6 @@ this.sendMessage(m.chat, { audio: { url: vn }, contextInfo: { forwardedNewslette
 } if (chat.welcome && (m.messageStubType === 28 || m.messageStubType === 32)) { 
 this.sendMessage(m.chat, { audio: { url: vn2 }, contextInfo: { forwardedNewsletterMessageInfo: { newsletterJid: "120363358338732714@newsletter", newsletterName: '─͟͞̟𝑴𝒆𝒈𝒖͜𝒎͜𝒊𝒏-𝑩͜𝒐𝒕-𝑴𝑫͟͞─' }, mentionedJid: getMentionedJid() }, ptt: true, fileName: `goodbye.mp3` }, { quoted: fkontak })
 
-} if (primaryBot) {
-if (primaryBotConnected && primaryBotInGroup) {
-if (conn.user.jid !== primaryBot) return 
-} if (mainBotInGroup) {
-if (conn.user.jid !== global.conn.user.jid) return
-}
-
 } if (!m.isGroup) return 
 if (isAdmin || isOwner || m.fromMe || isROwner) return
 if (isAdmin && chat.antiLink && m.text.includes(grupo)) return
@@ -100,37 +100,8 @@ const textoo = `🤍 @${usuarioJid} Se agotó tu tiempo como usuario premium`;
 await conn.sendMessage(JID, {text: textoo, mentions: [JID]}, {quoted: ''})}}
 
 } if (isBotAdmin && chat.antifake) {
-if (m.sender.startsWith('6' || '6')) {
-global.db.data.users[m.sender].block = true
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
-if (m.sender.startsWith('90' || '90')) {
-global.db.data.users[m.sender].block = true
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
-if (m.sender.startsWith('212' || '212')) {
-global.db.data.users[m.sender].block = true
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
-if (m.sender.startsWith('92' || '92')) {
-global.db.data.users[m.sender].block = true
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
-if (m.sender.startsWith('93' || '93')) {
-global.db.data.users[m.sender].block = true
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
-if (m.sender.startsWith('94' || '94')) {
-global.db.data.users[m.sender].block = true
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
-if (m.sender.startsWith('7' || '7')) {
-global.db.data.users[m.sender].block = true
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
-if (m.sender.startsWith('49' || '49')) {
-global.db.data.users[m.sender].block = true
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
-if (m.sender.startsWith('2' || '2')) {
-global.db.data.users[m.sender].block = true
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
-if (m.sender.startsWith('91' || '91')) {
-global.db.data.users[m.sender].block = true
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
-if (m.sender.startsWith('48' || '48')) {
+const antiFakePrefixes = ['6', '90', '212', '92', '93', '94', '7', '49', '2', '91', '48']
+if (antiFakePrefixes.some(prefix => m.sender.startsWith(prefix))) {
 global.db.data.users[m.sender].block = true
 await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
 
@@ -140,12 +111,6 @@ if (bot.antiPrivate && !isROwner) {
 await conn.reply(m.chat, `💣 Hola, adiós tengo que bloquearte por orden de mi propietario.\n\n*Channel:*\n> https://whatsapp.com/channel/0029Vb7Ji66KbYMTYLU9km3p`, m)
 await conn.updateBlockStatus(m.chat, 'block')
 return
-
-} if (m.id.startsWith('3EB0') && m.id.length === 22) {
-if (chat.antiBot) {
-if (isBotAdmin) {
-await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: bang, participant: delet }})
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}}
 
 } if (isBotAdmin && chat.autoRechazar) {
 const prefixes = ['6', '90', '963', '966', '967', '249', '212', '92', '93', '94', '7', '49', '2', '91', '48']
