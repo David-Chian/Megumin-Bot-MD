@@ -56,11 +56,6 @@ return
 await conn.sendMessage(m.chat, { text: noadmingp, mentions: [`${m.sender}`,`${m.messageStubParameters[0]}`] }, { quoted: null })
 return
 
-} if (isBotAdmin && chat.autoRechazar) {
-const prefixes = ['595', '90', '963', '966', '967', '249', '212', '92', '93', '94', '7', '49', '2', '91', '48']
-if (prefixes.some(prefix => m.sender.startsWith(prefix))) {
-await conn.groupRequestParticipantsUpdate(m.chat, [m.sender], 'reject')}
-
 } if (chat.autoAceptar && isBotAdmin) {
 const participants2 = await conn.groupRequestParticipantsList(m.chat)
 const filteredParticipants = participants2.filter(p => p.jid.includes('@s.whatsapp.net') && p.jid.split('@')[0].startsWith('5'))
