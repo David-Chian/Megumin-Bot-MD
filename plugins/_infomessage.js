@@ -98,12 +98,6 @@ let buttonMessage = { document: { url: vn2 }, mimetype: 'audio/mpeg', fileName: 
 
 await conn.sendMessage(m.chat, buttonMessage, { mentions: await conn.parseMention(byeMessage) })
 
-} if (isBotAdmin && chat.antifake) {
-const antiFakePrefixes = ['6', '90', '212', '92', '93', '94', '7', '49', '2', '91', '48']
-if (antiFakePrefixes.some(prefix => m.sender.startsWith(prefix))) {
-global.db.data.users[m.sender].block = true
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
-
 } else {
 if (m.messageStubType == 2) return
 console.log({messageStubType: m.messageStubType,
