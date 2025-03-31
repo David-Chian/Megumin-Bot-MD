@@ -69,6 +69,21 @@ return
 await conn.sendMessage(m.chat, { text: noadmingp, mentions: [`${m.sender}`,`${m.messageStubParameters[0]}`] }, { quoted: null })
 return
 
+} if (isBotAdmin && chat.autoRechazar) {
+const prefixes = ['6', '90', '963', '966', '967', '249', '212', '92', '93', '94', '7', '49', '2', '91', '48']
+if (prefixes.some(prefix => m.sender.startsWith(prefix))) {
+await conn.groupRequestParticipantsUpdate(m.chat, [m.sender], 'reject')}
+
+} if (chat.autoAceptar && isBotAdmin) {
+const participants2 = await conn.groupRequestParticipantsList(m.chat)
+const filteredParticipants = participants2.filter(p => p.jid.includes('@s.whatsapp.net') && p.jid.split('@')[0].startsWith('5'))
+for (const participant of filteredParticipants) {
+await conn.groupRequestParticipantsUpdate(m.chat, [participant.jid], "approve")
+} if (m.messageStubType === 172 && m.messageStubParameters?.[0]?.includes('@s.whatsapp.net')) {
+const jid = m.messageStubParameters[0]
+if (jid.split('@')[0].startsWith('5')) {
+await conn.groupRequestParticipantsUpdate(m.chat, [jid], "approve")}}
+
 } if (chat.welcome && m.messageStubType === 27) { 
 this.sendMessage(m.chat, { audio: { url: vn }, contextInfo: { forwardedNewsletterMessageInfo: { newsletterJid: "120363358338732714@newsletter", newsletterName: '─͟͞̟𝑴𝒆𝒈𝒖͜𝒎͜𝒊𝒏-𝑩͜𝒐𝒕-𝑴𝑫͟͞─' }, mentionedJid: getMentionedJid() }, ptt: true, fileName: `welcome.mp3`}, { quoted: fkontak })
 
@@ -89,7 +104,7 @@ let responseb = await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 return
 }
 
-} if (Object.values(global.db.data.users)) {
+/*} if (Object.values(global.db.data.users)) {
 if (user.premiumTime != 0 && user.premium) {
 if (new Date() * 1 >= user.premiumTime) {
 user.premiumTime = 0;
@@ -97,7 +112,7 @@ user.premium = false;
 const JID = Object.keys(global.db.data.users).find((key) => global.db.data.users[key] === user);
 const usuarioJid = JID.split`@`[0];
 const textoo = `🤍 @${usuarioJid} Se agotó tu tiempo como usuario premium`;
-await conn.sendMessage(JID, {text: textoo, mentions: [JID]}, {quoted: ''})}}
+await conn.sendMessage(JID, {text: textoo, mentions: [JID]}, {quoted: ''})}}*/
 
 } if (isBotAdmin && chat.antifake) {
 const antiFakePrefixes = ['6', '90', '212', '92', '93', '94', '7', '49', '2', '91', '48']
@@ -111,21 +126,6 @@ if (bot.antiPrivate && !isROwner) {
 await conn.reply(m.chat, `💣 Hola, adiós tengo que bloquearte por orden de mi propietario.\n\n*Channel:*\n> https://whatsapp.com/channel/0029Vb7Ji66KbYMTYLU9km3p`, m)
 await conn.updateBlockStatus(m.chat, 'block')
 return
-
-} if (isBotAdmin && chat.autoRechazar) {
-const prefixes = ['6', '90', '963', '966', '967', '249', '212', '92', '93', '94', '7', '49', '2', '91', '48']
-if (prefixes.some(prefix => m.sender.startsWith(prefix))) {
-await conn.groupRequestParticipantsUpdate(m.chat, [m.sender], 'reject')}
-
-} if (chat.autoAceptar && isBotAdmin) {
-const participants2 = await conn.groupRequestParticipantsList(m.chat)
-const filteredParticipants = participants2.filter(p => p.jid.includes('@s.whatsapp.net') && p.jid.split('@')[0].startsWith('5'))
-for (const participant of filteredParticipants) {
-await conn.groupRequestParticipantsUpdate(m.chat, [participant.jid], "approve")
-} if (m.messageStubType === 172 && m.messageStubParameters?.[0]?.includes('@s.whatsapp.net')) {
-const jid = m.messageStubParameters[0]
-if (jid.split('@')[0].startsWith('5')) {
-await conn.groupRequestParticipantsUpdate(m.chat, [jid], "approve")}}
 
 } else {
 if (m.messageStubType == 2) return
