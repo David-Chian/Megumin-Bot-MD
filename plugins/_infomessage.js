@@ -117,16 +117,14 @@ const prefixes = ['6', '90', '963', '966', '967', '249', '212', '92', '93', '94'
 if (prefixes.some(prefix => m.sender.startsWith(prefix))) {
 await conn.groupRequestParticipantsUpdate(m.chat, [m.sender], 'reject')}
 
-} if (chat.autoAceptar && !isAdmin) {
-if (!isBotAdmin) return !0
+} if (chat.autoAceptar && !isAdmin && isBotAdmin) {
 const participants2 = await conn.groupRequestParticipantsList(m.chat)
-const latinPrefix = '5'
-const filteredParticipants = participants2.filter(p => p.jid.includes('@s.whatsapp.net') && p.jid.split('@')[0].startsWith(latinPrefix))
+const filteredParticipants = participants2.filter(p => p.jid.includes('@s.whatsapp.net') && p.jid.split('@')[0].startsWith('5'))
 for (const participant of filteredParticipants) {
-await conn.groupRequestParticipantsUpdate(m.chat, [participant.jid], "approve")}
-if (m.messageStubType === 172 && m.messageStubParameters) {
-const [jid] = m.messageStubParameters
-if (jid.includes('@s.whatsapp.net') && jid.split('@')[0].startsWith(latinPrefix)) {
+await conn.groupRequestParticipantsUpdate(m.chat, [participant.jid], "approve")
+} if (m.messageStubType === 172 && m.messageStubParameters?.[0]?.includes('@s.whatsapp.net')) {
+const jid = m.messageStubParameters[0]
+if (jid.split('@')[0].startsWith('5')) {
 await conn.groupRequestParticipantsUpdate(m.chat, [jid], "approve")}}
 
 } else {
