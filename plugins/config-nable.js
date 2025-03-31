@@ -12,7 +12,6 @@ ${usedPrefix + command} detect
 ${usedPrefix + command} antilink
 ${usedPrefix + command} nsfw
 ${usedPrefix + command} modoadmin
-${usedPrefix + command} antifake
 
 🍟 *OPCIONES PARA MI PROPIETARIO*
 
@@ -116,15 +115,6 @@ global.dfail('admin', m, conn)
 throw false
 }}
 chat.nsfw = isEnable          
-break
-
-case 'antiinternacional': case 'antinternacional': case 'antinternational': case 'antifake': case 'antifalsos': case 'antivirtuales': case 'antiextranjeros':                
-if (m.isGroup) {
-if (!(isAdmin || isOwner)) {
-global.dfail('admin', m, conn)
-throw false
-}}
-chat.antifake = isEnable          
 break
 
 case 'jadibot': case 'modojadibot': case 'serbot': case 'modoserbot': 
