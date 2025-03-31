@@ -19,7 +19,7 @@ const img = imagen1
 const chat = global.db.data.chats[m.chat]
 const mentionsString = [m.sender, m.messageStubParameters[0], ...groupAdmins.map((v) => v.id)]
 const mentionsContentM = [m.sender, m.messageStubParameters[0]]
-const vn = 'https://qu.ax/Deuut.mp3'
+const vn = 'https://qu.ax/OzTbp.mp3'
 const vn2 = 'https://qu.ax/OzTbp.mp3'
 const delet = m.key.participant
 const bang = m.key.id
