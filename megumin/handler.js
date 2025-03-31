@@ -178,14 +178,12 @@ if (settings) {
 if (!('self' in settings)) settings.self = false
 if (!('autoread' in settings)) settings.autoread = false
 if (!('restrict' in settings)) settings.restrict = false
-if (!('antiPrivate' in settings)) settings.antiPrivate = false
 if (!('jadibotmd' in settings)) settings.jadibotmd = false  
 if (!('botcommandCount' in settings)) settings.botcommandCount = 0
 } else global.db.data.settings[this.user.jid] = {
 self: false,
 autoread: false,
-restrict: false,
-antiPrivate: false, 
+restrict: false, 
 jadibotmd: true,
 botcommandCount: 0,
 }} catch (e) {
