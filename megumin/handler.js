@@ -147,9 +147,7 @@ if (!('sAutoresponder' in chat)) chat.sAutoresponder = ''
 if (!('sCondition' in chat)) chat.sCondition = JSON.stringify([{ grupo: { usuario: [], condicion: [], admin: '' }, prefijos: []}]) 
 if (!('primaryBot' in chat)) chat.primaryBot = null                  
 if (!('nsfw' in chat)) chat.nsfw = false
-if (!('autoAceptar' in chat)) chat.autoAceptar = false                         
-if (!('antiBot' in chat)) chat.antiBot = false 
-if (!('antiBot2' in chat)) chat.antiBot2 = false                    
+if (!('autoAceptar' in chat)) chat.autoAceptar = false                     
 if (!('antiLink' in chat)) chat.antiLink = false     
 if (!('antifake' in chat)) chat.antifake = false         
 if (!('modoadmin' in chat)) chat.modoadmin = false    
@@ -169,8 +167,6 @@ primaryBot: null,
 autoresponder: false,
 autoAceptar: false,
 nsfw: false,
-antiBot: false,
-antiBot2: false,
 antiLink: false,
 antifake: false,
 modoadmin: false,
