@@ -13,10 +13,6 @@ let handler = m => m
 handler.before = async function (m, { conn, isAdmin, isOwner, isROwner, isBotAdmin, groupMetadata }) {
 if (!m.messageStubType || !m.isGroup) return
 
-const groupAdmins = participants.filter(p => p.admin)
-const listAdmin = groupAdmins.map((v, i) => `*» ${i + 1}. @${v.id.split('@')[0]}*`).join('\n')
-const isGroupLink = linkRegex.exec(m.text) || linkRegex1.exec(m.text)
-const grupo = `https://chat.whatsapp.com`
 const usuario = `@${m.sender.split`@`[0]}`
 const groupName = (await conn.groupMetadata(m.chat)).subject
 const groupAdmins = participants.filter((p) => p.admin)
@@ -35,7 +31,10 @@ const mainBotInGroup = participants.some(p => p.id === global.conn.user.jid)
 const primaryBot = chat.primaryBot
 const primaryBotConnected = users.some(conn => conn.user.jid === primaryBot)
 const primaryBotInGroup = participants.some(p => p.id === primaryBot)
-
+const groupAdmins = participants.filter(p => p.admin)
+const listAdmin = groupAdmins.map((v, i) => `*» ${i + 1}. @${v.id.split('@')[0]}*`).join('\n')
+const isGroupLink = linkRegex.exec(m.text) || linkRegex1.exec(m.text)
+const grupo = `https://chat.whatsapp.com`
 
 const getMentionedJid = () => {
 return m.messageStubParameters.map(param => `${param}@s.whatsapp.net`)
