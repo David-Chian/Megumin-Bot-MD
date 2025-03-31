@@ -48,6 +48,10 @@ return m.messageStubParameters.map(param => `${param}@s.whatsapp.net`)
 let who = m.messageStubParameters[0] + '@s.whatsapp.net'
 let user = global.db.data.users[who]
 let userName = user ? user.name : await conn.getName(who)
+let adiosbye = await conn.profilePictureUrl(m.messageStubParameters[0], 'image').catch(_ => 'https://qu.ax/fBuJM.jpg')
+let adi = await (await fetch(adiosbye)).buffer()
+let ppUrl = await conn.profilePictureUrl(m.messageStubParameters[0], 'image').catch(_ => 'https://qu.ax/zliac.jpg');
+let welc = await (await fetch(ppUrl)).buffer()
 let admingp = `💣 @${m.messageStubParameters[0].split`@`[0]} ha sido promovido a Administrador por ${usuario}`
 let noadmingp = `💣 @${m.messageStubParameters[0].split`@`[0]} ha sido degradado de Administrador por ${usuario}`
 
@@ -125,7 +129,7 @@ let responseb = await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 return
 }
 
-/*} if (Object.values(global.db.data.users)) {
+} if (Object.values(global.db.data.users)) {
 if (user.premiumTime != 0 && user.premium) {
 if (new Date() * 1 >= user.premiumTime) {
 user.premiumTime = 0;
@@ -133,7 +137,7 @@ user.premium = false;
 const JID = Object.keys(global.db.data.users).find((key) => global.db.data.users[key] === user);
 const usuarioJid = JID.split`@`[0];
 const textoo = `🤍 @${usuarioJid} Se agotó tu tiempo como usuario premium`;
-await conn.sendMessage(JID, {text: textoo, mentions: [JID]}, {quoted: ''})}}*/
+await conn.sendMessage(JID, {text: textoo, mentions: [JID]}, {quoted: ''})}}
 
 } if (isBotAdmin && chat.antifake) {
 const antiFakePrefixes = ['6', '90', '212', '92', '93', '94', '7', '49', '2', '91', '48']
