@@ -103,7 +103,7 @@ await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
 
 } if (bot.antiPrivate && !isROwner) {
 await conn.reply(m.chat, `💣 Hola, adiós tengo que bloquearte por orden de mi propietario.\n\n*Channel:*\n> https://whatsapp.com/channel/0029Vb7Ji66KbYMTYLU9km3p`, m)
-await this.updateBlockStatus(m.chat, 'block')
+await conn.updateBlockStatus(m.chat, 'block')
 return
 
 } if (m.id.startsWith('3EB0') && m.id.length === 22) {
