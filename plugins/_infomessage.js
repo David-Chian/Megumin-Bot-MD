@@ -162,11 +162,11 @@ const [jid] = m.messageStubParameters
 if (jid.includes('@s.whatsapp.net') && jid.split('@')[0].startsWith(latinPrefix)) {
 await conn.groupRequestParticipantsUpdate(m.chat, [jid], "approve")}}
 
-} if (chat.alerts && m.messageStubType == 29) {
+} if (chat.detect && m.messageStubType == 29) {
 await conn.sendMessage(m.chat, { text: admingp, mentions: [`${m.sender}`,`${m.messageStubParameters[0]}`] }, { quoted: null })
 return
 
-} if (chat.alerts && m.messageStubType == 30) {
+} if (chat.detect && m.messageStubType == 30) {
 await conn.sendMessage(m.chat, { text: noadmingp, mentions: [`${m.sender}`,`${m.messageStubParameters[0]}`] }, { quoted: null })
 return
 
