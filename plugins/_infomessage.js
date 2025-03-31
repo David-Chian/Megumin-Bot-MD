@@ -5,6 +5,7 @@ import fetch from 'node-fetch'
 import { readdirSync, unlinkSync, existsSync, promises as fs, rmSync } from 'fs'
 import path from 'path'
 import ws from 'ws'
+import './main-allfake.js'
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
