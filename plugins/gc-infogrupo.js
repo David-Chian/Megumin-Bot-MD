@@ -31,7 +31,7 @@ ${listAdmin}
 ◈ *Autorechazar:* ${autoRechazar ? 'Activado' : 'Desactivado'}
 ◈ *Modohorny:* ${modohorny ? 'Activado' : 'Desactivado'}
 `.trim();
-  conn.sendFile(m.chat, pp, 'img.jpg', text, m, false, {mentions: [...groupAdmins.map((v) => v.id), owner, peimary]});
+  conn.sendFile(m.chat, pp, 'img.jpg', text, m, false, {mentions: [...groupAdmins.map((v) => v.id), owner, primary]});
   } catch (e) {
     return m.reply(`Ocurrió un error inesperado\n\n> ${e}`);
 }};
