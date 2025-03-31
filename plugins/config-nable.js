@@ -10,11 +10,9 @@ ${usedPrefix + command} autoaceptar
 ${usedPrefix + command} autorechazar
 ${usedPrefix + command} detect
 ${usedPrefix + command} antilink
-${usedPrefix + command} antilink2
 ${usedPrefix + command} nsfw
 ${usedPrefix + command} modoadmin
 ${usedPrefix + command} antifake
-${usedPrefix + command} antibot
 
 🍟 *OPCIONES PARA MI PROPIETARIO*
 
@@ -23,8 +21,7 @@ ${usedPrefix + command} serbot
 ${usedPrefix + command} restrict
 ${usedPrefix + command} autoread
 ${usedPrefix + command} pconly
-${usedPrefix + command} gconly
-${usedPrefix + command} antiprivado`
+${usedPrefix + command} gconly`
 
 const isEnable = /true|enable|(turn)?on|1/i.test(command);
 const chat = global.db.data.chats[m.chat];
@@ -72,7 +69,7 @@ throw false
 chat.autoRechazar = isEnable
 break
 
-case 'detect': case 'avisos':
+case 'detect': case 'alerts': case 'alertas': case 'avisos':
 if (!m.isGroup) {
 if (!isOwner) {
 global.dfail('group', m, conn)
@@ -85,29 +82,6 @@ throw false
 chat.detect = isEnable
 break
 
-case 'antibot':
-if (m.isGroup) {
-if (!(isAdmin || isOwner)) {
-global.dfail('admin', m, conn)
-throw false
-}
-}
-chat.antiBot = isEnable
-break
-
-case 'antisubots':
-case 'antisub':
-case 'antisubot':
-case 'antibot2':
-if (m.isGroup) {
-if (!(isAdmin || isOwner)) {
-global.dfail('admin', m, conn)
-throw false
-}
-}
-chat.antiBot2 = isEnable
-break
-
 case 'public': case 'publico':
 isAll = true
 if (!isROwner) {
@@ -117,22 +91,13 @@ throw false
 global.opts['self'] = !isEnable
 break
 
-case 'antilink': case 'antienlace':
+case 'antilink': case 'antilinks': case 'antienlaces':
 if (m.isGroup) {
 if (!(isAdmin || isOwner)) {
 global.dfail('admin', m, conn)
 throw false
 }}
 chat.antiLink = isEnable
-break
-
-case 'antilink2': case 'antienlace2':
-if (m.isGroup) {
-if (!(isAdmin || isOwner)) {
-global.dfail('admin', m, conn)
-throw false
-}}
-chat.antiLink2 = isEnable 
 break
 
 case 'autoresponder': case 'autorespond':
@@ -224,15 +189,6 @@ global.dfail('rowner', m, conn)
 throw false
 }
 global.opts['gconly'] = isEnable
-break
-case 'antiprivado': case 'antiprivate':
-case 'privado':
-isAll = true
-if (!isROwner) {
-global.dfail('rowner', m, conn)
-throw false
-}
-bot.antiPrivate = isEnable
 break
 
 case 'swonly': case 'statusonly':
