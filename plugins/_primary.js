@@ -17,3 +17,6 @@ if (this.user.jid !== primaryBot) throw !1;
 else if (mainBotInGroup) {
 if (this.user.jid !== global.conn.user.jid) throw !1;
 }}}
+
+}
+export default handler
