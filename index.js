@@ -25,7 +25,7 @@ cfonts.say('Megumin', {
 cfonts.say('Developed By • David-Chian', {
   font: 'console',
   align: 'center',
-  colors: ['green', 'yellow']
+  colors: ['cyan', 'magenta', 'yellow']
 })
 
 let isRunning = false
