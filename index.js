@@ -15,7 +15,7 @@ const require = createRequire(__dirname)
 const { name, description, author, version } = require(join(__dirname, './package.json'))
 const rl = createInterface(process.stdin, process.stdout)
 
-cfonts.say('Megumin Bot', {
+cfonts.say('Megumin', {
   font: 'block',
   align: 'center',
   colors: ['blue', 'cyan'],
