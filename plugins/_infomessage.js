@@ -10,7 +10,7 @@ import ws from 'ws'
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 let handler = m => m
-handler.before = async function (m, { conn, isAdmin, isOwner, isROwner, isBotAdmin, groupMetadata }) {
+handler.before = async function (m, { conn, isAdmin, isOwner, isROwner, isBotAdmin, groupMetadata, participants }) {
 if (!m.messageStubType || !m.isGroup) return
 
 const usuario = `@${m.sender.split`@`[0]}`
@@ -26,7 +26,6 @@ const delet = m.key.participant
 const bang = m.key.id
 const bot = global.db.data.settings[conn.user.jid] || {}
 const users = [...new Set([...global.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED).map((conn) => conn)])]
-const participants = m.isGroup ? (await conn.groupMetadata(m.chat).catch(() => ({ participants: [] }))).participants : []
 const mainBotInGroup = participants.some(p => p.id === global.conn.user.jid)
 const primaryBot = chat.primaryBot
 const primaryBotConnected = users.some(conn => conn.user.jid === primaryBot)
