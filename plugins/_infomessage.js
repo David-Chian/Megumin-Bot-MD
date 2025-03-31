@@ -84,11 +84,32 @@ const jid = m.messageStubParameters[0]
 if (jid.split('@')[0].startsWith('5')) {
 await conn.groupRequestParticipantsUpdate(m.chat, [jid], "approve")}}
 
-} if (chat.welcome && m.messageStubType === 27) { 
-this.sendMessage(m.chat, { audio: { url: vn }, contextInfo: { forwardedNewsletterMessageInfo: { newsletterJid: "120363358338732714@newsletter", newsletterName: '─͟͞̟𝑴𝒆𝒈𝒖͜𝒎͜𝒊𝒏-𝑩͜𝒐𝒕-𝑴𝑫͟͞─' }, mentionedJid: getMentionedJid() }, ptt: true, fileName: `welcome.mp3`}, { quoted: fkontak })
+} if (chat.welcome && m.messageStubType === 27) {
+let welcomeMessage = `*╭┉┉┉┉ᷜ┈ͦ┈ͭ┈ͦ┈ͬ┈ͥ┈┈ᷨ┈ͦ┈ͭ┉┉┉᛫᛭*
+*│  ̇─̣─̇─̣〘 ¡¡ 𝐇𝐨𝐥𝐚 !! 〙̣─̇─̣─̇*
+*├┅┅┅┅┈┈┈┈┈┈┈┈┈┅┅┅◆*
+*│⑄▷ Bienvenido @${who.split('@')[0]}*
+*│ _Bіᥱᥒ᥎ᥱᥒіძ᥆ ᥲ_*
+*│ _${groupMetadata.subject}_*
+*│ _Dіs𝖿rᥙ𝗍ᥲ 𝗍ᥙ ᥱs𝗍ᥲძіᥲ._ 💖*
+*╰┉┉┉┉┈┈┈┈┈┈┈┈┈┉┉┉᛫᛭*`;
 
-} if (chat.welcome && (m.messageStubType === 28 || m.messageStubType === 32)) { 
-this.sendMessage(m.chat, { audio: { url: vn2 }, contextInfo: { forwardedNewsletterMessageInfo: { newsletterJid: "120363358338732714@newsletter", newsletterName: '─͟͞̟𝑴𝒆𝒈𝒖͜𝒎͜𝒊𝒏-𝑩͜𝒐𝒕-𝑴𝑫͟͞─' }, mentionedJid: getMentionedJid() }, ptt: true, fileName: `goodbye.mp3` }, { quoted: fkontak })
+let buttonMessage = { document: { url: vn }, mimetype: 'audio/mpeg', fileName: 'Bіᥱᥒ᥎ᥱᥒіძᥲ 🎉', fileLength: '99999999999999', pageCount: 1, contextInfo: { externalAdReply: { showAdAttribution: true, mediaType: 1, previewType: 'PHOTO', title: '──͟͞ 𝗪 𝗘 𝗟 𝗖 𝗢 𝗠 𝗘 ͟͞──', thumbnail: welc, renderLargerThumbnail: true, sourceUrl: redes, }, mentionedJid: await conn.parseMention(welcomeMessage)}, caption: welcomeMessage, }
+
+await conn.sendMessage(m.chat, buttonMessage, { mentions: await conn.parseMention(welcomeMessage) })
+
+} if (chat.welcome && (m.messageStubType === 28 || m.messageStubType === 32)) {
+let byeMessage = `*╭ׂ┄─ׅ─ׂ┄─ׂ┄─ׅ─ׂ┄─ׂ┄─ׅ─ׂ┄─*
+*┆──〘 𝐀𝐝𝐢𝐨𝐬𝐢𝐭𝐨 ^^  〙───*
+*┆┄─ׅ─ׂ┄─ׂ┄─ׅ─ׂ┄─ׂ┄─ׅ─ׂ┄─ׂ*
+*┆ _☠ sᥱ 𝖿ᥙᥱ @${who.split('@')[0]}_*
+*┆ _𝗊ᥙᥱ ძі᥆s ᥣ᥆ ᑲᥱᥒძіgᥲ️_* 
+*┆ _ᥡ ᥣ᥆ ᥲ𝗍r᥆⍴ᥱᥣᥣᥱ ᥙᥒ 𝗍rᥱᥒ 😇_*
+*╰─ׂ┄─ׅ─ׂ┄─ׂ┄─ׅ─ׂ┄─ׂ┄─ׅ─ׂ┄ׂ*`;
+
+let buttonMessage = { document: { url: vn2 }, mimetype: 'audio/mpeg', fileName: 'Dᥱs⍴ᥱძіძᥲ 🖤', fileLength: '99999999999999', pageCount: 1, contextInfo: { externalAdReply: { showAdAttribution: true, mediaType: 1, previewType: 'PHOTO', title: '──͟͞ 𝗔 𝗗 𝗜 𝗢 𝗦 ͟͞──', thumbnail: adi, renderLargerThumbnail: true, sourceUrl: redes, }, mentionedJid: await conn.parseMention(byeMessage) }, caption: byeMessage, }
+
+await conn.sendMessage(m.chat, buttonMessage, { mentions: await conn.parseMention(byeMessage) })
 
 } if (!m.isGroup) return 
 if (isAdmin || isOwner || m.fromMe || isROwner) return
