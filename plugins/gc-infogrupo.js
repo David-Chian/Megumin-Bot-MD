@@ -1,10 +1,10 @@
 const handler = async (m, {conn, participants, groupMetadata}) => {
-  const pp = await conn.profilePictureUrl(m.chat, 'image').catch((_) => null) || `${global.icons}`;
-  const {antiToxic, autoRechazar, autoAceptar, welcome, detect, antiLink, modohorny} = global.db.data.chats[m.chat];
+  const pp = await conn.profilePictureUrl(m.chat, 'image').catch((_) => global.icons);
+  const {antiToxic, autoRechazar, autoAceptar, welcome, detect, antiLink, modohorny, primaryBot} = global.db.data.chats[m.chat];
   const groupAdmins = participants.filter((p) => p.admin);
   const listAdmin = groupAdmins.map((v, i) => `${i + 1}. @${v.id.split('@')[0]}`).join('\n');
   const owner = groupMetadata.owner || groupAdmins.find((p) => p.admin === 'superadmin')?.id || m.chat.split`-`[0] + '@s.whatsapp.net';
-  const primary = chat.primaryBot ? `@${chat.primaryBot.split('@')[0]}` : 'Aleatorio',
+  const primary = primaryBot ? `@${primaryBot.split('@')[0]}` : 'Aleatorio',
   const text = `💥 *INFO GRUPO*
 💌 *ID:*
 → ${groupMetadata.id}
