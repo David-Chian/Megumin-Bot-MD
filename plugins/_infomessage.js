@@ -101,7 +101,9 @@ if (m.sender.startsWith('48' || '48')) {
 global.db.data.users[m.sender].block = true
 await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
 
-} if (bot.antiPrivate && !isROwner) {
+} if (m.isGroup) return
+if (!m.message) return
+if (bot.antiPrivate && !isROwner) {
 await conn.reply(m.chat, `💣 Hola, adiós tengo que bloquearte por orden de mi propietario.\n\n*Channel:*\n> https://whatsapp.com/channel/0029Vb7Ji66KbYMTYLU9km3p`, m)
 await conn.updateBlockStatus(m.chat, 'block')
 return
