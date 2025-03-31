@@ -8,7 +8,7 @@ import { createInterface } from 'readline'
 import yargs from 'yargs'
 import chalk from 'chalk'
 
-console.log(chalk.magentaBright('\n✰ Iniciando Megumin ✰'))
+console.log(chalk.magentaBright('\nIniciando....'))
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const require = createRequire(__dirname)
@@ -22,7 +22,7 @@ cfonts.say('Megumin', {
   gradient: ['magenta', 'yellow']
 })
 
-cfonts.say('Developed By • David-Chian', {
+cfonts.say('Made With David-Chian', {
   font: 'console',
   align: 'center',
   colors: ['cyan', 'magenta', 'yellow']
