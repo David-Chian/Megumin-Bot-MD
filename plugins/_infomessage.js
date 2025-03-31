@@ -10,7 +10,7 @@ import ws from 'ws'
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 let handler = m => m
-handler.before = async function (m, { conn, isAdmin, isBotAdmin, groupMetadata }) {
+handler.before = async function (m, { conn, isAdmin, isOwner, isROwner, isBotAdmin, groupMetadata }) {
 if (!m.messageStubType || !m.isGroup) return
 
 const groupAdmins = participants.filter(p => p.admin)
