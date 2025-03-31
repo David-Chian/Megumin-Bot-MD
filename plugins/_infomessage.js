@@ -149,9 +149,9 @@ await conn.groupLeave(m.chat)}
 
 } if (chat.autoAceptar && !isAdmin) {
 if (!isBotAdmin) return !0
-const participants = await conn.groupRequestParticipantsList(m.chat)
+const participants2 = await conn.groupRequestParticipantsList(m.chat)
 const latinPrefix = '5'
-const filteredParticipants = participants.filter(p => p.jid.includes('@s.whatsapp.net') && p.jid.split('@')[0].startsWith(latinPrefix))
+const filteredParticipants = participants2.filter(p => p.jid.includes('@s.whatsapp.net') && p.jid.split('@')[0].startsWith(latinPrefix))
 for (const participant of filteredParticipants) {
 await conn.groupRequestParticipantsUpdate(m.chat, [participant.jid], "approve")}
 if (m.messageStubType === 172 && m.messageStubParameters) {
