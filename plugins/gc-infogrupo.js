@@ -4,7 +4,8 @@ const handler = async (m, {conn, participants, groupMetadata}) => {
   const groupAdmins = participants.filter((p) => p.admin);
   const listAdmin = groupAdmins.map((v, i) => `${i + 1}. @${v.id.split('@')[0]}`).join('\n');
   const owner = groupMetadata.owner || groupAdmins.find((p) => p.admin === 'superadmin')?.id || m.chat.split`-`[0] + '@s.whatsapp.net';
-  const primary = primaryBot ? `@${primaryBot.split('@')[0]}` : 'Aleatorio',
+  const primary = primaryBot ? `@${primaryBot.split('@')[0]}` : 'Aleatorio'
+  try {
   const text = `💥 *INFO GRUPO*
 💌 *ID:*
 → ${groupMetadata.id}
@@ -31,7 +32,9 @@ ${listAdmin}
 ◈ *Modohorny:* ${modohorny ? 'Activado' : 'Desactivado'}
 `.trim();
   conn.sendFile(m.chat, pp, 'img.jpg', text, m, false, {mentions: [...groupAdmins.map((v) => v.id), owner, peimary]});
-};
+  } catch (e) {
+    return m.reply(`Ocurrió un error inesperado\n\n> ${e}`);
+}};
 handler.help = ['infogrupo'];
 handler.tags = ['grupo'];
 handler.command = ['infogrupo', 'gp'];
