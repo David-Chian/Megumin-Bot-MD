@@ -117,17 +117,6 @@ const prefixes = ['6', '90', '963', '966', '967', '249', '212', '92', '93', '94'
 if (prefixes.some(prefix => m.sender.startsWith(prefix))) {
 await conn.groupRequestParticipantsUpdate(m.chat, [m.sender], 'reject')}
 
-} if (!chat.antiBot2) {
-return
-}
-let botJid = global.conn.user.jid
-if (botJid === conn.user.jid) {
-return
-} else {
-let isBotPresent = participants.some(p => areJidsSameUser(botJid, p.id))
-if (isBotPresent) {
-await conn.groupLeave(m.chat)}
-
 } if (chat.autoAceptar && !isAdmin) {
 if (!isBotAdmin) return !0
 const participants2 = await conn.groupRequestParticipantsList(m.chat)
