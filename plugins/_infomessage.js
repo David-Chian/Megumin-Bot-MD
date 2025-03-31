@@ -10,7 +10,7 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 let handler = m => m
 handler.before = async function (m, { conn, isAdmin, isOwner, isROwner, isBotAdmin, participants, groupMetadata }) {
-// if (!m.messageStubType || !m.isGroup) return
+if (!m.messageStubType || !m.isGroup) return
 
 const usuario = `@${m.sender.split`@`[0]}`
 const groupName = (await conn.groupMetadata(m.chat)).subject
