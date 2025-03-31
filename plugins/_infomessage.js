@@ -1,5 +1,3 @@
-// Todo sobre grupo - enable se maneja aquí
-
 let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})/i
 let linkRegex1 = /whatsapp.com\/channel\/([0-9A-Za-z]{20,24})/i
 let WAMessageStubType = (await import('@whiskeysockets/baileys')).default
