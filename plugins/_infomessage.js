@@ -56,16 +56,6 @@ return
 await conn.sendMessage(m.chat, { text: noadmingp, mentions: [`${m.sender}`,`${m.messageStubParameters[0]}`] }, { quoted: null })
 return
 
-} if (chat.autoAceptar && isBotAdmin) {
-const participants2 = await conn.groupRequestParticipantsList(m.chat)
-const filteredParticipants = participants2.filter(p => p.jid.includes('@s.whatsapp.net') && p.jid.split('@')[0].startsWith('5'))
-for (const participant of filteredParticipants) {
-await conn.groupRequestParticipantsUpdate(m.chat, [participant.jid], "approve")
-} if (m.messageStubType === 172 && m.messageStubParameters?.[0]?.includes('@s.whatsapp.net')) {
-const jid = m.messageStubParameters[0]
-if (jid.split('@')[0].startsWith('5')) {
-await conn.groupRequestParticipantsUpdate(m.chat, [jid], "approve")}}
-
 } if (chat.welcome && m.messageStubType === 27) {
 let welcomeMessage = `*╭┉┉┉┉ᷜ┈ͦ┈ͭ┈ͦ┈ͬ┈ͥ┈┈ᷨ┈ͦ┈ͭ┉┉┉᛫᛭*
 *│  ̇─̣─̇─̣〘 ¡¡ 𝐇𝐨𝐥𝐚 !! 〙̣─̇─̣─̇*
