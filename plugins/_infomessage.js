@@ -31,7 +31,6 @@ const mainBotInGroup = participants.some(p => p.id === global.conn.user.jid)
 const primaryBot = chat.primaryBot
 const primaryBotConnected = users.some(conn => conn.user.jid === primaryBot)
 const primaryBotInGroup = participants.some(p => p.id === primaryBot)
-const groupAdmins = participants.filter(p => p.admin)
 const listAdmin = groupAdmins.map((v, i) => `*» ${i + 1}. @${v.id.split('@')[0]}*`).join('\n')
 const isGroupLink = linkRegex.exec(m.text) || linkRegex1.exec(m.text)
 const grupo = `https://chat.whatsapp.com`
