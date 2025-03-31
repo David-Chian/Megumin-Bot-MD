@@ -1,5 +1,3 @@
-let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})/i
-let linkRegex1 = /whatsapp.com\/channel\/([0-9A-Za-z]{20,24})/i
 import { WAMessageStubType, areJidsSameUser } from '@whiskeysockets/baileys'
 import fetch from 'node-fetch'
 import { readdirSync, unlinkSync, existsSync, promises as fs, rmSync } from 'fs'
@@ -24,22 +22,6 @@ const vn2 = 'https://qu.ax/OzTbp.mp3'
 const delet = m.key.participant
 const bang = m.key.id
 const bot = global.db.data.settings[conn.user.jid] || {}
-// const participants = m.isGroup ? (await conn.groupMetadata(m.chat).catch(() => ({ participants: [] }))).participants : []
-const users = [...new Set([...global.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED).map((conn) => conn)])]
-const mainBotInGroup = participants.some(p => p.id === global.conn.user.jid)
-const primaryBot = chat.primaryBot
-const primaryBotConnected = users.some(conn => conn.user.jid === primaryBot)
-const primaryBotInGroup = participants.some(p => p.id === primaryBot)
-const listAdmin = groupAdmins.map((v, i) => `*» ${i + 1}. @${v.id.split('@')[0]}*`).join('\n')
-const isGroupLink = linkRegex.exec(m.text) || linkRegex1.exec(m.text)
-const grupo = `https://chat.whatsapp.com`
-
-if (primaryBot) {
-if (primaryBotConnected && primaryBotInGroup) {
-if (conn.user.jid !== primaryBot) return 
-} if (mainBotInGroup) {
-if (conn.user.jid !== global.conn.user.jid) return
-}}
 
 const getMentionedJid = () => {
 return m.messageStubParameters.map(param => `${param}@s.whatsapp.net`)
@@ -115,20 +97,6 @@ let byeMessage = `*╭ׂ┄─ׅ─ׂ┄─ׂ┄─ׅ─ׂ┄─ׂ┄─ׅ─ׂ�
 let buttonMessage = { document: { url: vn2 }, mimetype: 'audio/mpeg', fileName: 'Dᥱs⍴ᥱძіძᥲ 🖤', fileLength: '99999999999999', pageCount: 1, contextInfo: { externalAdReply: { showAdAttribution: true, mediaType: 1, previewType: 'PHOTO', title: '──͟͞ 𝗔 𝗗 𝗜 𝗢 𝗦 ͟͞──', thumbnail: adi, renderLargerThumbnail: true, sourceUrl: redes, }, mentionedJid: await conn.parseMention(byeMessage) }, caption: byeMessage, }
 
 await conn.sendMessage(m.chat, buttonMessage, { mentions: await conn.parseMention(byeMessage) })
-
-} if (!m.isGroup) return 
-if (isAdmin || isOwner || m.fromMe || isROwner) return
-if (isAdmin && chat.antiLink && m.text.includes(grupo)) return
-if (chat.antiLink && isGroupLink && !isAdmin) {
-if (isBotAdmin) {
-const linkThisGroup = `https://chat.whatsapp.com/${await this.groupInviteCode(m.chat)}`
-if (m.text.includes(linkThisGroup)) return
-} if (!isBotAdmin) return conn.sendMessage(m.chat, { text: `🚩 El antilink está activo pero no puedo eliminarte porque no soy adm.`, mentions: [...groupAdmins.map(v => v.id)] }, { quoted: m })
-if (isBotAdmin) {
-await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: bang, participant: delet } })
-let responseb = await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
-return
-}
 
 } if (isBotAdmin && chat.antifake) {
 const antiFakePrefixes = ['6', '90', '212', '92', '93', '94', '7', '49', '2', '91', '48']
