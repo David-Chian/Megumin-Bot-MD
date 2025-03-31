@@ -5,24 +5,24 @@ let linkRegex1 = /whatsapp.com\/channel\/([0-9A-Za-z]{20,24})/i;
 
 export async function before(m, { conn, isAdmin, isBotAdmin, isOwner, isROwner }) {
 
-const participants = m.isGroup ? (await conn.groupMetadata(m.chat).catch(() => ({ participants: [] }))).participants : []
-const users = [...new Set([...global.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED).map((conn) => conn)])]
-const mainBotInGroup = participants.some(p => p.id === global.conn.user.jid)
-const primaryBot = chat.primaryBot
-const primaryBotConnected = users.some(conn => conn.user.jid === primaryBot)
-const primaryBotInGroup = participants.some(p => p.id === primaryBot)
+let chat = globalThis.db.data.chats[m.chat];
+const participants = m.isGroup ? (await conn.groupMetadata(m.chat).catch(() => ({ participants: [] }))).participants : [];
+const users = [...new Set([...global.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED).map((conn) => conn)])];
+const mainBotInGroup = participants.some(p => p.id === global.conn.user.jid);
+const primaryBot = chat.primaryBot;
+const primaryBotConnected = users.some(conn => conn.user.jid === primaryBot);
+const primaryBotInGroup = participants.some(p => p.id === primaryBot);
 
 if (primaryBot) {
 if (primaryBotConnected && primaryBotInGroup) {
-if (conn.user.jid !== primaryBot) return 
+if (conn.user.jid !== primaryBot) return; 
 } if (mainBotInGroup) {
-if (conn.user.jid !== global.conn.user.jid) return
+if (conn.user.jid !== global.conn.user.jid) return;
 }}
 
-if (!m.isGroup) return 
-if (isAdmin || isOwner || m.fromMe || isROwner) return
+if (!m.isGroup) return;
+if (isAdmin || isOwner || m.fromMe || isROwner) return;
 
-let chat = globalThis.db.data.chats[m.chat];
 let delet = m.key.participant;
 let bang = m.key.id;
 const user = `@${m.sender.split`@`[0]}`;
