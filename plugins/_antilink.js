@@ -3,11 +3,11 @@ import ws from 'ws';
 let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})/i;
 let linkRegex1 = /whatsapp.com\/channel\/([0-9A-Za-z]{20,24})/i;
 
-export async function before(m, { conn, isAdmin, isBotAdmin, isOwner, isROwner }) {
+export async function before(m, { conn, isAdmin, isBotAdmin, isOwner, isROwner, participants }) {
 
 let chat = globalThis.db.data.chats[m.chat];
 const users = [...new Set([...global.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED).map((conn) => conn)])];
-const participants = m.isGroup ? (await conn.groupMetadata(m.chat).catch(() => ({ participants: [] }))).participants : []
+// const participants = m.isGroup ? (await conn.groupMetadata(m.chat).catch(() => ({ participants: [] }))).participants : []
 
 const mainBotInGroup = participants.some(p => p.id === global.conn.user.jid);
 const primaryBot = chat.primaryBot;
