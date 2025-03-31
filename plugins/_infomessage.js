@@ -117,7 +117,7 @@ const prefixes = ['6', '90', '963', '966', '967', '249', '212', '92', '93', '94'
 if (prefixes.some(prefix => m.sender.startsWith(prefix))) {
 await conn.groupRequestParticipantsUpdate(m.chat, [m.sender], 'reject')}
 
-} if (chat.autoAceptar && !isAdmin && isBotAdmin) {
+} if (chat.autoAceptar && isBotAdmin) {
 const participants2 = await conn.groupRequestParticipantsList(m.chat)
 const filteredParticipants = participants2.filter(p => p.jid.includes('@s.whatsapp.net') && p.jid.split('@')[0].startsWith('5'))
 for (const participant of filteredParticipants) {
