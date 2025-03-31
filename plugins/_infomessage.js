@@ -5,7 +5,6 @@ import fetch from 'node-fetch'
 import { readdirSync, unlinkSync, existsSync, promises as fs, rmSync } from 'fs'
 import path from 'path'
 import ws from 'ws'
-import './main-allfake.js'
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -49,6 +48,7 @@ return m.messageStubParameters.map(param => `${param}@s.whatsapp.net`)
 let who = m.messageStubParameters[0] + '@s.whatsapp.net'
 let user = global.db.data.users[who]
 let userName = user ? user.name : await conn.getName(who)
+let redes = `github.com/David-Chian`
 let adiosbye = await conn.profilePictureUrl(m.messageStubParameters[0], 'image').catch(_ => 'https://qu.ax/fBuJM.jpg')
 let adi = await (await fetch(adiosbye)).buffer()
 let ppUrl = await conn.profilePictureUrl(m.messageStubParameters[0], 'image').catch(_ => 'https://qu.ax/zliac.jpg');
