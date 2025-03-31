@@ -1,3 +1,5 @@
+export async function before(m, { conn }) {
+
 let chat = globalThis.db.data.chats[m.chat];
 const users = [...new Set([...global.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED).map((conn) => conn)])];
 const participants = m.isGroup ? (await conn.groupMetadata(m.chat).catch(() => ({ participants: [] }))).participants : []
