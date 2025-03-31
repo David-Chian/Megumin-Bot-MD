@@ -1,3 +1,5 @@
+import ws from 'ws'
+
 export async function before(m, { conn }) {
 
 let chat = globalThis.db.data.chats[m.chat];
