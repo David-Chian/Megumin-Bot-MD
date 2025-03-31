@@ -98,7 +98,7 @@ let welcomeMessage = `*╭┉┉┉┉ᷜ┈ͦ┈ͭ┈ͦ┈ͬ┈ͥ┈┈ᷨ┈ͦ
 *│ _Dіs𝖿rᥙ𝗍ᥲ 𝗍ᥙ ᥱs𝗍ᥲძіᥲ._ 💖*
 *╰┉┉┉┉┈┈┈┈┈┈┈┈┈┉┉┉᛫᛭*`;
 
-let buttonMessage = { document: { url: vn }, mimetype: 'audio/mpeg', fileName: 'Bіᥱᥒ᥎ᥱᥒіძᥲ 🎉', fileLength: '99999999999999', pageCount: 1, contextInfo: { externalAdReply: { showAdAttribution: true, mediaType: 1, previewType: 'PHOTO', title: '──͟͞ 𝗪 𝗘 𝗟 𝗖 𝗢 𝗠 𝗘 ͟͞──', thumbnail: welc, renderLargerThumbnail: true, sourceUrl: 'https://github.com/David-Chian' }, mentionedJid: await conn.parseMention(welcomeMessage)}, caption: welcomeMessage, }
+let buttonMessage = { document: { url: vn }, mimetype: 'audio/mpeg', fileName: 'Bіᥱᥒ᥎ᥱᥒіძᥲ 🎉', fileLength: '99999999999999', pageCount: 1, contextInfo: { externalAdReply: { showAdAttribution: true, mediaType: 1, previewType: 'PHOTO', title: '──͟͞ 𝗪 𝗘 𝗟 𝗖 𝗢 𝗠 𝗘 ͟͞──', thumbnail: welc, renderLargerThumbnail: true, sourceUrl: redes, }, mentionedJid: await conn.parseMention(welcomeMessage)}, caption: welcomeMessage, }
 
 await conn.sendMessage(m.chat, buttonMessage, { mentions: await conn.parseMention(welcomeMessage) })
 
@@ -111,7 +111,7 @@ let byeMessage = `*╭ׂ┄─ׅ─ׂ┄─ׂ┄─ׅ─ׂ┄─ׂ┄─ׅ─ׂ�
 *┆ _ᥡ ᥣ᥆ ᥲ𝗍r᥆⍴ᥱᥣᥣᥱ ᥙᥒ 𝗍rᥱᥒ 😇_*
 *╰─ׂ┄─ׅ─ׂ┄─ׂ┄─ׅ─ׂ┄─ׂ┄─ׅ─ׂ┄ׂ*`;
 
-let buttonMessage = { document: { url: vn2 }, mimetype: 'audio/mpeg', fileName: 'Dᥱs⍴ᥱძіძᥲ 🖤', fileLength: '99999999999999', pageCount: 1, contextInfo: { externalAdReply: { showAdAttribution: true, mediaType: 1, previewType: 'PHOTO', title: '──͟͞ 𝗔 𝗗 𝗜 𝗢 𝗦 ͟͞──', thumbnail: adi, renderLargerThumbnail: true, sourceUrl: 'https://github.com/David-Chian' }, mentionedJid: await conn.parseMention(byeMessage) }, caption: byeMessage, }
+let buttonMessage = { document: { url: vn2 }, mimetype: 'audio/mpeg', fileName: 'Dᥱs⍴ᥱძіძᥲ 🖤', fileLength: '99999999999999', pageCount: 1, contextInfo: { externalAdReply: { showAdAttribution: true, mediaType: 1, previewType: 'PHOTO', title: '──͟͞ 𝗔 𝗗 𝗜 𝗢 𝗦 ͟͞──', thumbnail: adi, renderLargerThumbnail: true, sourceUrl: redes, }, mentionedJid: await conn.parseMention(byeMessage) }, caption: byeMessage, }
 
 await conn.sendMessage(m.chat, buttonMessage, { mentions: await conn.parseMention(byeMessage) })
 
