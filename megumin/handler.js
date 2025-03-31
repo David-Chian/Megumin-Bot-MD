@@ -151,7 +151,6 @@ if (!('autoAceptar' in chat)) chat.autoAceptar = false
 if (!('antiBot' in chat)) chat.antiBot = false 
 if (!('antiBot2' in chat)) chat.antiBot2 = false                    
 if (!('antiLink' in chat)) chat.antiLink = false     
-if (!('antiLink2' in chat)) chat.antiLink2 = false
 if (!('antifake' in chat)) chat.antifake = false         
 if (!('modoadmin' in chat)) chat.modoadmin = false    
 if (!isNumber(chat.expired)) chat.expired = 0
@@ -173,7 +172,6 @@ nsfw: false,
 antiBot: false,
 antiBot2: false,
 antiLink: false,
-antiLink2: false,
 antifake: false,
 modoadmin: false,
 expired: 0,
@@ -185,15 +183,13 @@ if (!('self' in settings)) settings.self = false
 if (!('autoread' in settings)) settings.autoread = false
 if (!('restrict' in settings)) settings.restrict = false
 if (!('antiPrivate' in settings)) settings.antiPrivate = false
-if (!('modoia' in settings)) settings.modoia = false
 if (!('jadibotmd' in settings)) settings.jadibotmd = false  
 if (!('botcommandCount' in settings)) settings.botcommandCount = 0
 } else global.db.data.settings[this.user.jid] = {
 self: false,
 autoread: false,
 restrict: false,
-antiPrivate: false,
-modoia: false, 
+antiPrivate: false, 
 jadibotmd: true,
 botcommandCount: 0,
 }} catch (e) {
