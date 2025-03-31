@@ -161,11 +161,11 @@ if (jid.includes('@s.whatsapp.net') && jid.split('@')[0].startsWith(latinPrefix)
 await conn.groupRequestParticipantsUpdate(m.chat, [jid], "approve")}}
 
 } if (chat.detect && m.messageStubType == 29) {
-let txt1 = `🚩 @${m.messageStubParameters[0].split`@`[0]} ha sido promovido a Administrador por @${m.sender.split`@`[0]}`
+let txt1 = `🚩 @${m.messageStubParameters[0].split`@`[0]} ha sido promovido a Administrador por ${usuario}`
 await conn.sendMessage(m.chat, { text: txt1, mentions: [...txt1.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net') })
 
 } if (chat.detect && m.messageStubType == 30) {
-let txt2 = `🚩 @${m.messageStubParameters[0].split`@`[0]} ha sido degradado de Administrador por @${m.sender.split`@`[0]}`
+let txt2 = `🚩 @${m.messageStubParameters[0].split`@`[0]} ha sido degradado de Administrador por ${usuario}`
 await conn.sendMessage(m.chat, { text: txt2, mentions: [...txt2.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net') })
 
 } if (chat.welcome && m.messageStubType === 27) { 
