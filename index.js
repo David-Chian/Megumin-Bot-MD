@@ -18,11 +18,6 @@ font: 'block',
 align: 'center',
 colors: ['white']
 });
-say(`Multi Device`, {
-font: 'chrome',
-align: 'center',
-colors: ['red']
-});
 say(`Developed By • David-Chian`, {
 font: 'console',
 align: 'center',
