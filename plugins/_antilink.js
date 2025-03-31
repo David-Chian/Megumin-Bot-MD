@@ -6,6 +6,7 @@ export async function before(m, { conn, isAdmin, isBotAdmin, isOwner, isROwner, 
 if (!m.isGroup) return;
 if (isAdmin || isOwner || m.fromMe || isROwner) return;
 
+let chat = globalThis.db.data.chats[m.chat];
 let delet = m.key.participant;
 let bang = m.key.id;
 const user = `@${m.sender.split`@`[0]}`;
