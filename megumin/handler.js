@@ -144,8 +144,7 @@ if (!('sBye' in chat)) chat.sBye = ''
 if (!('sPromote' in chat)) chat.sPromote = ''             
 if (!('sDemote' in chat)) chat.sDemote = ''
 if (!('sAutoresponder' in chat)) chat.sAutoresponder = '' 
-if (!('sCondition' in chat)) chat.sCondition = JSON.stringify([{ grupo: { usuario: [], condicion: [], admin: '' }, prefijos: []}]) 
-if (!('primaryBot' in chat)) chat.primaryBot = null                  
+if (!('sCondition' in chat)) chat.sCondition = JSON.stringify([{ grupo: { usuario: [], condicion: [], admin: '' }, prefijos: []}])                   
 if (!('nsfw' in chat)) chat.nsfw = false
 if (!('autoAceptar' in chat)) chat.autoAceptar = false                     
 if (!('antiLink' in chat)) chat.antiLink = false              
@@ -162,7 +161,6 @@ sPromote: '',
 sDemote: '', 
 sAutoresponder: '',
 sCondition: JSON.stringify([{ grupo: { usuario: [], condicion: [], admin: '' }, prefijos: []}]), 
-primaryBot: null,
 autoresponder: false,
 autoAceptar: false,
 nsfw: false,
