@@ -53,31 +53,34 @@ await conn.sendMessage(m.chat, { text: noadmingp, mentions: [`${m.sender}`,`${m.
 return
 
 } if (chat.welcome && m.messageStubType === 27) {
-let welcomeMessage = `*╭┉┉┉┉ᷜ┈ͦ┈ͭ┈ͦ┈ͬ┈ͥ┈┈ᷨ┈ͦ┈ͭ┉┉┉᛫᛭*
-*│  ̇─̣─̇─̣〘 ¡¡ 𝐇𝐨𝐥𝐚 !! 〙̣─̇─̣─̇*
-*├┅┅┅┅┈┈┈┈┈┈┈┈┈┅┅┅◆*
-*│⑄▷ Bienvenido @${who.split('@')[0]}*
-*│ _Bіᥱᥒ᥎ᥱᥒіძ᥆ ᥲ_*
-*│ _${groupMetadata.subject}_*
-*│ _Dіs𝖿rᥙ𝗍ᥲ 𝗍ᥙ ᥱs𝗍ᥲძіᥲ._ 💖*
-*╰┉┉┉┉┈┈┈┈┈┈┈┈┈┉┉┉᛫᛭*`;
-
-let buttonMessage = { document: { url: vn }, mimetype: 'audio/mpeg', fileName: 'Bіᥱᥒ᥎ᥱᥒіძᥲ 🎉', fileLength: '99999999999999', pageCount: 1, contextInfo: { externalAdReply: { showAdAttribution: true, mediaType: 1, previewType: 'PHOTO', title: '──͟͞ 𝗪 𝗘 𝗟 𝗖 𝗢 𝗠 𝗘 ͟͞──', thumbnail: welc, renderLargerThumbnail: true, sourceUrl: redes, }, mentionedJid: await conn.parseMention(welcomeMessage)}, caption: welcomeMessage, }
-
-await conn.sendMessage(m.chat, buttonMessage, { mentions: await conn.parseMention(welcomeMessage) })
+    conn.sendMessage(m.chat, { audio: { url: vn }, 
+    contextInfo: { forwardedNewsletterMessageInfo: { 
+    newsletterJid: channelRD.id,
+    serverMessageId: '', 
+    newsletterName: channelRD.name }, forwardingScore: 9999999, isForwarded: true, mentionedJid: getMentionedJid(), "externalAdReply": { 
+    "title": `  ͟͞ Ｗ Ｅ Ｌ Ｃ Ｏ Ｍ Ｅ ͟͞  `, 
+    "body": `${userName}`, 
+    "previewType": "PHOTO", 
+    "thumbnailUrl": null,
+    "thumbnail": icons, 
+    "sourceUrl": redes, 
+    "showAdAttribution": true}}, 
+     seconds: '4556', ptt: true, mimetype: 'audio/mpeg', fileName: `error.mp3` }, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
 
 } if (chat.welcome && (m.messageStubType === 28 || m.messageStubType === 32)) {
-let byeMessage = `*╭ׂ┄─ׅ─ׂ┄─ׂ┄─ׅ─ׂ┄─ׂ┄─ׅ─ׂ┄─*
-*┆──〘 𝐀𝐝𝐢𝐨𝐬𝐢𝐭𝐨 ^^  〙───*
-*┆┄─ׅ─ׂ┄─ׂ┄─ׅ─ׂ┄─ׂ┄─ׅ─ׂ┄─ׂ*
-*┆ _☠ sᥱ 𝖿ᥙᥱ @${who.split('@')[0]}_*
-*┆ _𝗊ᥙᥱ ძі᥆s ᥣ᥆ ᑲᥱᥒძіgᥲ️_* 
-*┆ _ᥡ ᥣ᥆ ᥲ𝗍r᥆⍴ᥱᥣᥣᥱ ᥙᥒ 𝗍rᥱᥒ 😇_*
-*╰─ׂ┄─ׅ─ׂ┄─ׂ┄─ׅ─ׂ┄─ׂ┄─ׅ─ׂ┄ׂ*`;
-
-let buttonMessage = { document: { url: vn2 }, mimetype: 'audio/mpeg', fileName: 'Dᥱs⍴ᥱძіძᥲ 🖤', fileLength: '99999999999999', pageCount: 1, contextInfo: { externalAdReply: { showAdAttribution: true, mediaType: 1, previewType: 'PHOTO', title: '──͟͞ 𝗔 𝗗 𝗜 𝗢 𝗦 ͟͞──', thumbnail: adi, renderLargerThumbnail: true, sourceUrl: redes, }, mentionedJid: await conn.parseMention(byeMessage) }, caption: byeMessage, }
-
-await conn.sendMessage(m.chat, buttonMessage, { mentions: await conn.parseMention(byeMessage) })
+    conn.sendMessage(m.chat, { audio: { url: vn2 }, 
+    contextInfo: { forwardedNewsletterMessageInfo: { 
+    newsletterJid: channelRD.id,
+    serverMessageId: '', 
+    newsletterName: channelRD.name }, forwardingScore: 9999999, isForwarded: true, mentionedJid: getMentionedJid(), "externalAdReply": { 
+    "title": `  ͟͞ Ａ Ｄ Ｉ Ｏ Ｓ ͟͞  `, 
+    "body": `${userName}, se despide.`, 
+    "previewType": "PHOTO", 
+    "thumbnailUrl": null,
+    "thumbnail": icons, 
+    "sourceUrl": redes, 
+    "showAdAttribution": true}}, 
+     seconds: '4556', ptt: true, mimetype: 'audio/mpeg', fileName: `error.mp3` }, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
 
 } else {
 if (m.messageStubType == 2) return
