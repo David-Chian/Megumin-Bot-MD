@@ -65,7 +65,7 @@ return
     "thumbnail": icons, 
     "sourceUrl": redes, 
     "showAdAttribution": true}}, 
-     seconds: '4556', ptt: true, mimetype: 'audio/mpeg', fileName: `error.mp3` }, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
+     seconds: '4556', ptt: true, mimetype: 'audio/mpeg', fileName: `bienvenida.mp3` }, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
 
 } if (chat.welcome && (m.messageStubType === 28 || m.messageStubType === 32)) {
     conn.sendMessage(m.chat, { audio: { url: vn2 }, 
@@ -80,7 +80,7 @@ return
     "thumbnail": icons, 
     "sourceUrl": redes, 
     "showAdAttribution": true}}, 
-     seconds: '4556', ptt: true, mimetype: 'audio/mpeg', fileName: `error.mp3` }, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
+     seconds: '4556', ptt: true, mimetype: 'audio/mpeg', fileName: `bye.mp3` }, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
 
 } else {
 if (m.messageStubType == 2) return
