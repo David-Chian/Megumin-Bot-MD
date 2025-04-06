@@ -9,7 +9,7 @@ const handler = async (m, { command, conn, usedPrefix }) => {
   let banner = botSettings.banner;
   let currency = botSettings.currency;
 
-  if (!db.data.chats[m.chat].modohorny && m.isGroup) return m.reply('🚩 *¡Estos comandos están desactivados!*');
+  if (!db.data.chats[m.chat].nsfw && m.isGroup) return m.reply('🚩 *¡Estos comandos están desactivados!*');
 
   const comandos = ['nsfwloli', 'nsfwfoot', 'nsfwass', 'nsfwbdsm', 'nsfwcum', 'nsfwero', 'nsfwfemdom', 'nsfwfoot', 'nsfwglass', 'nsfworgy', 'yuri', 'yaoi', 'panties', 'tetas', 'booty', 'ecchi', 'furro', 'hentai', 'trapito', 'imagenlesbians', 'pene', 'porno', 'randomxxx', 'pechos'];
 
