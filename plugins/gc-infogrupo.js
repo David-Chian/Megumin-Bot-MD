@@ -1,3 +1,5 @@
+import ws from 'ws'
+
 const handler = async (m, {conn, participants, groupMetadata}) => {
 try {
        const pp = await conn.profilePictureUrl(m.chat, 'image');
