@@ -1,14 +1,7 @@
 import axios from 'axios';
 
 const handler = async (m, { command, conn, usedPrefix }) => {
-  let botId = conn.user.jid;
-  let botSettings = global.db.data.settings[botId];
-
-  let botname = botSettings.namebot;
-  let icon = botSettings.icon;
-  let banner = botSettings.banner;
-  let currency = botSettings.currency;
-
+  
   if (!db.data.chats[m.chat].nsfw && m.isGroup) return m.reply('🚩 *¡Estos comandos están desactivados!*');
 
   const comandos = ['nsfwloli', 'nsfwfoot', 'nsfwass', 'nsfwbdsm', 'nsfwcum', 'nsfwero', 'nsfwfemdom', 'nsfwfoot', 'nsfwglass', 'nsfworgy', 'yuri', 'yaoi', 'panties', 'tetas', 'booty', 'ecchi', 'furro', 'hentai', 'trapito', 'imagenlesbians', 'pene', 'porno', 'randomxxx', 'pechos'];
@@ -23,7 +16,7 @@ const handler = async (m, { command, conn, usedPrefix }) => {
   await conn.sendMessage(m.chat, {
     image: { url: haha },
     caption,
-    footer: `${botname}`,
+    footer: packname,
     buttons: [
       { buttonId: `.${command}`, buttonText: { displayText: "🔥 sɪɢᴜɪᴇɴᴛᴇ 🔥" }, type: 1 },
       { buttonId: `.${random1}`, buttonText: { displayText: `🎲 ${random1} 🔥` }, type: 1 },
