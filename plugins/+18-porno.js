@@ -16,7 +16,7 @@ const handler = async (m, { command, conn, usedPrefix }) => {
   await conn.sendMessage(m.chat, {
     image: { url: haha },
     caption,
-    footer: packname,
+    footer: wm,
     buttons: [
       { buttonId: `.${command}`, buttonText: { displayText: "🔥 sɪɢᴜɪᴇɴᴛᴇ 🔥" }, type: 1 },
       { buttonId: `.${random1}`, buttonText: { displayText: `🎲 ${random1} 🔥` }, type: 1 },
