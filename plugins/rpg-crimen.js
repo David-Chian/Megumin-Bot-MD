@@ -12,11 +12,11 @@ m.reply(`🍟 Ya has cometido un Crimen recientemente, espera ⏱️ *${tiempo2}
 return
 }
 cooldowns[m.sender] = Date.now()
-let senderCookies = users[senderId].cookies || 0
+let senderCookies = users[senderId].chocolates || 0
 let randomUserId = Object.keys(users)[Math.floor(Math.random() * Object.keys(users).length)]
 while (randomUserId === senderId) {
 randomUserId = Object.keys(users)[Math.floor(Math.random() * Object.keys(users).length)]}
-let randomUserCookies = users[randomUserId].cookies || 0
+let randomUserChocolates = users[randomUserId].chocolates || 0
 let minAmount = 15
 let maxAmount = 50
 let amountTaken = Math.floor(Math.random() * (maxAmount - minAmount + 1)) + minAmount
@@ -34,10 +34,10 @@ break
 case 1:
 let amountSubtracted = Math.min(Math.floor(Math.random() * (senderCookies - minAmount + 1)) + minAmount, maxAmount)
 users[senderId].chocolates -= amountSubtracted
-conn.reply(m.chat, `🚩 No fuiste cuidadoso y te atraparon mientras cometias tu cirme, se restaron *-${amountSubtracted} Chocolates 🍫* a ${senderName}.`, m, rcanal)
+conn.reply(m.chat, `🚩 No fuiste cuidadoso y te atraparon mientras cometias tu crimen, se restaron *-${amountSubtracted} Chocolates 🍫* a ${senderName}.`, m, rcanal)
 break
 case 2:
-let smallAmountTaken = Math.min(Math.floor(Math.random() * (randomUserCookies / 2 - minAmount + 1)) + minAmount, maxAmount)
+let smallAmountTaken = Math.min(Math.floor(Math.random() * (randomUserChocolates / 2 - minAmount + 1)) + minAmount, maxAmount)
 users[senderId].chocolates += smallAmountTaken
 users[randomUserId].chocolates -= smallAmountTaken
 conn.sendMessage(m.chat, {
