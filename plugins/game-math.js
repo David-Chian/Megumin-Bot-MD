@@ -28,7 +28,7 @@ const handler = async (m, {conn, args, usedPrefix, command}) => {
   if (id in global.math) return conn.reply(m.chat, '*[❗𝐈𝐍𝐅𝐎❗] 𝚃𝙾𝙳𝙰𝚅𝙸𝙰 𝙷𝙰𝚈 𝙿𝚁𝙴𝙶𝚄𝙽𝚃𝙰𝚂 𝚂𝙸𝙽 𝚁𝙴𝚂𝙿𝙾𝙽𝙳𝙴𝚁 𝙴𝙽 𝙴𝚂𝚃𝙴 𝙲𝙷𝙰𝚃!*', global.math[id][0]);
   const math = genMath(mode);
   global.math[id] = [
-    await conn.reply(m.chat, `𝙲𝚄𝙰𝙽𝚃𝙾 𝙴𝚂 𝙴𝙻 𝚁𝙴𝚂𝚄𝙻𝚃𝙰𝙳𝙾 𝙳𝙴 *${math.str}*?\n\n*⏳ 𝚃𝙸𝙴𝙼𝙿𝙾: ${(math.time / 1000).toFixed(2)} 𝚜𝚎𝚐𝚞𝚗𝚍𝚘𝚜*\n*🏆 𝙶𝙰𝙽𝙰 𝙷𝙰𝚂𝚃𝙰: ${math.bonus} Cookies*`, m),
+    await conn.reply(m.chat, `𝙲𝚄𝙰𝙽𝚃𝙾 𝙴𝚂 𝙴𝙻 𝚁𝙴𝚂𝚄𝙻𝚃𝙰𝙳𝙾 𝙳𝙴 *${math.str}*?\n\n*⏳ 𝚃𝙸𝙴𝙼𝙿𝙾: ${(math.time / 1000).toFixed(2)} 𝚜𝚎𝚐𝚞𝚗𝚍𝚘𝚜*\n*🏆 𝙶𝙰𝙽𝙰 𝙷𝙰𝚂𝚃𝙰: ${math.bonus} Chocolates*`, m),
     math, 4,
     setTimeout(() => {
       if (global.math[id]) {
