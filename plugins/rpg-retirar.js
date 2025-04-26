@@ -6,7 +6,7 @@ if (!args[0]) return m.reply('🚩 Ingresa la cantidad de *Chocolates 🍫* que 
 if (args[0] == 'all') {
 let count = parseInt(user.bank)
 user.bank -= count * 1
-user.cookies += count * 1
+user.chocolates += count * 1
 await m.reply(`🚩 Retiraste *${count} Chocolates 🍫* del Banco.`)
 return !0
 }
@@ -15,7 +15,7 @@ let count = parseInt(args[0])
 if (!user.bank) return m.reply('No tienes *Chocolate 🍫* en el Banco.')
 if (user.bank < count) return m.reply(`Solo tienes *${user.bank} Chocolates 🍫* en el Banco.`)
 user.bank -= count * 1
-user.cookies += count * 1
+user.chocolates += count * 1
 await m.reply(`🚩 Retiraste *${count} Chocolates 🍫* del Banco.`)}
 
 handler.help = ['retirar']
