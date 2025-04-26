@@ -22,7 +22,7 @@ cooldowns[m.sender] = Date.now()
 count = count ? /all/i.test(count) ? Math.floor(global.db.data.users[m.sender].limit / buatall) : parseInt(count) : args[0] ? parseInt(args[0]) : 1
 count = Math.max(1, count)
 if (args.length < 1) return conn.reply(m.chat, '💣 Ingresa la cantidad de ' + `🍫 *Chocolates*` + ' que deseas aportar contra' + ` *Megumin-Bot-MD*` + `\n\n` + '`Ejemplo:`\n' + `> *${usedPrefix + command}* 100`, m)
-if (user.cookies >= count * 1) {
+if (user.chocolates >= count * 1) {
 user.chocolates -= count * 1
 if (Aku > Kamu) {
 conn.reply(m.chat, '`💣 Veamos que numeros tienen!`\n\n'+ `➠ *MeguminBot* : ${Aku}\n➠ *${username}* : ${Kamu}\n\n> ${username}, *PERDISTE* ${formatNumber(count)} 🍫 Chocolates.`.trim(), m)
