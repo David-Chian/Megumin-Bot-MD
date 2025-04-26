@@ -12,7 +12,7 @@ m.reply(`🍟 Ya has cometido un Crimen recientemente, espera ⏱️ *${tiempo2}
 return
 }
 cooldowns[m.sender] = Date.now()
-let senderCookies = users[senderId].chocolates || 0
+let senderChocolates = users[senderId].chocolates || 0
 let randomUserId = Object.keys(users)[Math.floor(Math.random() * Object.keys(users).length)]
 while (randomUserId === senderId) {
 randomUserId = Object.keys(users)[Math.floor(Math.random() * Object.keys(users).length)]}
@@ -32,7 +32,7 @@ mentionedJid: [randomUserId],
 }}, { quoted: m })
 break
 case 1:
-let amountSubtracted = Math.min(Math.floor(Math.random() * (senderCookies - minAmount + 1)) + minAmount, maxAmount)
+let amountSubtracted = Math.min(Math.floor(Math.random() * (senderChocolates - minAmount + 1)) + minAmount, maxAmount)
 users[senderId].chocolates -= amountSubtracted
 conn.reply(m.chat, `🚩 No fuiste cuidadoso y te atraparon mientras cometias tu crimen, se restaron *-${amountSubtracted} Chocolates 🍫* a ${senderName}.`, m, rcanal)
 break
