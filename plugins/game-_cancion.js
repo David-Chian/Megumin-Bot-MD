@@ -9,8 +9,8 @@ const handler = {
     if (m.quoted.id == this.tebaklagu[id][0].id) {
       const json = JSON.parse(JSON.stringify(this.tebaklagu[id][1]));
       if (m.text.toLowerCase() == json.jawaban.toLowerCase().trim()) {
-        global.db.data.users[m.sender].cookies += this.tebaklagu[id][2];
-        m.reply(`✅Correcto!\n+${this.tebaklagu[id][2]} Cookies`);
+        global.db.data.users[m.sender].chocolates += this.tebaklagu[id][2];
+        m.reply(`✅Correcto!\n+${this.tebaklagu[id][2]} Chocolates`);
         clearTimeout(this.tebaklagu[id][3]);
         delete this.tebaklagu[id];
       } else if (similarity(m.text.toLowerCase(), json.jawaban.toLowerCase().trim()) >= threshold) m.reply(`Casii!`);
