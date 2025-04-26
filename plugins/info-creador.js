@@ -35,7 +35,7 @@ await conn.sendMessage(m.chat, {
       body: packname,
       mediaType: 1,
       sourceUrl: redes,
-      thumbnailUrl: icons
+      thumbnailUrl: imagen1
     }
   }
 }, {
