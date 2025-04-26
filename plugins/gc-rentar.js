@@ -1,11 +1,11 @@
-const xppercookies = 500;
+const xpperchocolates = 1000;
 const handler = async (m, {conn, command, args}) => {
   let count = command.replace(/^rentar/i, '');
   count = count ? /all/i.test(count) ? Math.floor(global.db.data.users[m.sender].exp / xpperestrellas) : parseInt(count) : args[0] ? parseInt(args[0]) : 1;
   count = Math.max(1, count);
 
-  if (global.db.data.users[m.sender].cookies >= xppercookies * count) {
-    global.db.data.users[m.sender].cookies -= xppercookies * count;
+  if (global.db.data.users[m.sender].chocolates >= xpperchocolates * count) {
+    global.db.data.users[m.sender].chocolates -= xpperchocolates * count;
     global.db.data.users[m.sender].tokens += count;;
 
     let userRents = global.db.data.userRents || {};
@@ -25,12 +25,12 @@ const handler = async (m, {conn, command, args}) => {
 ┌─『 𝑅𝑒𝑛𝑡𝑎𝑟 𝑎 𝑀𝑒𝑔𝑢𝑚𝑖𝑛 』*
 │╭──────────────┄
 ││ *Compra Nominal* : + ${count} Token
-││ *Gastado* : -${xppercookies * count} Cookies 🍪
+││ *Gastado* : -${xpperchocolates * count} Chocolates 🍫
 ││ *Tokens Disponibles* : ${userRents[m.sender].tokens}
 │╰──────────────┄
 └──────────────`, m, rcanal);
   } else {
-    conn.reply(m.chat, `😔 Lo siento, no tienes suficiente *Cookies 🍪* para comprar *${count}* Token`, m, rcanal);
+    conn.reply(m.chat, `😔 Lo siento, no tienes suficiente *Chocolates 🍫* para comprar *${count}* Token`, m, rcanal);
   }
 };
 handler.help = ['rentar'];
