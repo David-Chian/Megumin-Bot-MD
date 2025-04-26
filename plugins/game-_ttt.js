@@ -68,7 +68,7 @@ export async function before(m) {
         ${arr.slice(3, 6).join('')}
         ${arr.slice(6).join('')}
 
-${isWin ? `@${(isSurrender ? room.game.currentTurn : room.game.winner).split('@')[0]} 𝙶𝙰𝙽𝙰𝚂𝚃𝙴 🥳, 𝚃𝙴 𝙻𝙻𝙴𝚅𝙰𝚂 +50 Cookies` : isTie ? '𝙴𝙻 𝙹𝚄𝙴𝙶𝙾 𝚃𝙴𝚁𝙼𝙸𝙽𝙾 𝙴𝙽 𝙴𝙼𝙿𝙰𝚃𝙴 😐' : `𝚃𝚄𝚁𝙽𝙾 𝙳𝙴 @${room.game.currentTurn.split('@')[0]}`}
+${isWin ? `@${(isSurrender ? room.game.currentTurn : room.game.winner).split('@')[0]} 𝙶𝙰𝙽𝙰𝚂𝚃𝙴 🥳, 𝚃𝙴 𝙻𝙻𝙴𝚅𝙰𝚂 +50 Chocolates 🍫` : isTie ? '𝙴𝙻 𝙹𝚄𝙴𝙶𝙾 𝚃𝙴𝚁𝙼𝙸𝙽𝙾 𝙴𝙽 𝙴𝙼𝙿𝙰𝚃𝙴 😐' : `𝚃𝚄𝚁𝙽𝙾 𝙳𝙴 @${room.game.currentTurn.split('@')[0]}`}
 `.trim();
     const users = global.db.data.users;
     if ((room.game._currentTurn ^ isSurrender ? room.x : room.o) !== m.chat) {
@@ -79,10 +79,10 @@ ${isWin ? `@${(isSurrender ? room.game.currentTurn : room.game.winner).split('@'
     }
     await this.sendMessage(room.o, {text: str, mentions: this.parseMention(str)}, {quoted: m});
     if (isTie || isWin) {
-      users[room.game.playerX].cookies += playScore;
-      users[room.game.playerO].cookies += playScore;
+      users[room.game.playerX].chocolates += playScore;
+      users[room.game.playerO].chocolates += playScore;
       if (isWin) {
-        users[winner].cookies += winScore - playScore;
+        users[winner].chocolates += winScore - playScore;
       }
       if (debugMode) {
         m.reply('[DEBUG]\n' + format(room));
