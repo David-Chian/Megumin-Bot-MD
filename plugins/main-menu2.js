@@ -11,7 +11,7 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
     const uptime = clockString(_uptime);
     const user = global.db.data.users[m.sender];
     const {money, joincount} = global.db.data.users[m.sender];
-    const {exp, cookies, level, role} = global.db.data.users[m.sender];
+    const {exp, chocolates, level, role} = global.db.data.users[m.sender];
     const rtotalreg = Object.values(global.db.data.users).filter((user) => user.registered == true).length;
     const rtotal = Object.entries(global.db.data.users).length || '0'
     const more = String.fromCharCode(8206);
