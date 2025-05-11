@@ -29,7 +29,7 @@
 },
 "license": "GPL-3.0-or-later",
 "dependencies": {
-"@whiskeysockets/baileys": "https://github.com/FizzxyTheGreat/baileyss",
+"@whiskeysockets/baileys": "github:ds6/bails",
 "@adiwajshing/keyed-db": "^0.2.4",
 "@bochilteam/scraper": "^4.2.4",
 "@bochilteam/scraper-sosmed": "^1.0.5",
@@ -93,9 +93,6 @@
 "mime-types": "^2.1.35",
 "api-dylux": "^1.7.2",
 "yargs": "^17.3.1"
-},
-"resolutions": {
-"@whiskeysockets/baileys": "github:ds6/bails"
 },
 "optionalDependencies": {
 "wa-sticker-formatter": "^4.3.2",
