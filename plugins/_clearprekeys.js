@@ -1,4 +1,4 @@
-import { readdirSync, unlinkSync, existsSync, promises as fs, rmSync } from 'fs'
+/*import { readdirSync, unlinkSync, existsSync, promises as fs, rmSync } from 'fs'
 import path from 'path'
 
 let sessionPath = `./${sessions}/`
@@ -29,4 +29,4 @@ async function clearSessions() {
         console.error('💔 Ocurrió un fallo al limpiar la sesión:', err)
 }}
 setInterval(clearSessions, 3 * 60 * 60 * 1000)
-clearSessions()
+clearSessions()*/
