@@ -56,7 +56,7 @@ sіgᥙᥱ ᥒᥙᥱs𝗍r᥆ 𝗍ᥱᥲm!:
 ${channel2}
 •┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄•
 ${packname}`
-/*await conn.sendMessage(m.chat, {
+await conn.sendMessage(m.chat, {
             text: regbot,
             contextInfo: {
 externalAdReply: {
@@ -69,8 +69,8 @@ externalAdReply: {
             mediaType: 1,
             renderLargerThumbnail: true
         }}
-    })*/
-}
+    })
+  }
 handler.help = ['reg']
 handler.tags = ['rg']
 handler.command = ['verify', 'verificar', 'reg', 'register', 'registrar'] 
