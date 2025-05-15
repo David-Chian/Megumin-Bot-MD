@@ -5,9 +5,9 @@ let Reg = /\|?(.*)([.|] *?)([0-9]*)$/i
 let handler = async function (m, { conn, text, usedPrefix, command }) {
 let user = global.db.data.users[m.sender]
 let name2 = conn.getName(m.sender)
-  //let delirius = await axios.get(`https://delirius-apiofc.vercel.app/tools/country?text=${PhoneNumber('+' + m.sender.replace('@s.whatsapp.net', '')).getNumber('international')}`)
-  //let paisdata = delirius.data.result
-  //let mundo = paisdata ? `${paisdata.name} ${paisdata.emoji}` : 'Desconocido'
+  let delirius = await axios.get(`https://delirius-apiofc.vercel.app/tools/country?text=${PhoneNumber('+' + m.sender.replace('@s.whatsapp.net', '')).getNumber('international')}`)
+  let paisdata = delirius.data.result
+  let mundo = paisdata ? `${paisdata.name} ${paisdata.emoji}` : 'Desconocido'
   let perfil = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://qu.ax/QGAVS.jpg')
   let bio = 0, fechaBio
  // let who2 = m.isGroup ? _.get(m, "mentionedJid[0]", m.quoted?.sender || m.sender) : m.sender
