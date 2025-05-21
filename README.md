@@ -59,7 +59,7 @@ Megumin es un bot de WhatsApp multifuncional basado en `baileys`. Este bot ofrec
 
 ---
 
-`## **`🔥 Despliegue en BoxMineWorld 🚀`**
+## **`🔥 Despliegue en BoxMineWorld 🚀`**
 
 <a href="https://boxmineworld.com">
   <img width="180px" src="https://boxmineworld.com/img/Logo.png"/>
@@ -74,7 +74,7 @@ Megumin es un bot de WhatsApp multifuncional basado en `baileys`. Este bot ofrec
 - **Documentación:** [docs.boxmineworld.com](https://docs.boxmineworld.com)
 - **Comunidad de Discord:** [¡Únete aquí!](https://discord.gg/84qsr4v)
 
-</details>`
+</details>
 
 ---
 
