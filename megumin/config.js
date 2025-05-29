@@ -16,6 +16,7 @@ global.confirmCode = ''
 //• ↳𝑺𝑶𝑳𝑶 𝑫𝑬𝑺𝑨𝑹𝑹𝑶𝑳𝑳𝑨𝑫𝑶𝑹𝑬𝑺 𝑨𝑷𝑹𝑶𝑩𝑨𝑫𝑶𝑺
 global.owner = [
    // <-- Número @lid -->
+   ['250937893458085', '𝘾𝙍𝞝𝞓𝘿𝞗𝙍 (◣_◢)凸', true],
    ['258892692984006', 'DevAlexJs', true],
 
    // <-- Número @s.whatsapp.net -->
