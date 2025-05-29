@@ -119,10 +119,15 @@ Inicia el bot nuevamente:
 
 ---
 
-<div align="center">
-  <h3 align="center">👑 Propietario del Bot</h3>
-  <a href="https://github.com/David-Chian">
-    <img src="https://github.com/David-Chian.png" width="300" height="300" alt="Alex"/>
-  </a>
-  <p>© Megumin Bot - MD • David-Chian</p>
-</div>
+### **`🪐 COLABORADORES`**
+<a href="https://github.com/David-Chian/Megumin-Bot-MD/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=David-Chian/Megumin-Bot-MD" /> 
+</a>
+
+### **`👑 CREADOR`**
+<a
+href="https://github.com/David-Chian"><img src="https://github.com/David-Chian.png" width="130" height="130" alt="David"/></a>
+
+## **`⭐ CRÉDITOS`**
+<a
+href="https://github.com/BrunoSobrino"><img src="https://github.com/BrunoSobrino.png" width="130" height="130" alt="BrunoSobrino"/></a>
