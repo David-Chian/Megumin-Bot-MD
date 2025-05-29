@@ -1,8 +1,8 @@
-> 💥 Versión actual: ^2.0.5
+> 🌧 Versión actual: ^1.0.5
 
-<h1 align="center">💣 Megumin WaBot</p>
+<h1 align="center">💣 Megumin Bot</p>
 <p>
-        <img src= "https://qu.ax/CbzQU.jpg">
+        <img src= "https://files.catbox.moe/mwi0gz.jpg">
     </p>
 
 ---
@@ -21,26 +21,8 @@ Megumin es un bot de WhatsApp multifuncional basado en `baileys`. Este bot ofrec
 <details>
  <summary><b>:paperclip: Tutoriales</b></summary>
 
-- **Cafirexos:** [Aquí](https://youtu.be/tiZ1scp5-EA?si=PgU2U7Nclk4wEJzR)
 - **Termux:** [Aquí](https://youtu.be/gqtGeXRLImQ?si=PpM7EitywqFunEU5)
 - **Sky:** [Aquí](https://youtu.be/TzHyGH_6GH0?si=uKS3h8MXIhMOGrEM)
-
-</details>
-
----
-
-### **`🌋 Cafirexos 🚀`**
-<a href="https://cafirexos.com">
-  <img width="180px" src="https://cdn.cafirexos.com/logos/logo_cfros_2000x2000.png"/>
-</a>
-
-<details>
- <summary><b>:paperclip: Enlaces Importantes</b></summary>
-
-- **Sitio Web:** [Aquí](https://cafirexos.com)
-- **Área de Clientes:** [Aquí](https://clientes.cafirexos.com)
-- **Panel de Control:** [Aquí](https://panel.cafirexos.com)
-- **Estado de los Servicios:** [Aquí](https://estado.cafirexos.com)
 
 </details>
 
@@ -136,7 +118,7 @@ Inicia el bot nuevamente:
 
 ---
 
-### **`🌴 CONTRIBUTORS`**
+### **`🪐 COLABORADORES`**
 <a href="https://github.com/David-Chian/Megumin-Bot-MD/graphs/contributors">
 <img src="https://contrib.rocks/image?repo=David-Chian/Megumin-Bot-MD" /> 
 </a>
@@ -145,6 +127,6 @@ Inicia el bot nuevamente:
 <a
 href="https://github.com/David-Chian"><img src="https://github.com/David-Chian.png" width="130" height="130" alt="David"/></a>
 
-## **`✨ GRACIAS`**
+## **`⭐ CRÉDITOS`**
 <a
 href="https://github.com/BrunoSobrino"><img src="https://github.com/BrunoSobrino.png" width="130" height="130" alt="BrunoSobrino"/></a>
