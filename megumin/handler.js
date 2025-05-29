@@ -186,7 +186,8 @@ botcommandCount: 0,
 console.error(e)
 }
 
-const isROwner = [conn.decodeJid(global.conn.user.id), ...global.owner.map(([number]) => number)].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+const detectwhat = m.sender.includes('@lid') ? '@lid' : '@s.whatsapp.net';
+const isROwner = [...global.owner.map(([number]) => number)].map(v => v.replace(/[^0-9]/g, '') + detectwhat).includes(m.sender)
 const isOwner = isROwner || m.fromMe
 const isPrems = isROwner || global.db.data.users[m.sender].premiumTime > 0
 if (opts['queque'] && m.text && !(isPrems)) {
@@ -205,7 +206,9 @@ let _user = global.db.data && global.db.data.users && global.db.data.users[m.sen
 const groupMetadata = (m.isGroup ? ((conn.chats[m.chat] || {}).metadata || await this.groupMetadata(m.chat).catch(_ => null)) : {}) || {}
 const participants = (m.isGroup ? groupMetadata.participants : []) || []
 const user = (m.isGroup ? participants.find(u => conn.decodeJid(u.id) === m.sender) : {}) || {} // User Data
-const bot = (m.isGroup ? participants.find(u => conn.decodeJid(u.id) == this.user.jid) : {}) || {}
+let numBot = conn.user.lid.replace(/:.*/, '') || false
+const detectwhat2 = m.sender.includes('@lid') ? `${numBot}@lid` : conn.user.jid
+const bot = (m.isGroup ? participants.find(u => conn.decodeJid(u.id) == detectwhat2) : {}) || {}
 const isRAdmin = user?.admin == 'superadmin' || false
 const isAdmin = isRAdmin || user?.admin == 'admin' || false //user admins? 
 const isBotAdmin = bot?.admin || false //Detecta sin el bot es admin
@@ -310,18 +313,11 @@ let chat = global.db.data.chats[m.chat]
 let user = global.db.data.users[m.sender]
 if (!['owner-unbanchat.js'].includes(name) && chat && chat.isBanned && !isROwner) return // Except this
 if (name != 'owner-unbanchat.js' && name != 'owner-exec.js' && name != 'owner-exec2.js' && name != 'tool-delete.js' && chat?.isBanned && !isROwner) return 
-if (user.antispam > 2) return
 if (m.text && user.banned && !isROwner) {
 m.reply(`🚫 Está baneado(a), no puede usar los comandos de este bot!\n\n${user.bannedReason ? `\n💌 *Motivo:* 
 ${user.bannedReason}` : '💌 *Motivo:* Sin Especificar'}\n\n⚠️ *Si este bot es cuenta oficial y tiene evidencia que respalde que este mensaje es un error, puede exponer su caso en:*\n\n🤍 ${asistencia}`)        
-user.antispam++
 return
 }
-
-if (user.antispam2 && isROwner) return
-let time = global.db.data.users[m.sender].spam + 3000
-if (new Date - global.db.data.users[m.sender].spam < 3000) return console.log(`[ SPAM ]`) 
-global.db.data.users[m.sender].spam = new Date * 1
 
 if ((m.id.startsWith('NJX-') || (m.id.startsWith('BAE5') && m.id.length === 16) || (m.id.startsWith('B24E') && m.id.length === 20))) return
 
@@ -429,11 +425,6 @@ let text = format(e)
 // for (let key of Object.values(global.APIKeys))
 text = text.replace(new RegExp(key, 'g'), 'Admin')
 if (e.name)
-/*for (let [jid] of global.owner.filter(([number, _, isDeveloper]) => isDeveloper && number)) {
-let data = (await conn.onWhatsApp(jid))[0] || {}
-if (data.exists)
-m.reply(`⧋〘📕 𝗘𝗥𝗥𝗢𝗥 │ 𝗙𝗔𝗟𝗟𝗢 📕〙⧋\n\n❒ 𝗘𝗥𝗥𝗢𝗥:\n\`\`\`${format(e)}\`\`\`\n`.trim(), data.jid)
-}*/
 m.reply(text)
 }} finally {
 
