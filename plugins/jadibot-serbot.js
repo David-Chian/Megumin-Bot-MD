@@ -59,7 +59,7 @@ meguminJBOptions.conn = conn
 meguminJBOptions.args = args
 meguminJBOptions.usedPrefix = usedPrefix
 meguminJBOptions.command = command
-meguminJadiBot(meguminJBOptions)
+meguminJadiBot(meguminJBOptions, text)
 global.db.data.users[m.sender].Subs = new Date * 1
 } 
 handler.command = ['jadibot', 'serbot']
@@ -68,7 +68,7 @@ handler.tags = ['socket']
 export default handler 
 
 export async function meguminJadiBot(options) {
-let { pathMeguminJadiBot, m, conn, args, usedPrefix, command } = options
+let { pathMeguminJadiBot, m, conn, args, usedPrefix, text, command } = options
 const mcode = args[0] && /(--code|code)/.test(args[0].trim()) ? true : args[1] && /(--code|code)/.test(args[1].trim()) ? true : false
 let txtCode, codeBot, txtQR
 //let user = global.db.data.users[m.sender]
@@ -145,7 +145,9 @@ return
 if (qr && mcode) {
 txtCode = await conn.sendMessage(m.chat, {text : rtx2}, { quoted: m })
 await sleep(3000)
-let secret = await sock.requestPairingCode((m.sender.split`@`[0]))
+// let secret = await sock.requestPairingCode((m.sender.split`@`[0]))
+let fixTe = text ? text.replace(/\D/g, '') : m.sender.split('@')[0]
+let secret = await sock.requestPairingCode((fixTe))
 secret = secret.match(/.{1,4}/g)?.join("-")
 codeBot = await m.reply(secret)}
 const code = lastDisconnect?.error?.output?.statusCode || lastDisconnect?.error?.output?.payload?.statusCode
