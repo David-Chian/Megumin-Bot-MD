@@ -30,9 +30,6 @@ console.log(`Error : ${e}`)
 
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 global.fotoperfil = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://files.catbox.moe/6ditf1.jpg')
-let api = await axios.get(`https://delirius-apiofc.vercel.app/tools/country?text=${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}`)
-let userNationalityData = api.data.result
-global.userNationality = userNationalityData ? `${userNationalityData.name} ${userNationalityData.emoji}` : 'Desconocido'
 let user = global.db.data.users[who]
 let bot = global.db.data.settings[this.user.jid]
 let pushname = m.pushName || 'Sin nombre'
