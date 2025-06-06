@@ -16,7 +16,7 @@ Contenido adaptado para GataBot-MD por:
 - elrebelde21 >> https://github.com/elrebelde21
 */
 
-const { useMultiFileAuthState, DisconnectReason, makeCacheableSignalKeyStore, fetchLatestBaileysVersion} = (await import("@whiskeysockets/baileys"));
+const { useMultiFileAuthState, DisconnectReason, makeCacheableSignalKeyStore, fetchLatestBaileysVersion, Browsers } = (await import("@whiskeysockets/baileys"));
 import qrcode from "qrcode"
 import NodeCache from "node-cache"
 import fs from "fs"
@@ -121,7 +121,7 @@ msgRetry,
 msgRetryCache,
 version,
 syncFullHistory: true,
-browser: mcode ? ['Ubuntu', 'Chrome', '110.0.5585.95'] : ['Megumin-Bot-MD (Sub Bot)', 'Chrome','2.0.0'],
+browser: mcode ? Browsers.macOS("Desktop") : Browsers.macOS("Chrome"),
 defaultQueryTimeoutMs: undefined,
 getMessage: async (key) => {
 if (store) {
