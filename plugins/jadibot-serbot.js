@@ -119,9 +119,9 @@ logger: pino({ level: 'silent' }),
 auth: { creds: state.creds, keys: makeCacheableSignalKeyStore(state.keys, pino({level: 'silent'})) },
 msgRetry,
 msgRetryCache,
-version,
+version: version,
 syncFullHistory: true,
-browser: mcode ? Browsers.macOS("Desktop") : Browsers.macOS("Chrome"),
+browser: mcode ? Browsers.macOS("Chrome") : Browsers.macOS("Desktop"),
 defaultQueryTimeoutMs: undefined,
 getMessage: async (key) => {
 if (store) {
