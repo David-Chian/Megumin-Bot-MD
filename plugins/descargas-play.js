@@ -66,13 +66,14 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
  if (command === 'play' || command === 'mp3'  || command === 'playaudio') {
   try {
-    const api = await (await fetch(`https://api.vreden.my.id/api/ytmp3?url=${url}`)).json();
-    const resulta = api.result;
-    const result = resulta.download.url
+    const apiAudioUrl = `https://stellar.sylphy.xyz/dow/ytmp3?url=${url}`;
+    const response = await fetch(apiAudioUrl);
+    const json = await response.json()
+    const { title, dl } = json.data
 
-    if (!result) throw new Error('El enlace de audio no se generó correctamente.');
+    if (!dl) throw new Error('El enlace de audio no se generó correctamente.');
 
-    await conn.sendMessage(m.chat, { audio: { url: result }, fileName: `${api.result.title}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m });
+    await conn.sendMessage(m.chat, { audio: { url: dl }, fileName: `${title}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m });
   } catch (e) {
     console.error('Error al enviar el audio:', e.message);
     return conn.reply(m.chat, '⚠︎ No se pudo enviar el audio. Esto puede deberse a que el archivo es demasiado pesado o a un error en la generación de la URL. Por favor, intenta nuevamente mas tarde.', m);
