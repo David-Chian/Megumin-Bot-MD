@@ -66,7 +66,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
  if (command === 'play' || command === 'mp3'  || command === 'playaudio') {
   try {
-    const apiAudioUrl = `https://stellar.sylphy.xyz/dow/ytmp3?url=${url}`;
+    const apiAudioUrl = `${global.APIs.Stellar}/dow/ytmp3?url=${url}`;
     const response = await fetch(apiAudioUrl);
     const json = await response.json()
     const { title, dl } = json.data
@@ -80,6 +80,16 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
   }
 } else if (command === 'play2' || command === 'mp4' || command === 'playvideo') {
   try {
+    const apiVideoUrl = `${global.APIs.Stellar}/dow/ytmp4?url=${url}`;
+    const response = await fetch(apiVideoUrl);
+    const json = await response.json()
+    const { title, dl } = json.data
+
+    if (!dl) throw new Error('El enlace de audio no se generó correctamente.');
+
+    await conn.sendMessage(m.chat, { video: { url: dl }, fileName: `${title}.mp4`, mimetype: 'video/mp4' }, { quoted: m });
+  } catch {
+  try {
     const response = await fetch(`https://api.vreden.my.id/api/ytmp4?url=${url}`);
     const json = await response.json();
     const resultad = json.result;
@@ -91,7 +101,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
   } catch (e) {
     console.error('Error al enviar el video:', e.message);
     return conn.reply(m.chat, '⚠︎ No se pudo enviar el video. Esto puede deberse a que el archivo es demasiado pesado o a un error en la generación de la URL. Por favor, intenta nuevamente mas tarde.', m);
-  }
+  }}
 } else {
   return conn.reply(m.chat, '⚠︎ Comando no reconocido.', m);
 }
