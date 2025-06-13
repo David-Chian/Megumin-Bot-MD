@@ -103,7 +103,7 @@ global.lolkeysapi = ['kurumi']; // ['BrunoSobrino_2']
 global.itsrose = ['4b146102c4d500809da9d1ff'];
 
 global.APIs = {
-  Stellar: 'https://api.stellarwa.xyz'
+  Stellar: 'https://api.stellarwa.xyz',
   ApiEmpire: 'https://api-brunosobrino.zipponodes.xyz',
   xteam: 'https://api.xteam.xyz',
   dzx: 'https://api.dhamzxploit.my.id',
