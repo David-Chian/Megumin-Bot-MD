@@ -214,8 +214,8 @@ let _user = global.db.data && global.db.data.users && global.db.data.users[m.sen
 
         const groupMetadata = (m.isGroup ? ((conn.chats[m.chat] || {}).metadata || await this.groupMetadata(m.chat).catch(_ => null)) : {}) || {}
         const participants = (m.isGroup ? groupMetadata.participants : []) || []
-        const numBot = (conn.user.lid || '').replace(/:.*/, '') || false
-        const detectwhat2 = m.sender.includes('@lid') ? `${numBot}@lid` : conn.user.jid
+        const numBot = this.user.lid.replace(/:.*/, '') || false
+        const detectwhat2 = m.sender.includes('@lid') ? `${numBot}@lid` : this.user.jid
         const userGroup = (m.isGroup ? participants.find(u => conn.decodeJid(u.id) === m.sender) : {}) || {}
         const bot = (m.isGroup ? participants.find(u => conn.decodeJid(u.id) == detectwhat2) : {}) || {}
         const isRAdmin = userGroup?.admin == "superadmin" || false
@@ -513,9 +513,3 @@ unreg: '「🍟」 *¡Hey! no estas registrado, registrese para usar esta funci�
 restrict: '「💫」 *Esta característica esta desactivada.*'
 }[type];
 if (msg) return conn.reply(m.chat, msg, m, rcanal).then(_ => m.react('✖️'))}
-
-/*if (global.conns && global.conns.length > 0 ) {
-const users = [...new Set([...global.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED).map((conn) => conn)])];
-for (const userr of users) {
-userr.subreloadHandler(false)
-}});*/
