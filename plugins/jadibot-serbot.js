@@ -10,7 +10,7 @@ El codigo de este archivo esta inspirado en el codigo original de:
 
 El codigo de este archivo fue parchado en su momento por:
 - BrunoSobrino >> https://github.com/BrunoSobrino
-
+*/
 const { useMultiFileAuthState, DisconnectReason, makeCacheableSignalKeyStore, fetchLatestBaileysVersion, Browsers } = (await import("@whiskeysockets/baileys"));
 import qrcode from "qrcode"
 import NodeCache from "node-cache"
