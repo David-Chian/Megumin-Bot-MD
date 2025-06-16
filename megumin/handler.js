@@ -186,25 +186,31 @@ botcommandCount: 0,
 console.error(e)
 }
 
-const sendNum = m.sender.replace(/[^0-9]/g, '')
-const isROwner = [conn.decodeJid(global.conn.user.id), ...global.owner.map(([number]) => number)]
-  .map(v => v.replace(/[^0-9]/g, ''))
-  .includes(sendNum || m.key.remoteJid)
-
-        const isOwner = isROwner      
-        const isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
-        const isPrems = isROwner || global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
-if (opts['queque'] && m.text && !(isPrems)) {
-let queque = this.msgqueque, time = 1000 * 5
-const previousID = queque[queque.length - 1]
-queque.push(m.id || m.key.id)
-setInterval(async function () {
-if (queque.indexOf(previousID) === -1) clearInterval(this)
-await delay(time)
-}, time)
-}
-m.exp += Math.ceil(Math.random() * 10)
-let usedPrefix
+        if (typeof m.text !== "string")
+            m.text = ""
+        const user = global.db.data.users[m.sender]
+        const chat = global.db.data.chats[m.chat]
+        globalThis.setting = global.db.data.settings[this.user.jid]
+        const detectwhat = m.sender.includes('@lid') ? '@lid' : '@s.whatsapp.net'
+        const isROwner = [...global.owner.map(([number]) => number)].map(v => v.replace(/[^0-9]/g, "") + detectwhat).includes(m.sender)
+        const isModeration = isROwner || global.mods.map(v => v.replace(/[^0-9]/g, "") + detectwhat).includes(m.sender)
+const isOwner = isROwner || m.fromMe
+const isPrems = isROwner || global.db.data.users[m.sender].premiumTime > 0
+        if (opts["queque"] && m.text && !(isMods)) {
+            const queque = this.msgqueque, time = 1000 * 5
+            const previousID = queque[queque.length - 1]
+            queque.push(m.id || m.key.id)
+            setInterval(async function () {
+                if (queque.indexOf(previousID) === -1) clearInterval(this)
+                await delay(time)
+            }, time)
+        }
+        // if (m.id.startsWith('EVO') || m.id.startsWith('Lyru-') ||m.id.startsWith('EvoGlobalBot-') || (m.id.startsWith('BAE5') && m.id.length === 16) ||m.id.startsWith('B24E') || (m.id.startsWith('8SCO') && m.id.length === 20) ||m.id.startsWith('FizzxyTheGreat-')) return
+        if (m.isBaileys) {
+            return
+        }
+        m.exp += Math.ceil(Math.random() * 10)
+        let usedPrefix
 let _user = global.db.data && global.db.data.users && global.db.data.users[m.sender]
 
 const groupMetadata = (m.isGroup ? ((conn.chats[m.chat] || {}).metadata || await this.groupMetadata(m.chat).catch(_ => null)) : {}) || {}
