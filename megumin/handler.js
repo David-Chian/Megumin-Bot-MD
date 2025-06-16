@@ -213,16 +213,15 @@ const isPrems = isROwner || global.db.data.users[m.sender].premiumTime > 0
         let usedPrefix
 let _user = global.db.data && global.db.data.users && global.db.data.users[m.sender]
 
-const groupMetadata = (m.isGroup ? ((conn.chats[m.chat] || {}).metadata || await this.groupMetadata(m.chat).catch(_ => null)) : {}) || {}
-const participants = (m.isGroup ? groupMetadata.participants : []) || []
-const user = (m.isGroup ? participants.find(u => conn.decodeJid(u.id) === m.sender) : {}) || {} // User Data
-const numBot = (conn.user.lid || '').replace(/:.*/, '') || false
-const detectwhat2 = m.sender.includes('@lid') ? `${numBot}@lid` : conn.user.jid
-const userGroup = (m.isGroup ? participants.find(u => conn.decodeJid(u.id) === m.sender) : {}) || {}
-const bot = (m.isGroup ? participants.find(u => conn.decodeJid(u.id) == detectwhat2) : {}) || {}
-const isRAdmin = userGroup?.admin == "superadmin" || false
-const isAdmin = isRAdmin || userGroup?.admin == "admin" || false
-const isBotAdmin = bot?.admin || false
+        const groupMetadata = (m.isGroup ? ((conn.chats[m.chat] || {}).metadata || await this.groupMetadata(m.chat).catch(_ => null)) : {}) || {}
+        const participants = (m.isGroup ? groupMetadata.participants : []) || []
+        const numBot = (conn.user.lid || '').replace(/:.*/, '') || false
+        const detectwhat2 = m.sender.includes('@lid') ? `${numBot}@lid` : conn.user.jid
+        const userGroup = (m.isGroup ? participants.find(u => conn.decodeJid(u.id) === m.sender) : {}) || {}
+        const bot = (m.isGroup ? participants.find(u => conn.decodeJid(u.id) == detectwhat2) : {}) || {}
+        const isRAdmin = userGroup?.admin == "superadmin" || false
+        const isAdmin = isRAdmin || userGroup?.admin == "admin" || false
+        const isBotAdmin = bot?.admin || false
 
 const ___dirname = path.join(path.dirname(fileURLToPath(import.meta.url)), './plugins')
 for (let name in global.plugins) {
