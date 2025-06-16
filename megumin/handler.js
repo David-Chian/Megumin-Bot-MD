@@ -186,10 +186,14 @@ botcommandCount: 0,
 console.error(e)
 }
 
-const detectwhat = m.sender.includes('@lid') ? '@lid' : '@s.whatsapp.net';
-const isROwner = [...global.owner.map(([number]) => number)].map(v => v.replace(/[^0-9]/g, '') + detectwhat).includes(m.sender)
-const isOwner = isROwner || m.fromMe
-const isPrems = isROwner || global.db.data.users[m.sender].premiumTime > 0
+const sendNum = m.sender.replace(/[^0-9]/g, '')
+const isROwner = [conn.decodeJid(global.conn.user.id), ...global.owner.map(([number]) => number)]
+  .map(v => v.replace(/[^0-9]/g, ''))
+  .includes(sendNum || m.key.remoteJid)
+
+        const isOwner = isROwner      
+        const isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+        const isPrems = isROwner || global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
 if (opts['queque'] && m.text && !(isPrems)) {
 let queque = this.msgqueque, time = 1000 * 5
 const previousID = queque[queque.length - 1]
