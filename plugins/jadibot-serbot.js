@@ -114,22 +114,15 @@ const msgRetryCache = new NodeCache()
 const { state, saveState, saveCreds } = await useMultiFileAuthState(pathMeguminJadiBot)
 
 const connectionOptions = {
+logger: pino({ level: "fatal" }),
 printQRInTerminal: false,
-logger: pino({ level: 'silent' }),
 auth: { creds: state.creds, keys: makeCacheableSignalKeyStore(state.keys, pino({level: 'silent'})) },
 msgRetry,
-msgRetryCache,
-version,
-syncFullHistory: true,
+msgRetryCache, 
 browser: mcode ? Browsers.macOS("Chrome") : Browsers.macOS("Desktop"),
-defaultQueryTimeoutMs: undefined,
-getMessage: async (key) => {
-if (store) {
-//const msg = store.loadMessage(key.remoteJid, key.id)
-//return msg.message && undefined
-} return {
-conversation: 'Megumin-Bot-MD',
-}}} 
+version: version,
+generateHighQualityLinkPreview: true
+}
 
 let sock = makeWASocket(connectionOptions)
 sock.isInit = false
