@@ -193,7 +193,6 @@ console.error(e)
         globalThis.setting = global.db.data.settings[this.user.jid]
         const detectwhat = m.sender.includes('@lid') ? '@lid' : '@s.whatsapp.net'
         const isROwner = [...global.owner.map(([number]) => number)].map(v => v.replace(/[^0-9]/g, "") + detectwhat).includes(m.sender)
-        const isModeration = isROwner || global.mods.map(v => v.replace(/[^0-9]/g, "") + detectwhat).includes(m.sender)
 const isOwner = isROwner || m.fromMe
 const isPrems = isROwner || global.db.data.users[m.sender].premiumTime > 0
         if (opts["queque"] && m.text && !(isMods)) {
