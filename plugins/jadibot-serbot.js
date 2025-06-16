@@ -41,10 +41,10 @@ const maxAttempts = 5
 if (globalThis.conns instanceof Array) console.log()
 else globalThis.conns = []
 let handler = async (m, { conn, args, usedPrefix, command, isModeration, text }) => {
-let time = globalThis.db.data.chats[m.chat].users[m.sender].Subs + 120000;
+/*let time = globalThis.db.data.chats[m.chat].users[m.sender].Subs + 120000;
 if (new Date - globalThis.db.data.chats[m.chat].users[m.sender].Subs < 120000 && !isModeration) {
 return conn.reply(m.chat, `ꕥ Debes esperar *${msToTime(time - new Date())}* para volver a intentar vincular un socket.`, m);
-}
+}*/
 const subBots = [...new Set([...globalThis.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED).map((conn) => conn)])]
 const subBotsCount = subBots.length
 if (subBotsCount === 20) {
