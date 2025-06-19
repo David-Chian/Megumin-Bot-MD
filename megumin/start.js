@@ -1,6 +1,6 @@
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '1'
 import './config.js' 
-import { startSub } from '../lib/loadJadi.js'
+// import { startSub } from '../lib/loadJadi.js'
 import { createRequire } from 'module'
 import path, { join } from 'path'
 import {fileURLToPath, pathToFileURL} from 'url'
@@ -267,7 +267,7 @@ console.log(chalk.bold.redBright(`\n⚠️❗ RAZON DE DESCONEXIÓN DESCONOCIDA:
 process.on('uncaughtException', console.error);
 
 // <---• Iniciador de Sub-Bots •--->
-await startSub()
+// await startSub()
 
 let isInit = true;
 let handler = await import('./handler.js');
