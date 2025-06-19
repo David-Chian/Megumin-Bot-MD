@@ -1,7 +1,7 @@
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '1'
 import './config.js' 
 import { meguminJadiBot } from '../plugins/jadibot-serbot.js'
-import { startSub } from './lib/autoconexion.js'
+import { startSub } from './lib/loadJadi.js'
 import { createRequire } from 'module'
 import path, { join } from 'path'
 import {fileURLToPath, pathToFileURL} from 'url'
