@@ -1,6 +1,7 @@
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '1'
 import './config.js' 
 import { meguminJadiBot } from '../plugins/jadibot-serbot.js'
+import { startSub } from './lib/autoconexion.js'
 import { createRequire } from 'module'
 import path, { join } from 'path'
 import {fileURLToPath, pathToFileURL} from 'url'
@@ -266,28 +267,8 @@ console.log(chalk.bold.redBright(`\n⚠️❗ RAZON DE DESCONEXIÓN DESCONOCIDA:
 }
 process.on('uncaughtException', console.error);
 
-global.rutaJadiBot = join(__dirname, '../MeguminJadiBot')
-
-if (global.meguminJadibts) {
-if (!existsSync(global.rutaJadiBot)) {
-mkdirSync(global.rutaJadiBot, { recursive: true }) 
-console.log(chalk.bold.cyan(`La carpeta: ${jadi} se creó correctamente.`))
-} else {
-console.log(chalk.bold.cyan(`La carpeta: ${jadi} ya está creada.`)) 
-}
-
-const readRutaJadiBot = readdirSync(rutaJadiBot)
-if (readRutaJadiBot.length > 0) {
-const creds = 'creds.json'
-for (const gjbts of readRutaJadiBot) {
-const botPath = join(rutaJadiBot, gjbts)
-const readBotPath = readdirSync(botPath)
-if (readBotPath.includes(creds)) {
-meguminJadiBot({pathMeguminJadiBot: botPath, m: null, conn, args: '', usedPrefix: '/', command: 'serbot'})
-}
-}
-}
-}
+// <---• Iniciador de Sub-Bots •--->
+await startSub()
 
 let isInit = true;
 let handler = await import('./handler.js');
