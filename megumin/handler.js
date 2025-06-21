@@ -212,22 +212,24 @@ const isPrems = isROwner || global.db.data.users[m.sender].premiumTime > 0
         let usedPrefix
 let _user = global.db.data && global.db.data.users && global.db.data.users[m.sender]
 
-const groupMetadata = m.isGroup
-  ? await conn.groupMetadata(m.chat).catch(_ => null)
-  : {}
-const participants = m.isGroup ? groupMetadata?.participants || [] : []
-const botJid = conn.decodeJid(conn.user?.jid || this.user?.jid)
-const bot = participants.find(p =>
-  conn.decodeJid(p.id) === botJid
-)
-const isBotAdmin =
-  bot?.admin === 'admin' || bot?.admin === 'superadmin'
-const senderJid = conn.decodeJid(m.sender)
-const userParticipant = participants.find(p =>
-  conn.decodeJid(p.id) === senderJid
-)
-const isRAdmin = userParticipant?.admin === 'superadmin' || false
-const isAdmin = isRAdmin || userParticipant?.admin === 'admin' || false
+let groupMetadata = {}
+let participants = []
+
+if (m.isGroup) {
+  try {
+    groupMetadata = await conn.groupMetadata(m.chat)
+    participants = groupMetadata.participants || []
+  } catch (e) {
+    console.error('❌ Error al obtener groupMetadata:', e)
+  }
+}
+const botJid = (conn.user?.id || conn.user?.jid || this.user?.jid || '').split(':')[0]
+const senderJid = m.sender.split(':')[0]
+const bot = participants.find(p => p.id?.split(':')[0] === botJid)
+const userParticipant = participants.find(p => p.id?.split(':')[0] === senderJid)
+const isBotAdmin = bot?.admin === 'admin' || bot?.admin === 'superadmin'
+const isRAdmin = userParticipant?.admin === 'superadmin'
+const isAdmin = isRAdmin || userParticipant?.admin === 'admin'
 
 console.log('📍 BOT JID:', botJid)
 console.log('📍 SENDER JID:', senderJid)
