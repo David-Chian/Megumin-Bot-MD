@@ -10,21 +10,22 @@ const handler = async (m, { conn }) => {
     return m.reply('❌ No se pudo obtener metadata del grupo.')
   }
 
-  const botJid = conn.decodeJid(conn.user?.jid || '')
-  const senderJid = conn.decodeJid(m.sender)
+  const sampleParticipant = participants[0]?.id || ''
+  const domain = sampleParticipant.includes('@lid') ? '@lid' : '@s.whatsapp.net'
+  const botJid = conn.decodeJid(conn.user?.jid || '').replace(/@.*/, '') + domain
+  const senderJid = m.sender.replace(/@.*/, '') + domain
 
-  const allParticipantIds = participants.map(p => conn.decodeJid(p.id))
-  const debug = participants.map(p => `• ${conn.decodeJid(p.id)} | admin: ${p.admin}`).join('\n')
-
-  const botParticipant = participants.find(p => conn.decodeJid(p.id) === botJid)
-  const userParticipant = participants.find(p => conn.decodeJid(p.id) === senderJid)
+  const botParticipant = participants.find(p => p.id === botJid)
+  const userParticipant = participants.find(p => p.id === senderJid)
 
   const isBotAdmin = botParticipant?.admin === 'admin' || botParticipant?.admin === 'superadmin'
   const isRAdmin = userParticipant?.admin === 'superadmin'
   const isAdmin = isRAdmin || userParticipant?.admin === 'admin'
 
+  const debug = participants.map(p => `• ${p.id} | admin: ${p.admin}`).join('\n')
+
   const result = `
-✅ *Resultado de Test Admin Detallado*
+✅ *Resultado de Test Admin Corregido*
 
 📍 Bot JID: ${botJid}
 📍 Tu JID: ${senderJid}
@@ -41,9 +42,6 @@ ${debug}
 `.trim()
 
   await m.reply(result)
-
-  console.log('=== PARTICIPANTES ===')
-  console.log(participants)
 }
 
 handler.command = /^test$/i
