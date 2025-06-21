@@ -1,4 +1,4 @@
-const handler = async (m, { conn, command }) => {
+const handler = async (m, { conn }) => {
   if (!m.isGroup) return m.reply('❌ Este comando solo funciona en grupos.')
 
   let groupMetadata = {}
@@ -8,14 +8,14 @@ const handler = async (m, { conn, command }) => {
     groupMetadata = await conn.groupMetadata(m.chat)
     participants = groupMetadata.participants || []
   } catch (e) {
-    return m.reply(`❌ No se pudo obtener la información del grupo.\n${e.message}`)
+    m.reply(`❌ Error al obtener groupMetadata: ${e.message}`)
   }
 
-  const botJid = (conn.user?.id || conn.user?.jid || '').split(':')[0]
-  const senderJid = m.sender.split(':')[0]
+  const botJid = conn.decodeJid(conn.user?.jid || '')
+  const senderJid = conn.decodeJid(m.sender)
 
-  const botParticipant = participants.find(p => p.id?.split(':')[0] === botJid)
-  const userParticipant = participants.find(p => p.id?.split(':')[0] === senderJid)
+  const botParticipant = participants.find(p => conn.decodeJid(p.id) === botJid)
+  const userParticipant = participants.find(p => conn.decodeJid(p.id) === senderJid)
 
   const isBotAdmin = botParticipant?.admin === 'admin' || botParticipant?.admin === 'superadmin'
   const isRAdmin = userParticipant?.admin === 'superadmin'
@@ -32,7 +32,7 @@ const handler = async (m, { conn, command }) => {
 
   await m.reply(result)
 
-  console.log('=== TEST ADMIN ===')
+  console.log('=== TEST ADMIN CORREGIDO ===')
   console.log('BOT JID:', botJid)
   console.log('SENDER JID:', senderJid)
   console.log('BOT PARTICIPANT:', botParticipant)
@@ -41,5 +41,5 @@ const handler = async (m, { conn, command }) => {
   console.log('isAdmin:', isAdmin)
 }
 
-handler.command = /^testadmin$/i
+handler.command = /^test$/i
 export default handler
