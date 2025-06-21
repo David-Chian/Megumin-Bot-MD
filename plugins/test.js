@@ -2,19 +2,20 @@ const handler = async (m, { conn }) => {
   if (!m.isGroup) return m.reply('❌ Este comando solo funciona en grupos.')
 
   const groupMetadata = await conn.groupMetadata(m.chat).catch(_ => null)
-  const participants = groupMetadata?.participants || []
+const participants = groupMetadata?.participants || []
 
   const sampleId = participants[0]?.id || ''
-  const domain = sampleId.includes('@lid') ? '@lid' : '@s.whatsapp.net'
-
-  const botJid = conn.decodeJid(conn.user?.jid || '').replace(/@.*/, '') + domain
+  const anyParticipant = participants[0]?.id || ''
+const domain = anyParticipant.includes('@lid') ? '@lid' : '@s.whatsapp.net'
+  const botJID = (conn.user?.id || conn.user?.jid || '').replace(/@.+/, '') + domain
   const senderLID = participants.find(p => p.id === m.sender)?.id || participants.find(p => p.admin)?.id || ''
   const senderJid = senderLID || m.sender.replace(/@.*/, '') + domain
 
-  const botParticipant = participants.find(p => p.id === botJid)
+  const botParticipant = participants.find(p => p.id === botJID)
+const isBotAdmin = botParticipant?.admin === 'admin' || botParticipant?.admin === 'superadmin'
   const userParticipant = participants.find(p => p.id === senderJid)
 
-  const isBotAdmin = botParticipant?.admin === 'admin' || botParticipant?.admin === 'superadmin'
+  
   const isRAdmin = userParticipant?.admin === 'superadmin'
   const isAdmin = isRAdmin || userParticipant?.admin === 'admin'
 
