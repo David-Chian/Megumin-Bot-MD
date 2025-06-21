@@ -3,6 +3,7 @@ const handler = async (m, { conn }) => {
 
   const groupMetadata = await conn.groupMetadata(m.chat).catch(() => null)
   const participants = groupMetadata?.participants || []
+
   const senderNumber = m.sender.replace(/\D/g, '')
   const botNumber = conn.user?.id?.replace(/\D/g, '')
 
@@ -38,5 +39,5 @@ ${debug}
   await m.reply(result)
 }
 
-handler.command = /^testadmin$/i
+handler.command = /^test$/i
 export default handler
