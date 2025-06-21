@@ -1,14 +1,17 @@
 const handler = async (m, { conn }) => {
   if (!m.isGroup) return m.reply('❌ Este comando solo funciona en grupos.')
 
-  const groupMetadata = await conn.groupMetadata(m.chat).catch(_ => null)
+  const groupMetadata = await conn.groupMetadata(m.chat).catch(() => null)
   const participants = groupMetadata?.participants || []
 
   const sampleId = participants[0]?.id || ''
   const domain = sampleId.includes('@lid') ? '@lid' : '@s.whatsapp.net'
 
-  const botJid = conn.decodeJid(conn.user?.jid || '').replace(/@.*/, '') + domain
-  const senderJid = conn.decodeJid(m.sender).replace(/@.*/, '') + domain
+  const botNumber = conn.user?.id || conn.user?.jid || ''
+  const botJid = participants.find(p => p.id.includes(botNumber.replace(/[^0-9]/g, '')))?.id || botNumber.replace(/@.*/, '') + domain
+
+  const senderNumber = m.sender.replace(/[^0-9]/g, '')
+  const senderJid = participants.find(p => p.id.includes(senderNumber))?.id || m.sender.replace(/@.*/, '') + domain
 
   const botParticipant = participants.find(p => p.id === botJid)
   const userParticipant = participants.find(p => p.id === senderJid)
