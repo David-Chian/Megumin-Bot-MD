@@ -214,19 +214,21 @@ let _user = global.db.data && global.db.data.users && global.db.data.users[m.sen
 
 const groupMetadata = m.isGroup ? await conn.groupMetadata(m.chat).catch(_ => null) : null
 const participants = groupMetadata?.participants || []
-const senderJid = m.sender
-const botJid = conn?.user?.id || ''
-const userData = participants.find(u => u.id === senderJid) || {}
-const bot = participants.find(u => u.id === botJid) || {}
+const getNumber = jid => jid.split('@')[0].replace(/[:]/g, '')
+
+const senderNum = getNumber(m.sender)
+const botNum = getNumber(conn?.user?.id || '')
+const userData = participants.find(p => getNumber(p.id) === senderNum) || {}
+const bot = participants.find(p => getNumber(p.id) === botNum) || {}
 const isRAdmin = userData?.admin === 'superadmin'
 const isAdmin = isRAdmin || userData?.admin === 'admin'
 const isBotAdmin = bot?.admin === 'admin' || bot?.admin === 'superadmin'
-
-console.log('Bot JID:', botJid)
-console.log('Sender JID:', senderJid)
-console.log('Bot in group:', bot)
-console.log('User in group:', userData)
-
+console.log('Sender JID:', m.sender)
+console.log('Sender Num:', senderNum)
+console.log('Bot JID:', conn?.user?.id)
+console.log('Bot Num:', botNum)
+console.log('User data:', userData)
+console.log('Bot data:', bot)
 const ___dirname = path.join(path.dirname(fileURLToPath(import.meta.url)), './plugins')
 for (let name in global.plugins) {
 let plugin = global.plugins[name]
