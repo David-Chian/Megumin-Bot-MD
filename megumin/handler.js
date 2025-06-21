@@ -214,13 +214,13 @@ let _user = global.db.data && global.db.data.users && global.db.data.users[m.sen
 
 const groupMetadata = m.isGroup ? await conn.groupMetadata(m.chat).catch(_ => null) : null
 const participants = groupMetadata?.participants || []
-const botJid = conn?.user?.id || ''
 const senderJid = m.sender
-const bot = participants.find(u => u.id === botJid) || {}
+const botJid = conn?.user?.id || ''
 const userData = participants.find(u => u.id === senderJid) || {}
-const isBotAdmin = bot?.admin === 'admin' || bot?.admin === 'superadmin'
+const bot = participants.find(u => u.id === botJid) || {}
 const isRAdmin = userData?.admin === 'superadmin'
 const isAdmin = isRAdmin || userData?.admin === 'admin'
+const isBotAdmin = bot?.admin === 'admin' || bot?.admin === 'superadmin'
 
 console.log('Bot JID:', botJid)
 console.log('Sender JID:', senderJid)
