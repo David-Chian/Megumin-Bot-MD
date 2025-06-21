@@ -1,18 +1,20 @@
 const handler = async (m, { conn }) => {
   if (!m.isGroup) return m.reply('❌ Este comando solo funciona en grupos.')
 
-  let groupMetadata = {}
-  let participants = []
-
+  let groupMetadata, participants
   try {
     groupMetadata = await conn.groupMetadata(m.chat)
-    participants = groupMetadata.participants || []
+    participants = groupMetadata?.participants || []
   } catch (e) {
-    m.reply(`❌ Error al obtener groupMetadata: ${e.message}`)
+    console.error('Error al obtener metadata:', e)
+    return m.reply('❌ No se pudo obtener metadata del grupo.')
   }
 
   const botJid = conn.decodeJid(conn.user?.jid || '')
   const senderJid = conn.decodeJid(m.sender)
+
+  const allParticipantIds = participants.map(p => conn.decodeJid(p.id))
+  const debug = participants.map(p => `• ${conn.decodeJid(p.id)} | admin: ${p.admin}`).join('\n')
 
   const botParticipant = participants.find(p => conn.decodeJid(p.id) === botJid)
   const userParticipant = participants.find(p => conn.decodeJid(p.id) === senderJid)
@@ -21,24 +23,27 @@ const handler = async (m, { conn }) => {
   const isRAdmin = userParticipant?.admin === 'superadmin'
   const isAdmin = isRAdmin || userParticipant?.admin === 'admin'
 
-  let result = `✅ *Resultado de Test Admin*\n\n`
-  result += `📍 Bot JID: ${botJid}\n`
-  result += `📍 Tu JID: ${senderJid}\n`
-  result += `\n👤 *Usuario*\n`
-  result += `- Admin: ${isAdmin ? '✅ Sí' : '❌ No'}\n`
-  result += `- Superadmin: ${isRAdmin ? '✅ Sí' : '❌ No'}\n`
-  result += `\n🤖 *Bot*\n`
-  result += `- Admin: ${isBotAdmin ? '✅ Sí' : '❌ No'}\n`
+  const result = `
+✅ *Resultado de Test Admin Detallado*
+
+📍 Bot JID: ${botJid}
+📍 Tu JID: ${senderJid}
+
+👤 *Usuario*
+- Admin: ${isAdmin ? '✅ Sí' : '❌ No'}
+- Superadmin: ${isRAdmin ? '✅ Sí' : '❌ No'}
+
+🤖 *Bot*
+- Admin: ${isBotAdmin ? '✅ Sí' : '❌ No'}
+
+👥 *Participantes del grupo*:
+${debug}
+`.trim()
 
   await m.reply(result)
 
-  console.log('=== TEST ADMIN CORREGIDO ===')
-  console.log('BOT JID:', botJid)
-  console.log('SENDER JID:', senderJid)
-  console.log('BOT PARTICIPANT:', botParticipant)
-  console.log('USER PARTICIPANT:', userParticipant)
-  console.log('isBotAdmin:', isBotAdmin)
-  console.log('isAdmin:', isAdmin)
+  console.log('=== PARTICIPANTES ===')
+  console.log(participants)
 }
 
 handler.command = /^test$/i
