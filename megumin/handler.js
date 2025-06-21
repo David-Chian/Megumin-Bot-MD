@@ -218,11 +218,11 @@ const groupMetadata = m.isGroup
 const participants = m.isGroup ? groupMetadata?.participants || [] : []
 const botNumber = conn.user?.jid || this.user?.jid
 const botJid = conn.decodeJid(botNumber).split(':')[0]
-const botParticipant = participants.find(p =>
+const bot = participants.find(p =>
   conn.decodeJid(p.id).split(':')[0] === botJid
 )
 const isBotAdmin =
-  botParticipant?.admin === 'admin' || botParticipant?.admin === 'superadmin'
+  bot?.admin === 'admin' || bot?.admin === 'superadmin'
 const senderJid = conn.decodeJid(m.sender).split(':')[0]
 const userParticipant = participants.find(p =>
   conn.decodeJid(p.id).split(':')[0] === senderJid
