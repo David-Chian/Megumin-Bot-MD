@@ -222,6 +222,11 @@ const isBotAdmin = bot?.admin === 'admin' || bot?.admin === 'superadmin'
 const isRAdmin = userData?.admin === 'superadmin'
 const isAdmin = isRAdmin || userData?.admin === 'admin'
 
+console.log('Bot JID:', botJid)
+console.log('Sender JID:', senderJid)
+console.log('Bot in group:', bot)
+console.log('User in group:', userData)
+
 const ___dirname = path.join(path.dirname(fileURLToPath(import.meta.url)), './plugins')
 for (let name in global.plugins) {
 let plugin = global.plugins[name]
