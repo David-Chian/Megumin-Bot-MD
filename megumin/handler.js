@@ -231,6 +231,13 @@ const userParticipant = participants.find(p =>
 const isRAdmin = userParticipant?.admin === 'superadmin' || false
 const isAdmin = isRAdmin || userParticipant?.admin === 'admin' || false
 
+console.log('📍 BOT JID:', botJid)
+console.log('📍 SENDER JID:', senderJid)
+console.log('📍 BOT PARTICIPANT:', botParticipant)
+console.log('📍 USER PARTICIPANT:', userParticipant)
+console.log('✅ isBotAdmin:', isBotAdmin)
+console.log('✅ isAdmin:', isAdmin)
+
 const ___dirname = path.join(path.dirname(fileURLToPath(import.meta.url)), './plugins')
 for (let name in global.plugins) {
 let plugin = global.plugins[name]
