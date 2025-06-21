@@ -233,7 +233,7 @@ const isAdmin = isRAdmin || userParticipant?.admin === 'admin' || false
 
 console.log('📍 BOT JID:', botJid)
 console.log('📍 SENDER JID:', senderJid)
-console.log('📍 BOT PARTICIPANT:', botParticipant)
+console.log('📍 BOT PARTICIPANT:', bot)
 console.log('📍 USER PARTICIPANT:', userParticipant)
 console.log('✅ isBotAdmin:', isBotAdmin)
 console.log('✅ isAdmin:', isAdmin)
