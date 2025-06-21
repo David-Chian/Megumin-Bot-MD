@@ -216,18 +216,16 @@ const groupMetadata = m.isGroup
   ? await conn.groupMetadata(m.chat).catch(_ => null)
   : {}
 const participants = m.isGroup ? groupMetadata?.participants || [] : []
-const botNumber = conn.user?.jid || this.user?.jid
-const botJid = conn.decodeJid(botNumber).split(':')[0]
+const botJid = conn.decodeJid(conn.user?.jid || this.user?.jid)
 const bot = participants.find(p =>
-  conn.decodeJid(p.id).split(':')[0] === botJid
+  conn.decodeJid(p.id) === botJid
 )
 const isBotAdmin =
   bot?.admin === 'admin' || bot?.admin === 'superadmin'
-const senderJid = conn.decodeJid(m.sender).split(':')[0]
+const senderJid = conn.decodeJid(m.sender)
 const userParticipant = participants.find(p =>
-  conn.decodeJid(p.id).split(':')[0] === senderJid
+  conn.decodeJid(p.id) === senderJid
 )
-
 const isRAdmin = userParticipant?.admin === 'superadmin' || false
 const isAdmin = isRAdmin || userParticipant?.admin === 'admin' || false
 
