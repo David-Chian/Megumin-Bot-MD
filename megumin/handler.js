@@ -212,31 +212,16 @@ const isPrems = isROwner || global.db.data.users[m.sender].premiumTime > 0
         let usedPrefix
 let _user = global.db.data && global.db.data.users && global.db.data.users[m.sender]
 
-let groupMetadata = {}
-let participants = []
+const groupMetadata = m.isGroup ? await conn.groupMetadata(m.chat).catch(_ => null) : null
+const participants = groupMetadata?.participants || []
 
-if (m.isGroup) {
-  try {
-    groupMetadata = await conn.groupMetadata(m.chat)
-    participants = groupMetadata.participants || []
-  } catch (e) {
-    console.error('❌ Error al obtener groupMetadata:', e)
-  }
-}
-const botJid = (conn.user?.id || conn.user?.jid || this.user?.jid || '').split(':')[0]
-const senderJid = m.sender.split(':')[0]
-const bot = participants.find(p => p.id?.split(':')[0] === botJid)
-const userParticipant = participants.find(p => p.id?.split(':')[0] === senderJid)
-const isBotAdmin = bot?.admin === 'admin' || bot?.admin === 'superadmin'
-const isRAdmin = userParticipant?.admin === 'superadmin'
-const isAdmin = isRAdmin || userParticipant?.admin === 'admin'
+const userGroup = participants.find(u => conn.decodeJid(u.id) === m.sender) || {}
+const botNumber = conn.decodeJid(conn.user?.id || '')
+const bot = participants.find(u => conn.decodeJid(u.id) === botNumber) || {}
 
-console.log('📍 BOT JID:', botJid)
-console.log('📍 SENDER JID:', senderJid)
-console.log('📍 BOT PARTICIPANT:', bot)
-console.log('📍 USER PARTICIPANT:', userParticipant)
-console.log('✅ isBotAdmin:', isBotAdmin)
-console.log('✅ isAdmin:', isAdmin)
+const isRAdmin = userGroup?.admin === "superadmin"
+const isAdmin = isRAdmin || userGroup?.admin === "admin"
+const isBotAdmin = bot?.admin === "admin" || bot?.admin === "superadmin"
 
 const ___dirname = path.join(path.dirname(fileURLToPath(import.meta.url)), './plugins')
 for (let name in global.plugins) {
