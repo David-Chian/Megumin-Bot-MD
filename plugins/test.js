@@ -4,41 +4,24 @@ const handler = async (m, { conn }) => {
   const groupMetadata = await conn.groupMetadata(m.chat).catch(_ => null)
   const participants = groupMetadata?.participants || []
 
-  const sampleId = participants[0]?.id || ''
-  const domain = sampleId.includes('@lid') ? '@lid' : '@s.whatsapp.net'
+  const admins = participants.filter(p => p.admin === 'admin' || p.admin === 'superadmin')
 
-  const botJid = conn.decodeJid(conn.user?.jid || '').replace(/@.*/, '') + domain
-  const senderLID = participants.find(p => p.id === m.sender)?.id || participants.find(p => p.admin)?.id || ''
-  const senderJid = senderLID || m.sender.replace(/@.*/, '') + domain
+  if (admins.length === 0) {
+    return m.reply('No se detectaron administradores en este grupo.')
+  }
 
-  const botParticipant = participants.find(p => p.id === botJid)
-  const userParticipant = participants.find(p => p.id === senderJid)
-
-  const isBotAdmin = botParticipant?.admin === 'admin' || botParticipant?.admin === 'superadmin'
-  const isRAdmin = userParticipant?.admin === 'superadmin'
-  const isAdmin = isRAdmin || userParticipant?.admin === 'admin'
-
-  const debug = participants.map(p => `• ${p.id} | admin: ${p.admin}`).join('\n')
+  const adminList = admins.map(p => 
+    `• ${p.id} (${p.admin === 'superadmin' ? 'Superadmin' : 'Admin'})`
+  ).join('\n')
 
   const result = `
-✅ *Resultado de Test Admin Final*
+✅ *Administradores del grupo:*
 
-📍 Bot JID: ${botJid}
-📍 Tu JID (detectado): ${senderJid}
-
-👤 *Usuario*
-- Admin: ${isAdmin ? '✅ Sí' : '❌ No'}
-- Superadmin: ${isRAdmin ? '✅ Sí' : '❌ No'}
-
-🤖 *Bot*
-- Admin: ${isBotAdmin ? '✅ Sí' : '❌ No'}
-
-👥 *Participantes del grupo*:
-${debug}
+${adminList}
 `.trim()
 
   await m.reply(result)
 }
 
-handler.command = /^testadmin$/i
+handler.command = /^test$/i
 export default handler
