@@ -4,23 +4,18 @@ const handler = async (m, { conn }) => {
   const groupMetadata = await conn.groupMetadata(m.chat).catch(() => null)
   const participants = groupMetadata?.participants || []
 
-  const sampleId = participants[0]?.id || ''
-  const domain = sampleId.includes('@lid') ? '@lid' : '@s.whatsapp.net'
+  const debug = participants.map(p => `• ${p.id} | admin: ${p.admin}`).join('\n')
+  const senderNumber = m.sender.replace(/\D/g, '')
+  const botNumber = conn.user?.id?.replace(/\D/g, '')
+  const userParticipant = participants.find(p => p.id.replace(/\D/g, '') === senderNumber)
+  const botParticipant = participants.find(p => p.id.replace(/\D/g, '') === botNumber)
 
-  const botNumber = conn.user?.id || conn.user?.jid || ''
-  const botJid = participants.find(p => p.id.includes(botNumber.replace(/[^0-9]/g, '')))?.id || botNumber.replace(/@.*/, '') + domain
-
-  const senderNumber = m.sender.replace(/[^0-9]/g, '')
-  const senderJid = participants.find(p => p.id.includes(senderNumber))?.id || m.sender.replace(/@.*/, '') + domain
-
-  const botParticipant = participants.find(p => p.id === botJid)
-  const userParticipant = participants.find(p => p.id === senderJid)
+  const senderJid = userParticipant?.id || m.sender
+  const botJid = botParticipant?.id || conn.user?.jid
 
   const isBotAdmin = botParticipant?.admin === 'admin' || botParticipant?.admin === 'superadmin'
   const isRAdmin = userParticipant?.admin === 'superadmin'
   const isAdmin = isRAdmin || userParticipant?.admin === 'admin'
-
-  const debug = participants.map(p => `• ${p.id} | admin: ${p.admin}`).join('\n')
 
   const result = `
 ✅ *Resultado de Test Admin Final*
