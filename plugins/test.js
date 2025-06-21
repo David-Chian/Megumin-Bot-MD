@@ -24,7 +24,6 @@ const isBotAdmin = botParticipant?.admin === 'admin' || botParticipant?.admin ==
   const result = `
 ✅ *Resultado de Test Admin Final*
 
-📍 Bot JID: ${botJid}
 📍 Tu JID (detectado): ${senderJid}
 
 👤 *Usuario*
