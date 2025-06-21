@@ -218,8 +218,8 @@ const senderJID = m.sender
 const botJID = conn?.user?.jid
 const userGroup = participants.find(p => p.id === senderJID) || {}
 const bot = participants.find(p => p.id === botJID) || {}
-const isSuperAdmin = userGroup?.admin === 'superadmin'
-const isAdmin = isSuperAdmin || userGroup?.admin === 'admin'
+const isRAdmin = userGroup?.admin === 'superadmin'
+const isAdmin = isRAdmin || userGroup?.admin === 'admin'
 const isBotAdmin = bot?.admin === 'admin' || bot?.admin === 'superadmin'
 
 console.log('Bot JID:', botJID)
@@ -228,6 +228,7 @@ console.log('Bot group:', bot)
 console.log('User group:', userGroup)
 console.log('isBotAdmin:', isBotAdmin)
 console.log('isAdmin:', isAdmin)
+console.log('superadmin:', isRAdmin)
 
 const ___dirname = path.join(path.dirname(fileURLToPath(import.meta.url)), './plugins')
 for (let name in global.plugins) {
