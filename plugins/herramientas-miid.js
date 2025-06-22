@@ -21,5 +21,4 @@ const handler = async (m, { conn }) => {
 }
 
 handler.command = ['miid']
-handler.group = true
 export default handler
