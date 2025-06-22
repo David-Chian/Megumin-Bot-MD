@@ -1,20 +1,33 @@
-const lidMapTemp = {}
+import fs from 'fs'
+
+const LID_PATH = './lidmap.json'
+function guardarLidMap(jidS, jidL) {
+  let db = {}
+  if (fs.existsSync(LID_PATH)) {
+    db = JSON.parse(fs.readFileSync(LID_PATH))
+  }
+  db[jidS] = jidL
+  fs.writeFileSync(LID_PATH, JSON.stringify(db, null, 2))
+}
 
 const handler = async (m, { conn }) => {
+  let db = {}
+  if (fs.existsSync(LID_PATH)) {
+    db = JSON.parse(fs.readFileSync(LID_PATH))
+  }
   const jid = m.sender
-  let lidGuardado = lidMapTemp[jid]
-
+  let lidGuardado = db[jid]
   if (m.isGroup) {
     const groupMetadata = await conn.groupMetadata(m.chat).catch(_ => null)
     const participants = groupMetadata?.participants || []
 
-    const posibleLid = participants.find(p =>
-      p.id.includes('@lid') && p.id.includes(jid.split('@')[0])
-    )
+    const posibleLid = participants.find(p => {
+      return p.id.includes('@lid') && p.id.includes(jid.split('@')[0])
+    })
 
     if (posibleLid) {
       lidGuardado = posibleLid.id
-      lidMapTemp[jid] = lidGuardado
+      guardarLidMap(jid, lidGuardado)
     }
   }
 
