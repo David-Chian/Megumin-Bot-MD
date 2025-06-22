@@ -1,24 +1,23 @@
 const handler = async (m, { conn }) => {
-  if (m.sender.includes('@lid')) {
-    return m.reply(`🆔 Tu JID es:\n${m.sender}`)
-  }
+  if (!m.isGroup) return m.reply('❌ Este comando solo funciona en grupos.')
 
   const groupMetadata = await conn.groupMetadata(m.chat).catch(_ => null)
   if (!groupMetadata) return m.reply('❌ No se pudo obtener la información del grupo.')
 
   const participants = groupMetadata.participants || []
-  const number = m.sender.split('@')[0]
-  const user = participants.find(p => p.id.includes(number) && p.id.includes('@lid'))
+  const senderNumber = m.sender.split('@')[0]
+  const probable = participants.find(p => p.id.includes(senderNumber) && p.id.includes('@lid'))
 
-  if (!user) {
-    const list = participants
-      .map(p => `• ${p.id}`)
-      .join('\n')
-    return m.reply(`❌ No se encontró tu ID tipo @lid.\n\nParticipantes del grupo:\n${list}`)
+  if (probable) {
+    return m.reply(`🆔 Tu ID tipo @lid es:\n${probable.id}`)
   }
+  const lidList = participants
+    .filter(p => p.id.includes('@lid'))
+    .map(p => `• ${p.id}`)
+    .join('\n')
 
-  await m.reply(`🆔 Tu ID (JID) en este grupo es:\n${user.id}`)
+  return m.reply(`❌ No se pudo determinar con certeza tu ID tipo @lid.\n\nLista de participantes tipo @lid:\n${lidList}`)
 }
 
-handler.command = ['miid']
+handler.command = /^miid$/i
 export default handler
