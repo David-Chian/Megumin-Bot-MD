@@ -188,9 +188,6 @@ console.error(e)
 
         if (typeof m.text !== "string")
             m.text = ""
-        const user = global.db.data.users[m.sender]
-        const chat = global.db.data.chats[m.chat]
-        globalThis.setting = global.db.data.settings[this.user.jid]
         const detectwhat = m.sender.includes('@lid') ? '@lid' : '@s.whatsapp.net'
         const isROwner = [...global.owner.map(([number]) => number)].map(v => v.replace(/[^0-9]/g, "") + detectwhat).includes(m.sender)
 const isOwner = isROwner || m.fromMe
