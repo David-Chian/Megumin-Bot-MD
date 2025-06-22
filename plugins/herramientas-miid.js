@@ -1,17 +1,28 @@
+const lidMapTemp = {}
+
 const handler = async (m, { conn }) => {
-  const userId = m.sender
-  if (userId.includes('@lid')) {
-    return m.reply(`🆔 Tu ID es:\n${userId}`)
+  const jid = m.sender
+  let lidGuardado = lidMapTemp[jid]
+
+  if (m.isGroup) {
+    const groupMetadata = await conn.groupMetadata(m.chat).catch(_ => null)
+    const participants = groupMetadata?.participants || []
+
+    const posibleLid = participants.find(p =>
+      p.id.includes('@lid') && p.id.includes(jid.split('@')[0])
+    )
+
+    if (posibleLid) {
+      lidGuardado = posibleLid.id
+      lidMapTemp[jid] = lidGuardado
+    }
   }
 
-  const contacts = await conn.onWhatsApp(userId.split('@')[0])
-  const jid = contacts?.[0]?.jid
-
-  if (jid && jid.includes('@lid')) {
-    return m.reply(`🆔 Tu ID tipo @lid es:\n${jid}`)
+  if (lidGuardado) {
+    return m.reply(`🆔 Tu ID tipo @lid es:\n${lidGuardado}`)
+  } else {
+    return m.reply(`❌ No se pudo detectar tu ID tipo @lid.\nHabla en un grupo donde esté el bot para que pueda asociarlo.`)
   }
-
-  return m.reply(`🆔 Tu ID es:\n${userId}`)
 }
 
 handler.command = /^miid$/i
