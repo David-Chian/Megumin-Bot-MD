@@ -28,19 +28,6 @@ Megumin es un bot de WhatsApp multifuncional basado en `baileys`. Este bot ofrec
 
 ---
 
-### **`☁️ Sky Ultra Plus 🚀`**
-<a href="https://dash.skyultraplus.com/"><img src="https://files.catbox.moe/62pqnw.jpg" height="100px"></a>
-
-<details>
- <summary><b>:paperclip: Enlaces Importantes</b></summary>
-
-- **Dash:** [`Aquí`](https://dash.skyultraplus.com)
-- **Panel:** [`Aquí`](https://panel.skyultraplus.com)
-
-</details>
-
----
-
 ## **`🔥 Despliegue en BoxMineWorld 🚀`**
 
 <a href="https://boxmineworld.com">
