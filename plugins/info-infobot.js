@@ -70,7 +70,7 @@ showAdAttribution: !![],
     footer: wm,
     headerType: 6,
   };
-  conn.sendMessage(m.chat, Message, { quoted: fakegif2 });
+  conn.sendMessage(m.chat, Message, { quoted: m });
 };
 handler.help = ["infobot", "speed"];
 handler.tags = ["info", "tools"];
