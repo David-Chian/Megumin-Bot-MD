@@ -2,7 +2,7 @@ import axios from 'axios'
 import FormData from 'form-data'
 import uploadImage from '../lib/uploadImage.js'
 
-export async function upscale(imageUrl, resolution = '1080p', enhance = true) {
+async function upscale(imageUrl, resolution = '1080p', enhance = true) {
   if (!/^https?:\/\/.+\.(jpe?g|png|webp|gif)$/i.test(imageUrl))
     throw new Error('ga valid, dasar senpai bodoh!')
 
