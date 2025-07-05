@@ -49,18 +49,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) return conn.reply(m.chat, '💜 *¿Qué quieres buscar en TikTok?*', m)
 
   try {
-    conn.reply(m.chat, '💜 *Descargando videos...*', m, {
-      contextInfo: { externalAdReply: {
-        mediaUrl: null,
-        mediaType: 1,
-        showAdAttribution: true,
-        title: botname,
-        body: wm,
-        previewType: 0,
-        thumbnailUrl: icon,
-        sourceUrl: channel
-      }}
-    })
+    conn.reply(m.chat, '💜 *Descargando videos...*', m)
 
     const { data: response } = await axios.get('https://apis-starlights-team.koyeb.app/starlight/tiktoksearch?text=' + text)
     let searchResults = response.data
