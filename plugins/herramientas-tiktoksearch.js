@@ -1,108 +1,87 @@
-import axios from 'axios';
-const {
-  proto,
-  generateWAMessageFromContent,
-  prepareWAMessageMedia,
-  generateWAMessageContent,
-  getDevice
-} = (await import("@whiskeysockets/baileys")).default;
+import axios from 'axios'
+import baileys from '@whiskeysockets/baileys'
+const { generateWAMessageFromContent, generateWAMessageContent, proto } = baileys
 
-let handler = async (message, { conn, text, usedPrefix, command }) => {
-  if (!text) {
-    return conn.reply(message.chat, "❕️ *¿QUÉ BÚSQUEDA DESEA REALIZAR EN TIKTOK?*", message, rcanal);
-  }
+async function sendAlbumMessage(jid, medias, conn, options = {}) {
+  const caption = options.caption || ''
+  const delay = !isNaN(options.delay) ? options.delay : 500
 
-  async function createVideoMessage(url) {
-    const { videoMessage } = await generateWAMessageContent({
-      video: { url }
-    }, {
-      upload: conn.waUploadToServer
-    });
-    return videoMessage;
-  }
-
-  function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+  const album = generateWAMessageFromContent(jid, {
+    messageContextInfo: {},
+    albumMessage: {
+      expectedImageCount: 0,
+      expectedVideoCount: medias.length,
+      ...(options.quoted
+        ? {
+            contextInfo: {
+              remoteJid: options.quoted.key.remoteJid,
+              fromMe: options.quoted.key.fromMe,
+              stanzaId: options.quoted.key.id,
+              participant: options.quoted.key.participant || options.quoted.key.remoteJid,
+              quotedMessage: options.quoted.message,
+            },
+          }
+        : {}),
     }
+  }, {})
+
+  await conn.relayMessage(jid, album.message, { messageId: album.key.id })
+
+  for (let i = 0; i < medias.length; i++) {
+    const { url } = medias[i]
+    const videoMessage = await baileys.generateWAMessage(jid, {
+      video: { url },
+      ...(i === 0 ? { caption } : {})
+    }, { upload: conn.waUploadToServer })
+
+    videoMessage.message.messageContextInfo = {
+      messageAssociation: { associationType: 1, parentMessageKey: album.key },
+    }
+
+    await conn.relayMessage(jid, videoMessage.message, { messageId: videoMessage.key.id })
+    await baileys.delay(delay)
   }
+
+  return album
+}
+
+let handler = async (m, { conn, text, usedPrefix, command }) => {
+  if (!text) return conn.reply(m.chat, '💜 *¿Qué quieres buscar en TikTok?*', m)
 
   try {
-    conn.reply(message.chat, '✨️ *ENVIANDO SUS RESULTADOS..*', message, {
-      contextInfo: { 
-        externalAdReply: { 
-          mediaUrl: null, 
-          mediaType: 1, 
-          showAdAttribution: true,
-          title: '♡  ͜ ۬︵࣪᷼⏜݊᷼𝘿𝙚𝙨𝙘𝙖𝙧𝙜𝙖𝙨⏜࣪᷼︵۬ ͜ ',
-          body: '<(✿◠‿◠)> 𝙈𝙚𝙜𝙪𝙢𝙞𝙣🔥',
-          previewType: 0, 
-          thumbnail: logo,
-          sourceUrl: redes 
-        }
-      }
-    });
+    conn.reply(m.chat, '💜 *Descargando videos...*', m, {
+      contextInfo: { externalAdReply: {
+        mediaUrl: null,
+        mediaType: 1,
+        showAdAttribution: true,
+        title: botname,
+        body: wm,
+        previewType: 0,
+        thumbnailUrl: icon,
+        sourceUrl: channel
+      }}
+    })
 
-    let results = [];
-    let { data } = await axios.get("https://apis-starlights-team.koyeb.app/starlight/tiktoksearch?text=" + text);
-    let searchResults = data.data;
-    shuffleArray(searchResults);
-    let topResults = searchResults.splice(0, 7);
+    const { data: response } = await axios.get('https://apis-starlights-team.koyeb.app/starlight/tiktoksearch?text=' + text)
+    let searchResults = response.data
+    searchResults = searchResults.sort(() => Math.random() - 0.5)
+    let selectedResults = searchResults.slice(0, 5)
 
-    for (let result of topResults) {
-      results.push({
-        body: proto.Message.InteractiveMessage.Body.fromObject({ text: null }),
-        footer: proto.Message.InteractiveMessage.Footer.fromObject({ text: titulowm }),
-        header: proto.Message.InteractiveMessage.Header.fromObject({
-          title: '' + result.title,
-          hasMediaAttachment: true,
-          videoMessage: await createVideoMessage(result.nowm)
-        }),
-        nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.fromObject({ buttons: [] })
-      });
-    }
+    const videos = selectedResults.map(result => ({
+      type: "video",
+      url: result.nowm
+    }))
 
-    const messageContent = generateWAMessageFromContent(message.chat, {
-      viewOnceMessage: {
-        message: {
-          messageContextInfo: {
-            deviceListMetadata: {},
-            deviceListMetadataVersion: 2
-          },
-          interactiveMessage: proto.Message.InteractiveMessage.fromObject({
-            body: proto.Message.InteractiveMessage.Body.create({
-              text: "✨️ RESULTADO DE: " + text
-            }),
-            footer: proto.Message.InteractiveMessage.Footer.create({
-              text: "ᥫᩣᎠ꯭I𝚫⃥꯭M꯭Ꭷ꯭Ꮑ꯭Ꭰ࠭⋆̟(◣_◢)凸"
-            }),
-            header: proto.Message.InteractiveMessage.Header.create({
-              hasMediaAttachment: false
-            }),
-            carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({
-              cards: [...results]
-            })
-          })
-        }
-      }
-    }, {
-      quoted: message
-    });
+    await sendAlbumMessage(m.chat, videos, conn, { caption: `💜 Resultados para: ${text}`, quoted: m })
 
-    await conn.relayMessage(message.chat, messageContent.message, {
-      messageId: messageContent.key.id
-    });
   } catch (error) {
-    console.error(error);
-    conn.reply(message.chat, `❌️ *OCURRIÓ UN ERROR:* ${error.message}`, message);
+    console.error(error)
+    await conn.reply(m.chat, '⚠️ Error al buscar o enviar los videos.', m)
   }
-};
+}
 
-handler.help = ["tiktoksearch <txt>"];
-handler.chocolates = 1;
+handler.help = ['tiktoksearch <texto>']
 handler.register = true
-handler.tags = ["buscador"];
-handler.command = ["tiktoksearch", "tts", "tiktoks"];
-
-export default handler;
+handler.tags = ['buscador']
+handler.command = ['tiktoksearch', 'tiktoks']
+export default handler
