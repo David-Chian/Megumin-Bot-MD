@@ -53,34 +53,58 @@ await conn.sendMessage(m.chat, { text: noadmingp, mentions: [`${m.sender}`,`${m.
 return
 
 } if (chat.welcome && m.messageStubType === 27) {
-    conn.sendMessage(m.chat, { audio: { url: vn }, 
-    contextInfo: { forwardedNewsletterMessageInfo: { 
-    newsletterJid: channelRD.id,
-    serverMessageId: '', 
-    newsletterName: channelRD.name }, forwardingScore: 9999999, isForwarded: true, mentionedJid: getMentionedJid(), "externalAdReply": { 
-    "title": `  ͟͞ Ｗ Ｅ Ｌ Ｃ Ｏ Ｍ Ｅ ͟͞  `, 
-    "body": `${userName}`, 
-    "previewType": "PHOTO", 
-    "thumbnailUrl": null,
-    "thumbnail": icons, 
-    "sourceUrl": redes, 
-    "showAdAttribution": true}}, 
-     seconds: '4556', ptt: true, mimetype: 'audio/mpeg', fileName: `bienvenida.mp3` }, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
+      await conn.sendMessage(m.chat, {
+    audio: { url: vn },
+    contextInfo: {
+      forwardingScore: 9999999,
+      isForwarded: true,
+      mentionedJid: getMentionedJid(),
+      externalAdReply: {
+        title: `  ͟͞ Ｗ Ｅ Ｌ Ｃ Ｏ Ｍ Ｅ ͟͞  `,
+        body: `${userName}`,
+        previewType: "PHOTO",
+        thumbnailUrl: null,
+        thumbnail: icons,
+        sourceUrl: redes,
+        showAdAttribution: true
+      }
+    },
+    seconds: '4556',
+    ptt: true,
+    mimetype: 'audio/mpeg',
+    fileName: 'bienvenida.mp3'
+  }, {
+    quoted: m,
+    ephemeralExpiration: 24 * 60 * 100,
+    disappearingMessagesInChat: 24 * 60 * 100
+  });
 
 } if (chat.welcome && (m.messageStubType === 28 || m.messageStubType === 32)) {
-    conn.sendMessage(m.chat, { audio: { url: vn2 }, 
-    contextInfo: { forwardedNewsletterMessageInfo: { 
-    newsletterJid: channelRD.id,
-    serverMessageId: '', 
-    newsletterName: channelRD.name }, forwardingScore: 9999999, isForwarded: true, mentionedJid: getMentionedJid(), "externalAdReply": { 
-    "title": `  ͟͞ Ａ Ｄ Ｉ Ｏ Ｓ ͟͞  `, 
-    "body": `${userName}, se despide.`, 
-    "previewType": "PHOTO", 
-    "thumbnailUrl": null,
-    "thumbnail": icons, 
-    "sourceUrl": redes, 
-    "showAdAttribution": true}}, 
-     seconds: '4556', ptt: true, mimetype: 'audio/mpeg', fileName: `bye.mp3` }, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
+    await conn.sendMessage(m.chat, {
+    audio: { url: vn2 },
+    contextInfo: {
+      forwardingScore: 9999999,
+      isForwarded: true,
+      mentionedJid: getMentionedJid(),
+      externalAdReply: {
+        title: `  ͟͞ Ａ Ｄ Ｉ Ｏ Ｓ ͟͞  `,
+        body: `${userName}, se despide.`,
+        previewType: "PHOTO",
+        thumbnailUrl: null,
+        thumbnail: icons,
+        sourceUrl: redes,
+        showAdAttribution: true
+      }
+    },
+    seconds: '4556',
+    ptt: true,
+    mimetype: 'audio/mpeg',
+    fileName: 'bye.mp3'
+  }, {
+    quoted: m,
+    ephemeralExpiration: 24 * 60 * 100,
+    disappearingMessagesInChat: 24 * 60 * 100
+  });
 
 } else {
 if (m.messageStubType == 2) return
