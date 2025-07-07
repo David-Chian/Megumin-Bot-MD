@@ -62,7 +62,7 @@ return
     "body": `${userName}`, 
     "previewType": "PHOTO", 
     "thumbnailUrl": null,
-    "thumbnail": icons, 
+    "thumbnail": icono, 
     "sourceUrl": redes, 
     "showAdAttribution": true}}, 
      seconds: '4556', ptt: true, mimetype: 'audio/mpeg', fileName: `bienvenida.mp3` }, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
@@ -77,7 +77,7 @@ return
     "body": `${userName}, se despide.`, 
     "previewType": "PHOTO", 
     "thumbnailUrl": null,
-    "thumbnail": icons, 
+    "thumbnail": icono, 
     "sourceUrl": redes, 
     "showAdAttribution": true}}, 
      seconds: '4556', ptt: true, mimetype: 'audio/mpeg', fileName: `bye.mp3` }, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
