@@ -26,7 +26,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
     "body": `${userName}`, 
     "previewType": "PHOTO", 
  //  "thumbnailUrl": null,
-    "thumbnailUrl": icons, 
+    "thumbnailUrl": icono, 
     "sourceUrl": redes, 
     "showAdAttribution": true}}, 
      seconds: '4556', ptt: true, mimetype: 'audio/mpeg', fileName: `error.mp3` }, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
@@ -42,7 +42,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
     "body": `${userName}, se despide.`, 
     "previewType": "PHOTO", 
   // "thumbnailUrl": null,
-    "thumbnailUrl": icons, 
+    "thumbnailUrl": icono, 
     "sourceUrl": redes, 
     "showAdAttribution": true}}, 
      seconds: '4556', ptt: true, mimetype: 'audio/mpeg', fileName: `error.mp3` }, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
