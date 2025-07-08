@@ -226,7 +226,7 @@ const groupMetadata = m.isGroup
 
 const participants = m.isGroup ? (groupMetadata.participants || []) : []
 
-const userGroup = participants.find(
+const user = participants.find(
   p => p.id === senderLid || p.id === senderJid
 ) || {}
 
@@ -234,8 +234,8 @@ const bot = participants.find(
   p => p.id === botLid || p.id === botJid
 ) || {}
 
-const isRAdmin = userGroup?.admin === "superadmin"
-const isAdmin = isRAdmin || userGroup?.admin === "admin"
+const isRAdmin = user?.admin === "superadmin"
+const isAdmin = isRAdmin || user?.admin === "admin"
 const isBotAdmin = !!bot?.admin
 
 const ___dirname = path.join(path.dirname(fileURLToPath(import.meta.url)), './plugins')
