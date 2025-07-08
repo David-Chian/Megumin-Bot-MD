@@ -209,20 +209,33 @@ const isPrems = isROwner || global.db.data.users[m.sender].premiumTime > 0
         let usedPrefix
 let _user = global.db.data && global.db.data.users && global.db.data.users[m.sender]
 
-const groupMetadata = (m.isGroup ? ((conn.chats[m.chat] || {}).metadata || await this.groupMetadata(m.chat).catch(_ => null)) : {}) || {}
-const participants = (m.isGroup ? groupMetadata.participants : []) || []
-const normalizeJid = jid => jid?.replace(/[^0-9]/g, '')
-const cleanJid = jid => jid?.split(':')[0] || ''
-const senderNum = normalizeJid(m.sender)
-const botNums = [this.user.jid, this.user.lid].map(j => normalizeJid(cleanJid(j)))
-const user = m.isGroup 
-  ? participants.find(u => normalizeJid(u.id) === senderNum) 
+async function getLidFromJid(id, conn) {
+  if (id.endsWith('@lid')) return id
+  const res = await conn.onWhatsApp(id).catch(() => [])
+  return res[0]?.lid || id
+}
+
+const senderLid = await getLidFromJid(m.sender, conn)
+const botLid = await getLidFromJid(conn.user.jid, conn)
+const senderJid = m.sender
+const botJid = conn.user.jid
+
+const groupMetadata = m.isGroup
+  ? ((conn.chats[m.chat] || {}).metadata || await this.groupMetadata(m.chat).catch(_ => null))
   : {}
-const bot = m.isGroup 
-  ? participants.find(u => botNums.includes(normalizeJid(u.id))) 
-  : {}
-const isRAdmin = user?.admin === 'superadmin'
-const isAdmin = isRAdmin || user?.admin === 'admin'
+
+const participants = m.isGroup ? (groupMetadata.participants || []) : []
+
+const userGroup = participants.find(
+  p => p.id === senderLid || p.id === senderJid
+) || {}
+
+const bot = participants.find(
+  p => p.id === botLid || p.id === botJid
+) || {}
+
+const isRAdmin = userGroup?.admin === "superadmin"
+const isAdmin = isRAdmin || userGroup?.admin === "admin"
 const isBotAdmin = !!bot?.admin
 
 const ___dirname = path.join(path.dirname(fileURLToPath(import.meta.url)), './plugins')
