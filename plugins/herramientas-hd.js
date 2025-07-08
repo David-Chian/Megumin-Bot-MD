@@ -1,64 +1,53 @@
-import fetch from 'node-fetch'
-import FormData from 'form-data'
+import fetch from "node-fetch";
+import FormData from "form-data";
 
-let handler = async (m, { conn, usedPrefix, command }) => {
-  const quoted = m.quoted ? m.quoted : m
-  const mime = quoted.mimetype || quoted.msg?.mimetype || ''
-
-  if (!/image\/(jpe?g|png)/i.test(mime)) {
-    await conn.sendMessage(m.chat, { react: { text: '❗', key: m.key } })
-    return m.reply(`Error responde o envia una imagen con el comando:\n*${usedPrefix + command}*`)
-  }
-
+const handler = async (m, { conn }) => {
   try {
-    await conn.sendMessage(m.chat, { react: { text: '⏳', key: m.key } })
+    const q = m.quoted || m;
+    const mime = q.mimetype || (q.msg ? q.msg.mimetype : '');
 
-    const media = await quoted.download()
-    const ext = mime.split('/')[1]
-    const filename = `upscaled_${Date.now()}.${ext}`
+    if (!mime) return m.reply("Por favor, responde a una imagen que deseas mejorar.");
+    if (!/image\/(jpe?g|png)/.test(mime)) return m.reply(`El formato *${mime}* no es compatible.`);
 
-    const form = new FormData()
-    form.append('image', media, { filename, contentType: mime })
-    form.append('scale', '2')
+    const buffer = await q.download();
+    const uploadedUrl = await uploadToCatbox(buffer);
+    if (!uploadedUrl) throw new Error("No se pudo subir la imagen.");
 
-    const headers = {
-      ...form.getHeaders(),
-      'accept': 'application/json',
-      'x-client-version': 'web',
-      'x-locale': 'en'
-    }
+    const enhancedBuffer = await getEnhancedBuffer(uploadedUrl);
+    if (!enhancedBuffer) throw new Error("No se pudo obtener la imagen mejorada.");
 
-    const res = await fetch('https://api2.pixelcut.app/image/upscale/v1', {
-      method: 'POST',
-      headers,
-      body: form
-    })
-
-    const json = await res.json()
-
-    if (!json?.result_url || !json.result_url.startsWith('http')) {
-      throw new Error('Gagal mendapatkan URL hasil dari Pixelcut.')
-    }
-
-    const resultBuffer = await (await fetch(json.result_url)).buffer()
-
-    await conn.sendMessage(m.chat, {
-      image: resultBuffer,
-      caption: `
-✨ *Tu imagen ha sido mejorada a una resolución 2x.*
-   🔧 _Usa esta función cuando necesites aclarar imágenes borrosas._
-`.trim()
-    }, { quoted: m })
-
-    await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
-  } catch (err) {
-    await conn.sendMessage(m.chat, { react: { text: '❌', key: m.key } })
-    m.reply(`❌ Ocurrio un error:\n${err.message || err}`)
+    await conn.sendFile(m.chat, enhancedBuffer, "enhanced.png", "", m);
+  } catch (e) {
+    console.error(e);
+    await m.reply(`${e}`);
   }
+};
+
+handler.help = ['hd', 'upscale'];
+handler.tags = ['utils'];
+handler.command = ['hd', 'upscale'];
+
+export default handler;
+
+async function uploadToCatbox(buffer) {
+  const body = new FormData()
+  body.append("reqtype", "fileupload")
+  body.append("fileToUpload", buffer, "image.jpg")
+
+  const res = await fetch("https://catbox.moe/user/api.php", {
+    method: "POST",
+    body,
+    headers: body.getHeaders()
+  })
+
+  const text = await res.text()
+  if (!text.startsWith('https://')) throw new Error("La subida a Catbox falló")
+  return text.trim()
 }
 
-handler.help = ['upscale']
-handler.tags = ['tools', 'image']
-handler.command = /^(upscale|hd)$/i
+async function getEnhancedBuffer(url) {
+  const res = await fetch(`https://api.stellarwa.xyz/tools/upscale?url=${url}`);
+  if (!res.ok) return null;
 
-export default handler
+  return Buffer.from(await res.arrayBuffer());
+}
