@@ -3,7 +3,7 @@ var handler = async (m, { conn, participants, usedPrefix, command }) => {
         return conn.reply(m.chat, '🚩 *Etiqueta o responde al mensaje de la persona que quieres eliminar*', m);
     }
 
-    let user = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted.sender;
+    let user = m.mentionedJid[0] ? m.mentionedJid[0] : await m.quoted.sender;
 
     const groupInfo = await conn.groupMetadata(m.chat);
     const ownerGroup = groupInfo.owner || m.chat.split`-`[0] + '@s.whatsapp.net';
