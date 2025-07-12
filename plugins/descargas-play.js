@@ -66,7 +66,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
  if (command === 'play' || command === 'mp3'  || command === 'playaudio') {
   try {
-    const apiAudioUrl = `${global.APIs.Stellar}/dow/ytmp3?url=${url}`;
+    const apiAudioUrl = `${global.APIs.Stellar}/dow/ytmp3?url=${url}&apikey=diamond`;
     const response = await fetch(apiAudioUrl);
     const json = await response.json()
     const { title, dl } = json.data
@@ -80,7 +80,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
   }
 } else if (command === 'play2' || command === 'mp4' || command === 'playvideo') {
   try {
-    const apiVideoUrl = `${global.APIs.Stellar}/dow/ytmp4?url=${url}`;
+    const apiVideoUrl = `${global.APIs.Stellar}/dow/ytmp4?url=${url}&apikey=diamond`;
     const response = await fetch(apiVideoUrl);
     const json = await response.json()
     const { title, dl } = json.data
