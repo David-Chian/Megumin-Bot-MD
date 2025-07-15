@@ -46,7 +46,7 @@ async function uploadToCatbox(buffer) {
 }
 
 async function getEnhancedBuffer(url) {
-  const res = await fetch(`https://api.stellarwa.xyz/tools/upscale?url=${url}`);
+  const res = await fetch(`https://api.stellarwa.xyz/tools/upscale?url=${encodeURIComponent(url)}&apikey=diamond`);
   if (!res.ok) return null;
 
   return Buffer.from(await res.arrayBuffer());
