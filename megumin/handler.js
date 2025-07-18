@@ -188,7 +188,12 @@ console.error(e)
 
         if (typeof m.text !== "string")
             m.text = ""
-        const detectwhat = m.sender.includes('@lid') ? '@lid' : '@s.whatsapp.net'
+function normalizeJid(jid) {
+  if (typeof jid === 'string') return jid
+  return ''
+}
+        const sender = normalizeJid(m.sender)
+        const detectwhat = sender.includes('@lid') ? '@lid' : '@s.whatsapp.net'
         const isROwner = [...global.owner.map(([number]) => number)].map(v => v.replace(/[^0-9]/g, "") + detectwhat).includes(m.sender)
 const isOwner = isROwner || m.fromMe
 const isPrems = isROwner || global.db.data.users[m.sender].premiumTime > 0
