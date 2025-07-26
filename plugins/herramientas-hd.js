@@ -1,31 +1,66 @@
-import FormData from "form-data";
-import Jimp from "jimp";
-const handler = async (m, {conn, usedPrefix, command}) => {
- try {    
-  let q = m.quoted ? m.quoted : m;
-  let mime = (q.msg || q).mimetype || q.mediaType || "";
-  if (!mime) return m.reply(`🚩 Envie una imagen o responda a la imagen utilizando el comando: ${usedPrefix + command}`);
-  if (!/image\/(jpe?g|png)/.test(mime)) return m.reply(`🍂 El formato del archivo (${mime}) no es compatible, envía o responda a una imagen`);
-  conn.reply(m.chat, '🚩 Mejorando la calidad de la imagen....', m, {
-  contextInfo: { externalAdReply :{ mediaUrl: null, mediaType: 1, showAdAttribution: true,
-  title: packname,
-  body: wm,
-  previewType: 0, thumbnail: icons,
-  sourceUrl: channel }}})
-  let img = await q.download?.();
-  let pr = await remini(img, "enhance");
-  conn.sendMessage(m.chat, {image: pr}, {quoted: fkontak});
- } catch {
- return m.reply("🚩 Ocurrió un error");
- }
-};
-handler.help = ["remini", "hd", "enhance"];
-handler.tags = ["ai", "tools"];
-handler.group = true;
-handler.register = true
-handler.command = ["remini", "hd", "enhance"];
-export default handler;
+import fetch from 'node-fetch'
+import FormData from 'form-data'
 
+let handler = async (m, { conn, usedPrefix, command }) => {
+  const quoted = m.quoted ? m.quoted : m
+  const mime = quoted.mimetype || quoted.msg?.mimetype || ''
+
+  if (!/image\/(jpe?g|png)/i.test(mime)) {
+    await conn.sendMessage(m.chat, { react: { text: '❗', key: m.key } })
+    return m.reply(`Error responde o envia una imagen con el comando:\n*${usedPrefix + command}*`)
+  }
+
+  try {
+    await conn.sendMessage(m.chat, { react: { text: '⏳', key: m.key } })
+
+    const media = await quoted.download()
+    const ext = mime.split('/')[1]
+    const filename = `upscaled_${Date.now()}.${ext}`
+
+    const form = new FormData()
+    form.append('image', media, { filename, contentType: mime })
+    form.append('scale', '2')
+
+    const headers = {
+      ...form.getHeaders(),
+      'accept': 'application/json',
+      'x-client-version': 'web',
+      'x-locale': 'en'
+    }
+
+    const res = await fetch('https://api2.pixelcut.app/image/upscale/v1', {
+      method: 'POST',
+      headers,
+      body: form
+    })
+
+    const json = await res.json()
+
+    if (!json?.result_url || !json.result_url.startsWith('http')) {
+      throw new Error('Gagal mendapatkan URL hasil dari Pixelcut.')
+    }
+
+    const resultBuffer = await (await fetch(json.result_url)).buffer()
+
+    await conn.sendMessage(m.chat, {
+      image: resultBuffer,
+      caption: `
+✨ *Tu imagen ha sido mejorada a una resolución 2x.*
+`.trim()
+    }, { quoted: m })
+
+    await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
+  } catch (err) {
+    await conn.sendMessage(m.chat, { react: { text: '❌', key: m.key } })
+    m.reply(`❌ Ocurrio un error:\n${err.message || err}`)
+  }
+}
+
+handler.help = ['upscale']
+handler.tags = ['tools', 'image']
+handler.command = /^(upscale2|hd|remini)$/i
+
+export default handler
 async function remini(imageData, operation) {
   return new Promise(async (resolve, reject) => {
     const availableOperations = ["enhance", "recolor", "dehaze"];
