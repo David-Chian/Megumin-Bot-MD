@@ -106,14 +106,10 @@ Inicia el bot nuevamente:
 
 ---
 
-### **`🪐 COLABORADORES`**
+### **`🪐 COLABORADOR`**
 <a
 href="https://github.com/CheirZ"><img src="https://github.com/CheirZ.png" width="130" height="130" alt="Miguel"/></a>
 
 ### **`👑 CREADOR`**
 <a
-href="https://github.com/David-Chian"><img src="https://github.com/David-Chian.png" width="130" height="130" alt="David"/></a>
-
-## **`⭐ CRÉDITOS`**
-<a
-href="https://github.com/BrunoSobrino"><img src="https://github.com/BrunoSobrino.png" width="130" height="130" alt="BrunoSobrino"/></a>
+href="https://github.com/David-Chian"><img src="https://github.com/David-Chian.png" width="150" height="150" alt="David"/></a>
