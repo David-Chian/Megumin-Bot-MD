@@ -107,9 +107,8 @@ Inicia el bot nuevamente:
 ---
 
 ### **`🪐 COLABORADORES`**
-<a href="https://github.com/David-Chian/Megumin-Bot-MD/graphs/contributors">
-<img src="https://contrib.rocks/image?repo=David-Chian/Megumin-Bot-MD" /> 
-</a>
+<a
+href="https://github.com/CheirZ"><img src="https://github.com/CheirZ.png" width="130" height="130" alt="Miguel"/></a>
 
 ### **`👑 CREADOR`**
 <a
