@@ -108,7 +108,7 @@ Inicia el bot nuevamente:
 
 ### **`🪐 COLABORADOR`**
 <a
-href="https://github.com/CheirZ"><img src="https://github.com/CheirZ.png" width="130" height="130" alt="Miguel"/></a>
+href="https://github.com/CheirZ"><img src="https://github.com/CheirZ.png" width="80" height="80" alt="Miguel"/></a>
 
 ### **`👑 CREADOR`**
 <a
