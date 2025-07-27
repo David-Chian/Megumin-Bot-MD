@@ -1,5 +1,3 @@
-// Alex-X >> https://github.com/OfcKing
-
 import fs from 'fs'
 import path from 'path'
 
