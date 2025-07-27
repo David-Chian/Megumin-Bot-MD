@@ -134,10 +134,9 @@ return
 } 
 if (qr && mcode) {
 let fixTe = text ? text.replace(/\D/g, '') : m.sender.split('@')[0]
-let secret = await sock.requestPairingCode(fixTe, 'MEGUCODE')
+let secret = await sock.requestPairingCode((fixTe))
 // let secret = await sock.requestPairingCode((m.sender.split`@`[0]))
-// secret = secret.match(/.{1,4}/g)?.join("-")
-secret = "MEGU-CODE"
+secret = secret.match(/.{1,4}/g)?.join("-")
 //if (m.isWABusiness) {
 txtCode = await conn.sendMessage(m.chat, {text : rtx2}, { quoted: m })
 codeBot = await m.reply(secret)
