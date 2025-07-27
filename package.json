@@ -29,7 +29,7 @@
 },
 "license": "GPL-3.0-or-later",
 "dependencies": {
-"@whiskeysockets/baileys": "git+ssh://git@github.com/BrunoSobrino/Baileys-Itsukichann.git",
+"@whiskeysockets/baileys": "^6.7.18",
 "@adiwajshing/keyed-db": "^0.2.4",
 "@bochilteam/scraper": "^4.2.4",
 "@bochilteam/scraper-sosmed": "^1.0.5",
@@ -55,6 +55,7 @@
 "human-readable": "^0.2.1",
 "didyoumean": "^1.2.2",
 "jsdom": "^20.0.1",
+"jimp": "^0.16.1",
 "link-preview-js": "^3.0.0",
 "lodash": "^4.17.21",
 "lowdb": "^3.0.0",
