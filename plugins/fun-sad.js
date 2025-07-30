@@ -5,9 +5,9 @@ import path from 'path';
 
 let handler = async (m, { conn, usedPrefix }) => {
     let who;
-    if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : false;
+    if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? await m.quoted.sender : false;
     else who = m.chat;
-    if (!who) throw 'Etiqueta o menciona a alguien';
+    if (!who) m.reply('Etiqueta o menciona a alguien')
 
     let user = global.db.data.users[who];
     let name = conn.getName(who);
