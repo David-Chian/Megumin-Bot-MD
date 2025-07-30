@@ -1,6 +1,7 @@
 import fetch from "node-fetch";
 import yts from 'yt-search';
 import axios from "axios";
+import { fetchYouTubeDownload } from '../lib/ytdll.js'
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   let user = global.db.data.users[m.sender];
@@ -76,8 +77,26 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     await conn.sendMessage(m.chat, { audio: { url: dl }, fileName: `${title}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m });
   } catch (e) {
     console.error('Error al enviar el audio:', e.message);
+try{
+              const result = await fetchYouTubeDownload(url)
+
+    if (!result.success) throw new Error(result.error || 'No se pudo obtener datos del video.')
+
+    const { title, downloads } = result
+          const audio = downloads.find(d => d.contentType?.startsWith('audio'))
+
+          if (!audio?.url) throw new Error('No se encontró audio con ytdown.')
+
+          await conn.sendMessage(m.chat, {
+            audio: { url: audio.url },
+            fileName: `${title}.mp3`,
+            mimetype: 'audio/mpeg'
+          }, { quoted: m })
+
+        } catch (e) {
+console.error('Falló:', e.message);
     return conn.reply(m.chat, '⚠︎ No se pudo enviar el audio. Esto puede deberse a que el archivo es demasiado pesado o a un error en la generación de la URL. Por favor, intenta nuevamente mas tarde.', m);
-  }
+  }}
 } else if (command === 'play2' || command === 'mp4' || command === 'playvideo') {
   try {
     const apiVideoUrl = `https://api.stellarwa.xyz/dow/ytmp4?url=${url}&apikey=diamond`;
@@ -100,8 +119,23 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     await conn.sendMessage(m.chat, { video: { url: resultado }, fileName: resultad.title, mimetype: 'video/mp4', caption: dev }, { quoted: m });
   } catch (e) {
     console.error('Error al enviar el video:', e.message);
+try {
+        const { title, downloads } = await fetchYouTubeDownload(url)
+        const video = downloads.find(d => d.contentType?.startsWith('video'))
+
+        if (!video?.url) throw new Error('No se encontró video.')
+
+        await conn.sendMessage(m.chat, {
+          video: { url: video.url },
+          fileName: `${title}.mp4`,
+          mimetype: 'video/mp4',
+          caption: dev
+        }, { quoted: m });
+
+      } catch (e) {
+console.error('Falló:', e.message);
     return conn.reply(m.chat, '⚠︎ No se pudo enviar el video. Esto puede deberse a que el archivo es demasiado pesado o a un error en la generación de la URL. Por favor, intenta nuevamente mas tarde.', m);
-  }}
+  }}}
 } else {
   return conn.reply(m.chat, '⚠︎ Comando no reconocido.', m);
 }
