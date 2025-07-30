@@ -95,7 +95,7 @@ try{
 
         } catch (e) {
 console.error('Falló:', e.message);
-    return conn.reply(m.chat, '⚠︎ No se pudo enviar el audio. Esto puede deberse a que el archivo es demasiado pesado o a un error en la generación de la URL. Por favor, intenta nuevamente mas tarde.', m);
+    return conn.reply(m.chat, '⚠︎ No se pudo enviar el audio. Esto puede deberse a que el archivo es demasiado pesado o a un error en la generación de la URL. Por favor, intenta nuevamente mas tarde. ${e.message}', m);
   }}
 } else if (command === 'play2' || command === 'mp4' || command === 'playvideo') {
   try {
