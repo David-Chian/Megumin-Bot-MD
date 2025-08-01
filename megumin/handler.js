@@ -188,7 +188,6 @@ console.error(e)
 
                 if (typeof m.text !== "string")
             m.text = ""
-        const user = global.db.data.users[m.sender]
         const chat = global.db.data.chats[m.chat]
         globalThis.setting = global.db.data.settings[this.user.jid]
         const detectwhat = m.sender.includes('@lid') ? '@lid' : '@s.whatsapp.net'
