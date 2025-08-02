@@ -30,7 +30,7 @@ apt update && apt upgrade && pkg install -y git nodejs ffmpeg imagemagick yarn
 ```
 
 ```bash
-git clone https://github.com/David-Chian/Megumin-Bot-MD && cd Megumin-Bot-MD
+git clone https://github.com/leninlg/Megumin-Bot-LN && cd Megumin-Bot-MD
 ```
 
 ```bash
@@ -73,4 +73,4 @@ Inicia el bot nuevamente:
 
 ### **`👑 CREADOR`**
 <a
-href="https://github.com/leninlg"><img src="https://github.com/David-Chian.png" width="150" height="150" alt="David"/></a>
+href="https://github.com/leninlg"><img src="https://github.com/leninlg.png" width="150" height="150" alt="lenin"/></a>
