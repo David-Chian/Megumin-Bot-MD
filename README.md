@@ -30,7 +30,7 @@ apt update && apt upgrade && pkg install -y git nodejs ffmpeg imagemagick yarn
 ```
 
 ```bash
-git clone https://github.com/leninlg/Megumin-Bot-LN && cd Megumin-Bot-MD
+git clone https://github.com/leninlg/Megumin-Bot-LN && cd Megumin-Bot-LN
 ```
 
 ```bash
