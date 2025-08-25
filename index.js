@@ -22,7 +22,7 @@ cfonts.say('Megumin', {
   gradient: ['magenta', 'yellow']
 })
 
-cfonts.say('Made With David-Chian', {
+cfonts.say('Made With Sam', {
   font: 'console',
   align: 'center',
   colors: ['cyan', 'magenta', 'yellow']

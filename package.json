@@ -1,7 +1,7 @@
 {
 "name": "Megumin-Bot-MD",
 "version": "1.0.5",
-"description": "El Bot Más Explosivo De WhatsApp",
+"description": "El Bot Más Migajero de WhatsApp",
 "main": "index.js",
 "type": "module",
 "directories": {
@@ -18,7 +18,7 @@
 },
 "homepage": "https://github.com/David-Chian/Megumin-Bot-MD",
 "author": {
-"name": "David-Chian"
+"name": "Sam"
 },
 "repository": {
 "type": "git",
