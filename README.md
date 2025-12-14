@@ -28,6 +28,31 @@ Megumin es un bot de WhatsApp multifuncional basado en `baileys`. Este bot ofrec
 
 --- 
 
+## 🚀 Despliegue en Cafirexos
+
+<div align="center">
+
+[![Logo Cafirexos](https://cdn.cafirexos.com/logos/logo_cfros_2000x2000.png)](https://cafirexos.com)
+
+**Hosting rápido, fiable y buen soporte ☕**
+
+</div>
+
+<details>
+<summary><b>📎 Enlaces Importantes</b></summary>
+
+- 🌐 [Sitio web oficial](https://cafirexos.com/)
+- 👤 [Área de clientes](https://cafirexos.com/clientarea.php)
+- ⚙️ [Panel de control](https://panel.cafirexos.com)
+- 📚 [Base de conocimientos](https://cafirexos.com/knowledgebase)
+- 🔍 [Estado de los servicios](https://estado.cafirexos.com)
+- 💬 [Canal de WhatsApp](https://links.cafirexos.com/whatsapp/canal)
+- 🆘 [Soporte / Contáctenos](https://cafirexos.com/contactenos)
+
+</details>
+
+---
+
 ## **`🔥 Despliegue en BoxMineWorld 🚀`**
 
 <a href="https://boxmineworld.com">
