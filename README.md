@@ -133,7 +133,6 @@ Inicia el bot nuevamente:
 
 ### **`🪐 COLABORADOR`**
 <a
-href="https://github.com/DevZyxlJs"><img src="https://github.com/DevZyxlJs.png" width="80" height="80" alt="Alexiu"/></a> <a
 href="https://github.com/CheirZ"><img src="https://github.com/CheirZ.png" width="80" height="80" alt="Miguel"/></a>
 
 ### **`👑 CREADOR`**
