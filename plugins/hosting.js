@@ -1,7 +1,4 @@
-export default {
-  command: ['cafi', 'hosting', 'cafirexos'],
-  category: 'info',
-  run: async (client, m) => {
+const handler = async (m, { conn, args }) => {
 
     const caption = `╭━━━〔 ☕ *Cafirexos Hosting* 〕━━━╮
 
@@ -25,7 +22,8 @@ export default {
 
 ╰━━━〔 ✨ Calidad • Estabilidad • Soporte ✨ 〕━━━╯`;
 
-    await client.sendContextInfoIndex(m.chat, caption, {}, m, true)
+    await conn.reply(m.chat, caption, rcanal, m)
 
   }
-};
+handler.command: ['cafi', 'hosting', 'cafirexos']
+export default handler
