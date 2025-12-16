@@ -25,5 +25,5 @@ const handler = async (m, { conn, args }) => {
     await conn.reply(m.chat, caption, rcanal, m)
 
   }
-handler.command: ['cafi', 'hosting', 'cafirexos']
+handler.command = ['cafi', 'hosting', 'cafirexos']
 export default handler
