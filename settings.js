@@ -3,7 +3,7 @@ import chalk from 'chalk';
 
 global.owner = ['5351524614', '584147226479', '5492916450307']
 global.sessionName = 'Sessions/Owner'
-global.version = '^1.0.1'
+global.version = '^3.0.0'
 global.pairing_code = true
 global.number_bot = ''
 
