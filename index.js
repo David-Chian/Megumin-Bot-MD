@@ -1,14 +1,3 @@
-/*
- # ------------- √ × -------------
-   # Nota
-   - Base mejorada por David-Chian
-   
-    # Agradecimientos :: ZyxlJs
-    # Agradecimientos :: AzamiJs
-    # Agradecimientos :: GataDios
- # ------------- √ × -------------
-*/
-
 import "./settings.js"
 import handler from './main.js'
 import events from './commands/events.js'
