@@ -1,7 +1,0 @@
-node_modules/
-Sessions/
-backups/
-*.zip
-.env
-.npm/
-lib/datos.db*
