@@ -1,7 +1,7 @@
 {
-  "name": "nekoware",
-  "version": "1.0.9",
-  "description": "Bot WhatsApp",
+  "name": "megumin-bot-md",
+  "version": "3.0.0",
+  "description": "Megumin-Bot-MD WhatsApp bot using Baileys"
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -14,7 +14,7 @@
     "bot-wa",
     "multi-device"
   ],
-  "author": "DevZyxlJs",
+  "author": "David-Chian",
   "license": "MIT",
   "engines": {
     "node": ">=21.7.3",
