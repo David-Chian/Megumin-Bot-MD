@@ -27,9 +27,17 @@ export default {
     }
 
     const isMedia = /image|video|sticker|audio/.test(mime)
-    const finalText = text || q?.text || q?.body || ''
 
-const hasText = Boolean(text && text.trim())
+const quotedText =
+  q?.text ||
+  q?.caption ||
+  q?.body ||
+  q?.message?.conversation ||
+  q?.message?.extendedTextMessage?.text ||
+  ''
+
+const finalText = text || quotedText
+const hasText = Boolean(finalText && finalText.trim())
 
 try {
   if (isMedia) {
@@ -74,7 +82,7 @@ try {
 
   return client.sendMessage(
     m.chat,
-    { text, mentions },
+    { text: finalText, mentions },
     { quoted: null }
   )
 
