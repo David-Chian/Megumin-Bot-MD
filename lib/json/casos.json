@@ -1,0 +1,217 @@
+[
+    {
+        "caso": "En la antigua Mansión Argent, una de las propiedades más imponentes del país, el aristócrata Sir Reginald Argent es encontrado muerto en su estudio. La mansión, conocida por sus oscuros pasadizos y leyendas de tragedias familiares, alberga un secreto que podría arrojar luz sobre el asesinato. Sin testigos, sin evidencia directa, los detectives se enfrentan a un enigma que se remonta a generaciones atrás.",
+        "Sospechosos": " *Familia Argent:* La esposa de Sir Reginald, cuya aparente calma oculta un pasado tumultuoso lleno de secretos familiares. El hermano menor, conocido por sus desacuerdos con Sir Reginald sobre la gestión de la mansión y la fortuna familiar.\n\n*Miss Genevieve Evergreen:* La tutora de los hijos Argent, con una conexión personal con la familia que va más allá de su papel oficial.\n\n*Mr. Winston Thorne:* El abogado de la familia Argent, con acceso a información financiera delicada y posibles motivos relacionados con disputas legales.",
+        "response": "Familia Argent"
+    },
+    {
+        "caso": "Durante el Gran Baile de Máscaras celebrado en la histórica Ciudad Prohibida, el eminente diplomático Sir Percival Montgomery es hallado sin vida en medio del exquisito laberinto de jardines. Todos los asistentes llevaban máscaras elaboradas, lo que complica aún más la identificación del asesino.",
+        "Sospechosos": " *Lady Evangeline Montgomery:* La esposa de Sir Percival, con un pasado misterioso relacionado con sus conexiones políticas.\n\n*Lord Archibald Huntington:* Un rival político de Sir Percival con ambiciones que podrían haberse visto frustradas por su muerte\n\n*Miss Seraphina Leclair:* Una misteriosa dama francesa, invitada especial al evento, con motivaciones ocultas y vínculos con organizaciones secretas\n\n*Mr. Nathaniel Blackwood:* El secretario personal de Sir Percival, con acceso a información confidencial y cuya lealtad podría haber sido cuestionada.",
+        "response": "Lady Evangeline Montgomery"
+    },
+    {
+        "caso": "En el pintoresco pueblo de Clockhaven, el renombrado relojero Samuel Wainwright es hallado sin vida en su taller. El reloj de la torre del pueblo, que marcaba el tiempo con precisión durante generaciones, se detuvo inexplicablemente en el momento de su muerte. Sin testigos y sin evidencia clara, los detectives se adentran en el intrincado mundo de engranajes y secretos.",
+        "Sospechosos": " *Victoria Wainwright:* La hija del relojero, con una relación complicada y resentimientos acumulados.\n\n*Jonathan Wainwright:* El hermano menor, quien había sido excluido de la herencia familiar y del negocio de relojería.\n\n*Amelia Turner:* La aprendiz de Samuel, con acceso a los secretos del taller y motivaciones desconocidas.",
+        "response": "Amelia Turner"
+    },
+    {
+        "caso": "En la afamada academia de danza Pas de Deux, la principal bailarina, Isabella Devereaux, es hallada muerta en el vestuario. Con zapatillas y rivalidades coreográficas, los detectives deben desentrañar el enigma detrás de la tragedia en el escenario.",
+        "Sospechosos": " *Compañeros de Baile:* Olivia Rossi, la joven bailarina con celos evidentes. Anton Petrov, el coreógrafo con desacuerdos artísticos. Victoria Harper, la directora de la academia con secretos familiares.",
+        "response": "Olivia Rossi"
+    },
+    {
+        "caso": "En el distrito financiero de Wall Street, el magnate de las inversiones, Charles Sterling, es encontrado muerto en su oficina. Con informes financieros y enredos empresariales, los detectives deben descubrir quién cortó los lazos del empresario.",
+        "Sospechosos": " *Rivales Empresariales:* Emily Morgan, la competidora con historial de hostilidad. Daniel Blackwell, el socio de negocios con desavenencias financieras. Isabella Thompson, la asistente personal con acceso a información confidencial.",
+        "response": "Daniel Blackwell"
+    },
+    {
+        "caso": "En el exclusivo club de yates Azure Waters, el dueño del club, Richard Bennett, aparece muerto a bordo de su propio yate. Con velas al viento y secretos náuticos, los detectives deben desentrañar quién naufragó en la vida de Bennett.",
+        "Sospechosos": " *Miembros del Club:* Victoria Sinclair, la socia con vínculos personales con Bennett. James Thompson, el capitán del yate con un pasado turbio. Natalie Green, la organizadora de eventos con motivos ocultos.",
+        "response": "James Thompson"
+    },
+    {
+        "caso": "En la ciudad de Neon Nights, el famoso DJ Electro Pulse es encontrado muerto en su estudio de grabación. Con luces brillantes y ritmos envolventes, los detectives deben descubrir quién apagó la música de Pulse.",
+        "Sospechosos": " *Figuras de la Escena Musical:* Max Harrison, el rival DJ con competencias anteriores. Sophia Cruz, la vocalista con rivalidades en el escenario. Marcus Reynolds, el productor musical con conexiones secretas.",
+        "response": "Sophia Cruz"
+    },
+    {
+        "caso": "En la histórica mansión Ravenhurst, el famoso arqueólogo Dr. Victor Harlow es encontrado muerto en su estudio. Con artefactos antiguos y rivalidades académicas, los detectives deben desenterrar la verdad detrás del asesinato.",
+        "Sospechosos": " *Colegas Arqueólogos:* Dr. Amelia Carter, la colega con desacuerdos profesionales. Professor Isaac Robinson, el rival académico de Harlow. Sophia Wells, la asistente de laboratorio con conexiones desconocidas.",
+        "response": "Sophia Wells"
+    },
+    {
+        "caso": "En el bullicioso mercado de Camden, el dueño de la tienda de antigüedades, Mr. Albert Chapman, es encontrado muerto entre reliquias y recuerdos. Con vendedores ambiciosos y secretos comerciales, los detectives deben desentrañar el misterio detrás del mostrador.",
+        "Sospechosos": " *Comerciantes del Mercado:* Eleanor Turner, la rival comercial con resentimientos. Samuel Bennett, el coleccionista con deudas pendientes. Isabella Carter, la clienta habitual con una obsesión poco saludable.",
+        "response": "Samuel Bennett"
+    },
+    {
+        "caso": "En la tranquila playa de Coral Cove, el instructor de surf, Jake Harrison, es encontrado muerto a orillas del mar. Con olas y secretos marinos, los detectives deben descubrir quién hundió al instructor en un mar de misterios.",
+        "Sospechosos": " *Amantes del Surf:* Lily Thompson, la surfista con celos evidentes. Oliver Mason, el novato con deseos de reconocimiento. Emma Harper, la dueña del club de surf con motivos ocultos.",
+        "response": "Emma Harper"
+    },
+    {
+        "caso": "En el elegante club de tenis Meadow Courts, el campeón del torneo anual, Alex Mitchell, es encontrado muerto en la cancha principal. Con raquetas y rivalidades deportivas, los detectives deben descubrir quién hizo un 'ace' mortal.",
+        "Sospechosos": " *Jugadores y Competidores:* Sophia Reynolds, la tenista con desavenencias deportivas. James Turner, el entrenador con un historial controvertido. Natalie Green, la organizadora del torneo con conexiones financieras.",
+        "response": "Natalie Green"
+    },
+    {
+        "caso": "En la majestuosa Villa del Lago, el empresario Richard Sinclair es encontrado muerto en la biblioteca. Con vistas al lago y secretos familiares, los detectives se sumergen en un misterio que abarca décadas.",
+        "Sospechosos": " *Familia Sinclair:* Victoria Sinclair, la esposa con un pasado enigmático. Edward Sinclair, el hijo ambicioso con desavenencias con su padre. Emily Thompson, la empleada leal con secretos ocultos.",
+        "response": "Edward Sinclair"
+    },
+    {
+        "caso": "En el pintoresco pueblo de Whispering Pines, la dueña de la tienda de antigüedades, Eleanor Chambers, es encontrada muerta entre objetos centenarios. Con reliquias y oscuros secretos, los detectives deben desentrañar el pasado de la tranquila ciudad.",
+        "Sospechosos": " *Vecinos:* Henry Morgan, el alcalde con conexiones secretas. Alice Bennett, la rival comercial de Chambers. Oliver Turner, el coleccionista de antigüedades con una obsesión.",
+        "response": "Oliver Turner"
+    },
+    {
+        "caso": "En el exclusivo club de golf Greenfield Greens, el golfista profesional Derek Anderson es hallado sin vida en el hoyo 18. Con verdes impecables y rivalidades deportivas, los detectives deben encontrar al asesino tras la apariencia tranquila del campo de golf.",
+        "Sospechosos": " *Competidores:* Isabella Thompson, la golfista con una historia de enfrentamientos con Anderson. Richard Green, el dueño del club con secretos financieros. Grace Turner, la caddy con una relación complicada con la víctima.",
+        "response": "Richard Green"
+    },
+    {
+        "caso": "En el animado Carnaval de Crescent City, la famosa ilusionista Magdalena Rivera es encontrada muerta tras su acto principal. Entre caravanas y trucos de magia, los detectives deben descubrir quién hizo desaparecer la vida de la maga.",
+        "Sospechosos": " *Circenses:* Leo Martinez, el asistente celoso con deseos de fama. Sophia Cruz, la rival en el mundo de la magia. Max Harrison, el dueño del circo con oscuros negocios.",
+        "response": "Leo Martinez"
+    },
+    {
+        "caso": "En el tranquilo spa Serenity Springs, la dueña y terapeuta principal, Dr. Gabrielle Stone, es encontrada muerta en la sala de meditación. Entre aromas relajantes y tensiones ocultas, los detectives deben descubrir quién arruinó la serenidad del lugar.",
+        "Sospechosos": " *Personal del Spa:* Olivia Mitchell, la masajista con rivalidades profesionales. Dr. Daniel Wells, el médico del spa con secretos médicos. Zoe Harper, la recepcionista con una conexión personal con la víctima.",
+        "response": "Olivia Mitchell"
+    },
+    {
+        "caso": "En el tranquilo pueblo agrícola de Meadowbrook, el granjero Joseph Anderson es encontrado muerto en su granero. Entre cultivos y animales, los detectives se enfrentan a un caso en el que los secretos familiares y las disputas por la tierra podrían ser la clave del asesinato.",
+        "Sospechosos": " *Familia y Vecinos:* Emily Anderson, la hija del granjero, con una relación tensa con su padre. Thomas Baker, un vecino con desavenencias por la propiedad de la tierra. Sarah Miller, la dueña de la tienda local, cuya conexión con Anderson podría ser más profunda de lo que se pensaba.",
+        "response": "Emily Anderson"
+    },
+    {
+        "caso": "En la bulliciosa ciudad de Midtown, el famoso chef gastronómico Victor Delacroix es encontrado muerto en su restaurante de cinco estrellas. Entre ollas y sartenes, los detectives se sumergen en un mundo de sabores y descontento culinario.",
+        "Sospechosos": " *Personal del Restaurante:* Isabella Thompson, la sous chef con aspiraciones de liderazgo. Marco Rossi, el crítico gastronómico conocido por sus críticas negativas. Gabrielle Leclair, la sumiller del restaurante, cuya relación con Delacroix era más complicada de lo que parecía.",
+        "response": "Isabella Thompson"
+    },
+    {
+        "caso": "En el majestuoso teatro de la ópera de Bellavista, la talentosa soprano Alessandra Rossi es encontrada muerta en su camerino. Entre partituras y telones, los detectives se sumergen en un mundo de rivalidades musicales y secretos melódicos.",
+        "Sospechosos": " *Compañía de Ópera:* Giovanni Valenti, el director de la ópera con desavenencias con Rossi. Isadora Bianchi, la diva principal con una rivalidad evidente. Luca Moretti, el pianista de la ópera, cuya conexión con Rossi podría tener más capas de lo que se pensaba.",
+        "response": "Giovanni Valenti"
+    },
+    {
+        "caso": "En la tranquila biblioteca de Woodland, la bibliotecaria Eleanor Blackwell es encontrada muerta entre las estanterías. Entre libros y silencio, los detectives descubren un misterio que se oculta entre las páginas y la calma aparente.",
+        "Sospechosos": " *Usuarios y Colegas:* Alice Thompson, una lectora asidua con desavenencias con Blackwell. Prof. Samuel Roberts, un historiador que había tenido conflictos por ciertos libros. Daniel Turner, el asistente de la biblioteca, cuya relación con Blackwell podría ser más complicada de lo que aparenta.",
+        "response": "Alice Thompson"
+    },
+    {
+        "caso": "En el exclusivo mundo de la alta costura, la famosa diseñadora de moda, Isabella Montague, es encontrada estrangulada en su estudio. Entre telas de lujo y patrones elaborados, los detectives se sumergen en un oscuro mundo de rivalidades y traiciones.",
+        "Sospechosos": " *Competidores en la Industria:* Celeste Leclair, una diseñadora emergente con aspiraciones de eclipsar a Montague. Pierre Dubois, un modelo cuya relación personal con Montague era más complicada de lo que parecía. Victoria Harper, la asistente personal de Montague, que podría haber estado ocultando secretos importantes.",
+        "response": "Victoria Harper"
+    },
+    {
+        "caso": "En el idílico pueblo pesquero de Harbor Cove, el capitán de un barco pesquero, Capitán Jonah Turner, aparece muerto en la cubierta. Con olor a sal y misterios marinos en el aire, los detectives se enfrentan a un caso donde la línea entre amigos y enemigos es tan fluida como las mareas.",
+        "Sospechosos": " *Pobladores y Competidores:* Abigail Murphy, dueña de una rival pesquera con desavenencias con el Capitán Turner. Liam O'Donnell, un pescador que había tenido disputas públicas con el Capitán. Emily Turner, la hija del capitán, cuya relación con su padre es más complicada de lo que aparenta.",
+        "response": "Abigail Murphy"
+    },
+    {
+        "caso": "En el opulento Casino Royale, el dueño del casino, Vincent DeLacroix, es encontrado muerto en la sala de VIP. Las cartas y las fichas son testigos silenciosos de un asesinato que podría estar relacionado con deudas pendientes y oscuros tratos.",
+        "Sospechosos": " *Clientes VIP y Competidores:* Isabella Rosenthal, una apostadora de alto riesgo con deudas considerables. Rafael Martinez, un rival en el mundo del juego que había tenido disputas previas con DeLacroix. Veronica Blackwood, la gerente del casino, cuya lealtad podría estar en duda.",
+        "response": "Rafael Martinez"
+    },
+    {
+        "caso": "En la aislada academia de arte de Ravenwood, la talentosa pintora Sophia Blackwood es encontrada muerta en su estudio. Los pinceles y lienzos son el telón de fondo de un misterio que revela celos artísticos y oscuros secretos creativos.",
+        "Sospechosos": " *Estudiantes y Profesores:* Marcus Reynolds, un estudiante con talento y una rivalidad evidente con Sophia. Prof. Isabella Drake, la mentora de Sophia, cuya relación iba más allá de lo académico. Lily Thompson, una compañera de clase con envidia y resentimientos.",
+        "response": "Lily Thompson"
+    },
+    {
+        "caso": "En el prestigioso Club de Ajedrez de St. James, el maestro ajedrecista Lawrence Stratton es encontrado muerto en la sala de juego justo antes de la final de un torneo crucial. Todas las piezas del tablero estaban dispuestas de manera intrigante. Con un grupo de jugadores altamente competitivos y observadores apasionados, los detectives se sumergen en el mundo estratégico del ajedrez.",
+        "Sospechosos": " *Jugadores del Torneo:* Victor Ivanov, el campeón defensor, conocido por tácticas agresivas y rivalidades anteriores con Stratton. Eleanor Winslow, una joven prodigio cuya ascensión meteórica en el mundo del ajedrez podría haber sido amenazada por Stratton. Marcus Harper, un veterano del club que llevaba años compitiendo contra Stratton y perdiendo repetidamente.",
+        "response": "Marcus Harper"
+    },
+    {
+        "caso": "En el remoto Observatorio Estelar de Greenwood, la eminente astrónoma Dr. Eleanor Thornton es descubierta muerta en la cúpula de observación. Las estrellas brillan en la oscuridad mientras los detectives se enfrentan a un caso en el que el misterio se entrelaza con las constelaciones y secretos celestiales.",
+        "Sospechosos": " *Colegas Astrónomos:* Dr. Sebastian Westwood, un astrónomo en ascenso, cuyos descubrimientos recientes podrían haber cambiado la dinámica del observatorio. Dr. Clara Rodriguez, una colega cercana de la Dra. Thornton, con conexiones personales y profesionales. Prof. Charles Ellington, un excolega que había tenido desacuerdos teóricos con la Dra. Thornton.",
+        "response": "Dr. Sebastian Westwood"
+    },
+    {
+        "caso": "En el tranquilo pueblo de Greenfield, la respetada botánica Dr. Camilla Hawthorne es encontrada muerta en su invernadero. Las exquisitas plantas que una vez prosperaron ahora parecen marchitarse en luto. Sin testigos presenciales, los detectives se adentran en el mundo de las flores y secretos hortícolas.",
+        "Sospechosos": " *Colegas Botánicos:* Dr. Henry Gardener, un rival académico con quien la Dra. Hawthorne había tenido disputas por descubrimientos previos. Prof. Emily Bloomfield, una experta en plantas raras que compartía una larga historia de colaboración con la Dra. Hawthorne. Mr. Oliver Green, el jardinero del invernadero, cuya relación con la Dra. Hawthorne era más cercana de lo que parecía.",
+        "response": "Dr. Henry Gardener"
+    },
+    {
+        "caso": "En la encantadora ciudad costera de Coral Shores, el dueño de la heladería, Mr. Albert Johnson, es encontrado muerto en su establecimiento. Entre conos y sabores, los detectives deben descubrir quién derritió la dulce vida de Johnson.",
+        "Sospechosos": " *Competidores Locales:* Emma Harper, la dueña de la cafetería vecina con rivalidades comerciales. Oliver Turner, el vendedor ambulante con deseos de expansión. Isabella Carter, la clienta habitual con obsesión por el helado.",
+        "response": "Emma Harper"
+    },
+    {
+        "caso": "En la refinada Galería de Arte Ellsworth, la famosa pintora Isadora Bianchi es encontrada muerta en su exposición. Entre pinceles y lienzos, los detectives deben descubrir quién borró la última obra de Bianchi.",
+        "Sospechosos": " *Artistas y Críticos:* Lucas Moretti, el crítico de arte con desavenencias públicas. Sophia Wells, la rival artística con historial de competencias. Gabriel Rodriguez, el marchante de arte con conexiones comerciales.",
+        "response": "Lucas Moretti"
+    },
+    {
+        "caso": "En la tranquila librería de Oakwood, el propietario, Mr. Samuel Roberts, es encontrado muerto entre estanterías de libros. Con novelas y secretos literarios, los detectives deben descubrir quién cerró el capítulo final para Roberts.",
+        "Sospechosos": " *Clientes y Empleados:* Alice Thompson, la clienta con disputas sobre libros raros. Emily Turner, la empleada con una conexión personal con Roberts. Daniel Wells, el asistente de la librería con ambiciones literarias.",
+        "response": "Daniel Wells"
+    },
+    {
+        "caso": "En el parque temático Adventure World, el actor principal del espectáculo de piratas, Captain Blackbeard, es encontrado muerto en el barco pirata. Con espadas y tesoros falsos, los detectives deben descubrir quién hundió al capitán en una travesía mortal.",
+        "Sospechosos": " *Actores y Personal del Parque:* Zoe Harper, la actriz secundaria con rivalidades en el escenario. Liam O'Donnell, el técnico de efectos especiales con acceso a armas falsas. Olivia Mitchell, la coordinadora de eventos con motivos ocultos.",
+        "response": "Zoe Harper"
+    },
+    {
+        "caso": "En la lujosa boutique de alta costura, la diseñadora de moda Victoria Leclair es encontrada muerta en su estudio. Entre telas de lujo y patrones exclusivos, los detectives deben descubrir quién cortó la vida de Leclair.",
+        "Sospechosos": " *Competidores en la Moda:* Isabella Montague, la diseñadora rival con historial de disputas. Marcus Reynolds, el modelo con resentimientos personales. Emily Thompson, la asistente con conexiones más profundas de lo que parece.",
+        "response": "Isabella Montague"
+    },
+    {
+        "caso": "En el observatorio astronómico de Starlight Haven, el astrónomo principal, Dr. Sebastian Westwood, es encontrado muerto en la cúpula de observación. Entre estrellas y telescopios, los detectives deben descubrir quién eclipsó la carrera de Westwood.",
+        "Sospechosos": " *Colegas Astrónomos:* Dr. Clara Rodriguez, la colega con desavenencias teóricas. Prof. Charles Ellington, el excolega con desacuerdos históricos. Alice Thompson, la visitante habitual con obsesión por los astros.",
+        "response": "Prof. Charles Ellington"
+    },
+    {
+        "caso": "En la tranquila granja de Greenfield, el granjero John Turner es encontrado muerto en el establo. Entre cultivos y animales, los detectives deben descubrir quién cosechó la vida de Turner.",
+        "Sospechosos": " *Familia y Vecinos:* Sarah Miller, la dueña de la tienda con deudas pendientes. James Thompson, el vecino con disputas por la propiedad. Natalie Green, la trabajadora agrícola con ambiciones ocultas.",
+        "response": "Natalie Green"
+    },
+    {
+        "caso": "En la academia de música Harmony Hall, el prodigioso pianista Anthony Blackwell es encontrado muerto en la sala de conciertos. Entre partituras y melodías, los detectives deben descubrir quién silenció la sinfonía de Blackwell.",
+        "Sospechosos": " *Estudiantes y Profesores:* Lily Thompson, la pianista con rivalidades musicales. Prof. Isabella Drake, la mentora de Blackwell con conexiones personales. Marcus Reynolds, el estudiante con secretos artísticos.",
+        "response": "Prof. Isabella Drake"
+    },
+    {
+        "caso": "En la elegante mansión Evergreen, la magnate de la moda, Genevieve Evergreen, es encontrada muerta en su lujoso vestidor. Entre prendas exclusivas y secretos de alta costura, los detectives deben descubrir quién cortó el hilo de la diseñadora.",
+        "Sospechosos": " *Familia Evergreen:* Olivia Mitchell, la prima con celos evidentes. Marcus Reynolds, el sobrino con ambiciones en la empresa familiar. Victoria Harper, la asistente personal con conexiones ocultas.",
+        "response": "Olivia Mitchell"
+    },
+    {
+        "caso": "En el refinado salón de té de Victorian Charm, la dueña, Eleanor Thompson, es encontrada muerta entre scones y porcelanas. Con recetas secretas y rivalidades culinarias, los detectives deben descubrir quién envenenó la elegancia de Thompson.",
+        "Sospechosos": " *Competidores Locales:* Isabella Carter, la dueña de la pastelería vecina con rivalidades comerciales. Oliver Turner, el crítico gastronómico con historial de críticas negativas. Daniel Wells, el cliente habitual con motivos desconocidos.",
+        "response": "Isabella Carter"
+    },
+    {
+        "caso": "En el exquisito teatro de Bellavista, la diva principal, Seraphina Leclair, es encontrada muerta en su camerino. Entre escenografías y rivalidades teatrales, los detectives deben descubrir quién cerró el telón para Leclair.",
+        "Sospechosos": " *Compañía de Teatro:* Giovanni Valenti, el director con desavenencias artísticas. Victoria Sinclair, la compañera de escena con rivalidades evidentes. Emily Turner, la asistente de vestuario con conexiones más profundas de lo que parece.",
+        "response": "Giovanni Valenti"
+    },
+    {
+        "caso": "En el prestigioso club de golf Pinehurst Greens, el golfista profesional, James Thompson, es hallado muerto en el campo de práctica. Con palos y rivalidades deportivas, los detectives deben descubrir quién golpeó a Thompson fuera del campo de juego.",
+        "Sospechosos": " *Competidores en el Golf:* Natalie Green, la golfista con desavenencias deportivas. Richard Blackwell, el rival en el club con motivos financieros. Alice Thompson, la caddy con una conexión personal con la víctima.",
+        "response": "Natalie Green"
+    },
+    {
+        "caso": "En el elegante Casino Royale, el dueño, Richard Blackwood, es encontrado muerto en la sala VIP. Entre cartas y apuestas, los detectives deben descubrir quién barajó el destino de Blackwood.",
+        "Sospechosos": " *Clientes y Empleados:* Victoria Sinclair, la jugadora asidua con deudas pendientes. Marcus Reynolds, el crupier con conexiones financieras. Emily Thompson, la camarera con secretos de la vida nocturna.",
+        "response": "Marcus Reynolds"
+    },
+    {
+        "caso": "En el estudio de grabación Sonic Harmony, la estrella del pop, Sophia Cruz, es encontrada muerta entre equipos de sonido. Con ritmos y rivalidades musicales, los detectives deben descubrir quién silenció la carrera de Cruz.",
+        "Sospechosos": " *Colaboradores Musicales:* Lucas Moretti, el productor con desacuerdos creativos. Isabella Montague, la rival con celos evidentes. Max Harrison, el empresario musical con conexiones secretas.",
+        "response": "Lucas Moretti"
+    },
+    {
+        "caso": "En el majestuoso circo Cirque Mystique, el trapecista estrella, Olivia Harper, es encontrada muerta en mitad del espectáculo. Con acrobacias y rivalidades circenses, los detectives deben descubrir quién cortó las alas de Harper.",
+        "Sospechosos": " *Compañeros Circenses:* Leo Martinez, el acróbata con celos evidentes. Zoe Harper, la hermana con una conexión personal con la víctima. Max Harrison, el dueño del circo con oscuros negocios.",
+        "response": "Zoe Harper"
+    },
+    {
+        "caso": "En el estudio de arte Pinturas Eternas, el renombrado pintor Marcus Reynolds es encontrado muerto entre lienzos y pinceles. Con colores y rivalidades artísticas, los detectives deben descubrir quién pintó el final para Reynolds.",
+        "Sospechosos": " *Artistas y Críticos:* Olivia Mitchell, la crítica de arte con historial de críticas negativas. Isabella Montague, la rival artística con celos evidentes. Emily Thompson, la asistente del estudio con secretos ocultos.",
+        "response": "Isabella Montague"
+    }
+]
