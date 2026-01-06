@@ -1,7 +1,7 @@
 {
   "name": "megumin-bot-md",
   "version": "3.0.0",
-  "description": "Megumin-Bot-MD WhatsApp bot using Baileys"
+  "description": "Megumin-Bot-MD WhatsApp bot using Baileys",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -15,7 +15,7 @@
     "multi-device"
   ],
   "author": "David-Chian",
-  "license": "MIT"
+  "license": "MIT",
   "engines": {
     "node": ">=21.7.3",
     "npm": ">=10.9.4"
