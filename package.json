@@ -15,7 +15,7 @@
     "multi-device"
   ],
   "author": "David-Chian",
-  "license": "MIT",
+  "license": "MIT"
   "engines": {
     "node": ">=21.7.3",
     "npm": ">=10.9.4"
