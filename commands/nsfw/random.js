@@ -16,15 +16,29 @@ export default {
         return m.reply('🚩 *¡Estos comandos están desactivados!*');
       }
 
-      const url = `https://raw.githubusercontent.com/David-Chian/Megumin-Bot-MD/main/lib/json/${command}.json`;
+      let imageUrl;
 
-      const { data } = await axios.get(url);
+      if (command === 'hentai') {
+        const { data } = await axios.get(
+          'https://api.stellarwa.xyz/nsfw/random/hentai'
+        );
 
-      if (!Array.isArray(data) || data.length === 0) {
-        return m.reply('❌ No hay imágenes disponibles.');
+        if (!data?.status || !data?.data?.url) {
+          return m.reply('❌ No se pudo obtener la imagen.');
+        }
+
+        imageUrl = data.data.url;
+
+      } else {
+        const url = `https://raw.githubusercontent.com/David-Chian/Megumin-Bot-MD/main/lib/json/${command}.json`;
+        const { data } = await axios.get(url);
+
+        if (!Array.isArray(data) || data.length === 0) {
+          return m.reply('❌ No hay imágenes disponibles.');
+        }
+
+        imageUrl = data[Math.floor(Math.random() * data.length)];
       }
-
-      const imageUrl = data[Math.floor(Math.random() * data.length)];
 
       await client.sendMessage(
         m.chat,
