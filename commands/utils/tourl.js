@@ -8,11 +8,15 @@ export default {
   let botId = client.user.id.split(':')[0] + "@s.whatsapp.net";
   let botSettings = global.db.data.settings[botId];
   let botname = botSettings.namebot;
-  let q = m.quoted ? m.quoted : m;
-  let mime = (q.msg || q).mimetype || '';
-  if (!mime) {
-    return client.reply(m.chat, '💜 Responde a una *Imagen*, *Vídeo* o *Audio (mp3/wav).*', m);
-  }
+      const q = m.quoted || m
+    const mime = (q.msg || q).mimetype || ''
+    if (!mime) {
+      return client.reply(
+        m.chat,
+        `《✧》 Por favor, responde a una imagen o video con el comando */tourl* para convertirlo en una URL.`,
+        m
+      )
+    }
 
   await client.sendMessage(m.chat, { react: { text: '💥', key: m.key } });
 
