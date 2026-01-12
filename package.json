@@ -30,7 +30,6 @@
     "better-sqlite3": "^12.4.1",
     "axios": "^0.24.0",
     "chalk": "^4.1.2",
-    "canvas": "latest",
     "cfonts": "^3.3.0",
     "express": "^4.19.2",
     "fluent-ffmpeg": "^2.1.2",
