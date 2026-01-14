@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 export default {
   command: ['instagram', 'ig'],
   category: 'downloader',
-  run: async (client, m, args, command) => {
+  run: async ({client, m, args, command}) => {
 
     const url = args[0]
 
