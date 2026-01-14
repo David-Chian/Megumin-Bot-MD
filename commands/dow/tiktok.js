@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 export default {
   command: ['tiktok', 'tt'],
   category: 'downloader',
-  run: async (client, m, args, command) => {
+  run: async ({client, m, args, command}) => {
 
     if (!args.length) {
       return m.reply(`✎ Ingresa un *término* o *enlace* de TikTok.`)
