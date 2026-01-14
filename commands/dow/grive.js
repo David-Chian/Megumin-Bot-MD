@@ -3,7 +3,7 @@ import axios from 'axios';
 export default {
   command: ['drive', 'gdrive'],
   category: 'downloader',
-  run: async (client, m, args) => {
+  run: async ({client, m, args}) => {
     if (!args[0]) {
       return m.reply(
         'ꕥ Ingresa el enlace de *Google Drive*.',
