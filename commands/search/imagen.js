@@ -50,7 +50,7 @@ const bannedWords = [
       return m.reply('《✧》 Este comando no *permite* búsquedas de contenido *+18* o *NSFW*')
     }
 
-    await m.reply(mess.wait)
+    await m.reply(`🔥 Descargando imagen espere un momento...`)
 
     const url = `${api.url}/search/googleimagen?query=${encodeURIComponent(text)}&key=${api.key}`
 
