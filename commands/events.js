@@ -24,7 +24,7 @@ export default async (client, m) => {
       for (const p of anu.participants) {
         const jid = p.phoneNumber
         const phone = p.phoneNumber?.split('@')[0] || jid.split('@')[0]
-        const pp = await client.profilePictureUrl(jid, 'image').catch(_ => 'https://cdn.stellarwa.xyz/files/1755559736781.jpeg')
+        const pp = await client.profilePictureUrl(jid, 'image').catch(_ => 'https://cdn.sockywa.xyz/files/1755559736781.jpeg')
 
         const fakeContext = {
           contextInfo: {
