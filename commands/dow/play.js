@@ -115,9 +115,42 @@ const nekolabsApi = {
         return { dl: media.url, title: result.title };
       }
     };
+    
+    const anabotMp4Api = {
+  url: (url) =>
+    `https://anabot.my.id/api/download/ytmp4?url=${encodeURIComponent(url)}&quality=720&apikey=freeApikey`,
+  validate: (result) =>
+    result?.success &&
+    result?.data?.result?.success &&
+    result?.data?.result?.urls,
+  parse: (result) => ({
+    dl: result.data.result.urls,
+    title: result.data.result.metadata?.title
+  })
+}
 
-const { dl, title: apiTitle } = 
-  await fetchWithFallback(url, primaryApi, [nekolabsApi, aioApi]);
+const anabotMp3Api = {
+  url: (url) =>
+    `https://anabot.my.id/api/download/ytmp3?url=${encodeURIComponent(url)}&apikey=freeApikey`,
+  validate: (result) =>
+    result?.success &&
+    result?.data?.result?.success &&
+    result?.data?.result?.urls,
+  parse: (result) => ({
+    dl: result.data.result.urls,
+    title: result.data.result.metadata?.title
+  })
+}
+
+const isAudio = ['play', 'mp3', 'playaudio', 'ytmp3'].includes(command)
+
+const { dl, title: apiTitle } = await fetchWithFallback(
+  url,
+  primaryApi,
+  isAudio
+    ? [anabotMp3Api, nekolabsApi, aioApi]
+    : [anabotMp4Api, nekolabsApi, aioApi]
+)
   let thumbBuffer;
 try {
   const response = await fetch(videoInfo.thumbnail);
