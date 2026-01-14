@@ -2,7 +2,7 @@ import yts from 'yt-search';
 import {getBuffer} from '../../lib/message.js';
 
 export default {
-  command: ['ytsearch', 'search'],
+  command: ['ytsearch', 'search', 'yts'],
   category: 'internet',
   run: async ({client, m, args}) => {
     if (!args || !args[0]) {
