@@ -11,7 +11,7 @@ let commandFlags = {}
 export default {
   command: ['code'],
   category: 'socket',
-  run: async (client, m, args, command) => {
+  run: async ({client, m, args, command}) => {
     let time = global.db.data.users[m.sender].Subs + 120000 || ''
     if (new Date() - global.db.data.users[m.sender].Subs < 120000) {
       return client.reply(
