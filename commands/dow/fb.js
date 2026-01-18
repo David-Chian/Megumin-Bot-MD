@@ -1,34 +1,60 @@
+import { igdl } from 'ruhend-scraper';
+
 export default {
   command: ['fb', 'facebook'],
   category: 'downloader',
-  run: async ({client, m, args}) => {
+  run: async ({ client, m, args }) => {
 
     if (!args[0]) {
-      return m.reply('ꕥ Ingrese un enlace de *Facebook*')
+      return m.reply('ꕥ Ingrese un enlace de *Facebook*');
     }
 
     if (!args[0].match(/facebook\.com|fb\.watch|video\.fb\.com/)) {
-      return m.reply('《✧》Por favor, envía un link de Facebook válido')
+      return m.reply('《✧》Por favor, envía un link de Facebook válido');
     }
 
     try {
-      const videoUrl = `${api.url}/dl/facebookv2?url=${args[0]}&key=${api.key}`
+      await client.sendMessage(
+        m.chat,
+        { react: { text: '💜', key: m.key } }
+      );
 
-      const response = await fetch(videoUrl)
-      if (!response.ok) throw new Error(`HTTP ${response.status}`)
-      const buffer = Buffer.from(await response.arrayBuffer())
+      m.reply('_💜 Descargando su video de Facebook..._');
 
-      const caption = `ೀ܀⊹˙┆✽ " *ᖴᥲᥴᥱᑲ᥆᥆k ᗪ᥆ᥕᥒᥣ᥆ᥲძ* 𝜗𝜚┆˙⊹܀ೀ
+      const res = await igdl(args[0]);
+      const result = res.data;
 
-⭒̇ㅤ֯◌ 〃 ׄ 〬〿 *Enlace* › ${args[0]}`
+      if (!result || result.length === 0) {
+        throw new Error('No se encontraron resultados.');
+      }
+
+      // Prioridad HD → SD
+      const video =
+        result.find(v => v.resolution === '720p (HD)') ||
+        result.find(v => v.resolution === '360p (SD)');
+
+      if (!video) {
+        throw new Error('No se encontró una resolución válida.');
+      }
+
+      const caption = `ೀ܀⊹˙┆✽ *Facebook Download* 𝜗𝜚┆˙⊹܀ೀ
+
+⭒̇ㅤ֯◌ *Enlace:*  
+${args[0]}`;
 
       await client.sendMessage(
         m.chat,
-        { video: buffer, caption, mimetype: 'video/mp4', fileName: 'fb.mp4' },
+        {
+          video: { url: video.url },
+          caption,
+          mimetype: 'video/mp4',
+          fileName: 'facebook.mp4'
+        },
         { quoted: m }
-      )
+      );
+
     } catch (e) {
-      await m.reply('ꕥ Error: ' + e.message)
+      m.reply('ꕥ Error: ' + e.message);
     }
   }
-}
+};
