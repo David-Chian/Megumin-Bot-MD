@@ -1,27 +1,117 @@
 import yts from 'yt-search';
 import fetch from 'node-fetch';
 import sharp from 'sharp'
+import axios from 'axios'
+import crypto from 'crypto'
 
 const limit = 100; // Max file size in MB
 
-const isYTUrl = (url) => /^(https?:\/\/)?(www\.)?(youtube\.com\/(watch\?v=|shorts\/|live\/)|youtu\.be\/).+$/i.test(url);
-
-const fetchWithFallback = async (url, primaryApi, fallbackApis) => {
-  for (const api of [primaryApi, ...fallbackApis]) {
-    try {
-      const response = await fetch(api.url(url));
-      const result = await response.json();
-      if (api.validate(result)) {
-        return api.parse(result);
+class SaveTube {
+  constructor() {
+    this.ky = 'C5D58EF67A7584E4A29F6C35BBC4EB12'
+    this.m =
+      /^((?:https?:)?\/\/)?((?:www|m|music)\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(?:embed\/)?(?:v\/)?(?:shorts\/)?([a-zA-Z0-9_-]{11})/
+    this.is = axios.create({
+      headers: {
+        'content-type': 'application/json',
+        origin: 'https://yt.savetube.me',
+        'user-agent':
+          'Mozilla/5.0 (Android 15; Mobile; SM-F958; rv:130.0) Gecko/130.0 Firefox/130.0'
       }
-      console.warn(`API ${api.url(url)} failed validation:`, result);
-    } catch (e) {
-      console.error(`Error with API ${api.url(url)}:`, e);
+    })
+  }
+
+  async decrypt(enc) {
+    const [sr, ky] = [Buffer.from(enc, 'base64'), Buffer.from(this.ky, 'hex')]
+    const [iv, dt] = [sr.slice(0, 16), sr.slice(16)]
+    const dc = crypto.createDecipheriv('aes-128-cbc', ky, iv)
+    return JSON.parse(Buffer.concat([dc.update(dt), dc.final()]).toString())
+  }
+
+  async getCdn() {
+    const r = await this.is.get('https://media.savetube.vip/api/random-cdn')
+    return r.data.cdn
+  }
+
+  async download(url, isAudio) {
+    const id = url.match(this.m)?.[3]
+    if (!id) throw new Error('ID inválido')
+
+    const cdn = await this.getCdn()
+
+    const info = await this.is.post(`https://${cdn}/v2/info`, {
+      url: `https://www.youtube.com/watch?v=${id}`
+    })
+
+    const dec = await this.decrypt(info.data.data)
+
+    const dl = await this.is.post(`https://${cdn}/download`, {
+      id,
+      downloadType: isAudio ? 'audio' : 'video',
+      quality: isAudio ? '128' : '720',
+      key: dec.key
+    })
+
+    return {
+      dl: dl.data.data.downloadUrl,
+      title: dec.title
     }
   }
-  throw new Error('All APIs failed');
-};
+}
 
+const isYTUrl = (url) => /^(https?:\/\/)?(www\.)?(youtube\.com\/(watch\?v=|shorts\/|live\/)|youtu\.be\/).+$/i.test(url);
+
+const fetchParallelFirstValid = async (url, apis, timeout = 15000) => {
+  return new Promise((resolve, reject) => {
+    let settled = false
+    let errors = 0
+
+    const timer = setTimeout(() => {
+      if (!settled) reject(new Error('Timeout: todas las APIs tardaron demasiado'))
+    }, timeout)
+
+    apis.forEach(api => {
+      ;(async () => {
+        try {
+          let result
+
+          if (api.custom) {
+            result = await api.run(url)
+            if (result?.dl) {
+              if (!settled) {
+                settled = true
+                clearTimeout(timer)
+                resolve(result)
+              }
+            }
+            return
+          }
+
+          const res = await fetch(api.url(url))
+          const json = await res.json()
+
+          if (api.validate(json)) {
+            const parsed = await api.parse(json)
+            if (parsed?.dl && !settled) {
+              settled = true
+              clearTimeout(timer)
+              resolve(parsed)
+            }
+          } else {
+            errors++
+          }
+        } catch {
+          errors++
+        }
+
+        if (errors === apis.length && !settled) {
+          clearTimeout(timer)
+          reject(new Error('Todas las APIs fallaron'))
+        }
+      })()
+    })
+  })
+}
 export default {
   command: ['play', 'mp3', 'playaudio', 'ytmp3', 'play2', 'mp4', 'playvideo', 'ytmp4'],
   category: 'downloader',
@@ -142,27 +232,71 @@ const anabotMp3Api = {
   })
 }
 
+const nexevoMp3Api = {
+  url: (url) =>
+    `https://nexevo-api.vercel.app/download/y?url=${encodeURIComponent(url)}`,
+  validate: (result) =>
+    result?.status &&
+    result?.result?.status &&
+    result?.result?.url,
+  parse: (result) => ({
+    dl: result.result.url,
+    title: result.result.info?.title || 'Audio'
+  })
+}
+const nexevoMp4Api = {
+  url: (url) =>
+    `https://nexevo-api.vercel.app/download/y2?url=${encodeURIComponent(url)}`,
+  validate: (result) =>
+    result?.status &&
+    result?.result?.status &&
+    result?.result?.url,
+  parse: (result) => ({
+    dl: result.result.url,
+    title: result.result.info?.title || 'Video'
+  })
+}
+
+const saveTubeFallback = {
+  custom: true,
+  run: async (url) => {
+    const sv = new SaveTube()
+    return await sv.download(url, isAudio)
+  }
+}
+
 const isAudio = ['play', 'mp3', 'playaudio', 'ytmp3'].includes(command)
 
-const { dl, title: apiTitle } = await fetchWithFallback(
-  url,
-  primaryApi,
-  isAudio
-    ? [anabotMp3Api, nekolabsApi, aioApi]
-    : [anabotMp4Api, nekolabsApi, aioApi]
-)
-  let thumbBuffer;
-try {
-  const response = await fetch(videoInfo.thumbnail);
-  const arrayBuffer = await response.arrayBuffer();
+const apis = isAudio
+  ? [
+      nexevoMp3Api,
+      anabotMp3Api,
+      nekolabsApi,
+      aioApi,
+      saveTubeFallback
+    ]
+  : [
+      nexevoMp4Api,
+      anabotMp4Api,
+      nekolabsApi,
+      aioApi,
+      saveTubeFallback
+    ]
 
-  thumbBuffer = await sharp(Buffer.from(arrayBuffer))
-    .resize(320, 180)
-    .jpeg({ quality: 80 })
-    .toBuffer();
-} catch (e) {
-  m.reply(`Error al procesar la miniatura ${e.message}`)
-  thumbBuffer = null;
+const { dl, title: apiTitle } = await fetchParallelFirstValid(url, apis)
+
+  let thumbBuffer = null
+
+if (videoInfo?.thumbnail) {
+  try {
+    const response = await fetch(videoInfo.thumbnail)
+    const arrayBuffer = await response.arrayBuffer()
+
+    thumbBuffer = await sharp(Buffer.from(arrayBuffer))
+      .resize(320, 180)
+      .jpeg({ quality: 80 })
+      .toBuffer()
+  } catch {}
 }
 
     if (['play', 'mp3', 'playaudio', 'ytmp3'].includes(command)) {
