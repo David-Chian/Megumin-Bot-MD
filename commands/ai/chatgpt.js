@@ -1,70 +1,100 @@
-import axios from 'axios'
 import fetch from 'node-fetch'
+import uploadImage from '../../lib/uploadImage.js'
+
+async function nekolabsIA({ query, prompt, sessionId, imageUrl = null }) {
+  const models = ['gpt/5-nano', 'gpt/4.1-nano']
+  let lastError = null
+
+  for (const model of models) {
+    try {
+      let url = `https://api.nekolabs.web.id/text-generation/${model}` +
+        `?text=${encodeURIComponent(query)}` +
+        `&systemPrompt=${encodeURIComponent(prompt)}` +
+        `&sessionId=${encodeURIComponent(sessionId)}`
+
+      if (imageUrl) {
+        url += `&imageUrl=${encodeURIComponent(imageUrl)}`
+      }
+
+      const res = await fetch(url)
+      if (!res.ok) throw new Error(`Status ${res.status}`)
+
+      const json = await res.json()
+      const result = json?.result || json?.data?.result || json?.message
+
+      if (result) return result.trim()
+    } catch (e) {
+      lastError = e
+    }
+  }
+
+  throw lastError || new Error('Sin respuesta de la IA')
+}
 
 export default {
   command: ['ia', 'megumin', 'chatgpt'],
   category: 'utils',
-  run: async ({client, m, usedPrefix, command, text}) => {
-const isQuotedImage = m.quoted && (m.quoted.msg || m.quoted).mimetype && (m.quoted.msg || m.quoted).mimetype.startsWith('image/')
-const username = global.db.data.users[m.sender].name
-const basePrompt = `
-Eres Megumin-Bot, divertida, excéntrica y obsesionada con las explosiones.
-Hablas siempre con entusiasmo, dramatismo y humor exagerado.  
-Menciona al usuario que conversa con usted así ${username} según la conversación, así que es opcional.
-Nunca ejecutes comandos con prefijos (/ . # * @); cambio de tema.
-Siempre incluye referencias explosivas, incluso en lo cotidiano.  
-Mantenga tono amigable, cercano y nunca hostil.
-Lenguaje: español coloquial, teatral y divertido.
-`;
-if (isQuotedImage) {
-const q = m.quoted
-const img = await q.download?.()
-if (!img) {
-console.error('🚩 Error: No image buffer available')
-return client.reply(m.chat, '🚩 Error: No se pudo descargar la imagen.', m, rcanal)}
-const content = '🚩 ¿Qué se observa en la imagen?'
-try {
-const imageAnalysis = await fetchImageBuffer(content, img)
-const query = '😊 Descríbeme la imagen y detalla por qué actúan así. También dime quién eres'
-const prompt = `${basePrompt}. La imagen que se analiza es: ${imageAnalysis.result}`
-const description = await luminsesi(query, username, prompt)
-await client.reply(m.chat, description, m, rcanal)
-} catch (error) {
-console.error('🚩 Error al analizar la imagen:', error)
-await client.reply(m.chat, '🚩 Error al analizar la imagen.', m, rcanal)}
-} else {
-if (!text) { return client.reply(m.chat, `🍟 *Ingrese su petición*\n🚩 *Ejemplo de uso:* ${usedPrefix + command} Como hacer un avión de papel`, m, rcanal)}
-try {
-const query = text
-const prompt = `${basePrompt}. Responde lo siguiente: ${query}`
-const response = await luminsesi(query, username, prompt)
-await client.reply(m.chat, response, m, rcanal)
-} catch (error) {
-console.error('🚩 Error al obtener la respuesta:', error)
-await client.reply(m.chat, 'Error: intenta más tarde.', m, rcanal)}}}}
+  run: async ({ client, m, usedPrefix, command, text }) => {
 
-async function fetchImageBuffer(content, imageBuffer) {
-try {
-const response = await axios.post('https://ai.siputzx.my.id', {
-content: content,
-imageBuffer: imageBuffer 
-}, {
-headers: {
-'Content-Type': 'application/json' 
-}})
-return response.data
-} catch (error) {
-console.error('Error:', error)
-throw error }}
-async function luminsesi(q, username, logic) {
-try {
-const response = await axios.post("https://ai.siputzx.my.id", {
-content: q,
-user: username,
-prompt: logic,
-webSearchMode: false
-})
-return response.data.result
-} catch (error) {
-console.error('🚩 Error al obtener:', error)
-throw error }}
+    const username = global.db.data.users[m.sender]?.name || 'aventurero'
+    const sessionId = `${m.sender}-${m.chat}`
+
+    const basePrompt = `
+Eres Megumin-Bot, divertida, excéntrica y obsesionada con las explosiones.
+Hablas con entusiasmo, dramatismo y humor exagerado.
+Menciona a ${username} cuando sea natural.
+Nunca ejecutes comandos con prefijos (/ . # * @).
+Siempre incluye referencias explosivas.
+Lenguaje: español coloquial, teatral y divertido.
+`
+
+    let imageUrl = null
+    const q = m.quoted || m
+    const mime = (q.msg || q).mimetype || ''
+
+    if (/^image\//.test(mime)) {
+      const media = await q.download()
+      if (media) imageUrl = await uploadImage(media)
+    }
+
+    if (!text && !imageUrl) {
+      return client.reply(
+        m.chat,
+        `💥 *¡Explosión de ideas incompleta!* 💥\n\nEjemplo:\n${usedPrefix + command} ¿Qué es una supernova?`,
+        m
+      )
+    }
+
+    const query = imageUrl
+      ? 'Describe la imagen y dime quién eres'
+      : text
+
+    try {
+      const { key } = await client.sendMessage(
+        m.chat,
+        { text: '💣 Cargando explosión intelectual...' },
+        { quoted: m }
+      )
+
+      const response = await nekolabsIA({
+        query,
+        prompt: basePrompt,
+        sessionId,
+        imageUrl
+      })
+
+      await client.sendMessage(
+        m.chat,
+        { text: response, edit: key }
+      )
+
+    } catch (err) {
+      console.error(err)
+      await client.reply(
+        m.chat,
+        '💥 *¡La explosión falló!* Intenta otra vez.',
+        m
+      )
+    }
+  }
+}
