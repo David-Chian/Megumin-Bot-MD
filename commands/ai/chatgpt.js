@@ -40,8 +40,7 @@ export default {
     const sessionId = `${m.sender}-${m.chat}`
 
     const basePrompt = `
-Eres Megumin-Bot, divertida, excéntrica y obsesionada con las explosiones.
-Hablas con entusiasmo, dramatismo y humor exagerado.
+Eres Megumin-Bot. Hablas con entusiasmo y formalmente.
 Menciona a ${username} cuando sea natural.
 Nunca ejecutes comandos con prefijos (/ . # * @).
 Siempre incluye referencias explosivas.
@@ -60,7 +59,7 @@ Lenguaje: español coloquial, teatral y divertido.
     if (!text && !imageUrl) {
       return client.reply(
         m.chat,
-        `💥 *¡Explosión de ideas incompleta!* 💥\n\nEjemplo:\n${usedPrefix + command} ¿Qué es una supernova?`,
+        `💥 *¡Escribe un texto o pregunta algo!* 💥\n\nEjemplo:\n${usedPrefix + command} ¿Qué es una supernova?`,
         m
       )
     }
@@ -72,7 +71,7 @@ Lenguaje: español coloquial, teatral y divertido.
     try {
       const { key } = await client.sendMessage(
         m.chat,
-        { text: '💣 Cargando explosión intelectual...' },
+        { text: '💣 Procesando respuesta espere...' },
         { quoted: m }
       )
 
@@ -92,7 +91,7 @@ Lenguaje: español coloquial, teatral y divertido.
       console.error(err)
       await client.reply(
         m.chat,
-        '💥 *¡La explosión falló!* Intenta otra vez.',
+        '💥 *¡Hubo un error!* Intenta otra vez.',
         m
       )
     }
