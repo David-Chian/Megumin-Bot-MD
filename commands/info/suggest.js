@@ -58,12 +58,22 @@ export default {
       `𖹭  ׄ  ְ ❖ *Mensaje*\n> ${texto}\n\n` +
       dev
 
-        await global.client.sendContextInfoIndex('120363046845085592@g.us', reportMsg, {}, null, false, null, {
-          banner: pp,
-          title: tipo2,
-          body: '✧ Antento Staff, mejoren.',
-          redes: global.db.data.settings[client.user.id.split(':')[0] + "@s.whatsapp.net"].link
-        })
+        const owner = '5351524614@s.whatsapp.net'
+
+await global.client.sendContextInfoIndex(
+  owner,
+  reportMsg,
+  {},
+  null,
+  false,
+  null,
+  {
+    banner: pp,
+    title: tipo2,
+    body: '✧ Nuevo reporte recibido.',
+    redes: global.db.data.settings[client.user.id.split(':')[0] + "@s.whatsapp.net"].link
+  }
+)
    
    global.db.data.users[m.sender].sugCooldown = now + 24 * 60 * 60000
 
