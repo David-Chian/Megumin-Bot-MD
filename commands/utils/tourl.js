@@ -54,6 +54,7 @@ export default {
     txt += `*» Enlace* : ${link}\n`;
     txt += `*» Acortado* : ${shortLink}\n`;
     txt += `*» Tamaño* : ${formatBytes(media.length)}\n`;
+    txt += `*» Tipo* : ${mime}\n`
     txt += `*» Expiración* : No expira\n\n`;
     txt += `> *${botname}*`;
 
