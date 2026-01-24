@@ -307,7 +307,7 @@ await client.sendMessage(
   {
     document: { url: dl },
     mimetype: 'audio/mpeg',
-    fileName: `${apiTitle || title}.mp3`,
+    fileName: `${title}.mp3`,
     jpegThumbnail: thumbBuffer
   },
   { quoted: m }
@@ -325,7 +325,7 @@ await client.sendMessage(
       m.chat,
       {
         document: { url: dl },
-        fileName: `${apiTitle || title}.mp4`,
+        fileName: `${title}.mp4`,
         mimetype: 'video/mp4',
         caption: dev
       },
@@ -336,7 +336,7 @@ await client.sendMessage(
       m.chat,
       {
         video: { url: dl },
-        fileName: `${apiTitle || title}.mp4`,
+        fileName: `${title}.mp4`,
         mimetype: 'video/mp4',
         jpegThumbnail: thumbBuffer
       },
