@@ -1,66 +1,78 @@
-import fetch from 'node-fetch'
-import uploadImage from '../../lib/uploadImage.js'
+import sharp from 'sharp'
+import { downloadContentFromMessage } from '@whiskeysockets/baileys'
 
 export default {
-  command: ['hd'],
+  command: ['hd', 'enhance', 'hdphoto', 'mejorar'],
   category: 'utils',
+
   run: async ({ client, m }) => {
     try {
       const q = m.quoted || m
-      const mime = q.mimetype || q.msg?.mimetype || ''
+      const mime = (q.msg || q).mimetype || ''
 
-      if (!mime) {
-        return m.reply(`《✧》 Envía una *imagen* junto al comando`)
+      if (!/image\/(jpeg|jpg|png|webp)/i.test(mime)) {
+        return client.reply(
+          m.chat,
+          '🖼️ *Responde a una imagen para mejorarla en HD*',
+          m
+        )
       }
 
-      if (!/image\/(jpe?g|png)/.test(mime)) {
-        return m.reply(`《✧》 El formato *${mime}* no es compatible`)
-      }
-
-      const media = await q.download()
-
-      const link = await uploadImage(media)
-      if (!link) {
-        return m.reply('《✧》 No se pudo subir la imagen')
-      }
-
-      const apiUrl =
-        `https://api.nekolabs.web.id/tools/upscale/waifu2x` +
-        `?imageUrl=${encodeURIComponent(link)}` +
-        `&style=photo&noice=low&upscaling=2x`
-
-      const res = await fetch(apiUrl, {
-        headers: {
-          'User-Agent': 'WhatsApp-Bot',
-          'Accept': 'application/json'
-        }
+      await client.sendMessage(m.chat, {
+        react: { text: '🕒', key: m.key }
       })
 
-      if (!res.ok) {
-        throw new Error(`Nekolabs API HTTP ${res.status}`)
+      const stream = await downloadContentFromMessage(
+        q.msg || q.message,
+        'image'
+      )
+
+      let buffer = Buffer.alloc(0)
+      for await (const chunk of stream) {
+        buffer = Buffer.concat([buffer, chunk])
       }
 
-      const json = await res.json()
-
-      if (!json.success || !json.result) {
-        throw new Error('Respuesta inválida de Nekolabs')
+      if (!buffer.length) {
+        await client.sendMessage(m.chat, {
+          react: { text: '❌', key: m.key }
+        })
+        return client.reply(m.chat, '❌ No pude descargar la imagen.', m)
       }
 
-      const imgRes = await fetch(json.result)
-      if (!imgRes.ok) {
-        throw new Error('No se pudo descargar la imagen HD')
-      }
-
-      const buffer = Buffer.from(await imgRes.arrayBuffer())
+      const hdBuffer = await sharp(buffer)
+        .resize({
+          width: 2000,
+          withoutEnlargement: false
+        })
+        .jpeg({ quality: 100 })
+        .toBuffer()
 
       await client.sendMessage(
         m.chat,
-        { image: buffer },
+        {
+          image: hdBuffer,
+          caption: '✨ *Imagen mejorada en HD*'
+        },
         { quoted: m }
       )
 
+      await client.sendMessage(m.chat, {
+        react: { text: '✅', key: m.key }
+      })
+
     } catch (err) {
-      await m.reply(`❌ Error: ${err.message}`)
+      console.error('Error en hd:', err)
+      try {
+        await client.sendMessage(m.chat, {
+          react: { text: '❌', key: m.key }
+        })
+      } catch {}
+
+      client.reply(
+        m.chat,
+        '❌ Error al procesar la imagen en HD.',
+        m
+      )
     }
   }
 }
