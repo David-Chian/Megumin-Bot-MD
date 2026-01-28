@@ -9,7 +9,7 @@ const dirname = path.dirname(filename);
 export default {
   command: ['bots', 'sockets'],
   category: 'socket',
-  run: async (client, m) => {
+  run: async ({client, m}) => {
     const botId = client.user.id.split(':')[0] + '@s.whatsapp.net'
     const bot = global.db.data.settings[botId]
     const botname = bot.namebot
