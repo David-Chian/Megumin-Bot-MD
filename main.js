@@ -151,7 +151,8 @@ const isGroup = m.isGroup
     }
 
     const isOwner = global.owner.map(x => x + "@s.whatsapp.net").includes(sender)
-
+    const settingsBot = global.db.data.settings[selfId] || {}
+    if (settingsBot.self && !isOwner && sender !== selfId) return
 const metadata = isGroup ? await client.groupMetadata(from).catch(() => null) : null
 
 const participants = metadata?.participants || []
@@ -189,6 +190,9 @@ global.dfail = (type, m) => {
     if (msg) return m.reply(msg)
 }
 
+if (isGroup && chat.bannedGrupo && !isAdmin && !isOwner) {
+    return 
+}
 if (cmdData.isOwner && !isOwner) return global.dfail('owner', m)
 if (cmdData.isModeration && !isModeration) return global.dfail('moderation', m)
 if (cmdData.isAdmin && !isAdmin) return global.dfail('admin', m)
