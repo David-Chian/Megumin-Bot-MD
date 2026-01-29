@@ -1,61 +1,59 @@
-import fetch from 'node-fetch';
+import fetch from 'node-fetch'
 
 export default {
-  command: ['tiktoksearch', 'ttsearch', 'tts'],
+  command: ['tiktoksearch', 'ttsearch', 'tiktok'],
   category: 'search',
-  run: async ({client, m, args}) => {
-    const botId = client.user.id.split(':')[0] + '@s.whatsapp.net'
-    const botSettings = global.db.data.settings[botId]
-    const banner = botSettings.icon
 
-    if (!args || !args.length) {
+  run: async ({ client, m, args }) => {
+    if (!args.length) {
       return client.reply(
         m.chat,
-        `《✧》 Ingresa un término de búsqueda.`,
-        m,
+        '❌ Ingresa un término de búsqueda.',
+        m
       )
     }
 
     const query = args.join(' ')
-    const url = `${api.url}/search/tiktok?query=${query}&key=${api.key}`
-
-    // await m.reply(mess.wait)
+    const limit = 5
 
     try {
-      const res = await fetch(url)
+      const res = await fetch(
+        `https://api.dorratz.com/v2/tiktok-s?q=${encodeURIComponent(query)}&limit=${limit}`
+      )
+
       const json = await res.json()
 
-      if (!json || !json.data || !json.data.length) {
-        return client.reply(m.chat, `《✧》 No se encontraron resultados para "${query}".`, m)
+      if (json.status !== 200 || !json.data?.length) {
+        return client.reply(
+          m.chat,
+          `⚠️ No se encontraron resultados para "${query}".`,
+          m
+        )
       }
 
-      let message = ``
-      json.data.forEach((result, index) => {
-        message += `➩ *Título ›* ${result.title}
+      let text = `✔ *Resultados de TikTok*\n`
+      text += `ッ *Búsqueda:* ${query}\n\n`
 
-✎ *Autor ›* ${result.author.nickname} (@${result.author.unique_id})
-ꕥ *Reproducciones ›* ${result.stats.views}
-❖ *Comentarios ›* ${result.stats.comments}
-❒ *Compartidos ›* ${result.stats.shares}
-♡ *Me gusta ›* ${result.stats.likes}
-★ *Descargas ›* ${result.downloads}
-❀ *Duración ›* ${result.duration}
-✧ *URL ›* https://www.tiktok.com/@${result.author.unique_id}/video/${result.video_id}
-
-${index < json.data.length - 1 ? '╾۪〬─ ┄۫╌ ׄ┄┈۪ ─〬 ׅ┄╌ ۫┈ ─ׄ─۪〬 ┈ ┄۫╌ ┈┄۪ ─ׄ〬╼' : ''}
-        `
+      json.data.forEach((v, i) => {
+        text += `◆ *${i + 1}. ${v.title || 'Sin título'}*\n`
+        text += `★ Autor: @${v.author?.username || 'desconocido'}\n`
+        text += `● Vistas: ${v.play}\n`
+        text += `♧ Likes: ${v.like}\n`
+        text += `◇ Comentarios: ${v.coment}\n`
+        text += `♡ Compartidos: ${v.share}\n`
+        text += `☆ URL: ${v.url}\n`
+        text += `╾۪〬─ ┄۫╌ ׄ┄┈۪ ─〬 ׅ┄╌ ۫┈ ─ׄ─۪〬 ┈ ┄۫╌ ┈┄۪ ─ׄ〬╼\n`
       })
 
-      await client.sendMessage(
-        m.chat,
-        {
-          image: { url: banner },
-          caption: message.trim(),
-        },
-        { quoted: m },
-      )
+      await client.reply(m.chat, text.trim(), m)
+
     } catch (e) {
-      await m.reply(msgglobal)
+      console.error('[TikTok Search Error]', e)
+      await client.reply(
+        m.chat,
+        '❌ Error al buscar en TikTok.',
+        m
+      )
     }
-  },
-};
+  }
+}
