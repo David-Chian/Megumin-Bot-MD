@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 
 export default {
-  command: ['tiktoksearch', 'ttsearch', 'tiktok'],
+  command: ['tiktoksearch', 'ttsearch', 'tts'],
   category: 'search',
 
   run: async ({ client, m, args }) => {
