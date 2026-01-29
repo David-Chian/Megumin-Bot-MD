@@ -1,20 +1,21 @@
-import fetch from 'node-fetch';
+import fetch from 'node-fetch'
 
 export default {
   command: ['imagen', 'img', 'image'],
   category: 'search',
-  run: async ({client, m, args, from}) => {
+
+  run: async ({ client, m, args }) => {
     const text = args.join(' ')
     if (!text) {
       return client.reply(
         m.chat,
-        `《✧》 Ingresa un *término* de búsqueda.`,
-        m,
+        '《✧》 Ingresa un *término* de búsqueda.',
+        m
       )
     }
 
-const bannedWords = [
-  '+18', '18+', 'contenido adulto', 'contenido explícito', 'contenido sexual',
+    const bannedWords = [
+        '+18', '18+', 'contenido adulto', 'contenido explícito', 'contenido sexual',
   'actriz porno', 'actor porno', 'estrella porno', 'pornstar', 'video xxx', 'xxx', 'x x x',
   'pornhub', 'xvideos', 'xnxx', 'redtube', 'brazzers', 'onlyfans', 'cam4', 'chaturbate',
   'myfreecams', 'bongacams', 'livejasmin', 'spankbang', 'tnaflix', 'hclips', 'fapello',
@@ -42,31 +43,43 @@ const bannedWords = [
   'pornvid', 'pornvideo', 'only fan', 'only-fans', 'only_fans', 'onlyfans.com',
   'mia khalifha', 'mia khalifah', 'mia khalifaa', 'mia khalif4', 'mia khal1fa',
   'mia khalifa +18', 'mia khalifa xxx', 'mia khalifa desnuda', 'mia khalifa porno'
-]
-    const lowerText = text.toLowerCase()
-    const nsfwEnabled = global.db.data.chats[m.chat]?.nsfw === true
+    ]
 
-    if (!nsfwEnabled && bannedWords.some((word) => lowerText.includes(word))) {
-      return m.reply('《✧》 Este comando no *permite* búsquedas de contenido *+18* o *NSFW*')
+    const lowerText = text.toLowerCase()
+    const nsfwEnabled = global.db?.data?.chats?.[m.chat]?.nsfw === true
+
+    if (!nsfwEnabled && bannedWords.some(w => lowerText.includes(w))) {
+      return m.reply('《✧》 Este comando no permite búsquedas *+18 / NSFW*')
     }
 
-    await m.reply(`🔥 Descargando imagen espere un momento...`)
-
-    const url = `${api.url}/search/googleimagen?query=${encodeURIComponent(text)}&key=${api.key}`
+    await m.reply('🔥 Buscando imagen, espera un momento...')
 
     try {
-      const res = await fetch(url)
+      const res = await fetch(
+        `https://anabot.my.id/api/search/gimage?query=${encodeURIComponent(text)}&apikey=freeApikey`
+      )
 
-      if (!res.ok || !res.headers.get('content-type')?.includes('image')) {
+      const json = await res.json()
+
+      if (!json.success || !json.data?.result?.length) {
         return m.reply(`ꕥ No se encontraron resultados para *${text}*`)
       }
 
-      const buffer = await res.buffer()
+      const images = json.data.result
+      const img = images[Math.floor(Math.random() * images.length)]
 
-      await client.sendMessage(m.chat, { image: buffer }, { quoted: m })
+      const imgRes = await fetch(img.url)
+      const buffer = await imgRes.buffer()
+
+      await client.sendMessage(
+        m.chat,
+        { image: buffer },
+        { quoted: m }
+      )
+
     } catch (e) {
-     // console.error(e)
-      await m.reply(msgglobal)
+      console.error(e)
+      await m.reply('⚠️ Error al obtener la imagen.')
     }
-  },
-};
+  }
+}
