@@ -3,72 +3,64 @@ import fetch from 'node-fetch'
 export default {
   command: ['pinterest', 'pin'],
   category: 'search',
-  run: async ({client, m, args, from}) => {
+
+  run: async ({ client, m, args }) => {
     const text = args.join(' ')
-    const isPinterestUrl = /^https?:\/\//.test(text)
 
     if (!text) {
       return m.reply(
-        `《✧》 Ingresa un *término* de búsqueda o un enlace de *Pinterest*.`,
+        '《✧》 Ingresa un *término* de búsqueda en Pinterest.'
       )
     }
 
     try {
-      if (isPinterestUrl) {
-        const pinterestUrl = `${api.url}/dl/pinterest?url=${text}&key=${api.key}`
-        const ress = await fetch(pinterestUrl)
-        if (!ress.ok) throw new Error(`La API devolvió un código de error: ${ress.status}`)
+      await m.reply('📌 Buscando en Pinterest...')
 
-        const { data: result } = await ress.json()
-        const mediaType = ['image', 'video'].includes(result.type) ? result.type : 'document'
+      const res = await fetch(
+        `https://anabot.my.id/api/search/pinterest?query=${encodeURIComponent(text)}&apikey=freeApikey`
+      )
 
-        const message2 =
-          `> ➩ Resultados para › *${result.title}*\n` +
-          `✐ Author › *${result.author}*\n` +
-          `✐ Tipo › *${result.type}*\n\n${dev}`
+      const json = await res.json()
 
-        await client.sendMessage(
-          m.chat,
-          { [mediaType]: { url: result.dl }, caption: message2 },
-          { quoted: m },
-        )
-      } else {
-        const pinterestAPI = `${api.url}/search/pinterest?query=${text}&key=${api.key}`
-        const res = await fetch(pinterestAPI)
-        if (!res.ok) throw new Error(`La API devolvió un código de error: ${res.status}`)
-
-        const jsons = await res.json()
-        const json = jsons.data
-
-        if (!json || json.length === 0) {
-          return m.reply(`✐ No se encontraron resultados para *${text}*`)
-        }
-
-        const index = Math.floor(Math.random() * json.length)
-        const result = json[index]
-        console.log(`Pinterest result index: ${index}`)
-
-        const message =
-          `➩  Resultados para › *${text}*\n\n` +
-          `ꕥ Título › *${result.title}*\n` +
-          `❖  Descripción › *${result.description}*\n` +
-          `✿  Autor › *${result.full_name}*\n` +
-          `♡  Likes › *${result.likes}*\n` +
-          `❀  Publicado › *${result.created}*\n\n${dev}`
-
-        await client.sendMessage(
-          m.chat,
-          { image: { url: result.hd }, caption: message },
-          { quoted: m },
-        )
+      if (!json.success || !json.data?.result?.length) {
+        return m.reply(`✐ No se encontraron resultados para *${text}*`)
       }
+
+      const results = json.data.result
+      const pin = results[Math.floor(Math.random() * results.length)]
+
+      const imageUrl =
+        pin.images?.['736x']?.url ||
+        pin.images?.['345x']?.url ||
+        pin.images?.['236x']?.url
+
+      if (!imageUrl) {
+        return m.reply('⚠️ No se pudo obtener la imagen.')
+      }
+
+      const caption =
+        `➩ Resultados para › *${text}*\n\n` +
+        `✿ Descripción › *${pin.description || 'Sin descripción'}*\n` +
+        `❖ Autor › *${pin.native_creator?.full_name || 'Desconocido'}*\n` +
+        `♡ Guardados › *${pin.aggregated_pin_data?.aggregated_stats?.saves || 0}*\n` +
+        `❀ Fecha › *${pin.created_at || '—'}*\n`
+
+      await client.sendMessage(
+        m.chat,
+        {
+          image: { url: imageUrl },
+          caption
+        },
+        { quoted: m }
+      )
+
     } catch (e) {
-     // console.error('[Pinterest Error]', e)
+      console.error('[Pinterest Error]', e)
       await client.reply(
         m.chat,
-       msgglobal,
+        '⚠️ Error al obtener resultados de Pinterest.',
         m
       )
     }
-  },
+  }
 }
