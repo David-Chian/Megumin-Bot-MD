@@ -9,7 +9,7 @@ global.number_bot = ''
 
 global.api = {
   url: 'https://api.nightlight.qzz.io',
-  key: 'Diamond'
+  key: 'api-wXCo4'
 }
 
 global.bot = {
