@@ -8,12 +8,12 @@ global.pairing_code = true
 global.number_bot = ''
 
 global.api = {
-  url: 'https://api.nightlight.qzz.io',
+  url: 'https://api.stellarwa.xyz',
   key: 'api-wXCo4'
 }
 
 global.bot = {
-  api: 'https://api.nightlight.qzz.io',
+  api: 'https://api.stellarwa.xyz',
   web: 'https://studio.diamondbots.xyz'
 }
 
