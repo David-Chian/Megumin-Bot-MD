@@ -13,18 +13,18 @@ let icon = botSettings.icon
 let banner = botSettings.banner
 let currency = botSettings.currency
   if (!args[0]) {
-    return conn.reply(m.chat, `💜 Escribe la URL de un repositorio de GitHub que deseas descargar.`, m, rcanal)
+    return client.reply(m.chat, `💜 Escribe la URL de un repositorio de GitHub que deseas descargar.`, m, rcanal)
   }
   if (!regex.test(args[0])) {
-    return conn.reply(m.chat, `🤓 Verifica que la *URL* sea de GitHub`, m, rcanal).then()
+    return client.reply(m.chat, `🤓 Verifica que la *URL* sea de GitHub`, m, rcanal).then()
   }
   let [_, user, repo] = args[0].match(regex) || []
   let sanitizedRepo = repo.replace(/.git$/, '')
   let repoUrl = `https://api.github.com/repos/${user}/${sanitizedRepo}`
   let zipUrl = `https://api.github.com/repos/${user}/${sanitizedRepo}/zipball`
-      await conn.sendMessage(m.chat, { react: { text: '💥', key: m.key } })
+      await client.sendMessage(m.chat, { react: { text: '💥', key: m.key } })
   try {
-  conn.reply(m.chat, wait, m, {
+  client.reply(m.chat, "Espera un momento.", m, {
   contextInfo: { externalAdReply :{ mediaUrl: null, mediaType: 1, showAdAttribution: true,
   title: botname,
   body: wm,
@@ -46,8 +46,8 @@ let currency = botSettings.currency
        txt += `✩  *Url* : ${args[0]}\n\n`
        txt += `*${textbot}*`
 
-await conn.sendFile(m.chat, img, 'thumbnail.jpg', txt, m, null, rcanal)
-await conn.sendFile(m.chat, await zipResponse.buffer(), filename, null, m)
+await client.sendFile(m.chat, img, 'thumbnail.jpg', txt, m, null, rcanal)
+await client.sendFile(m.chat, await zipResponse.buffer(), filename, null, m)
   } catch {
 m.reply('Error.')
   }
