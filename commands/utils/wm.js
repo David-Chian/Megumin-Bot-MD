@@ -1,50 +1,44 @@
 import fs from 'fs'
 
 export default {
-  command: ['wm'],
+  command: ['wm', 'watermark'],
   category: 'utils',
-  run: async ({ client, m, args }) => {
+
+  run: async ({ client, m, text, command, usedPrefix }) => {
     try {
-      const q = m.quoted
-      if (!q) return m.reply('❌ Responde a un sticker.')
-
+      const q = m.quoted ? m.quoted : m
       const mime = (q.msg || q).mimetype || ''
-      if (!/webp/.test(mime))
-        return m.reply('❌ El mensaje respondido no es un sticker.')
-
-      if (!args.length)
-        return m.reply('✧ Usa:\n*/wm Pack Name | Autor (opcional)*')
-
-      const text = args.join(' ')
       
-      let packname = text
-      let author = m.pushName || 'Sticker'
-
-      if (text.includes('|')) {
-        const split = text.split('|')
-        packname = split[0]?.trim()
-        author = split[1]?.trim() || author
+      if (!/webp/.test(mime)) {
+        return m.reply(`❌ Responde a un sticker con el comando: *${usedPrefix + command} Pack | Autor*`)
       }
 
-      if (!packname)
-        return m.reply('❌ Debes escribir al menos el nombre del pack.')
+      let packname = 'Sticker Pack'
+      let author = m.pushName || 'Bot'
+
+      if (text) {
+        if (text.includes('|')) {
+          const [p, a] = text.split('|')
+          packname = p.trim() || packname
+          author = a.trim() || author
+        } else {
+          packname = text.trim()
+        }
+      } else {
+        return m.reply(`✧ Usa:\n*${usedPrefix + command} Nombre del Pack | Autor*`)
+      }
 
       const media = await q.download()
+      
+      if (!media) throw new Error('No se pudo descargar el sticker.')
 
-      const enc = await client.sendImageAsSticker(
-        m.chat,
-        media,
-        m,
-        {
-          packname,
-          author
-        }
-      )
-
-      await fs.unlinkSync(enc)
+      await client.sendImageAsSticker(m.chat, media, m, {
+        packname: packname,
+        author: author
+      })
 
     } catch (e) {
-      m.reply('❌ Error al aplicar watermark\n' + e)
+      m.reply(`❌ Error al aplicar watermark. ${e.message}`)
     }
   }
 }
