@@ -1,50 +1,36 @@
 import fetch from 'node-fetch'
 import uploadImage from '../../lib/uploadImage.js'
 
-async function nekolabsIA({ query, prompt, sessionId, imageUrl = null }) {
-  const models = ['gpt/5-nano', 'gpt/4.1-nano']
-  let lastError = null
+async function kitsuIA({ query, prompt, imageUrl = null }) {
+  try {
+    const fullPrompt = `${prompt}\n\nUsuario dice: ${query}`
+    let url = `https://www.kitsulabs.xyz/api/v1/copilot?model=gpt-5&prompt=${encodeURIComponent(fullPrompt)}` 
+ 
+    const res = await fetch(url)
+    if (!res.ok) throw new Error(`Error en API: ${res.status}`)
 
-  for (const model of models) {
-    try {
-      let url = `https://api.nekolabs.web.id/text-generation/${model}` +
-        `?text=${encodeURIComponent(query)}` +
-        `&systemPrompt=${encodeURIComponent(prompt)}` +
-        `&sessionId=${encodeURIComponent(sessionId)}`
-
-      if (imageUrl) {
-        url += `&imageUrl=${encodeURIComponent(imageUrl)}`
-      }
-
-      const res = await fetch(url)
-      if (!res.ok) throw new Error(`Status ${res.status}`)
-
-      const json = await res.json()
-      const result = json?.result || json?.data?.result || json?.message
-
-      if (result) return result.trim()
-    } catch (e) {
-      lastError = e
+    const json = await res.json()
+    
+    if (json.status && json.data && json.data.text) {
+      return json.data.text.trim()
+    } else {
+      throw new Error('Estructura de respuesta inesperada')
     }
+  } catch (e) {
+    throw e
   }
-
-  throw lastError || new Error('Sin respuesta de la IA')
 }
 
 export default {
   command: ['ia', 'megumin', 'chatgpt'],
   category: 'utils',
+
   run: async ({ client, m, usedPrefix, command, text }) => {
-
-    const username = global.db.data.users[m.sender]?.name || 'aventurero'
-    const sessionId = `${m.sender}-${m.chat}`
-
-    const basePrompt = `
-Eres Megumin-Bot. Hablas con entusiasmo y formalmente.
-Menciona a ${username} cuando sea natural.
-Nunca ejecutes comandos con prefijos (/ . # * @).
-Lenguaje: español coloquial, teatral y divertido.
-`
+    const username = global.db?.data?.users[m.sender]?.name || 'aventurero'
+    
+    const basePrompt = `Eres Megumin-Bot. Hablas con entusiasmo y de forma teatral. 
+Menciona a ${username} de forma natural. 
+No uses prefijos de comandos. Lenguaje: español coloquial y divertido.`
 
     let imageUrl = null
     const q = m.quoted || m
@@ -58,39 +44,35 @@ Lenguaje: español coloquial, teatral y divertido.
     if (!text && !imageUrl) {
       return client.reply(
         m.chat,
-        `💥 *¡Escribe un texto o pregunta algo!* 💥\n\nEjemplo:\n${usedPrefix + command} ¿Qué es una supernova?`,
+        `💥 *¡Escribe un mensaje o pregunta algo!* 💥\n\nEjemplo:\n${usedPrefix + command} ¿Cuál es tu hechizo favorito?`,
         m
       )
     }
 
-    const query = imageUrl
-      ? 'Describe la imagen y dime quién eres'
+    const query = imageUrl 
+      ? `[Imagen enviada] ${text || 'Describe esta imagen'}` 
       : text
 
     try {
       const { key } = await client.sendMessage(
-        m.chat,
-        { text: '💣 Procesando respuesta espere...' },
+        m.chat, 
+        { text: '💣 Procesando respuesta...' }, 
         { quoted: m }
       )
 
-      const response = await nekolabsIA({
+      const response = await kitsuIA({
         query,
         prompt: basePrompt,
-        sessionId,
         imageUrl
       })
 
-      await client.sendMessage(
-        m.chat,
-        { text: response, edit: key }
-      )
+      await client.sendMessage(m.chat, { text: response, edit: key })
 
     } catch (err) {
       console.error(err)
       await client.reply(
         m.chat,
-        '💥 *¡Hubo un error!* Intenta otra vez.',
+        '💥 *¡ERROR CRÍTICO!* Mis circuitos han explotado. Intenta de nuevo.',
         m
       )
     }
