@@ -3,7 +3,7 @@ import axios from 'axios'
 export default {
   command: ['claude'],
   category: 'ai',
-  run: async (client, m, args, command, text, prefix) => {
+  run: async ({ client, m, usedPrefix, command, text }) => {
 
     if (!text) {
         return m.reply(`🎋 Escriba una *petición* para que *Claude* le responda.`)
@@ -30,6 +30,6 @@ export default {
 
     } catch (e) {
       await m.reply(`NodeError :: [ ${e} ]`)
-    }
+    } 
   }
 }
