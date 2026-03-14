@@ -1,5 +1,5 @@
 > [!NOTE]
-> **Este proyecto está en constante evolución. Estamos comprometidos en ofrecer a nuestra comunidad un Bot increíble. Te invitamos a instalarlo y para estar al tanto de todas las novedades. [¡Únete a nuestro nuevo canal!](https://stellarwa.xyz/channel/megu)**
+> **Este proyecto está en constante evolución. Estamos comprometidos en ofrecer a nuestra comunidad un Bot increíble. Te invitamos a instalarlo y para estar al tanto de todas las novedades. [¡Únete a nuestro nuevo canal!](https://stellarwa.xyz/channel/megumin)**
 
 <p align="center"> 
 <img src="https://bot.stellarwa.xyz/files/w10Pp.gif" alt="Megu" style="width: 75%; height: auto; max-width: 100px;">
