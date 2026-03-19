@@ -2,8 +2,8 @@ import fs from 'fs';
 import {v4 as uuidv4} from 'uuid';
 import fetch from 'node-fetch';
 
-const obtenerImagenGelbooru = async (keyword) => {
-  const url = `https://api.stellarwa.xyz/nsfw/gelbooru?keyword=${encodeURIComponent(keyword)}`
+const obtenerImagenDanbooru = async (keyword) => {
+  const url = `https://api.stellarwa.xyz/nsfw/danbooru?keyword=${encodeURIComponent(keyword)}`
   try {
     const res = await fetch(url)
     const data = await res.json()
@@ -15,7 +15,7 @@ const obtenerImagenGelbooru = async (keyword) => {
     const aleatoria = imagenesValidas[Math.floor(Math.random() * imagenesValidas.length)]
     return aleatoria
   } catch (err) {
-    console.error('[Error] obtenerImagenGelbooru:', err)
+    console.error('[Error] obtenerImagenDanbooru:', err)
     return null
   }
 }
