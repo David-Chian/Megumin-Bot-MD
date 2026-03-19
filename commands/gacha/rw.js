@@ -8,13 +8,14 @@ const obtenerImagenGelbooru = async (keyword) => {
     const res = await fetch(url)
     const data = await res.json()
     const extensionesImagen = /\.(jpg|jpeg|png)$/i
-    const imagenesValidas = data?.data?.filter(
-      (item) => typeof item?.image === 'string' && extensionesImagen.test(item.image),
+    const imagenesValidas = data?.results?.filter(
+      (item) => typeof item === 'string' && extensionesImagen.test(item),
     )
     if (!imagenesValidas?.length) return null
     const aleatoria = imagenesValidas[Math.floor(Math.random() * imagenesValidas.length)]
-    return aleatoria.image
-  } catch {
+    return aleatoria
+  } catch (err) {
+    console.error('[Error] obtenerImagenGelbooru:', err)
     return null
   }
 }
