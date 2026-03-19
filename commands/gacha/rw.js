@@ -3,7 +3,7 @@ import {v4 as uuidv4} from 'uuid';
 import fetch from 'node-fetch';
 
 const obtenerImagenGelbooru = async (keyword) => {
-  const url = `https://api.delirius.store/search/gelbooru?query=${encodeURIComponent(keyword)}`
+  const url = `https://api.stellarwa.xyz/nsfw/gelbooru?query=${encodeURIComponent(keyword)}`
   try {
     const res = await fetch(url)
     const data = await res.json()
