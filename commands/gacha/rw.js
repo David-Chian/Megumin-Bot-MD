@@ -2,7 +2,7 @@ import fs from 'fs';
 import {v4 as uuidv4} from 'uuid';
 import fetch from 'node-fetch';
 
-const obtenerImagenDanbooru = async (keyword) => {
+const obtenerImagenGelbooru = async (keyword) => {
   const url = `https://api.stellarwa.xyz/nsfw/danbooru?keyword=${encodeURIComponent(keyword)}`
   try {
     const res = await fetch(url)
