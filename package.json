@@ -26,6 +26,7 @@
     "boxen": "latest",
     "sharp": "latest",
     "yargs-parser": "21.1.1",
+    "cloudst": "^1.0.5",
     "yargs": "17.7.2",
     "better-sqlite3": "^12.4.1",
     "axios": "^0.24.0",
