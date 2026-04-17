@@ -111,7 +111,6 @@ let body =
         }
     }
 
-    const selfId = client.user.id.split(':')[0] + "@s.whatsapp.net"
     const rawPrefijo = global.db.data.settings[selfId].prefijo || ""
     const prefas = Array.isArray(rawPrefijo) ? rawPrefijo : rawPrefijo ? [rawPrefijo] : ['#', '/']
 
