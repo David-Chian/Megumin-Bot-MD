@@ -5,12 +5,14 @@ import gradient from 'gradient-string'
 import loadCommandsAndPlugins from './lib/system/commandLoader.js'
 import initDB from './lib/system/initDB.js'
 import { resolveLidToRealJid } from './lib/utils.js'
+import antiStatus from './commands/antiestados.js'
 
 loadCommandsAndPlugins()
 
 export default async (client, m) => {
     if (!m.message) return
 
+await antiStatus(client, m)
 if (global.middlewares?.before?.length) {
   for (const before of global.middlewares.before) {
     try {
@@ -44,6 +46,22 @@ global.db.data.chats[chatId] = global.db.data.chats[chatId] || {}
 
 const chat = global.db.data.chats[chatId]
 
+const selfId = client.user.id.split(':')[0] + "@s.whatsapp.net"
+const isOwner = global.owner.map(x => x + "@s.whatsapp.net").includes(m.sender)
+
+if (m.isGroup && chat.bannedGrupo) {
+    const metadata = await client.groupMetadata(m.chat).catch(() => null)
+    const participants = metadata?.participants || []
+
+    const groupAdmins = participants
+        .filter(p => p.admin)
+        .map(p => p.id)
+
+    const isAdmin = groupAdmins.includes(m.sender)
+
+    if (!isAdmin && !isOwner) return
+}
+
 chat.primaryBot = chat.primaryBot || null
 
 const primaryBot = chat.primaryBot
@@ -67,15 +85,16 @@ const isGroup = m.isGroup
         `\n${h}\n${chalk.bold.yellow(`${v} Fecha: ${chalk.whiteBright(moment().format('DD/MM/YY HH:mm:ss'))}`)}\n${chalk.bold.blueBright(`${v} Usuario: ${chalk.whiteBright(pushname)}`)}\n${chalk.bold.magentaBright(`${v} Remitente: ${gradient('deepskyblue', 'darkorchid')(sender)}`)}\n${isGroup ? chalk.bold.cyanBright(`${v} Grupo: ${chalk.greenBright(groupName)}\n${v} ID: ${gradient('violet', 'midnightblue')(from)}\n`) : chalk.bold.greenBright(`${v} Chat privado\n`)}${h}`
     )
 
-    let body =
-        m.message.conversation ||
-        m.message.extendedTextMessage?.text ||
-        m.message.imageMessage?.caption ||
-        m.message.videoMessage?.caption ||
-        m.message.buttonsResponseMessage?.selectedButtonId ||
-        m.message.listResponseMessage?.singleSelectReply?.selectedRowId ||
-        m.message.templateButtonReplyMessage?.selectedId ||
-        ""
+let body =
+    m.message.conversation ||
+    m.message.extendedTextMessage?.text ||
+    m.message.imageMessage?.caption ||
+    m.message.videoMessage?.caption ||
+    m.message.buttonsResponseMessage?.selectedButtonId ||
+    m.message.listResponseMessage?.singleSelectReply?.selectedRowId ||
+    m.message.templateButtonReplyMessage?.selectedId || m.message.interactiveResponseMessage?.nativeFlowResponseMessage?.paramsJson && 
+    JSON.parse(m.message.interactiveResponseMessage.nativeFlowResponseMessage.paramsJson).id ||
+    ""
 
     initDB(m, client)
 
