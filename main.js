@@ -168,7 +168,6 @@ let body =
         }
     }
 
-    const isOwner = global.owner.map(x => x + "@s.whatsapp.net").includes(sender)
     const settingsBot = global.db.data.settings[selfId] || {}
     if (settingsBot.self && !isOwner && sender !== selfId) return
 const metadata = isGroup ? await client.groupMetadata(from).catch(() => null) : null
