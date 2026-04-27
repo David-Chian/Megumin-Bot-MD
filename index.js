@@ -1,6 +1,6 @@
 import "./settings.js"
 import handler from './main.js'
-import events from './commands/events.js'
+import { participantsUpdate } from './commands/events.js'
 import {
   Browsers,
   makeWASocket,
@@ -30,72 +30,37 @@ import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
+
 const log = {
   info: (msg) => console.log(chalk.bgBlue.white.bold(`INFO`), chalk.white(msg)),
-  success: (msg) =>
-    console.log(chalk.bgGreen.white.bold(`SUCCESS`), chalk.greenBright(msg)),
-  warn: (msg) =>
-    console.log(
-      chalk.bgYellowBright.blueBright.bold(`WARNING`),
-      chalk.yellow(msg),
-    ),
-  warning: (msg) =>
-    console.log(chalk.bgYellowBright.red.bold(`WARNING`), chalk.yellow(msg)),
-  error: (msg) =>
-    console.log(chalk.bgRed.white.bold(`ERROR`), chalk.redBright(msg)),
-};
+  success: (msg) => console.log(chalk.bgGreen.white.bold(`SUCCESS`), chalk.greenBright(msg)),
+  warn: (msg) => console.log(chalk.bgYellowBright.blueBright.bold(`WARNING`), chalk.yellow(msg)),
+  warning: (msg) => console.log(chalk.bgYellowBright.red.bold(`WARNING`), chalk.yellow(msg)),
+  error: (msg) => console.log(chalk.bgRed.white.bold(`ERROR`), chalk.redBright(msg)),
+}
 
 const print = (label, value) =>
-  console.log(
-    `${chalk.green.bold("║")} ${chalk.cyan.bold(label.padEnd(16))}${chalk.magenta.bold(":")} ${value}`,
-  );
-const pairingCode = process.argv.includes("--qr")
-  ? false
-  : process.argv.includes("--pairing-code") || global.pairing_code;
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-const question = (text) => {
-  return new Promise((resolve) => {
-    rl.question(text, (answer) => {
-      resolve(answer.trim());
-    });
-  });
-};
-const usePairingCode = true;
+  console.log(`${chalk.green.bold("║")} ${chalk.cyan.bold(label.padEnd(16))}${chalk.magenta.bold(":")} ${value}`)
 
-const userInfoSyt = () => {
-  try {
-    return os.userInfo().username;
-  } catch (e) {
-    return process.env.USER || process.env.USERNAME || "desconocido";
-  }
-};
+const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
+const question = (text) => new Promise((resolve) => rl.question(text, (answer) => resolve(answer.trim())))
 
-  const DIGITS = (s = "") => String(s).replace(/\D/g, "");
+const DIGITS = (s = "") => String(s).replace(/\D/g, "")
 
-  function normalizePhoneForPairing(input) {
-    let s = DIGITS(input);
-    if (!s) return "";
-    if (s.startsWith("0")) s = s.replace(/^0+/, "");
-    if (s.length === 10 && s.startsWith("3")) {
-      s = "57" + s;
-    }
-    if (s.startsWith("52") && !s.startsWith("521") && s.length >= 12) {
-      s = "521" + s.slice(2);
-    }
-    if (s.startsWith("54") && !s.startsWith("549") && s.length >= 11) {
-      s = "549" + s.slice(2);
-    }
-    return s;
-  }
+function normalizePhoneForPairing(input) {
+  let s = DIGITS(input)
+  if (!s) return ""
+  if (s.startsWith("0")) s = s.replace(/^0+/, "")
+  if (s.length === 10 && s.startsWith("3")) s = "57" + s
+  if (s.startsWith("52") && !s.startsWith("521") && s.length >= 12) s = "521" + s.slice(2)
+  if (s.startsWith("54") && !s.startsWith("549") && s.length >= 11) s = "549" + s.slice(2)
+  return s
+}
 
 export async function uPLoader() {
   const TOTAL_TIME = 5000
   const STEPS = 100
   const BAR_SIZE = 40
-
   const TITLE = 'MEGUMIN-BOT-MD'
   const SUB = 'powered by David-Chian'
 
@@ -113,15 +78,10 @@ export async function uPLoader() {
     else if (percent < 90) color = chalk.cyan
     else color = chalk.green
 
-    const bar =
-      color('■'.repeat(filled)) +
-      chalk.gray('□'.repeat(empty))
+    const bar = color('■'.repeat(filled)) + chalk.gray('□'.repeat(empty))
 
-    if (typedTitle.length < TITLE.length)
-      typedTitle += TITLE[typedTitle.length]
-
-    if (percent > 40 && typedSub.length < SUB.length)
-      typedSub += SUB[typedSub.length]
+    if (typedTitle.length < TITLE.length) typedTitle += TITLE[typedTitle.length]
+    if (percent > 40 && typedSub.length < SUB.length) typedSub += SUB[typedSub.length]
 
     process.stdout.write(
       '\x1b[2J\x1b[0f' +
@@ -135,17 +95,8 @@ export async function uPLoader() {
   }
 
   console.clear()
-  cfonts.say('MEGUMIN-BOT-MD', {
-    font: 'block',
-    align: 'center',
-    colors: ['red']
-  })
-
-  cfonts.say('powered by David-Chian', {
-    font: 'console',
-    align: 'center',
-    gradient: ['blue', 'cyan']
-  })
+  cfonts.say('MEGUMIN-BOT-MD', { font: 'block', align: 'center', colors: ['red'] })
+  cfonts.say('powered by David-Chian', { font: 'console', align: 'center', gradient: ['blue', 'cyan'] })
 
   console.log(
     chalk.yellow.bold('\nSeleccione el método de inicio:\n') +
@@ -157,17 +108,17 @@ export async function uPLoader() {
   while (!['1', '2'].includes(opt)) {
     opt = await question(chalk.magentaBright('➤ Opción: '))
   }
-
   return opt
 }
 
 const BOT_TYPES = [
   { name: 'SubBot', folder: './Sessions/Subs', starter: startSubBot }
 ]
+
 const queue = []
 let running = false
-
-const DELAY = 800
+const DELAY_NORMAL = 300
+const DELAY_AFTER_RATELIMIT = 3000
 
 global.conns = global.conns || []
 const reconnecting = new Set()
@@ -194,21 +145,48 @@ async function loadBots() {
   setTimeout(loadBots, 60 * 1000)
 }
 
-(async () => {
-  await loadBots()
-})()
+;(async () => { await loadBots() })()
+
+const realizarLimpieza = () => {
+  console.log(chalk.cyanBright('[ ✿ ] Ejecutando revisión de inactividad...'))
+  const users = global.db?.data?.users
+  if (!users) return
+  const quinceDias = 15 * 24 * 60 * 60 * 1000
+  const ahora = Date.now()
+  let contador = 0
+
+  Object.keys(users).forEach(jid => {
+    const user = users[jid]
+    const ultimaVez = user.lastSeen ? new Date(user.lastSeen).getTime() : 0
+    if (ahora - ultimaVez > quinceDias) {
+      const esOwner = global.owner?.some(owner => jid.includes(owner))
+      if (!esOwner && jid !== global.client?.user?.id) {
+        delete global.db.data.users[jid]
+        contador++
+      }
+    }
+  })
+
+  if (contador > 0) {
+    global.saveDatabase?.()
+    try { global.db.conn?.prepare('VACUUM').run() } catch (e) {}
+    console.log(chalk.greenBright(`[ ✿ ] Limpieza terminada: ${contador} usuarios inactivos eliminados.`))
+  }
+}
+
 let LOGIN_METHOD = null
+
 async function startBot() {
   const { state, saveCreds } = await useMultiFileAuthState(global.sessionName)
-  const { version, isLatest } = await fetchLatestBaileysVersion();
+  const { version } = await fetchLatestBaileysVersion()
   const logger = pino({ level: "silent" })
 
   console.info = () => {}
   console.debug = () => {}
+
   const clientt = makeWASocket({
     version,
     logger,
-  //  browser: ['Windows', 'Chrome'],
     browser: Browsers.macOS('Chrome'),
     auth: {
       creds: state.creds,
@@ -223,68 +201,50 @@ async function startBot() {
   })
 
   patchSendMessage(clientt)
-  global.client = clientt;
+  global.client = clientt
   client.isInit = false
   client.ev.on("creds.update", saveCreds)
 
-if (!client.authState.creds.registered) {
-console.clear()
-
-if (LOGIN_METHOD === '2') {
-  console.log(
-    chalk.bold.redBright('\nIngrese su número de WhatsApp\n') +
-    chalk.yellowBright('Ejemplo: +57301XXXXXXX\n')
-  )
-
-  const fixed = await question(chalk.magentaBright('➤ Número: '))
-  const phoneNumber = normalizePhoneForPairing(fixed)
-
-  try {
-    const pairing = await client.requestPairingCode(phoneNumber)
-    console.log(
-      chalk.bgMagenta.white.bold('\n CÓDIGO DE VINCULACIÓN ') +
-      '\n\n' +
-      chalk.white.bold(pairing) +
-      '\n'
-    )
-  } catch (err) {
-    console.log(chalk.red('❌ Error al generar código'))
-    exec('rm -rf ./Sessions/Owner/*')
-    process.exit(1)
+  if (!client.authState.creds.registered) {
+    console.clear()
+    if (LOGIN_METHOD === '2') {
+      console.log(chalk.bold.redBright('\nIngrese su número de WhatsApp\n') + chalk.yellowBright('Ejemplo: +57301XXXXXXX\n'))
+      const fixed = await question(chalk.magentaBright('➤ Número: '))
+      const phoneNumber = normalizePhoneForPairing(fixed)
+      try {
+        const pairing = await client.requestPairingCode(phoneNumber)
+        console.log(chalk.bgMagenta.white.bold('\n CÓDIGO DE VINCULACIÓN ') + '\n\n' + chalk.white.bold(pairing) + '\n')
+      } catch (err) {
+        console.log(chalk.red('❌ Error al generar código'))
+        exec('rm -rf ./Sessions/Owner/*')
+        process.exit(1)
+      }
+    }
   }
-}
-}
 
   client.sendText = (jid, text, quoted = "", options) =>
     client.sendMessage(jid, { text: text, ...options }, { quoted })
 
   client.ev.on("connection.update", async (update) => {
-    const {
-      qr,
-      connection,
-      lastDisconnect,
-      isNewLogin,
-      receivedPendingNotifications,
-    } = update
+    const { qr, connection, lastDisconnect, isNewLogin, receivedPendingNotifications } = update
+
     if (qr && LOGIN_METHOD === '1') {
-  console.clear()
-  console.log(chalk.cyan.bold('📸 ESCANEA ESTE CÓDIGO QR\n'))
-  qrcode.generate(qr, { small: true })
-}
+      console.clear()
+      console.log(chalk.cyan.bold('📸 ESCANEA ESTE CÓDIGO QR\n'))
+      qrcode.generate(qr, { small: true })
+    }
 
     if (connection === "close") {
-      const reason = lastDisconnect?.error?.output?.statusCode || 0;
+      const reason = lastDisconnect?.error?.output?.statusCode || 0
       if (reason === DisconnectReason.connectionLost) {
-        log.warning(
-          "Se perdió la conexión al servidor, intento reconectarme..",
-        )
+        log.warning("Se perdió la conexión al servidor, intento reconectarme..")
         startBot()
       } else if (reason === DisconnectReason.connectionClosed) {
         log.warning("Conexión cerrada, intentando reconectarse...")
         startBot()
       } else if (reason === DisconnectReason.restartRequired) {
         log.warning("Es necesario reiniciar..")
-        startBot();
+        startBot()
       } else if (reason === DisconnectReason.timedOut) {
         log.warning("Tiempo de conexión agotado, intentando reconectarse...")
         startBot()
@@ -300,32 +260,32 @@ if (LOGIN_METHOD === '2') {
       } else if (reason === DisconnectReason.forbidden) {
         log.error("Error de conexión, escanee nuevamente y ejecute...")
         exec("rm -rf ./Sessions/Owner/*")
-        process.exit(1);
+        process.exit(1)
       } else if (reason === DisconnectReason.multideviceMismatch) {
         log.warning("Inicia nuevamente")
         exec("rm -rf ./Sessions/Owner/*")
         process.exit(0)
       } else {
-        client.end(
-          `Motivo de desconexión desconocido : ${reason}|${connection}`,
-        )
+        client.end(`Motivo de desconexión desconocido : ${reason}|${connection}`)
       }
     }
 
-    if (connection == "open") {
- console.log(boxen(chalk.bold(' ¡CONECTADO CON WHATSAPP! '), { borderStyle: 'round', borderColor: 'green', title: chalk.green.bold('● CONEXIÓN ●'), titleAlignment: 'center', float: 'center' }))
+    if (connection === "open") {
+      console.log(boxen(chalk.bold(' ¡CONECTADO CON WHATSAPP! '), {
+        borderStyle: 'round', borderColor: 'green',
+        title: chalk.green.bold('● CONEXIÓN ●'), titleAlignment: 'center', float: 'center'
+      }))
+      setTimeout(realizarLimpieza, 10000)
+      setInterval(realizarLimpieza, 24 * 60 * 60 * 1000)
     }
 
-
-    if (isNewLogin) {
-      log.info("Nuevo dispositivo detectado")
-    }
+    if (isNewLogin) log.info("Nuevo dispositivo detectado")
 
     if (receivedPendingNotifications == "true") {
       log.warn("Por favor espere aproximadamente 1 minuto...")
       client.ev.flush()
     }
-  });
+  })
 
   let m
   client.ev.on("messages.upsert", async ({ messages }) => {
@@ -346,28 +306,24 @@ if (LOGIN_METHOD === '2') {
     }
   })
 
-  try {
-  await events(client, m)
-  } catch (err) {
-   console.log(chalk.gray(`[ BOT  ]  → ${err}`))
-  }
+client.ev.on("group-participants.update", async (anu) => {
+   await participantsUpdate(client, anu)
+})
 
   client.decodeJid = (jid) => {
     if (!jid) return jid
     if (/:\d+@/gi.test(jid)) {
       let decode = jidDecode(jid) || {}
-      return (
-        (decode.user && decode.server && decode.user + "@" + decode.server) ||
-        jid
-      )
+      return (decode.user && decode.server && decode.user + "@" + decode.server) || jid
     } else return jid
   }
 }
-
- function enqueue(task) {
+function enqueue(task) {
   queue.push(task)
   run()
 }
+
+let lastWasRateLimit = false
 
 async function run() {
   if (running) return
@@ -377,16 +333,19 @@ async function run() {
     const job = queue.shift()
     try {
       await job()
+      lastWasRateLimit = false
     } catch (e) {
       if (String(e).includes('rate-overlimit')) {
         console.log('⚠️ Rate limit detectado, reintentando…')
+        lastWasRateLimit = true
         await new Promise(r => setTimeout(r, 2000))
         queue.unshift(job)
       } else {
         console.error('Send error:', e)
+        lastWasRateLimit = false
       }
     }
-    await new Promise(r => setTimeout(r, DELAY))
+    await new Promise(r => setTimeout(r, lastWasRateLimit ? DELAY_AFTER_RATELIMIT : DELAY_NORMAL))
   }
 
   running = false
@@ -407,10 +366,10 @@ export function patchSendMessage(client) {
     })
   }
 }
+
 function hasMainSession() {
   const credsPath = path.join(global.sessionName, 'creds.json')
   if (!fs.existsSync(credsPath)) return false
-
   try {
     const creds = JSON.parse(fs.readFileSync(credsPath))
     return !!creds.registered
@@ -420,22 +379,27 @@ function hasMainSession() {
 }
 
 function clockString(ms) {
-  const d = isNaN(ms) ? '--' : Math.floor(ms / 86400000);
-  const h = isNaN(ms) ? '--' : Math.floor(ms / 3600000) % 24;
-  const m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60;
-  const s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60;
-  return [d, 'd ️', h, 'h ', m, 'm ', s, 's '].map((v) => v.toString().padStart(2, 0)).join('');
+  const d = isNaN(ms) ? '--' : Math.floor(ms / 86400000)
+  const h = isNaN(ms) ? '--' : Math.floor(ms / 3600000) % 24
+  const m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
+  const s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
+  return [d, 'd ️', h, 'h ', m, 'm ', s, 's '].map((v) => v.toString().padStart(2, 0)).join('')
 }
-(async () => {
+
+;(async () => {
   global.loadDatabase()
   console.log(chalk.gray('[ ✿  ]  Base de datos cargada correctamente.'))
 
   const hasSession = hasMainSession()
+  LOGIN_METHOD = hasSession ? null : await uPLoader()
 
-  if (!hasSession) {
-    LOGIN_METHOD = await uPLoader()
-  } else {
-    LOGIN_METHOD = null
-  }
   await startBot()
 })()
+
+process.on('uncaughtException', (err) => {
+  console.log(chalk.bgRed.white.bold(' FATAL ERROR '), chalk.red(err.stack || err))
+})
+
+process.on('unhandledRejection', (reason) => {
+  console.log(chalk.bgYellow.black.bold(' UNHANDLED REJECTION '), chalk.yellow(reason))
+})
