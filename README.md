@@ -214,6 +214,21 @@ cd && cd Megumin-Bot-MD && rm -rf Sessions/Owner && npm start
 
 </details>
 
+<details>
+<summary><strong>☁️ OptiShield</strong> — Hosting</summary>
+
+<div align="center">
+  <a href="https://panel.optishield.uk">
+    <img src="https://panel.optishield.uk/favicon.ico" alt="Logo" height="125px">
+  </a>
+</div>
+
+### 🐢 Enlaces Principales
+| Servicio | Enlace |
+|------------|-----------|
+| Panel | [Abrir](https://panel.optishield.uk) |
+| WhatsApp | [Acceder](https://whatsapp.com/channel/0029VavIDII2phHULXGa7w07) |
+
 ---
 
 ### 🪶 Colaboradores
