@@ -1,0 +1,71 @@
+{
+  "name": "mao",
+  "version": "3.0",
+  "description": "WhatsApp multi Device, updated with better performance",
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "format": "prettier --write .",
+    "build": "tsc",
+    "start": "tsx index.ts"
+  },
+  "keywords": [
+    "whatsapp-bot",
+    "baileys-md",
+    "bot-wa",
+    "multi-device"
+  ],
+  "author": "Diamond",
+  "license": "MIT",
+  "engines": {
+    "node": ">=21.7.3",
+    "npm": ">=10.9.4"
+  },
+  "dependencies": {
+    "@babel/parser": "latest",
+    "@green-code/music-track-data": "^2.0.3",
+    "@tensorflow/tfjs": "^4.22.0",
+    "@whiskeysockets/baileys": "github:this-xys/bails",
+    "acrcloud": "^1.4.0",
+    "axios": "^0.24.0",
+    "better-sqlite3": "^11.10.0",
+    "boxen": "latest",
+    "canvas": "^3.2.3",
+    "cfonts": "^3.3.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "form-data": "^4.0.0",
+    "google-tts-api": "^2.0.2",
+    "gif-encoder-2": "^1.0.5",
+    "gradient-string": "^2.0.2",
+    "grapheme-splitter": "^1.0.4",
+    "http": "latest",
+    "human-readable": "^0.2.1",
+    "jimp": "^1.6.1",
+    "mime-types": "latest",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.37",
+    "multer": "latest",
+    "node-cache": "latest",
+    "node-fetch": "^2.6.1",
+    "node-id3": "^0.2.9",
+    "node-schedule": "^2.1.1",
+    "node-webpmux": "^3.2.0",
+    "nsfwjs": "latest",
+    "pino": "^8.8.0",
+    "qrcode": "latest",
+    "qrcode-terminal": "^0.12.0",
+    "readline-sync": "^1.4.10",
+    "ruhend-scraper": "^7.0.4",
+    "song-lyrics-api": "^1.1.0",
+    "syntax-error": "^1.4.0",
+    "uuid": "^10.0.0",
+    "yargs": "^18.0.0",
+    "yt-search": "^2.10.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}
