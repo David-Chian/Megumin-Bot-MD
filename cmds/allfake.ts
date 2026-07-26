@@ -15,9 +15,9 @@ export async function before(m: any, { sock, client }: any) {
   const link      = bot.link;
 
   const canal = 'https://whatsapp.com/channel/0029Vaxr2YgLCoWy2NS1Ab0a';
-  const gpo   = 'https://chat.whatsapp.com/J8zdwcBq05qBBGRtF872zW';
-  const gpo2  = 'https://chat.whatsapp.com/J9gyFJLbhVIJXaUZlpo8Xt?mode=gi_t';
-  const gpo3  = 'https://chat.whatsapp.com/JrO1REb8ESRAKgRQKaF8KC?mode=gi_t';
+  const gpo   = 'https://chat.whatsapp.com/F4QEFF2Hn4102NdbPJ2ZOi?s=cl&p=a&ilr=0&amv=1';
+  const gpo2  = 'https://chat.whatsapp.com/KYMDB95aLeoGtIEXwrxri6?s=cl&p=a&ilr=0&amv=1';
+  const gpo3  = 'https://chat.whatsapp.com/J9gyFJLbhVIJXaUZlpo8Xt?s=cl&p=a&ilr=0&amv=1';
   const web   = 'https://diamondbots.xyz';
 
   (global as any).redes = [canal, gpo, gpo2, gpo3, link, web][Math.floor(Math.random() * 6)];
