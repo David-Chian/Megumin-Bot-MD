@@ -25,7 +25,7 @@
     "@babel/parser": "latest",
     "@green-code/music-track-data": "^2.0.3",
     "@tensorflow/tfjs": "^4.22.0",
-    "@whiskeysockets/baileys": "github:this-xys/bails",
+    "@whiskeysockets/baileys": "github:russellxz/ultra-baileys",
     "acrcloud": "^1.4.0",
     "axios": "^0.24.0",
     "better-sqlite3": "^11.10.0",
