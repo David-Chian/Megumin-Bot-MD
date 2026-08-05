@@ -47,8 +47,8 @@ export async function before(m: any, { sock, client }: any) {
     await _sock.sendMessage(m.chat, {
       text: `${link}\n\n${text}`,
       linkPreview: {
-        'canonical-url': selectedLink,
-        'matched-text':  selectedLink,
+        'canonical-url': link,
+        'matched-text':  link,
         title:           botname2,
         description:     botname,
         jpegThumbnail,
