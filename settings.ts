@@ -17,7 +17,7 @@ global.sessionName = 'Sessions/Owner'
 
 global.api = {
   url: 'https://api.stellarwa.xyz',
-  key: 'api-wXCo4' 
+  key: 'api-wXCo4' // ⚠ Atención ⚠ esta key no funciona es solo un ejemplo de cómo se ven, obtén tu key Iniciando sesión en https://api.stellarwa.xyz/ una vez tengas tu key lo pones aquí y reinicias el botón y ya está puedes seguir usando comandos como el play , tiktok, etc.
 }
 
 // No recomiendo que cambies o quites estos numeros, si quieres añade el tuyo.
