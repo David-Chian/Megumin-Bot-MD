@@ -11,7 +11,7 @@ import { fileURLToPath } from 'url'
 
 // Cambia o agrega tu numero aquí
 // Si eres de México pones tu numero así 521xxxxxx
-global.owner = ['5351524614', '584147226479', '491725636882', '5492916450307']
+global.owner = ['5351524614', '5218711426787','584147226479', '491725636882', '5492916450307']
 
 global.sessionName = 'Sessions/Owner'
 
@@ -23,6 +23,7 @@ global.api = {
 // No recomiendo que cambies o quites estos numeros, si quieres añade el tuyo.
 global.mods = [
   '5351524614',
+  '5218711426787',
   '584147226479',
   '491725636882',
   '5492916450307'
